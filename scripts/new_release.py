@@ -832,7 +832,7 @@ def main(commons, schema_path, notes_path):
             "notes": ""
         })
 
-    releases.sort(key=lambda r: r["version"], reverse=True)
+    releases.sort(key=lambda r: version_sort_key(r["version"]), reverse=True)
 
     pages.insert(
         0,
