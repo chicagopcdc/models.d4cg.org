@@ -1,0 +1,14 @@
+- id: pcdc_v2_2
+  label: PCDC v2.2
+  status: latest
+  path: /releases/pcdc_v2_2/
+
+- id: pcdc_v2_1
+  label: PCDC v2.1
+  status: archived
+  path: /releases/pcdc_v2_1/
+
+- id: pcdc_v2_0
+  label: PCDC v2.0
+  status: archived
+  path: /releases/pcdc_v2_0/

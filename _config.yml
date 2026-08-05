@@ -1,0 +1,28 @@
+title: D4CG Modeling
+logo: "/assets/images/logo.svg"
+description: Generated model documentation for PCDC
+theme: just-the-docs
+
+
+url: ""
+baseurl: ""
+
+search_enabled: true
+enable_copy_code_button: true
+
+mermaid:
+  version: "10.9.1"
+
+sass:
+  quiet_deps: true
+
+callouts:
+  changes:
+    title: Change Notes
+    color: green
+  note:
+    title: Views
+    color: blue
+  warning:
+    title: Warning
+    color: red
