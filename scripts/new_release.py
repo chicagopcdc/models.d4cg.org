@@ -752,12 +752,14 @@ def discover_releases(commons_folder, current_version):
         version = path.name
         status = "Current" if version == current_version else "Past"
 
+        manifest = load_json(path / "manifest.json", required=False) or {}
+
         releases.append({
             "version": version,
             "status": status,
             "url": f"./{version}/",
-            "date": "",
-            "notes": ""
+            "date": manifest.get("release_date", ""),
+            "notes": "; ".join(manifest.get("changes", [])),
         })
 
     releases.sort(key=lambda r: version_sort_key(r["version"]), reverse=True)

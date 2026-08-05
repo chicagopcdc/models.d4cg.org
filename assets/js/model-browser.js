@@ -133,7 +133,7 @@ function applyViewFilter(view) {
   const metadata = JSON.parse(document.getElementById("view-metadata-payload").textContent);
   const current = metadata[view] || metadata["base"];
 
-  document.getElementById("view-description").innerHTML = current.description || "";
+  document.getElementById("view-description").textContent = current.description || "";
 
   document.querySelectorAll("[data-subsets]").forEach(function(element) {
     if (element.closest("#view-matrix-wrap")) {
