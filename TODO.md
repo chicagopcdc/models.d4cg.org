@@ -3,5 +3,3 @@
 - [this](https://github.com/chicagopcdc/models.d4cg.org/blob/4f93ab52a9e665eefe81d3f36e5e90a59feb8813/scripts/new_release.py#L854) cmd is never used. Michael.s note: "This is for it to be run manually--which it may not be. Still need to work with Mei on how much she'd like to automate the release generation"
 
 - 
-
-
