@@ -1,0 +1,11 @@
+{
+  "version": "pcdc-2.0",
+  "release_date": "2026-07-01",
+  "changes": [
+    "Added MRD assessment variables for AML.",
+    "Expanded permissible values for Smn Site.",
+    "Renamed TreatmentCourse to TherapyCourse.",
+    "Clarified semantics of response assessment timing.",
+    "Deprecated legacy staging variable."
+  ]
+}

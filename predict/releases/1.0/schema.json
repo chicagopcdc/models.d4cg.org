@@ -1,0 +1,2709 @@
+{
+    "id": "https://models.d4cg.org/predict",
+    "name": "predict",
+    "title": "PREDICT Data Model",
+    "license": "CC BY-NC 4.0",
+    "version": 1.0,
+    "prefixes": {
+        "predict": "https://models.d4cg.org/predict",
+        "linkml": "https://w3id.org/linkml/",
+        "ncit": "http://purl.obolibrary.org/obo/NCIT_"
+    },
+    "default_prefix": "predict",
+    "default_range": "string",
+    "imports": [
+        "linkml:types"
+    ],
+    "subsets": {
+        "base": {
+            "description": "This consensus data model was developed by an international group of monogenic diabetes experts and maintained by Data for the Common Good (D4CG) at the University of Chicago in collaboration with the Precision Diabetes Consortium (PREDICT). The model reflects the collective requirements of its contributors and provides a common framework for representing, harmonizing, and sharing monogenic diabetes data across research and clinical programs."
+        }
+    },
+    "classes": {
+        "SubjectCharacteristics": {
+            "description": "SubjectCharacteristics captures core subject-level identifiers, data source context, and last-known survival/contact status needed to anchor all other records in the model.",
+            "slots": [
+                "honest_broker_subject_id",
+                "data_contributor_id",
+                "data_source",
+                "last_known_survival_status",
+                "age_last_contact",
+                "age_last_contact_unit",
+                "age_last_contact_precision"
+            ],
+            "comments": [
+                "D4CGNote: One row per subject."
+            ],
+            "annotations": {
+                "domain": "demographics"
+            }
+        },
+        "Timing": {
+            "description": "Timing represents named clinical or research timepoints and their associated ages, providing the longitudinal structure used to align observations across the model.",
+            "slots": [
+                "honest_broker_subject_id",
+                "subject_characteristics",
+                "timepoint",
+                "timing_age_at",
+                "age_unit",
+                "age_precision"
+            ],
+            "comments": [
+                "D4CGNote: One row per subject per timepoint."
+            ],
+            "annotations": {
+                "domain": "demographics"
+            }
+        },
+        "FamilyMedicalHistory": {
+            "description": "FamilyMedicalHistory captures diabetes-related conditions reported among relatives, supporting representation of inherited patterns and familial disease context.",
+            "slots": [
+                "honest_broker_subject_id",
+                "subject_characteristics",
+                "relation_honest_broker_subject_id",
+                "relation",
+                "condition",
+                "source"
+            ],
+            "comments": [
+                "D4CGNote: One row per subject per relation per condition.",
+                "(md_v1.3) ConsortiumNote: Only enter family members who have a history of dysglycemia."
+            ],
+            "annotations": {
+                "domain": "demographics"
+            }
+        },
+        "Demographics": {
+            "description": "Demographics captures subject-level sex, race, and ethnicity information used to describe study populations and support cohort characterization.",
+            "slots": [
+                "honest_broker_subject_id",
+                "subject_characteristics",
+                "sex",
+                "ethnicity",
+                "race"
+            ],
+            "comments": [
+                "D4CGNote: One row per subject."
+            ],
+            "annotations": {
+                "domain": "demographics"
+            }
+        },
+        "MedicalHistory": {
+            "description": "MedicalHistory records prior or co-occurring medical conditions for a subject, including coded condition details when available.",
+            "slots": [
+                "honest_broker_subject_id",
+                "subject_characteristics",
+                "age_at",
+                "age_unit",
+                "age_precision",
+                "medical_history_condition",
+                "condition_other",
+                "condition_code",
+                "code_system"
+            ],
+            "comments": [
+                "D4CGNote: One row per subject per condition."
+            ],
+            "annotations": {
+                "domain": "demographics"
+            }
+        },
+        "Biometrics": {
+            "description": "Biometrics captures anthropometric measurements such as height, weight, BMI, and related standardized scores used to characterize growth and body size over time.",
+            "slots": [
+                "honest_broker_subject_id",
+                "subject_characteristics",
+                "age_at",
+                "age_unit",
+                "age_precision",
+                "measurement_type",
+                "measurement_numeric",
+                "measurement_unit",
+                "z_score"
+            ],
+            "comments": [
+                "D4CGNote: One row per subject per biometric measurement."
+            ],
+            "annotations": {
+                "domain": "testing"
+            }
+        },
+        "Biospecimen": {
+            "description": "Biospecimen records available subject specimens by sample type, supporting linkage between clinical data and biological materials for research use.",
+            "slots": [
+                "honest_broker_subject_id",
+                "subject_characteristics",
+                "sample_type"
+            ],
+            "comments": [
+                "D4CGNote: One row per subject per sample type."
+            ],
+            "annotations": {
+                "domain": "testing"
+            }
+        },
+        "GeneticAnalysis": {
+            "description": "GeneticAnalysis captures genetic testing results, including methods, genes, alteration details, HGVS nomenclature, reported significance, allelic state, and related external references.",
+            "slots": [
+                "honest_broker_subject_id",
+                "subject_characteristics",
+                "age_at",
+                "age_unit",
+                "age_precision",
+                "causative_alteration",
+                "status",
+                "genetic_analysis_sample_type",
+                "laboratory_name",
+                "cytogenetic_location",
+                "method",
+                "gene",
+                "alteration_type",
+                "alteration_effect",
+                "alteration_region",
+                "hgvs_accession",
+                "hgvs_coding",
+                "hgvs_protein",
+                "hgvs_genomic",
+                "iscn",
+                "reported_significance",
+                "allelic_state",
+                "maf_numeric",
+                "mosaicism",
+                "external_ref_id",
+                "external_ref_id_system"
+            ],
+            "comments": [
+                "D4CGNote: One row per subject per method per gene."
+            ],
+            "annotations": {
+                "domain": "testing"
+            }
+        },
+        "Testing": {
+            "description": "Testing captures laboratory, glucose-monitoring, and related clinical test results, including numeric values, units, interpretation, fasting status, and timepoint-specific testing context.",
+            "slots": [
+                "honest_broker_subject_id",
+                "subject_characteristics",
+                "age_at",
+                "age_unit",
+                "age_precision",
+                "test_type",
+                "testing_method",
+                "testing_measurement_type",
+                "result_modifier",
+                "result_numeric",
+                "result_unit",
+                "reference_range",
+                "result_interpretation",
+                "fasting_status",
+                "post_glucose_timepoint",
+                "post_glucose_timepoint_unit"
+            ],
+            "comments": [
+                "D4CGNote: One row per subject per test type per result."
+            ],
+            "annotations": {
+                "domain": "testing"
+            }
+        },
+        "DiseaseCharacteristics": {
+            "description": "DiseaseCharacteristics records monogenic diabetes-related disease features, including diabetes status, hypoglycemia, ketoacidosis, glucose range metrics, diet, and exercise observations.",
+            "slots": [
+                "honest_broker_subject_id",
+                "subject_characteristics",
+                "age_at",
+                "age_unit",
+                "age_precision",
+                "diabetes_status",
+                "hypoglycemia_frequency",
+                "severe_hypoglycemia_frequency",
+                "dka",
+                "time_in_range",
+                "cgm_range",
+                "diet",
+                "exercise"
+            ],
+            "comments": [
+                "D4CGNote: One row per subject per observation."
+            ],
+            "annotations": {
+                "domain": "disease_attributes"
+            }
+        },
+        "Treatment": {
+            "description": "Treatment captures diabetes-related medications and therapies, including medication class, name, dose, unit, route, frequency, timing, and reason for stopping treatment.",
+            "slots": [
+                "honest_broker_subject_id",
+                "subject_characteristics",
+                "age_at_start",
+                "age_at_stop",
+                "age_unit",
+                "age_precision",
+                "reason_stop",
+                "dm_medication_class",
+                "medication_class_other",
+                "medication_name",
+                "medication_code",
+                "medication_concentration",
+                "medication_dose",
+                "medication_unit",
+                "frequency",
+                "route"
+            ],
+            "comments": [
+                "D4CGNote: One row per subject per medication class."
+            ],
+            "annotations": {
+                "domain": "intervention"
+            }
+        }
+    },
+    "slots": {
+        "honest_broker_subject_id": {
+            "slot_uri": "",
+            "range": "string",
+            "required": true,
+            "comments": [],
+            "annotations": {
+                "tier_mandatory": "md_v1.3"
+            }
+        },
+        "data_contributor_id": {
+            "slot_uri": "",
+            "range": "DataContributorIDEnum",
+            "required": true,
+            "comments": [],
+            "annotations": {
+                "tier_mandatory": "md_v1.3"
+            }
+        },
+        "data_source": {
+            "slot_uri": "",
+            "range": "DataSourceEnum",
+            "required": true,
+            "comments": [],
+            "annotations": {
+                "tier_mandatory": "md_v1.3"
+            }
+        },
+        "last_known_survival_status": {
+            "slot_uri": "",
+            "range": "LastKnownSurvivalStatusEnum",
+            "comments": [],
+            "annotations": {
+                "tier_priority": "md_v1.3"
+            }
+        },
+        "age_last_contact": {
+            "slot_uri": "",
+            "range": "decimal",
+            "comments": [
+                "(md_v1.3) ConsortiumNote: Only applicable for survey source data"
+            ],
+            "annotations": {
+                "tier_priority": "md_v1.3"
+            }
+        },
+        "age_last_contact_unit": {
+            "slot_uri": "",
+            "range": "AgeLastContactUnitEnum",
+            "comments": [],
+            "annotations": {
+                "tier_priority": "md_v1.3"
+            }
+        },
+        "age_last_contact_precision": {
+            "slot_uri": "",
+            "range": "AgeLastContactPrecisionEnum",
+            "comments": [],
+            "annotations": {
+                "tier_priority": "md_v1.3"
+            }
+        },
+        "subject_characteristics": {
+            "slot_uri": "",
+            "range": "SubjectCharacteristics",
+            "required": true,
+            "multivalued": false
+        },
+        "timepoint": {
+            "slot_uri": "",
+            "range": "TimepointEnum",
+            "required": true,
+            "comments": [],
+            "annotations": {
+                "tier_mandatory": "md_v1.3"
+            }
+        },
+        "timing_age_at": {
+            "slot_uri": "",
+            "range": "integer",
+            "required": true,
+            "comments": [
+                "(md_v1.3) ConsortiumNote: For reporting at the time of birth, report 0 day."
+            ],
+            "annotations": {
+                "tier_mandatory": "md_v1.3"
+            }
+        },
+        "age_at": {
+            "slot_uri": "",
+            "range": "integer",
+            "required": true,
+            "comments": [],
+            "annotations": {
+                "tier_mandatory": "md_v1.3"
+            }
+        },
+        "age_unit": {
+            "slot_uri": "",
+            "range": "AgeLastContactUnitEnum",
+            "required": true,
+            "comments": [],
+            "annotations": {
+                "tier_mandatory": "md_v1.3"
+            }
+        },
+        "age_precision": {
+            "slot_uri": "",
+            "range": "AgeLastContactPrecisionEnum",
+            "required": true,
+            "comments": [],
+            "annotations": {
+                "tier_mandatory": "md_v1.3"
+            }
+        },
+        "relation_honest_broker_subject_id": {
+            "slot_uri": "",
+            "range": "string",
+            "comments": [],
+            "annotations": {
+                "tier_priority": "md_v1.3"
+            }
+        },
+        "relation": {
+            "slot_uri": "",
+            "range": "RelationEnum",
+            "required": true,
+            "comments": [],
+            "annotations": {
+                "tier_mandatory": "md_v1.3"
+            }
+        },
+        "condition": {
+            "slot_uri": "",
+            "range": "ConditionEnum",
+            "comments": [
+                "(md_v1.3) ConsortiumNotes: Only report diabetes-related conditions. Omit any other conditions from family members."
+            ],
+            "annotations": {
+                "tier_optional": "md_v1.3"
+            }
+        },
+        "source": {
+            "slot_uri": "",
+            "range": "SourceEnum",
+            "comments": [],
+            "annotations": {
+                "tier_priority": "md_v1.3"
+            }
+        },
+        "sex": {
+            "slot_uri": "",
+            "range": "SexEnum",
+            "required": true,
+            "comments": [],
+            "annotations": {
+                "tier_mandatory": "md_v1.3"
+            }
+        },
+        "ethnicity": {
+            "slot_uri": "",
+            "range": "EthnicityEnum",
+            "required": true,
+            "comments": [],
+            "annotations": {
+                "tier_mandatory": "md_v1.3"
+            }
+        },
+        "race": {
+            "slot_uri": "",
+            "range": "RaceEnum",
+            "required": true,
+            "comments": [],
+            "annotations": {
+                "tier_mandatory": "md_v1.3"
+            }
+        },
+        "medical_history_condition": {
+            "slot_uri": "",
+            "range": "MedicalHistoryConditionEnum",
+            "comments": [],
+            "annotations": {
+                "tier_priority": "md_v1.3"
+            }
+        },
+        "condition_other": {
+            "slot_uri": "",
+            "range": "string",
+            "comments": [],
+            "annotations": {
+                "tier_priority": "md_v1.3"
+            }
+        },
+        "condition_code": {
+            "slot_uri": "",
+            "range": "string",
+            "comments": [
+                "(md_v1.3) ConsortiumNote: If you have a more specific form of a condition listed above, select the condition from the list and use this field to provide the more specific coded value. Do not use the 'Other' value."
+            ],
+            "annotations": {
+                "tier_optional": "md_v1.3"
+            }
+        },
+        "code_system": {
+            "slot_uri": "",
+            "range": "CodeSystemEnum",
+            "comments": [],
+            "annotations": {
+                "tier_optional": "md_v1.3"
+            }
+        },
+        "measurement_type": {
+            "slot_uri": "",
+            "range": "MeasurementTypeEnum",
+            "comments": [],
+            "annotations": {
+                "tier_priority": "md_v1.3"
+            }
+        },
+        "measurement_numeric": {
+            "slot_uri": "",
+            "range": "decimal",
+            "comments": [],
+            "annotations": {
+                "tier_priority": "md_v1.3"
+            }
+        },
+        "measurement_unit": {
+            "slot_uri": "",
+            "range": "MeasurementUnitEnum",
+            "comments": [],
+            "annotations": {
+                "tier_priority": "md_v1.3"
+            }
+        },
+        "z_score": {
+            "slot_uri": "",
+            "range": "decimal",
+            "comments": [],
+            "annotations": {
+                "tier_priority": "md_v1.3"
+            }
+        },
+        "sample_type": {
+            "slot_uri": "",
+            "range": "SampleTypeEnum",
+            "required": true,
+            "comments": [],
+            "annotations": {
+                "tier_mandatory": "md_v1.3"
+            }
+        },
+        "causative_alteration": {
+            "slot_uri": "",
+            "range": "YesNoEnum",
+            "required": true,
+            "comments": [],
+            "annotations": {
+                "tier_mandatory": "md_v1.3"
+            }
+        },
+        "status": {
+            "slot_uri": "",
+            "range": "StatusEnum",
+            "required": true,
+            "comments": [
+                "(md_v1.3) ConsortiumNote: Can use this field and select 'Absent' to indicate if a subject tested negative for a particular genetic variant."
+            ],
+            "annotations": {
+                "tier_mandatory": "md_v1.3"
+            }
+        },
+        "genetic_analysis_sample_type": {
+            "slot_uri": "",
+            "range": "GeneticAnalysisSampleTypeEnum",
+            "required": true,
+            "comments": [],
+            "annotations": {
+                "tier_mandatory": "md_v1.3"
+            }
+        },
+        "laboratory_name": {
+            "slot_uri": "",
+            "range": "LaboratoryNameEnum",
+            "required": true,
+            "comments": [],
+            "annotations": {
+                "tier_mandatory": "md_v1.3"
+            }
+        },
+        "cytogenetic_location": {
+            "slot_uri": "",
+            "range": "string",
+            "comments": [],
+            "annotations": {
+                "tier_optional": "md_v1.3"
+            }
+        },
+        "method": {
+            "slot_uri": "",
+            "range": "MethodEnum",
+            "required": true,
+            "comments": [
+                "(md_v1.3) ConsortiumNote: For cases where confirmatory testing was performed, this field should be used to indicate the method of the initial test, not the confirmatory testing method."
+            ],
+            "annotations": {
+                "tier_mandatory": "md_v1.3"
+            }
+        },
+        "gene": {
+            "slot_uri": "",
+            "range": "GeneEnum",
+            "comments": [
+                "(md_v1.3) ConsortiumNote: Use this field for 'mtDNA' alteration."
+            ],
+            "annotations": {
+                "tier_optional": "md_v1.3"
+            }
+        },
+        "alteration_type": {
+            "slot_uri": "",
+            "range": "AlterationTypeEnum",
+            "required": true,
+            "comments": [],
+            "annotations": {
+                "tier_mandatory": "md_v1.3"
+            }
+        },
+        "alteration_effect": {
+            "slot_uri": "",
+            "range": "AlterationEffectEnum",
+            "comments": [],
+            "annotations": {
+                "tier_priority": "md_v1.3"
+            }
+        },
+        "alteration_region": {
+            "slot_uri": "",
+            "range": "AlterationRegionEnum",
+            "comments": [],
+            "annotations": {
+                "tier_priority": "md_v1.3"
+            }
+        },
+        "hgvs_accession": {
+            "slot_uri": "",
+            "range": "string",
+            "comments": [],
+            "annotations": {
+                "tier_optional": "md_v1.3"
+            }
+        },
+        "hgvs_coding": {
+            "slot_uri": "",
+            "range": "string",
+            "comments": [],
+            "annotations": {
+                "tier_optional": "md_v1.3"
+            }
+        },
+        "hgvs_protein": {
+            "slot_uri": "",
+            "range": "string",
+            "comments": [],
+            "annotations": {
+                "tier_optional": "md_v1.3"
+            }
+        },
+        "hgvs_genomic": {
+            "slot_uri": "",
+            "range": "string",
+            "comments": [],
+            "annotations": {
+                "tier_optional": "md_v1.3"
+            }
+        },
+        "iscn": {
+            "slot_uri": "",
+            "range": "string",
+            "comments": [],
+            "annotations": {
+                "tier_optional": "md_v1.3"
+            }
+        },
+        "reported_significance": {
+            "slot_uri": "",
+            "range": "ReportedSignificanceEnum",
+            "comments": [],
+            "annotations": {
+                "tier_optional": "md_v1.3"
+            }
+        },
+        "allelic_state": {
+            "slot_uri": "",
+            "range": "AllelicStateEnum",
+            "required": true,
+            "comments": [],
+            "annotations": {
+                "tier_mandatory": "md_v1.3"
+            }
+        },
+        "maf_numeric": {
+            "slot_uri": "",
+            "range": "decimal",
+            "comments": [],
+            "annotations": {
+                "tier_priority": "md_v1.3"
+            }
+        },
+        "mosaicism": {
+            "slot_uri": "",
+            "range": "YesNoEnum",
+            "required": true,
+            "comments": [],
+            "annotations": {
+                "tier_mandatory": "md_v1.3"
+            }
+        },
+        "external_ref_id": {
+            "slot_uri": "",
+            "range": "string",
+            "comments": [],
+            "annotations": {
+                "tier_optional": "md_v1.3"
+            }
+        },
+        "external_ref_id_system": {
+            "slot_uri": "",
+            "range": "ExternalRefIDSystemEnum",
+            "comments": [],
+            "annotations": {
+                "tier_optional": "md_v1.3"
+            }
+        },
+        "test_type": {
+            "slot_uri": "",
+            "range": "TestTypeEnum",
+            "comments": [
+                "(md_v1.3) ConsortiumNote: Please report relevant labs at time points of dx, highest ever, most recent, and any other time periods you have bandwidth to report. For example, could report Blood Glucose value at time of dx, highest ever, and most recent. But do not necessarily need to report all values in the EMR."
+            ],
+            "annotations": {
+                "tier_priority": "md_v1.3"
+            }
+        },
+        "testing_method": {
+            "slot_uri": "",
+            "range": "TestingMethodEnum",
+            "comments": [],
+            "annotations": {
+                "tier_optional": "md_v1.3"
+            }
+        },
+        "testing_measurement_type": {
+            "slot_uri": "",
+            "range": "TestingMeasurementTypeEnum",
+            "comments": [],
+            "annotations": {
+                "tier_priority": "md_v1.3"
+            }
+        },
+        "result_modifier": {
+            "slot_uri": "",
+            "range": "string",
+            "comments": [],
+            "annotations": {
+                "tier_priority": "md_v1.3"
+            }
+        },
+        "result_numeric": {
+            "slot_uri": "",
+            "range": "string",
+            "comments": [],
+            "annotations": {
+                "tier_priority": "md_v1.3"
+            }
+        },
+        "result_unit": {
+            "slot_uri": "",
+            "range": "ResultUnitEnum",
+            "comments": [],
+            "annotations": {
+                "tier_priority": "md_v1.3"
+            }
+        },
+        "reference_range": {
+            "slot_uri": "",
+            "range": "string",
+            "comments": [],
+            "annotations": {
+                "tier_priority": "md_v1.3"
+            }
+        },
+        "result_interpretation": {
+            "slot_uri": "",
+            "range": "ResultInterpretationEnum",
+            "comments": [],
+            "annotations": {
+                "tier_priority": "md_v1.3"
+            }
+        },
+        "fasting_status": {
+            "slot_uri": "",
+            "range": "FastingStatusEnum",
+            "comments": [],
+            "annotations": {
+                "tier_priority": "md_v1.3"
+            }
+        },
+        "post_glucose_timepoint": {
+            "slot_uri": "",
+            "range": "string",
+            "comments": [
+                "(md_v1.3) ConsortiumNote: Only use for glucose tolerance testing."
+            ],
+            "annotations": {
+                "tier_priority": "md_v1.3"
+            }
+        },
+        "post_glucose_timepoint_unit": {
+            "slot_uri": "",
+            "range": "PostGlucoseTimepointUnitEnum",
+            "comments": [
+                "(md_v1.3) ConsortiumNote: Only use for glucose tolerance testing."
+            ],
+            "annotations": {
+                "tier_priority": "md_v1.3"
+            }
+        },
+        "diabetes_status": {
+            "slot_uri": "",
+            "range": "DiabetesStatusEnum",
+            "required": true,
+            "comments": [],
+            "annotations": {
+                "tier_mandatory": "md_v1.3"
+            }
+        },
+        "hypoglycemia_frequency": {
+            "slot_uri": "",
+            "range": "HypoglycemiaFrequencyEnum",
+            "comments": [],
+            "annotations": {
+                "tier_optional": "md_v1.3"
+            }
+        },
+        "severe_hypoglycemia_frequency": {
+            "slot_uri": "",
+            "range": "HypoglycemiaFrequencyEnum",
+            "comments": [],
+            "annotations": {
+                "tier_optional": "md_v1.3"
+            }
+        },
+        "dka": {
+            "slot_uri": "",
+            "range": "DKAEnum",
+            "comments": [],
+            "annotations": {
+                "tier_priority": "md_v1.3"
+            }
+        },
+        "time_in_range": {
+            "slot_uri": "",
+            "range": "decimal",
+            "comments": [],
+            "annotations": {
+                "tier_priority": "md_v1.3"
+            }
+        },
+        "cgm_range": {
+            "slot_uri": "",
+            "range": "CGMRangeEnum",
+            "comments": [],
+            "annotations": {
+                "tier_priority": "md_v1.3"
+            }
+        },
+        "diet": {
+            "slot_uri": "",
+            "range": "DiabetesStatusEnum",
+            "comments": [],
+            "annotations": {
+                "tier_priority": "md_v1.3"
+            }
+        },
+        "exercise": {
+            "slot_uri": "",
+            "range": "DiabetesStatusEnum",
+            "comments": [],
+            "annotations": {
+                "tier_priority": "md_v1.3"
+            }
+        },
+        "age_at_start": {
+            "slot_uri": "",
+            "range": "integer",
+            "comments": [],
+            "annotations": {
+                "tier_priority": "md_v1.3"
+            }
+        },
+        "age_at_stop": {
+            "slot_uri": "",
+            "range": "integer",
+            "comments": [],
+            "annotations": {
+                "tier_priority": "md_v1.3"
+            }
+        },
+        "reason_stop": {
+            "slot_uri": "",
+            "range": "ReasonStopEnum",
+            "comments": [],
+            "annotations": {
+                "tier_priority": "md_v1.3"
+            }
+        },
+        "dm_medication_class": {
+            "slot_uri": "",
+            "range": "DMMedicationClassEnum",
+            "required": true,
+            "comments": [],
+            "annotations": {
+                "tier_mandatory": "md_v1.3"
+            }
+        },
+        "medication_class_other": {
+            "slot_uri": "",
+            "range": "MedicationClassOtherEnum",
+            "comments": [],
+            "annotations": {
+                "tier_priority": "md_v1.3"
+            }
+        },
+        "medication_name": {
+            "slot_uri": "",
+            "range": "string",
+            "comments": [],
+            "annotations": {
+                "tier_priority": "md_v1.3"
+            }
+        },
+        "medication_code": {
+            "slot_uri": "",
+            "range": "string",
+            "comments": [],
+            "annotations": {
+                "tier_priority": "md_v1.3"
+            }
+        },
+        "medication_concentration": {
+            "slot_uri": "",
+            "range": "MedicationConcentrationEnum",
+            "comments": [],
+            "annotations": {
+                "tier_priority": "md_v1.3"
+            }
+        },
+        "medication_dose": {
+            "slot_uri": "",
+            "range": "decimal",
+            "comments": [],
+            "annotations": {
+                "tier_priority": "md_v1.3"
+            }
+        },
+        "medication_unit": {
+            "slot_uri": "",
+            "range": "MedicationUnitEnum",
+            "comments": [],
+            "annotations": {
+                "tier_priority": "md_v1.3"
+            }
+        },
+        "frequency": {
+            "slot_uri": "",
+            "range": "FrequencyEnum",
+            "comments": [],
+            "annotations": {
+                "tier_priority": "md_v1.3"
+            }
+        },
+        "route": {
+            "slot_uri": "",
+            "range": "RouteEnum",
+            "comments": [],
+            "annotations": {
+                "tier_priority": "md_v1.3"
+            }
+        }
+    },
+    "enums": {
+        "DataContributorIDEnum": {
+            "permissible_values": {
+                "UChicago Monogenic Diabetes Research Group": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Barbara Davis Center / UColorado": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Baylor": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Boston Children's": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Cincinnati Children's Hospital": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Indiana": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "MGH": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Maryland": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Michigan": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Nebraska": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "NorthShore": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "WashU": {
+                    "meaning": "",
+                    "comments": []
+                }
+            }
+        },
+        "DataSourceEnum": {
+            "permissible_values": {
+                "Self-Reported": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "EHR": {
+                    "meaning": "",
+                    "comments": []
+                }
+            }
+        },
+        "LastKnownSurvivalStatusEnum": {
+            "permissible_values": {
+                "Alive": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Dead": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Unknown": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Not Reported": {
+                    "meaning": "",
+                    "comments": []
+                }
+            }
+        },
+        "AgeLastContactUnitEnum": {
+            "permissible_values": {
+                "Years": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Months": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Weeks": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Days": {
+                    "meaning": "",
+                    "comments": []
+                }
+            }
+        },
+        "AgeLastContactPrecisionEnum": {
+            "permissible_values": {
+                "Approximate": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Exact": {
+                    "meaning": "",
+                    "comments": []
+                }
+            }
+        },
+        "TimepointEnum": {
+            "permissible_values": {
+                "Prediabetes Diagnosis": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Diagnosis": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Relapse": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Remission": {
+                    "meaning": "",
+                    "comments": []
+                }
+            }
+        },
+        "RelationEnum": {
+            "permissible_values": {
+                "Father": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Mother": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Son": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Daughter": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Brother": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Sister": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Spouse/Partner": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Grandfather (Paternal)": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Grandfather (Maternal)": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Grandmother (Paternal)": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Grandmother (Maternal)": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Uncle (Paternal)": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Uncle (Maternal)": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Aunt (Paternal)": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Aunt (Maternal)": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Niece": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Nephew": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "First Cousin (Paternal)": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "First Cousin (Maternal)": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "First Cousin (Paternal/Maternal Unknown)": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Great-Grandfather (Paternal)": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Great-Grandfather (Maternal)": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Great-Grandmother (Paternal)": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Great-Grandmother (Maternal)": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Great-Uncle (Paternal)": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Great-Uncle (Maternal)": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Great-Aunt (Paternal)": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Great-Aunt (Maternal)": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Other": {
+                    "meaning": "",
+                    "comments": []
+                }
+            }
+        },
+        "ConditionEnum": {
+            "permissible_values": {
+                "Prediabetes": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Type 1 Diabetes": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Type 2 Diabetes": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Monogenic Diabetes": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Gestational Diabetes": {
+                    "meaning": "",
+                    "comments": {}
+                },
+                "Diabetes, NOS": {
+                    "meaning": "",
+                    "comments": []
+                }
+            }
+        },
+        "SourceEnum": {
+            "permissible_values": {
+                "Confirmed By Genetic Test": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Clinical Diagnosis Only": {
+                    "meaning": "",
+                    "comments": []
+                }
+            }
+        },
+        "SexEnum": {
+            "permissible_values": {
+                "Male": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Female": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Undifferentiated": {
+                    "meaning": "",
+                    "comments": []
+                }
+            }
+        },
+        "EthnicityEnum": {
+            "permissible_values": {
+                "Hispanic or Latino": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Not Hispanic or Latino": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Unknown": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Not Reported": {
+                    "meaning": "",
+                    "comments": []
+                }
+            }
+        },
+        "RaceEnum": {
+            "permissible_values": {
+                "American Indian or Alaska Native": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Asian": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Black or African American": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Native Hawaiian or Other Pacific Islander": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "White": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Multiracial": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Unknown": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Not Reported": {
+                    "meaning": "",
+                    "comments": []
+                }
+            }
+        },
+        "MedicalHistoryConditionEnum": {
+            "permissible_values": {
+                "Abnormal Kidney Shape, Size, Or Number": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Absent Or Missing Pancreas": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Behavioral Difficulties": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Congenital Heart Defect": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Coronary Artery Disease": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Difficulty With Social Interactions": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Elevated Liver Enzymes / Lfts": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Fatty Liver": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Genitourinary Developmental Malformation Or Abnormality": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Gestational Diabetes": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Hepatomegaly": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "High Cholesterol, NOS": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "High Frequency Hearing Loss": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "High LDL": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "High Total Cholesterol": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "High Triglycerides": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Hypertension": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Hypoglycemia In Infancy": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Intrauterine Growth Restriction": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Liver Adenoma": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Low Frequency Hearing Loss": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Low LDL": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Macroglossia": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Nephropathy": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Peripheral Artery Disease": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Peripheral Neuropathy": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Polycystic Kidney Diseasea": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Proteinuria": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Renal CystL": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Retinopathy": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Small For Gestational Age": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Small Pancreas": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Stroke": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Umbilical Hernia": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Other": {
+                    "meaning": "",
+                    "comments": [
+                        "(md_v1.3) ConsortiumNote: Only select 'Other' if the condition is not related to the provided list (which are designated as 'of interest' by the PREDICT group)."
+                    ]
+                }
+            }
+        },
+        "CodeSystemEnum": {
+            "permissible_values": {
+                "CTCAE": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "ICD-9": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "ICD-10": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "SNOMED-CT": {
+                    "meaning": "",
+                    "comments": []
+                }
+            }
+        },
+        "MeasurementTypeEnum": {
+            "permissible_values": {
+                "Height/Length": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Weight": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "BMI": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Raw BMI": {
+                    "meaning": "",
+                    "comments": []
+                }
+            }
+        },
+        "MeasurementUnitEnum": {
+            "permissible_values": {
+                "kg": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "cm": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "kg/m^2": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "percentile": {
+                    "meaning": "",
+                    "comments": [
+                        "(md_v1.3) ConsortiumNote: Use percentile as a unit when reporting pediatric BMI."
+                    ]
+                }
+            }
+        },
+        "SampleTypeEnum": {
+            "permissible_values": {
+                "Saliva": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Blood": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "DNA": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Plasma": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Serum": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Urine": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "PBMC": {
+                    "meaning": "",
+                    "comments": []
+                }
+            }
+        },
+        "YesNoEnum": {
+            "permissible_values": {
+                "Yes": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "No": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Unknown": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Not Reported": {
+                    "meaning": "",
+                    "comments": []
+                }
+            }
+        },
+        "StatusEnum": {
+            "permissible_values": {
+                "Present": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Absent": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Unknown": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Not Reported": {
+                    "meaning": "",
+                    "comments": []
+                }
+            }
+        },
+        "GeneticAnalysisSampleTypeEnum": {
+            "permissible_values": {
+                "Saliva": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Blood": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Buccal": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Urine": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Unknown": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Not Reported": {
+                    "meaning": "",
+                    "comments": []
+                }
+            }
+        },
+        "LaboratoryNameEnum": {
+            "permissible_values": {
+                "Ambry Genetics": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Athena": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Baylor Genetics": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Blueprint": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "GeneDx": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Invitae": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "LMG": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Research Lab": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Seattle Children's Hospital": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "UCGSL": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Unknown": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Not Reported": {
+                    "meaning": "",
+                    "comments": []
+                }
+            }
+        },
+        "MethodEnum": {
+            "permissible_values": {
+                "Karyotyping": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Fluorescence In Situ Hybridization": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "RT-PCR": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "PCR": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "MLPA": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Sequencing, Sanger, Capillary Electropheresis": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Sequencing, Sanger, Gel Electropheresis": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Sequencing, Sanger, NOS": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Sequencing, NGS, Whole Genome": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Sequencing, NGS, lcWGS": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Sequencing, NGS, Whole Exome": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Sequencing, NGS, Multi-Gene Panel": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Sequencing, NGS, Single Site": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Sequencing, NGS, Single Gene DNA": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Sequencing, NGS, Targeted DNA": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Sequencing, NGS, Targeted RNA": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Sequencing, NGS, Total RNA": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Sequencing, NGS, TDS": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Sequencing, NGS, NOS": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Sequencing, Methylation Array": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Sequencing, Nanostring": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "SNP Array": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Array CGH": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Genotyping, NOS": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Cytogenetics, NOS": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Other": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Unknown": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Not Reported": {
+                    "meaning": "",
+                    "comments": []
+                }
+            }
+        },
+        "GeneEnum": {
+            "permissible_values": {
+                "6q24-Related Abnormalities": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "ABCC8": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "CEL": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "CFTR": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "DCAF17": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "EIF2AK3": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "FOXP3": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "GATA4": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "GATA6": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "GCK": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "GLIS3": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "HNF1A": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "HNF1B": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "HNF4A": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "IAPP (Amylin)": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "IER3IP1": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "IGF2/Russell Silver Syndrome": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "IL2RA": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "INS": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "INSR": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "KCNJ11": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "LRBA": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "mtDNA": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "NEUROD1": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "PAX4": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "PCBD1": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "PDX1 (IPF1)": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "PTF1A": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "RFX6": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "STAT3": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "WFS1": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Unknown": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Not Reported": {
+                    "meaning": "",
+                    "comments": []
+                }
+            }
+        },
+        "AlterationTypeEnum": {
+            "permissible_values": {
+                "Chromosome Arm Gain": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Chromosome Arm Loss": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Substitution": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Deletion": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Insertion": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Indel": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Duplication": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Unknown": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Not Reported": {
+                    "meaning": "",
+                    "comments": []
+                }
+            }
+        },
+        "AlterationEffectEnum": {
+            "permissible_values": {
+                "Frameshift": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Missense": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Stop Gain (Nonsense)": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "None (Inframe)": {
+                    "meaning": "",
+                    "comments": []
+                }
+            }
+        },
+        "AlterationRegionEnum": {
+            "permissible_values": {
+                "Splice Site": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "5' UTR": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "3' UTR": {
+                    "meaning": "",
+                    "comments": []
+                }
+            }
+        },
+        "ReportedSignificanceEnum": {
+            "permissible_values": {
+                "Pathogenic": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Likely Pathogenic": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Uncertain Significance": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Likely Benign": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Benign": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Unknown": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Not Reported": {
+                    "meaning": "",
+                    "comments": []
+                }
+            }
+        },
+        "AllelicStateEnum": {
+            "permissible_values": {
+                "Homozygous": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Heterozygous": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Compound Heterozygous": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Unknown": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Not Reported": {
+                    "meaning": "",
+                    "comments": []
+                }
+            }
+        },
+        "ExternalRefIDSystemEnum": {
+            "permissible_values": {
+                "ClinGen": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "ClinVar": {
+                    "meaning": "",
+                    "comments": []
+                }
+            }
+        },
+        "TestTypeEnum": {
+            "permissible_values": {
+                "HbA1c": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "C-Peptide": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Blood Glucose": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Autoantibodies, GAD65": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Autoantibodies, ZnT8": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Autoantibodies, IA-2": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Autoantibodies, Insulin": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Autoantibodies, Islet Cell": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Autoantibodies, NOS": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Total Cholesterol": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Triglycerides": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "HDL": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "LDL": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Serum Magnesium": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Serum Potassium": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Serum Creatinine": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Serum BUN": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "GFR": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Urine Microalbumin": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Urine Creatinine": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Microalbumin/Creatinine Ratio": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Urine MagnesiumSerum Potassium": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "ALT": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "AST": {
+                    "meaning": "",
+                    "comments": []
+                }
+            }
+        },
+        "TestingMethodEnum": {
+            "permissible_values": {
+                "Continuous Glucose Monitoring": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Laboratory Test": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Home Glucose Test": {
+                    "meaning": "",
+                    "comments": []
+                }
+            }
+        },
+        "TestingMeasurementTypeEnum": {
+            "permissible_values": {
+                "Average High": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "14-day Average": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "30-day Average": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "90-day Average": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Average": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Average Low": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Point": {
+                    "meaning": "",
+                    "comments": []
+                }
+            }
+        },
+        "ResultUnitEnum": {
+            "permissible_values": {
+                "%": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "mg/dL": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "U/L": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "U/mL": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "mmol/L": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "ng/mL": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "nmol/L": {
+                    "meaning": "",
+                    "comments": []
+                }
+            }
+        },
+        "ResultInterpretationEnum": {
+            "permissible_values": {
+                "Positive": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Negative": {
+                    "meaning": "",
+                    "comments": []
+                }
+            }
+        },
+        "FastingStatusEnum": {
+            "permissible_values": {
+                "Fasting": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Non-Fasting": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Random": {
+                    "meaning": "",
+                    "comments": []
+                }
+            }
+        },
+        "PostGlucoseTimepointUnitEnum": {
+            "permissible_values": {
+                "Minutes": {
+                    "meaning": "",
+                    "comments": []
+                }
+            }
+        },
+        "DiabetesStatusEnum": {
+            "permissible_values": {
+                "Yes": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "No": {
+                    "meaning": "",
+                    "comments": []
+                }
+            }
+        },
+        "HypoglycemiaFrequencyEnum": {
+            "permissible_values": {
+                "Once or twice in past year": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Every few months": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Once or twice a month": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Once or twice a week": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Daily or every other day": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Never": {
+                    "meaning": "",
+                    "comments": []
+                }
+            }
+        },
+        "DKAEnum": {
+            "permissible_values": {
+                "Yes - Hyperglycermic DKA": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Yes - Euglycemic DKA": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "No": {
+                    "meaning": "",
+                    "comments": {}
+                }
+            }
+        },
+        "CGMRangeEnum": {
+            "permissible_values": {
+                "Standard": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Non-Standard": {
+                    "meaning": "",
+                    "comments": []
+                }
+            }
+        },
+        "ReasonStopEnum": {
+            "permissible_values": {
+                "Planned Stop": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "No Significant Effect": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Side Effects": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "No Insured": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Cost": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Unknown": {
+                    "meaning": "",
+                    "comments": []
+                }
+            }
+        },
+        "DMMedicationClassEnum": {
+            "permissible_values": {
+                "Insulin, Rapid-Acting": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Insulin, Long-Acting": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Insulin, Intermediate-Acting": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Insulin, Combination": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Insulin, NOS": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Biguanide": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Sulfonylurea": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Meglitinide": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Thiazolidinedione": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Dipeptidylpeptidase 4 Inhibitor": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Sodium-Glucose Co-Transporter 2 Inhibitor": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "GLP-1 Receptor Agonist": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Dual GLP-1/GIP Receptor Agonist": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Amylin Analog": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Alpha-Glucosidase Inhibitor": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Bile Acid-Binding Resin": {
+                    "meaning": "",
+                    "comments": []
+                }
+            }
+        },
+        "MedicationClassOtherEnum": {
+            "permissible_values": {
+                "ACE Inhibitor": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "ACL Inhibitor": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Angiotensin II Receptor Blockers": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "ANGPTL3 Inhibitor": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Antiepileptic": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Antilipemic siRNA": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Beta Blocker": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Calcium Channel Blocker": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Cholesterol Absorption Inhibitor": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Coenzyme Q": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Diuretic": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Fibrates": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Finerenone": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Glucagon": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Magnesium": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Mineralcorticoid Receptor": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Pancreatic Enzymes": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Pcsk9 Inhibitor": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Psychoactive": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Statin": {
+                    "meaning": "",
+                    "comments": []
+                }
+            }
+        },
+        "MedicationConcentrationEnum": {
+            "permissible_values": {
+                "U100": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "U200": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "U300": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "U500": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Not Applicable": {
+                    "meaning": "",
+                    "comments": []
+                }
+            }
+        },
+        "MedicationUnitEnum": {
+            "permissible_values": {
+                "Units": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "mg": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "mcg": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "gm": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "ml": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "tbsp": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "tsp": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "IU": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "puffs": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Packets": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "mg/ml": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "application": {
+                    "meaning": "",
+                    "comments": []
+                }
+            }
+        },
+        "FrequencyEnum": {
+            "permissible_values": {
+                "Once per day": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Two times a day": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Three times a day": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Four times a day": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "As needed": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Before every meal": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Before meals and at bedtime": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Every night at bedtime": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Every week": {
+                    "meaning": "",
+                    "comments": []
+                }
+            }
+        },
+        "RouteEnum": {
+            "permissible_values": {
+                "Oral": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Nasally": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "Subcutaneous": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "IM": {
+                    "meaning": "",
+                    "comments": []
+                },
+                "IV": {
+                    "meaning": "",
+                    "comments": []
+                }
+            }
+        }
+    },
+    "annotations": {
+        "docs": {
+            "domains": {
+                "demographics": {
+                    "title": "Demographics",
+                    "description": "Demographics contains subject identity, enrollment, study participation, longitudinal episode structure, survival status, family and medical history, and other contextual information needed to interpret records across the model."
+                },
+                "testing": {
+                    "title": "Testing",
+                    "description": "Testing contains laboratory, pathology, genomic, functional, anthropometric, and specimen-related observations used to characterize subjects, disease biology, eligibility, monitoring, and research sample availability."
+                },
+                "disease_attributes": {
+                    "title": "Disease Attributes",
+                    "description": "Disease Attributes contains diagnostic, staging, anatomic, histologic, biologic, risk, extent-of-disease, and disease-site concepts used to characterize the subject's cancer or cancer-related condition."
+                },
+                "intervention": {
+                    "title": "Intervention",
+                    "description": "Intervention contains treatment and procedure records, including surgery, medications, radiation therapy, transplantation, transfusion, cellular therapy, locoregional therapy, fertility preservation procedures, and protocol treatment modifications."
+                },
+                "monitoring": {
+                    "title": "Monitoring",
+                    "description": "Monitoring contains response, residual disease, toxicity, late effects, subsequent neoplasms, reproductive outcomes, patient-reported outcomes, and other follow-up concepts used to evaluate disease course and treatment impact over time."
+                }
+            }
+        }
+    }
+}
