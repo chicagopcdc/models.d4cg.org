@@ -117,21 +117,51 @@ Although D4CG staff are not familiar enough with your particular dataset to do t
 
 # LinkML Modeling Language
 
-D4CG data models are authored as [LinkML](https://linkml.io/linkml/) schemas. This modeling language is one of many possible formats, but was chosen because of its native support for semantic reasoning and other features. LinkML supports both JSON and YAML formatting, but D4CG uses JSON. Not all LinkML features are applicable or implemented for D4CG modeling needs. The basic structure consists of three primary structures: classes, slots, and enums. An example from the PCDC Data Model is shown below:
+D4CG data models are authored as [LinkML](https://linkml.io/linkml/) schemas. This modeling language is one of many possible formats, but was chosen because of its native support for semantic reasoning and other features. D4CG schemas are maintained in YAML and divided into three modular files. Together, these files constitute a single LinkML schema.
 
-![schema-overview](../assets/images/schema-overview.png)
+`schema.yaml` contains the overall model structure, including classes and model-level metadata. `slots.yaml` defines the fields used by those classes, and `enums.yaml` defines the controlled permissible values available to enumerated slots.
+
+```
+schema.yaml
+  ├── model metadata
+  ├── classes
+  ├── imports slots.yaml
+  └── imports enums.yaml
+
+slots.yaml
+  └── slots
+
+enums.yaml
+  └── enums
+        └── permissible values
+```
 
 ## Classes
-Classes are displayed as tables in their rendering on this site. They represent distinct types of observations.
+Classes are defined in `schema.yaml` and displayed as tables in their rendering on this site. They represent distinct types of observations.
 
 For example, a data submission for the PCDC containing lab values could have *several* instantiations of the <code>LaboratoryTest</code> class. These would be formatted as several rows in a <code>LaboratoryTest</code> sheet of the data submission. The <code>LaboratoryTest</code> class of the PCDC Data Model would dictate what those observations should look like. 
 
 Conversely, a data submission for the PCDC would only contain *one* instance of the <code>Subject</code> class for each patient included in the data submission. Or, in other words, the data submission would only have one row per patient in the <code>Subject</code> sheet of the data submission. 
 
+#### Example
+
+A submission contains one `Subject` row per patient, but multiple `LaboratoryTest` rows per patient.
+
+| honest_broker_subject_id | data_contributor_id | consortium | disease_group | sex | race | ethnicity | efs_censor_status | age_at_censor_status |
+| :--- | --- | --- | --- | --- | --- | --- | --- | ---: |
+| `PCDC-RMS-1021` | `COG` | `INSTRuCT` | `RMS` | `Female` | `Asian` | `Not Reported` | `Censored` | `4382` |
+
+| honest_broker_subject_id | age_at_lab | laboratory_test | laboratory_test_specimen | result_numeric | laboratory_test_result_unit |
+| :--- | ---: | --- | --- | ---: | --- |
+| `PCDC-RMS-1021` | `1840` | `Hemoglobin` | `Blood` | `10.4` | `g/dL` |
+| `PCDC-RMS-1021` | `1840` | `Platelets` | `Blood` | `172` | `10^9/L` |
+| `PCDC-RMS-1021` | `1840` | `WBC` | `Blood` | `4.8` | `10^9/L` |
+| `PCDC-RMS-1021` | `1868` | `Creatinine` | `Blood` | `0.6` | `mg/dL` |
+
 Class definitions include which slots (explained below) make up a certain clinical observation, which rules may apply to each class, and other implementation notes to ensure consistent data representation across implementing groups.
 
 ## Slots
-Slots are the fields / variables / attributes that make up the clinical observations represented by each class. Slots can be of the following data types:
+Slots are defined in `slots.yaml` and represent the fields / variables / attributes that make up the clinical observations represented by each class. Slots can be of the following data types:
 
 | Type | Description | Examples |
 |---|---|---|
@@ -141,8 +171,12 @@ Slots are the fields / variables / attributes that make up the clinical observat
 | <code>enum</code> | A value selected from a predefined list of permissible values | Diagnoses, sites, response, etc. |
 | <code>[class reference]</code> | A reference linking a class to an instance of another class | For modeling purposes only, **not included in contributor data submissions** |
 
-## Enums
-Enums are collections of **permissible values** that constrain the values allowed for a variable. Unlike `string`, `integer`, or `decimal` fields, enumerated fields cannot contain arbitrary values—they must match one of the values defined by the data model.
+Class-specific rules for a slot are defined through slot_usage within the corresponding class in `schema.yaml`.
+
+## Enums and Permissible Values
+Enums are defined in `enums.yaml` and are collections of **permissible values** that constrain the answer options allowed for a variable. Unlike `string`, `integer`, or `decimal` fields, enumerated fields cannot contain arbitrary values—they must match one of the permissible values defined by its enum.
+
+![enum-example](../assets/images/enum-example.png)
 
 Enums do much of the heavy lifting in data harmonization. This is because free-text is fundamentally **unharmonized**. Requiring data contributors to transform their data not only to a specific structure (classes and slots), but also to shared semantics (enums), ensures that the data can truly be treated as a unified patient cohort.
 
@@ -162,7 +196,11 @@ Not all D4CG data models use subsets. For models that do, such as the PCDC Data 
 
 For example, some PCDC groups may want to capture a patient's response to treatment while others determine that it is out of scope for their research needs. This means that although the concept of subject response must be added to the data model, which is shared by all groups, it can be tagged for inclusion in only the subset of groups who will be using it. 
 
-Additionally, although all relevant response criteria must be added to the full data model (e.g., `RECIST`, `Modified Chang`, `INRC, Brodeur 1993`, etc.), each permissible value in the shared enum can be designated to its appropriate subset (e.g., `RECIST` for many subsets, `Modified Chang` for CNS tumors, and `INRC, Brodeur 1993` for neuroblastoma.)
+![subsets1](../assets/images/subset-ex1.png)
+
+Additionally, although all relevant response criteria must be added to the full data model (e.g., `RECIST`, `Modified McDonald`, `INRC, Brodeur 1993`, etc.), each permissible value in the shared enum can be designated to its appropriate subset (e.g., `RECIST` for many subsets, `Modified McDonald` for CNS tumors, and `INRC, Brodeur 1993` for neuroblastoma.)
+
+![subsets2](../assets/images/subset-ex2.png)
 
 # Identifiers
 
@@ -190,11 +228,11 @@ The format of these identifiers is left to the data contributor. They may be num
 The mapping between these identifiers and the original patient identifiers (e.g., MRN or medical record number) should be maintained only by the contributing institution or designated honest broker and should **never** be included in a D4CG submission.
 
 ## Reference Identifiers
-While D4CG models are tyically very flat, there are limited instances where observations must reference each other. These class linkages typically take the form of reference identifiers called `_submitter_id`. This [naming convention](https://docs.gen3.org/gen3-resources/operator-guide/submit-structured-data/#:~:text=deserve%20special%20mention%3A-,submitter_id,-%3A%20Each%20record%20in) comes from the Gen3 platform which D4CG uses to host all data commons. 
+While D4CG models are tyically very flat, there are limited instances where observations must reference each other. These class linkages typically take the form of reference identifiers that end with `_submitter_id`. This [naming convention](https://docs.gen3.org/gen3-resources/operator-guide/submit-structured-data/#:~:text=deserve%20special%20mention%3A-,submitter_id,-%3A%20Each%20record%20in) comes from the Gen3 platform which D4CG uses to host all data commons. 
 
 For example, in the PCDC data model, clinical episodes can be defined to represent set time periods during the care of the patient (see [Clinical Episodes](#clinical-episodes)). The `ClinicalEpisode` class includes a slot called `episode_submitter_id`. This is an identifier created for each instance of the class, with the only requirement being that it is unique within the data submission.
 
-The clinical episode, once defined, is intended to be used to group data from other classes and provide a clearer picture of which data occured during that particular time periods. This means that many other classes also include the `episode_submitter_id` slot. By putting the reference identifier defined in the `ClinicalEpisode` class into these other classes, data contributors can link those particular data to appropriate clinical episodes.
+The clinical episode, once defined, is intended to be used to group data from other classes and provide a clearer picture of which data occurred during that particular time period. This means that many other classes also include the `episode_submitter_id` slot. By putting the reference identifier defined in the `ClinicalEpisode` class into these other classes, data contributors can link those particular data to appropriate clinical episodes.
 
 ![episode-ids](../assets/images/ref-ids.png)
 
@@ -242,24 +280,53 @@ In this example:
 
 This hierarchical approach provides a flexible framework that can accommodate diverse treatment paradigms while allowing data from different institutions to be represented consistently.
 
-# Required Fields and Tiering
+# Cardinality, Required Fields, and Tiering
 
-Not every variable in a D4CG data model is expected to be available for every patient or every institution. To balance scientific value with practical feasibility, D4CG has a system of tiering that can be used in the data modeling process to guide the efforts of subsequent contributors. 
+D4CG data models distinguish between **class cardinality** and **slot tiering**. Cardinality describes how many instances of a class are expected, while tiering describes the prioritization that should be given individual slots within those classes.
+
+## Class Cardinality
+Cardinality is defined at the class level. It describes the structure of the data rather than the priority of collecting it.
+
+For example, a class with cardinality `0..*` may contain many observations for the same patient, while a class with cardinality `1..1` represents an observation for which exactly one instance is expected per patient.
+
+| Cardinality | Meaning |
+| --- | --- |
+| **`1..1`** | Exactly one instance is expected for each patient. |
+| **`0..1`** | At most one instance may be present for each patient, but it is optional. |
+| **`1..*`** | One or more instances are expected for each patient. |
+| **`0..*`** | Any number of instances may be present, including none. |
+
+
+## Slot Requirements and Tiering
+
+Not every variable in a D4CG data model is expected to be available for every patient or every institution. To balance scientific value with practical feasibility, D4CG uses slot-level requirements and subset-specific prioritization to guide data collection and contribution.
 
 | Designation | Meaning | Note |
 | --- | --- | --- |
-| **Required** | The only global tier (applies to all subsets) Controlled by D4CG and are validated during data submission. | These are rare and relate to technical compliance rather than research priorities.
-| **Subset Required** | Required only when submitting under a particular subset (view) of the model. These fields are validated only for submissions using that subset. | These are rare and relate to consortium-specific reseach priorities.
-| **Priority** | Not required, but identified by the consortium as particularly valuable. These fields should be collected whenever feasible but are not required for submission. | Data will not be rejected if missing, but contributors are strongly encouraged to include these.|
-| **Optional** | Variables without any of the above designations. These may be submitted when available but are not expected for every patient or institution. | These are still important, but can be excluded if resources are strained.|
+| **Required** | A slot with `required: true` has been designated by D4CG as necessary for proper use and compliance with the model. | Required slots are intentionally rare and generally represent information necessary to make an observation interpretable or valid. |
+| **Priority** | A slot with `required: false` may be designated as a priority for one or more model subsets through the `priority` annotation. | Priority fields are strongly encouraged for the listed subsets but are not required for submission. |
+| **Optional** | This is the default state. A slot with `required: false` is optional for any subset not listed in its `priority` annotation. | These fields may be submitted whenever available but are not expected from every contributor. |
 
-The intent of this framework is to distinguish **scientific importance** from **submission requirements**. Required fields are intentionally kept to a minimum so that they don't become technically burdensome to contributors. These are fields that are critical to the validity and utility of an observation. 
+Consider the example of the LaboratoryTest class, which is used to encode the individual results of a lab test. The name of the test itself, represented by the `laboratory_test` slot, is **required**, since a floating numeric or text result would be meaningless without knowing what the actual test was. The specimen used for the test may also be important to the research interests of a certain disease consortium, however, it's absence would not render the result meaningless, so rather than be marked as required, it is marked as a **priority** for any consortia who desire it.
 
-For example, an instance of the `LaboratoryTest` class is required to have a value for the `laboratory_test` slot, which identifies the type of test being reported. Without this, results would have no meaning for researchers and would be useless.
+```yaml
+slot_usage:
+  laboratory_test:
+    required: true
+
+  laboratory_test_specimen:
+    required: false
+    annotations:
+      priority:
+        - aml
+        - cns
+```
+
+Any slot not required, and not designated as a priority for a certain subset, will be assumed to be **optional** to that subset.
 
 # Genetic Data
 
-The modeling of genetic data has consistently been one of the most challenging aspects of implementing a D4CG data model. The most important principle to keep in mind is that the `GeneticAlteration` class is designed to represent **many different types of genetic test results**. As a result, no single observation/row will contain values for all of the available slots.
+The modeling of genetic data has consistently been one of the most challenging aspects of implementing a D4CG data model. The most important principle to keep in mind is that the `GeneticAlteration` class is designed to represent **many different types of genetic test results**. This means that no single observation/row will contain values for all of the available slots.
 
 For example, `gene` and the `hgvs_` slots are typically used to report sequence variants identified through gene panels or sequencing assays, whereas `chromosome`, `cytoband`, and `iscn` are more commonly used to report structural abnormalities identified through cytogenetic testing such as karyotyping or FISH.
 
@@ -295,7 +362,7 @@ These fields are intended to **supplement**, not replace, a more structured repr
 
 | alteration_presence | alteration | gene | alteration_type | alteration_effect | hgvs_coding | hgvs_protein |
 |:--- | :-- | --- | --- | --- | --- | --- |
-| `Positive` | `ALK Gain` | `ALK` | `Substitution` | `Gain` | `c.3383G>C` | `p.G1128A` |
+| `Present` | `ALK Gain` | `ALK` | `Substitution` | `Gain` | `c.3383G>C` | `p.G1128A` |
  
 ## Alteration Types, Effects, and Regions
 
@@ -393,17 +460,21 @@ At the end of each quarter, all approved changes are incorporated into the canon
 
 Each release includes:
 
-- A new **minor version** of the data model (e.g., 2.2 → 2.3)
+- A new **minor version** for the data model (e.g., 2.2 → 2.3)
+- A versioned LinkML schema consisting of `schema.yaml`, `slots.yaml`, and `enums.yaml`
+- A `terminology.yaml` file containing terminology metadata used by the model documentation
 - Release-specific change notes summarizing approved modifications
 - Updated documentation generated from the released schema
 
 The D4CG documentation website always defaults to the current release, while maintaining an archive of prior versions. This allows contributors to continue referencing historical versions when working with older submissions while ensuring new implementations use the latest published model.
 
-Because all documentation is generated directly from the released LinkML schema, the published documentation remains synchronized for every release.
+Because all documentation is generated directly from the released model and terminology files, the published documentation remains synchronized for every release.
 
 # Data Contribution 
 
 Once a consortium has finalized its data modeling work (meetings as a group) it moves into a contribution phase (meetings with D4CG staff and individual contributors). This process is designed to identify issues early, support contributors during transformation, and ensure that submitted data conform to the applicable D4CG model before release.
+
+![contribution-overview](../assets/images/contribution-overview.png)
 
 ## Contributor Bundle
 
