@@ -1,0 +1,1370 @@
+id: https://example.org/predict/schema/enums
+name: predict_enums
+prefixes:
+  predict: https://example.org/predict/
+  linkml: https://w3id.org/linkml/
+  ncit: http://purl.obolibrary.org/obo/NCIT_
+imports:
+- linkml:types
+enums:
+  DataContributorIDEnum:
+    permissible_values:
+      UChicago Monogenic Diabetes Research Group:
+        meaning: ''
+        comments: []
+      Barbara Davis Center / UColorado:
+        meaning: ''
+        comments: []
+      Baylor:
+        meaning: ''
+        comments: []
+      Boston Children's:
+        meaning: ''
+        comments: []
+      Cincinnati Children's Hospital:
+        meaning: ''
+        comments: []
+      Endeavor:
+        meaning: ''
+        comments: []
+      Indiana:
+        meaning: ''
+        comments: []
+      MGH:
+        meaning: ''
+        comments: []
+      Maryland:
+        meaning: ''
+        comments: []
+      Michigan:
+        meaning: ''
+        comments: []
+      Nebraska:
+        meaning: ''
+        comments: []
+      NorthShore:
+        meaning: ''
+        comments: []
+      WashU:
+        meaning: ''
+        comments: []
+  DataSourceEnum:
+    permissible_values:
+      Self-Reported:
+        meaning: ''
+        comments: []
+      EHR:
+        meaning: ''
+        comments: []
+  LastKnownSurvivalStatusEnum:
+    permissible_values:
+      Alive:
+        meaning: ''
+        comments: []
+      Dead:
+        meaning: ''
+        comments: []
+      Unknown:
+        meaning: ''
+        comments: []
+      Not Reported:
+        meaning: ''
+        comments: []
+  AgeLastContactUnitEnum:
+    permissible_values:
+      Years:
+        meaning: ''
+        comments: []
+      Months:
+        meaning: ''
+        comments: []
+      Weeks:
+        meaning: ''
+        comments: []
+      Days:
+        meaning: ''
+        comments: []
+  AgeLastContactPrecisionEnum:
+    permissible_values:
+      Approximate:
+        meaning: ''
+        comments: []
+      Exact:
+        meaning: ''
+        comments: []
+  TimepointEnum:
+    permissible_values:
+      Prediabetes Diagnosis:
+        meaning: ''
+        comments: []
+      Monogenic Diabetes Diagnosis:
+        meaning: ''
+        comments: []
+      Gestational Diabetes Diagnosis:
+        meaning: ''
+        comments: []
+      Type 1 Diabetes Diagnosis:
+        meaning: ''
+        comments: []
+      Type 2 Diabetes Diagnosis:
+        meaning: ''
+        comments: []
+      Relapse:
+        meaning: ''
+        comments: []
+      Remission:
+        meaning: ''
+        comments: []
+  RelationEnum:
+    permissible_values:
+      Father:
+        meaning: ''
+        comments: []
+      Mother:
+        meaning: ''
+        comments: []
+      Son:
+        meaning: ''
+        comments: []
+      Daughter:
+        meaning: ''
+        comments: []
+      Brother:
+        meaning: ''
+        comments: []
+      Sister:
+        meaning: ''
+        comments: []
+      Spouse/Partner:
+        meaning: ''
+        comments: []
+      Grandfather (Paternal):
+        meaning: ''
+        comments: []
+      Grandfather (Maternal):
+        meaning: ''
+        comments: []
+      Grandfather (Paternal/Maternal Unknown):
+        meaning: ''
+        comments: []
+      Grandmother (Paternal):
+        meaning: ''
+        comments: []
+      Grandmother (Maternal):
+        meaning: ''
+        comments: []
+      Grandmother (Paternal/Maternal Unknown):
+        meaning: ''
+        comments: []
+      Uncle (Paternal):
+        meaning: ''
+        comments: []
+      Uncle (Maternal):
+        meaning: ''
+        comments: []
+      Uncle (Paternal/Maternal Unknown):
+        meaning: ''
+        comments: []
+      Aunt (Paternal):
+        meaning: ''
+        comments: []
+      Aunt (Maternal):
+        meaning: ''
+        comments: []
+      Aunt (Paternal/Maternal Unknown):
+        meaning: ''
+        comments: []
+      Niece:
+        meaning: ''
+        comments: []
+      Nephew:
+        meaning: ''
+        comments: []
+      First Cousin (Paternal):
+        meaning: ''
+        comments: []
+      First Cousin (Maternal):
+        meaning: ''
+        comments: []
+      First Cousin (Paternal/Maternal Unknown):
+        meaning: ''
+        comments: []
+      Great-Grandfather (Paternal):
+        meaning: ''
+        comments: []
+      Great-Grandfather (Maternal):
+        meaning: ''
+        comments: []
+      Great-Grandfather (Paternal/Maternal Unknown):
+        meaning: ''
+        comments: []
+      Great-Grandmother (Paternal):
+        meaning: ''
+        comments: []
+      Great-Grandmother (Maternal):
+        meaning: ''
+        comments: []
+      Great-Grandmother (Paternal/Maternal Unknown):
+        meaning: ''
+        comments: []
+      Great-Uncle (Paternal):
+        meaning: ''
+        comments: []
+      Great-Uncle (Maternal):
+        meaning: ''
+        comments: []
+      Great-Uncle (Paternal/Maternal Unknown):
+        meaning: ''
+        comments: []
+      Great-Aunt (Paternal):
+        meaning: ''
+        comments: []
+      Great-Aunt (Maternal):
+        meaning: ''
+        comments: []
+      Great-Aunt (Paternal/Maternal Unknown):
+        meaning: ''
+        comments: []
+      Other:
+        meaning: ''
+        comments: []
+  ConditionEnum:
+    permissible_values:
+      Prediabetes:
+        meaning: ''
+        comments: []
+      Type 1 Diabetes:
+        meaning: ''
+        comments: []
+      Type 2 Diabetes:
+        meaning: ''
+        comments: []
+      Monogenic Diabetes:
+        meaning: ''
+        comments: []
+      Gestational Diabetes:
+        meaning: ''
+        comments: {}
+      Diabetes, NOS:
+        meaning: ''
+        comments: []
+      Hypoglycemia:
+        meaning: ''
+        comments: []
+      Genitourinary Developmental Malformation Or Abnormality:
+        meaning: ''
+        comments: []
+      Abnormal Kidney Shape, Size, Or Number:
+        meaning: ''
+        comments: []
+      Kidney Cysts:
+        meaning: ''
+        comments: []
+      Hypomagnesemia:
+        meaning: ''
+        comments: []
+      Encephalomyopathy:
+        meaning: ''
+        comments: []
+      Lactic Acidosis:
+        meaning: ''
+        comments: []
+      Stroke-Like Episodes:
+        meaning: ''
+        comments: []
+      Hearing Loss:
+        meaning: ''
+        comments: []
+      Optic Atrophy:
+        meaning: ''
+        comments: []
+  SourceEnum:
+    permissible_values:
+      Confirmed By Genetic Test:
+        meaning: ''
+        comments: []
+      Clinical Diagnosis Only:
+        meaning: ''
+        comments: []
+  SexEnum:
+    permissible_values:
+      Male:
+        meaning: ''
+        comments: []
+      Female:
+        meaning: ''
+        comments: []
+      Undifferentiated:
+        meaning: ''
+        comments: []
+  EthnicityEnum:
+    permissible_values:
+      Hispanic or Latino:
+        meaning: ''
+        comments: []
+      Not Hispanic or Latino:
+        meaning: ''
+        comments: []
+      Unknown:
+        meaning: ''
+        comments: []
+      Not Reported:
+        meaning: ''
+        comments: []
+  RaceEnum:
+    permissible_values:
+      American Indian or Alaska Native:
+        meaning: ''
+        comments: []
+      Asian:
+        meaning: ''
+        comments: []
+      Black or African American:
+        meaning: ''
+        comments: []
+      Native Hawaiian or Other Pacific Islander:
+        meaning: ''
+        comments: []
+      White:
+        meaning: ''
+        comments: []
+      Multiracial:
+        meaning: ''
+        comments: []
+      Unknown:
+        meaning: ''
+        comments: []
+      Not Reported:
+        meaning: ''
+        comments: []
+  MedicalHistoryConditionEnum:
+    permissible_values:
+      Abnormal Kidney Shape, Size, Or Number:
+        meaning: ''
+        comments: []
+      Absent Or Missing Pancreas:
+        meaning: ''
+        comments: []
+      Behavioral Difficulties:
+        meaning: ''
+        comments: []
+      Congenital Heart Defect:
+        meaning: ''
+        comments: []
+      Coronary Artery Disease:
+        meaning: ''
+        comments: []
+      Difficulty With Social Interactions:
+        meaning: ''
+        comments: []
+      Elevated Liver Enzymes / LFTs:
+        meaning: ''
+        comments: []
+      Fatty Liver:
+        meaning: ''
+        comments: []
+      Genitourinary Developmental Malformation Or Abnormality:
+        meaning: ''
+        comments: []
+      Gestational Diabetes:
+        meaning: ''
+        comments: []
+      Hepatomegaly:
+        meaning: ''
+        comments: []
+      High Cholesterol, NOS:
+        meaning: ''
+        comments: []
+      High Frequency Hearing Loss:
+        meaning: ''
+        comments: []
+      High LDL:
+        meaning: ''
+        comments: []
+      High Total Cholesterol:
+        meaning: ''
+        comments: []
+      High Triglycerides:
+        meaning: ''
+        comments: []
+      Hypertension:
+        meaning: ''
+        comments: []
+      Hypoglycemia In Infancy:
+        meaning: ''
+        comments: []
+      Intrauterine Growth Restriction:
+        meaning: ''
+        comments: []
+      Liver Adenoma:
+        meaning: ''
+        comments: []
+      Low Frequency Hearing Loss:
+        meaning: ''
+        comments: []
+      Low HDL:
+        meaning: ''
+        comments: []
+      Macroglossia:
+        meaning: ''
+        comments: []
+      Nephropathy:
+        meaning: ''
+        comments: []
+      Peripheral Artery Disease:
+        meaning: ''
+        comments: []
+      Peripheral Neuropathy:
+        meaning: ''
+        comments: []
+      Polycystic Kidney Disease:
+        meaning: ''
+        comments: []
+      Proteinuria:
+        meaning: ''
+        comments: []
+      Renal Cyst:
+        meaning: ''
+        comments: []
+      Retinopathy:
+        meaning: ''
+        comments: []
+      Small For Gestational Age:
+        meaning: ''
+        comments: []
+      Small Pancreas:
+        meaning: ''
+        comments: []
+      Stroke:
+        meaning: ''
+        comments: []
+      Umbilical Hernia:
+        meaning: ''
+        comments: []
+      Other:
+        meaning: ''
+        comments:
+        - '(md_v1.3) ConsortiumNote: Only select ''Other'' if the condition is not related to the provided list (which are designated as ''of interest'' by the PREDICT group).'
+  CodeSystemEnum:
+    permissible_values:
+      CTCAE:
+        meaning: ''
+        comments: []
+      ICD-9:
+        meaning: ''
+        comments: []
+      ICD-10:
+        meaning: ''
+        comments: []
+      SNOMED-CT:
+        meaning: ''
+        comments: []
+  MeasurementTypeEnum:
+    permissible_values:
+      Height/Length:
+        meaning: ''
+        comments: []
+      Weight:
+        meaning: ''
+        comments: []
+      BMI:
+        meaning: ''
+        comments: []
+      Raw BMI:
+        meaning: ''
+        comments: []
+  MeasurementUnitEnum:
+    permissible_values:
+      kg:
+        meaning: ''
+        comments: []
+      cm:
+        meaning: ''
+        comments: []
+      kg/m^2:
+        meaning: ''
+        comments: []
+      percentile:
+        meaning: ''
+        comments:
+        - '(md_v1.3) ConsortiumNote: Use percentile as a unit when reporting pediatric BMI.'
+  SampleTypeEnum:
+    permissible_values:
+      Saliva:
+        meaning: ''
+        comments: []
+      Blood:
+        meaning: ''
+        comments: []
+      DNA:
+        meaning: ''
+        comments: []
+      Plasma:
+        meaning: ''
+        comments: []
+      Serum:
+        meaning: ''
+        comments: []
+      Urine:
+        meaning: ''
+        comments: []
+      PBMC:
+        meaning: ''
+        comments: []
+  YesNoEnum:
+    permissible_values:
+      'Yes':
+        meaning: ''
+        comments: []
+      'No':
+        meaning: ''
+        comments: []
+      Unknown:
+        meaning: ''
+        comments: []
+      Not Reported:
+        meaning: ''
+        comments: []
+  StatusEnum:
+    permissible_values:
+      Present:
+        meaning: ''
+        comments: []
+      Absent:
+        meaning: ''
+        comments: []
+      Unknown:
+        meaning: ''
+        comments: []
+      Not Reported:
+        meaning: ''
+        comments: []
+  GeneticAnalysisSampleTypeEnum:
+    permissible_values:
+      Saliva:
+        meaning: ''
+        comments: []
+      Blood:
+        meaning: ''
+        comments: []
+      Buccal:
+        meaning: ''
+        comments: []
+      Urine:
+        meaning: ''
+        comments: []
+      Unknown:
+        meaning: ''
+        comments: []
+      Not Reported:
+        meaning: ''
+        comments: []
+  LaboratoryNameEnum:
+    permissible_values:
+      Ambry Genetics:
+        meaning: ''
+        comments: []
+      Athena:
+        meaning: ''
+        comments: []
+      Baylor Genetics:
+        meaning: ''
+        comments: []
+      Blueprint:
+        meaning: ''
+        comments: []
+      Exeter:
+        meaning: ''
+        comments: []
+      GeneDx:
+        meaning: ''
+        comments: []
+      Invitae:
+        meaning: ''
+        comments: []
+      LMG:
+        meaning: ''
+        comments: []
+      Research Lab:
+        meaning: ''
+        comments: []
+      Seattle Children's Hospital:
+        meaning: ''
+        comments: []
+      UCGSL:
+        meaning: ''
+        comments: []
+      Prevention Genetics:
+        meaning: ''
+        comments: []
+      Unknown:
+        meaning: ''
+        comments: []
+      Not Reported:
+        meaning: ''
+        comments: []
+  MethodEnum:
+    permissible_values:
+      Karyotyping:
+        meaning: ''
+        comments: []
+      Fluorescence In Situ Hybridization:
+        meaning: ''
+        comments: []
+      RT-PCR:
+        meaning: ''
+        comments: []
+      PCR:
+        meaning: ''
+        comments: []
+      MLPA:
+        meaning: ''
+        comments: []
+      Sequencing, Sanger, Capillary Electropheresis:
+        meaning: ''
+        comments: []
+      Sequencing, Sanger, Gel Electropheresis:
+        meaning: ''
+        comments: []
+      Sequencing, Sanger, NOS:
+        meaning: ''
+        comments: []
+      Sequencing, NGS, Whole Genome:
+        meaning: ''
+        comments: []
+      Sequencing, NGS, lcWGS:
+        meaning: ''
+        comments: []
+      Sequencing, NGS, Whole Exome:
+        meaning: ''
+        comments: []
+      Sequencing, NGS, Multi-Gene Panel:
+        meaning: ''
+        comments: []
+      Sequencing, NGS, Single Site:
+        meaning: ''
+        comments: []
+      Sequencing, NGS, Single Gene DNA:
+        meaning: ''
+        comments: []
+      Sequencing, NGS, Targeted DNA:
+        meaning: ''
+        comments: []
+      Sequencing, NGS, Targeted RNA:
+        meaning: ''
+        comments: []
+      Sequencing, NGS, Total RNA:
+        meaning: ''
+        comments: []
+      Sequencing, NGS, TDS:
+        meaning: ''
+        comments: []
+      Sequencing, NGS, NOS:
+        meaning: ''
+        comments: []
+      Sequencing, Methylation Array:
+        meaning: ''
+        comments: []
+      Sequencing, Nanostring:
+        meaning: ''
+        comments: []
+      SNP Array:
+        meaning: ''
+        comments: []
+      Array CGH:
+        meaning: ''
+        comments: []
+      Genotyping, NOS:
+        meaning: ''
+        comments: []
+      Cytogenetics, NOS:
+        meaning: ''
+        comments: []
+      Other:
+        meaning: ''
+        comments: []
+      Unknown:
+        meaning: ''
+        comments: []
+      Not Reported:
+        meaning: ''
+        comments: []
+  GeneEnum:
+    permissible_values:
+      6q24-Related Abnormalities:
+        meaning: ''
+        comments: []
+      ABCC8:
+        meaning: ''
+        comments: []
+      CEL:
+        meaning: ''
+        comments: []
+      CFTR:
+        meaning: ''
+        comments: []
+      DCAF17:
+        meaning: ''
+        comments: []
+      EIF2AK3:
+        meaning: ''
+        comments: []
+      FOXP3:
+        meaning: ''
+        comments: []
+      GATA4:
+        meaning: ''
+        comments: []
+      GATA6:
+        meaning: ''
+        comments: []
+      GCK:
+        meaning: ''
+        comments: []
+      GLIS3:
+        meaning: ''
+        comments: []
+      HNF1A:
+        meaning: ''
+        comments: []
+      HNF1B:
+        meaning: ''
+        comments: []
+      HNF4A:
+        meaning: ''
+        comments: []
+      IAPP (Amylin):
+        meaning: ''
+        comments: []
+      IER3IP1:
+        meaning: ''
+        comments: []
+      IGF2/Russell Silver Syndrome:
+        meaning: ''
+        comments: []
+      IL2RA:
+        meaning: ''
+        comments: []
+      INS:
+        meaning: ''
+        comments: []
+      INSR:
+        meaning: ''
+        comments: []
+      KCNJ11:
+        meaning: ''
+        comments: []
+      LRBA:
+        meaning: ''
+        comments: []
+      mtDNA:
+        meaning: ''
+        comments: []
+      NEUROD1:
+        meaning: ''
+        comments: []
+      PAX4:
+        meaning: ''
+        comments: []
+      PCBD1:
+        meaning: ''
+        comments: []
+      PDX1 (IPF1):
+        meaning: ''
+        comments: []
+      PTF1A:
+        meaning: ''
+        comments: []
+      RFX6:
+        meaning: ''
+        comments: []
+      STAT3:
+        meaning: ''
+        comments: []
+      WFS1:
+        meaning: ''
+        comments: []
+      Unknown:
+        meaning: ''
+        comments: []
+      Not Reported:
+        meaning: ''
+        comments: []
+  AlterationTypeEnum:
+    permissible_values:
+      Chromosome Arm Gain:
+        meaning: ''
+        comments: []
+      Chromosome Arm Loss:
+        meaning: ''
+        comments: []
+      Substitution:
+        meaning: ''
+        comments: []
+      Deletion:
+        meaning: ''
+        comments: []
+      Insertion:
+        meaning: ''
+        comments: []
+      Indel:
+        meaning: ''
+        comments: []
+      Duplication:
+        meaning: ''
+        comments: []
+      Unknown:
+        meaning: ''
+        comments: []
+      Not Reported:
+        meaning: ''
+        comments: []
+  AlterationEffectEnum:
+    permissible_values:
+      Frameshift:
+        meaning: ''
+        comments: []
+      Missense:
+        meaning: ''
+        comments: []
+      Stop Gained (Nonsense):
+        meaning: ''
+        comments: []
+      None (Inframe):
+        meaning: ''
+        comments: []
+  AlterationRegionEnum:
+    permissible_values:
+      Splice Site:
+        meaning: ''
+        comments: []
+      5' UTR:
+        meaning: ''
+        comments: []
+      3' UTR:
+        meaning: ''
+        comments: []
+  ReportedSignificanceEnum:
+    permissible_values:
+      Pathogenic:
+        meaning: ''
+        comments: []
+      Likely Pathogenic:
+        meaning: ''
+        comments: []
+      Pathogenic/Likely Pathogenic:
+        meaning: ''
+        comments: []
+      Likely Pathogenic/Uncertain Significance:
+        meaning: ''
+        comments: []
+      Uncertain Significance:
+        meaning: ''
+        comments: []
+      Likely Benign:
+        meaning: ''
+        comments: []
+      Uncertain Significance/Likely Benign:
+        meaning: ''
+        comments: []
+      Benign:
+        meaning: ''
+        comments: []
+      Likely Benign/Benign:
+        meaning: ''
+        comments: []
+      Unknown:
+        meaning: ''
+        comments: []
+      Not Reported:
+        meaning: ''
+        comments: []
+  AllelicStateEnum:
+    permissible_values:
+      Homozygous:
+        meaning: ''
+        comments: []
+      Heterozygous:
+        meaning: ''
+        comments: []
+      Compound Heterozygous:
+        meaning: ''
+        comments: []
+      Unknown:
+        meaning: ''
+        comments: []
+      Not Reported:
+        meaning: ''
+        comments: []
+  ExternalRefIDSystemEnum:
+    permissible_values:
+      ClinGen:
+        meaning: ''
+        comments: []
+      ClinVar:
+        meaning: ''
+        comments: []
+  TestTypeEnum:
+    permissible_values:
+      HbA1c:
+        meaning: ''
+        comments: []
+      C-Peptide:
+        meaning: ''
+        comments: []
+      Blood Glucose:
+        meaning: ''
+        comments: []
+      Autoantibodies, GAD65:
+        meaning: ''
+        comments: []
+      Autoantibodies, ZnT8:
+        meaning: ''
+        comments: []
+      Autoantibodies, IA-2:
+        meaning: ''
+        comments: []
+      Autoantibodies, Insulin:
+        meaning: ''
+        comments: []
+      Autoantibodies, Islet Cell:
+        meaning: ''
+        comments: []
+      Autoantibodies, NOS:
+        meaning: ''
+        comments: []
+      Total Cholesterol:
+        meaning: ''
+        comments: []
+      Triglycerides:
+        meaning: ''
+        comments: []
+      HDL:
+        meaning: ''
+        comments: []
+      LDL:
+        meaning: ''
+        comments: []
+      Serum Magnesium:
+        meaning: ''
+        comments: []
+      Serum Potassium:
+        meaning: ''
+        comments: []
+      Serum Creatinine:
+        meaning: ''
+        comments: []
+      Serum BUN:
+        meaning: ''
+        comments: []
+      GFR:
+        meaning: ''
+        comments: []
+      Urine Microalbumin:
+        meaning: ''
+        comments: []
+      Urine Creatinine:
+        meaning: ''
+        comments: []
+      Microalbumin/Creatinine Ratio:
+        meaning: ''
+        comments: []
+      Urine Magnesium:
+        meaning: ''
+        comments: []
+      ALT:
+        meaning: ''
+        comments: []
+      AST:
+        meaning: ''
+        comments: []
+  TestingMethodEnum:
+    permissible_values:
+      Continuous Glucose Monitoring:
+        meaning: ''
+        comments: []
+      Laboratory Test:
+        meaning: ''
+        comments: []
+      Home Glucose Test:
+        meaning: ''
+        comments: []
+  TestingMeasurementTypeEnum:
+    permissible_values:
+      Average High:
+        meaning: ''
+        comments: []
+      14-day Average:
+        meaning: ''
+        comments: []
+      30-day Average:
+        meaning: ''
+        comments: []
+      90-day Average:
+        meaning: ''
+        comments: []
+      Average:
+        meaning: ''
+        comments: []
+      Average Low:
+        meaning: ''
+        comments: []
+      Point:
+        meaning: ''
+        comments: []
+  ResultUnitEnum:
+    permissible_values:
+      '%':
+        meaning: ''
+        comments: []
+      mg/dL:
+        meaning: ''
+        comments: []
+      U/L:
+        meaning: ''
+        comments: []
+      U/mL:
+        meaning: ''
+        comments: []
+      mmol/L:
+        meaning: ''
+        comments: []
+      ng/mL:
+        meaning: ''
+        comments: []
+      nmol/L:
+        meaning: ''
+        comments: []
+      mg/g:
+        meaning: ''
+        comments: []
+      mg/L:
+        meaning: ''
+        comments: []
+      IU/mL:
+        meaning: ''
+        comments: []
+  ResultInterpretationEnum:
+    permissible_values:
+      Positive:
+        meaning: ''
+        comments: []
+      Negative:
+        meaning: ''
+        comments: []
+  FastingStatusEnum:
+    permissible_values:
+      Fasting:
+        meaning: ''
+        comments: []
+      Non-Fasting:
+        meaning: ''
+        comments: []
+      Random:
+        meaning: ''
+        comments: []
+  PostGlucoseTimepointUnitEnum:
+    permissible_values:
+      Minutes:
+        meaning: ''
+        comments: []
+  DiabetesStatusEnum:
+    permissible_values:
+      'Yes':
+        meaning: ''
+        comments: []
+      'No':
+        meaning: ''
+        comments: []
+  HypoglycemiaFrequencyEnum:
+    permissible_values:
+      Once or twice in past year:
+        meaning: ''
+        comments: []
+      Every few months:
+        meaning: ''
+        comments: []
+      Once or twice a month:
+        meaning: ''
+        comments: []
+      Once or twice a week:
+        meaning: ''
+        comments: []
+      Daily or every other day:
+        meaning: ''
+        comments: []
+      Never:
+        meaning: ''
+        comments: []
+      Unknown:
+        meaning: ''
+        comments: []
+  DKAEnum:
+    permissible_values:
+      Yes - Hyperglycemic DKA:
+        meaning: ''
+        comments: []
+      Yes - Euglycemic DKA:
+        meaning: ''
+        comments: []
+      'No':
+        meaning: ''
+        comments: {}
+      Unknown:
+        meaning: ''
+        comments: []
+  CGMRangeEnum:
+    permissible_values:
+      Standard:
+        meaning: ''
+        comments: []
+      Non-Standard:
+        meaning: ''
+        comments: []
+  CGMContextEnum:
+    permissible_values:
+      Most Recent:
+        meaning: ''
+        comments: []
+      'Change In Treatment ':
+        meaning: ''
+        comments: []
+      Other:
+        meaning: ''
+        comments: []
+  ReasonStopEnum:
+    permissible_values:
+      Planned Stop:
+        meaning: ''
+        comments: []
+      No Significant Effect:
+        meaning: ''
+        comments: []
+      Side Effects:
+        meaning: ''
+        comments: []
+      Not Insured:
+        meaning: ''
+        comments: []
+      Cost:
+        meaning: ''
+        comments: []
+      Unknown:
+        meaning: ''
+        comments: []
+  DMMedicationClassEnum:
+    permissible_values:
+      Insulin, Rapid-Acting:
+        meaning: ''
+        comments: []
+      Insulin, Long-Acting:
+        meaning: ''
+        comments: []
+      Insulin, Intermediate-Acting:
+        meaning: ''
+        comments: []
+      Insulin, Combination:
+        meaning: ''
+        comments: []
+      Insulin, NOS:
+        meaning: ''
+        comments: []
+      Biguanide:
+        meaning: ''
+        comments: []
+      Sulfonylurea:
+        meaning: ''
+        comments: []
+      Meglitinide:
+        meaning: ''
+        comments: []
+      Thiazolidinedione:
+        meaning: ''
+        comments: []
+      Dipeptidylpeptidase 4 Inhibitor:
+        meaning: ''
+        comments: []
+      Sodium-Glucose Co-Transporter 2 Inhibitor:
+        meaning: ''
+        comments: []
+      GLP-1 Receptor Agonist:
+        meaning: ''
+        comments: []
+      Dual GLP-1/GIP Receptor Agonist:
+        meaning: ''
+        comments: []
+      Amylin Analog:
+        meaning: ''
+        comments: []
+      Alpha-Glucosidase Inhibitor:
+        meaning: ''
+        comments: []
+      Bile Acid-Binding Resin:
+        meaning: ''
+        comments: []
+  MedicationClassOtherEnum:
+    permissible_values:
+      ACE Inhibitor:
+        meaning: ''
+        comments: []
+      ACL Inhibitor:
+        meaning: ''
+        comments: []
+      Angiotensin II Receptor Blockers:
+        meaning: ''
+        comments: []
+      ANGPTL3 Inhibitor:
+        meaning: ''
+        comments: []
+      Antiepileptic:
+        meaning: ''
+        comments: []
+      Antilipemic siRNA:
+        meaning: ''
+        comments: []
+      Beta Blocker:
+        meaning: ''
+        comments: []
+      Calcium Channel Blocker:
+        meaning: ''
+        comments: []
+      Cholesterol Absorption Inhibitor:
+        meaning: ''
+        comments: []
+      Coenzyme Q:
+        meaning: ''
+        comments: []
+      Diuretic:
+        meaning: ''
+        comments: []
+      Fibrates:
+        meaning: ''
+        comments: []
+      Finerenone:
+        meaning: ''
+        comments: []
+      Glucagon:
+        meaning: ''
+        comments: []
+      Magnesium:
+        meaning: ''
+        comments: []
+      Mineralcorticoid Receptor:
+        meaning: ''
+        comments: []
+      Pancreatic Enzymes:
+        meaning: ''
+        comments: []
+      PCSK9 Inhibitor:
+        meaning: ''
+        comments: []
+      Psychoactive:
+        meaning: ''
+        comments: []
+      Statin:
+        meaning: ''
+        comments: []
+  MedicationConcentrationEnum:
+    permissible_values:
+      U100:
+        meaning: ''
+        comments: []
+      U200:
+        meaning: ''
+        comments: []
+      U300:
+        meaning: ''
+        comments: []
+      U500:
+        meaning: ''
+        comments: []
+      Not Applicable:
+        meaning: ''
+        comments: []
+  MedicationUnitEnum:
+    permissible_values:
+      Units:
+        meaning: ''
+        comments: []
+      mg:
+        meaning: ''
+        comments: []
+      mcg:
+        meaning: ''
+        comments: []
+      gm:
+        meaning: ''
+        comments: []
+      ml:
+        meaning: ''
+        comments: []
+      tbsp:
+        meaning: ''
+        comments: []
+      tsp:
+        meaning: ''
+        comments: []
+      IU:
+        meaning: ''
+        comments: []
+      puffs:
+        meaning: ''
+        comments: []
+      Packets:
+        meaning: ''
+        comments: []
+      mg/ml:
+        meaning: ''
+        comments: []
+      application:
+        meaning: ''
+        comments: []
+  FrequencyEnum:
+    permissible_values:
+      Once per day:
+        meaning: ''
+        comments: []
+      Once per day, Morning:
+        meaning: ''
+        comments: []
+      Once per day, Evening:
+        meaning: ''
+        comments: []
+      Two times a day:
+        meaning: ''
+        comments: []
+      Three times a day:
+        meaning: ''
+        comments: []
+      Four times a day:
+        meaning: ''
+        comments: []
+      As needed:
+        meaning: ''
+        comments: []
+      Before every meal:
+        meaning: ''
+        comments: []
+      Before meals and at bedtime:
+        meaning: ''
+        comments: []
+      Every week:
+        meaning: ''
+        comments: []
+  RouteEnum:
+    permissible_values:
+      Oral:
+        meaning: ''
+        comments: []
+      Nasally:
+        meaning: ''
+        comments: []
+      Subcutaneous:
+        meaning: ''
+        comments: []
+      IM:
+        meaning: ''
+        comments: []
+      IV:
+        meaning: ''
+        comments: []

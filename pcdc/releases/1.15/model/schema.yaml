@@ -1,0 +1,2724 @@
+id: https://models.d4cg.org/pcdc
+name: pcdc
+title: PCDC Data Model
+license: CC BY-NC 4.0
+version: 1.15
+prefixes:
+  pcdc: https://example.org/pcdc/
+  linkml: https://w3id.org/linkml/
+  ncit: http://purl.obolibrary.org/obo/NCIT_
+default_prefix: pcdc
+default_range: string
+imports:
+- linkml:types
+- slots
+- enums
+subsets:
+  base:
+    name: base
+    title: Base Model
+    description: The PCDC data model represents a harmonized consensus data model developed across all participating PCDC disease groups and consortia. It serves as the canonical model from which disease-specific and dataset-specific views are derived.
+  aml:
+    name: aml
+    title: Acute Myeloid Leukemia
+    description: The AML view of the PCDC data model represents consensus data modeling by an international group of pediatric acute myeloid leukemia experts and is maintained by Data for the Common Good (D4CG) at the University of Chicago in collaboration with the International Acute Myeloid Leukemia Consortium (INTERACT). It is based on the collective requirements of its contributors.
+  gct:
+    name: gct
+    title: Germ Cell Tumors
+    description: The GCT view of the PCDC data model represents consensus data modeling by an international group of pediatric germ cell tumor experts and is maintained by Data for the Common Good (D4CG) at the University of Chicago in collaboration with the Malignant Germ Cell International Consortium (MaGIC). It is based on the collective requirements of its contributors.
+  hl:
+    name: hl
+    title: Hodgkin Lymphoma
+    description: The HL view of the PCDC data model represents consensus data modeling by an international group of pediatric Hodgkin lymphoma experts and is maintained by Data for the Common Good (D4CG) at the University of Chicago in collaboration with the Hodgkin Lymphoma Data Collaboration (NODAL). It is based on the collective requirements of its contributors.
+  nbl:
+    name: nbl
+    title: Neuroblastoma
+    description: The NBL view of the PCDC data model represents consensus data modeling by an international group of pediatric neuroblastoma experts and is maintained by Data for the Common Good (D4CG) at the University of Chicago in collaboration with the International Neuroblastoma Risk Group (INRG). It is based on the collective requirements of its contributors.
+  nrsts:
+    name: nrsts
+    title: Non-rhabdomyosarcoma Soft Tissue Sarcomas
+    description: The NRSTS view of the PCDC data model represents consensus data modeling by an international group of pediatric non-rhabdomyosarcoma soft tissue sarcoma experts and is maintained by Data for the Common Good (D4CG) at the University of Chicago in collaboration with the International Soft Tissue Sarcoma Consortium (INSTRuCT). It is based on the collective requirements of its contributors.
+  rms:
+    name: rms
+    title: Rhabdomyosarcoma
+    description: The RMS view of the PCDC data model represents consensus data modeling by an international group of pediatric rhabdomyosarcoma experts and is maintained by Data for the Common Good (D4CG) at the University of Chicago in collaboration with the International Soft Tissue Sarcoma Consortium (INSTRuCT). It is based on the collective requirements of its contributors.
+classes:
+  Person:
+    slots:
+    - submitter_id
+    - subjects_submitter_id
+    - sex
+    - race
+    - ethnicity
+    comments: []
+    in_subset:
+    - aml
+    - gct
+    - hl
+    - nbl
+    - nrsts
+    - rms
+    annotations:
+      domain: demographics
+    slot_usage:
+      submitter_id:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nbl
+        - nrsts
+        - rms
+      subjects_submitter_id:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nbl
+        - nrsts
+        - rms
+      sex:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nbl
+        - nrsts
+        - rms
+      race:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nbl
+        - nrsts
+        - rms
+      ethnicity:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nbl
+        - nrsts
+        - rms
+  Subject:
+    slots:
+    - consortium
+    - submitter_id
+    - honest_broker_subject_id
+    - data_contributor_id
+    - age_at_censor_status
+    - censor_status
+    comments: []
+    in_subset:
+    - aml
+    - gct
+    - hl
+    - nbl
+    - nrsts
+    - rms
+    annotations:
+      domain: demographics
+    slot_usage:
+      consortium:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nbl
+        - nrsts
+        - rms
+      submitter_id:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nbl
+        - nrsts
+        - rms
+      honest_broker_subject_id:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nbl
+        - nrsts
+        - rms
+      data_contributor_id:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nbl
+        - nrsts
+        - rms
+      age_at_censor_status:
+        in_subset:
+        - aml
+        - gct
+        - nbl
+        - rms
+      censor_status:
+        in_subset:
+        - aml
+        - nbl
+        - nrsts
+        - rms
+        - gct
+  ExternalReference:
+    slots:
+    - subjects_submitter_id
+    - external_links
+    - external_resource_icon_path
+    - external_resource_id
+    - external_resource_name
+    - external_subject_id
+    - external_subject_submitter_id
+    - external_subject_url
+    comments:
+    - 'D4CGNote: One observation/row per ___ when instantiated'
+    in_subset:
+    - aml
+    - nbl
+    annotations:
+      domain: demographics
+    slot_usage:
+      subjects_submitter_id:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nbl
+        - nrsts
+        - rms
+      external_links:
+        in_subset:
+        - aml
+        - nbl
+      external_resource_icon_path:
+        in_subset:
+        - aml
+        - nbl
+      external_resource_id:
+        in_subset:
+        - aml
+        - nbl
+      external_resource_name:
+        in_subset:
+        - aml
+        - nbl
+      external_subject_id:
+        in_subset:
+        - aml
+        - nbl
+      external_subject_submitter_id:
+        in_subset:
+        - aml
+        - nbl
+      external_subject_url:
+        in_subset:
+        - aml
+        - nbl
+  Study:
+    slots:
+    - submitter_id
+    - subjects_submitter_id
+    - age_at_enrollment
+    - enrolled_status
+    - study_id
+    - treatment_arm
+    - year_at_enrollment
+    - study_phase
+    - study_type
+    comments: []
+    in_subset:
+    - aml
+    - gct
+    - hl
+    - nbl
+    - nrsts
+    - rms
+    annotations:
+      domain: demographics
+    slot_usage:
+      submitter_id:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nbl
+        - nrsts
+        - rms
+      subjects_submitter_id:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nbl
+        - nrsts
+        - rms
+      age_at_enrollment:
+        in_subset:
+        - aml
+        - gct
+        - hl
+      enrolled_status:
+        in_subset:
+        - aml
+      study_id:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nbl
+        - nrsts
+        - rms
+      treatment_arm:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nbl
+        - nrsts
+        - rms
+      year_at_enrollment:
+        in_subset:
+        - gct
+      study_phase:
+        in_subset:
+        - hl
+      study_type:
+        in_subset:
+        - hl
+  Timing:
+    slots:
+    - submitter_id
+    - subjects_submitter_id
+    - timing_type
+    - disease_phase
+    - disease_phase_number
+    - age_at_disease_phase
+    - year_at_disease_phase
+    - course
+    - course_number
+    - age_at_course_start
+    - age_at_course_end
+    - age_at_course_anc_500
+    - cycle_number
+    - age_at_cycle_start
+    - age_at_cycle_end
+    comments: []
+    in_subset:
+    - aml
+    - gct
+    - hl
+    - nbl
+    - nrsts
+    - rms
+    annotations:
+      domain: demographics
+    slot_usage:
+      submitter_id:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nbl
+        - nrsts
+        - rms
+      subjects_submitter_id:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nbl
+        - nrsts
+        - rms
+      timing_type:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nbl
+        - nrsts
+        - rms
+      disease_phase:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nbl
+        - nrsts
+        - rms
+      disease_phase_number:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nbl
+        - nrsts
+        - rms
+      age_at_disease_phase:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nbl
+        - nrsts
+        - rms
+      year_at_disease_phase:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nbl
+        - nrsts
+        - rms
+      course:
+        in_subset:
+        - aml
+        - hl
+        - nrsts
+      course_number:
+        in_subset:
+        - aml
+        - hl
+      age_at_course_start:
+        in_subset:
+        - aml
+        - hl
+      age_at_course_end:
+        in_subset:
+        - aml
+        - hl
+      age_at_course_anc_500:
+        in_subset:
+        - aml
+      cycle_number:
+        in_subset:
+        - hl
+      age_at_cycle_start:
+        in_subset:
+        - hl
+      age_at_cycle_end:
+        in_subset:
+        - hl
+  OffProtocolTherapyStudy:
+    slots:
+    - subjects_submitter_id
+    - timings_submitter_id
+    - age_off
+    - off_type
+    - reason_off
+    - another_study
+    comments: []
+    in_subset:
+    - aml
+    - hl
+    annotations:
+      domain: demographics
+    slot_usage:
+      subjects_submitter_id:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nbl
+        - nrsts
+        - rms
+      timings_submitter_id:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nbl
+        - nrsts
+        - rms
+      age_off:
+        in_subset:
+        - aml
+        - hl
+      off_type:
+        in_subset:
+        - aml
+        - hl
+      reason_off:
+        in_subset:
+        - aml
+        - hl
+      another_study:
+        in_subset:
+        - hl
+  SurvivalCharacteristic:
+    slots:
+    - subjects_submitter_id
+    - timings_submitter_id
+    - age_at_lkss
+    - lkss
+    - lkss_with_disease
+    - age_lost_to_follow_up
+    - cause_of_death
+    - cause_of_death_other
+    - TRM_type
+    - cause_of_death_detail
+    - cause_of_death_ranking
+    comments: []
+    in_subset:
+    - aml
+    - gct
+    - hl
+    - nbl
+    - nrsts
+    - rms
+    annotations:
+      domain: demographics
+    slot_usage:
+      subjects_submitter_id:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nbl
+        - nrsts
+        - rms
+      timings_submitter_id:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nbl
+        - nrsts
+        - rms
+      age_at_lkss:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nbl
+        - nrsts
+        - rms
+      lkss:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nbl
+        - nrsts
+        - rms
+      lkss_with_disease:
+        in_subset:
+        - hl
+      age_lost_to_follow_up:
+        in_subset:
+        - aml
+        - hl
+      cause_of_death:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nbl
+        - nrsts
+        - rms
+      cause_of_death_other:
+        in_subset:
+        - rms
+      TRM_type:
+        in_subset:
+        - aml
+        - hl
+      cause_of_death_detail:
+        in_subset:
+        - aml
+        - hl
+      cause_of_death_ranking:
+        in_subset:
+        - aml
+        - hl
+  FamilyMedicalHistory:
+    slots:
+    - subjects_submitter_id
+    - family_history
+    - relative
+    - prior_cancer
+    comments: []
+    in_subset:
+    - hl
+    annotations:
+      domain: demographics
+    slot_usage:
+      subjects_submitter_id:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nbl
+        - nrsts
+        - rms
+      family_history:
+        in_subset:
+        - hl
+      relative:
+        in_subset:
+        - hl
+      prior_cancer:
+        in_subset:
+        - hl
+  MedicalHistory:
+    slots:
+    - subjects_submitter_id
+    - medical_history
+    - medical_history_status
+    - medical_history_category
+    - assisted_conception
+    comments: []
+    in_subset:
+    - aml
+    - gct
+    - hl
+    - nrsts
+    annotations:
+      domain: demographics
+    slot_usage:
+      subjects_submitter_id:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nbl
+        - nrsts
+        - rms
+      medical_history:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nrsts
+      medical_history_status:
+        in_subset:
+        - gct
+      medical_history_category:
+        in_subset:
+        - hl
+      assisted_conception:
+        in_subset:
+        - hl
+  Vital:
+    slots:
+    - subjects_submitter_id
+    - timings_submitter_id
+    - age_at_vitals
+    - vitals_test
+    - vitals_result
+    - vitals_result_numeric
+    - vitals_result_unit
+    comments: []
+    in_subset:
+    - aml
+    - gct
+    - hl
+    annotations:
+      domain: testing
+    slot_usage:
+      subjects_submitter_id:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nbl
+        - nrsts
+        - rms
+      timings_submitter_id:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nbl
+        - nrsts
+        - rms
+      age_at_vitals:
+        in_subset:
+        - aml
+        - gct
+        - hl
+      vitals_test:
+        in_subset:
+        - aml
+        - gct
+        - hl
+      vitals_result:
+        in_subset:
+        - aml
+        - gct
+        - hl
+      vitals_result_numeric:
+        in_subset:
+        - aml
+        - gct
+        - hl
+      vitals_result_unit:
+        in_subset:
+        - aml
+        - gct
+        - hl
+  FunctionTest:
+    slots:
+    - subjects_submitter_id
+    - timings_submitter_id
+    - age_at
+    - function_category
+    - function_result
+    - function_test
+    - function_result_numeric
+    - function_result_unit
+    comments: []
+    in_subset:
+    - hl
+    annotations:
+      domain: testing
+    slot_usage:
+      subjects_submitter_id:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nbl
+        - nrsts
+        - rms
+      timings_submitter_id:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nbl
+        - nrsts
+        - rms
+      age_at:
+        in_subset:
+        - hl
+      function_category:
+        in_subset:
+        - aml
+        - hl
+      function_result:
+        in_subset:
+        - aml
+        - hl
+      function_test:
+        in_subset:
+        - aml
+      function_result_numeric:
+        in_subset:
+        - aml
+        - hl
+      function_result_unit:
+        in_subset:
+        - aml
+        - hl
+  Lab:
+    slots:
+    - subjects_submitter_id
+    - timings_submitter_id
+    - age_at_lab
+    - lab_cat
+    - lab_test
+    - lab_spec_type
+    - lab_seq_method
+    - lab_result
+    - lab_result_numeric
+    - lab_result_unit
+    - lab_method
+    - traumatic_tap
+    - pmid_ref
+    - threshold_high
+    - threshold_low
+    comments: []
+    in_subset:
+    - aml
+    - gct
+    - hl
+    - nbl
+    annotations:
+      domain: testing
+    slot_usage:
+      subjects_submitter_id:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nbl
+        - nrsts
+        - rms
+      timings_submitter_id:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nbl
+        - nrsts
+        - rms
+      age_at_lab:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nbl
+      lab_cat:
+        in_subset:
+        - aml
+        - gct
+        - hl
+      lab_test:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nbl
+      lab_spec_type:
+        in_subset:
+        - aml
+        - gct
+        - hl
+      lab_seq_method:
+        in_subset:
+        - gct
+      lab_result:
+        in_subset:
+        - aml
+        - gct
+        - hl
+      lab_result_numeric:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nbl
+      lab_result_unit:
+        in_subset:
+        - aml
+        - gct
+        - hl
+      lab_method:
+        in_subset:
+        - aml
+        - gct
+        - hl
+      traumatic_tap:
+        in_subset:
+        - aml
+      pmid_ref:
+        in_subset:
+        - gct
+      threshold_high:
+        in_subset:
+        - gct
+        - hl
+      threshold_low:
+        in_subset:
+        - gct
+        - hl
+  MolecularAnalysis:
+    slots:
+    - subjects_submitter_id
+    - timings_submitter_id
+    - age_at_molecular_analysis
+    - molecular_analysis_method
+    - iscn
+    - indepen_abb
+    - num_metaphases
+    - molecular_abnormality
+    - chromosome
+    - gene1
+    - gene2
+    - variant_type
+    - genetic_seq
+    - aa_mutation
+    - molecular_abnormality_result
+    - allelic_ratio
+    - anaplasia
+    - anaplasia_extent
+    - copy_number_status
+    - cytodifferentiation
+    - dna_index
+    - dna_index_numeric
+    - karyotype_status
+    - mitoses
+    - num_chromosomes
+    comments: []
+    in_subset:
+    - aml
+    - gct
+    - nbl
+    - nrsts
+    - rms
+    annotations:
+      domain: testing
+    slot_usage:
+      subjects_submitter_id:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nbl
+        - nrsts
+        - rms
+      timings_submitter_id:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nbl
+        - nrsts
+        - rms
+      age_at_molecular_analysis:
+        in_subset:
+        - aml
+        - gct
+        - nbl
+        - nrsts
+        - rms
+      molecular_analysis_method:
+        in_subset:
+        - aml
+        - gct
+      iscn:
+        in_subset:
+        - aml
+        - gct
+      indepen_abb:
+        in_subset:
+        - aml
+        - gct
+      num_metaphases:
+        in_subset:
+        - aml
+      molecular_abnormality:
+        in_subset:
+        - aml
+        - gct
+        - nbl
+        - nrsts
+        - rms
+      chromosome:
+        in_subset:
+        - aml
+        - gct
+        - nbl
+      gene1:
+        in_subset:
+        - aml
+        - gct
+        - nbl
+        - rms
+      gene2:
+        in_subset:
+        - aml
+        - gct
+        - nbl
+        - rms
+      variant_type:
+        in_subset:
+        - aml
+        - gct
+        - nbl
+      genetic_seq:
+        in_subset:
+        - aml
+      aa_mutation:
+        in_subset:
+        - aml
+        - nbl
+      molecular_abnormality_result:
+        in_subset:
+        - aml
+        - nbl
+        - rms
+      allelic_ratio:
+        in_subset:
+        - aml
+        - nbl
+      anaplasia:
+        in_subset:
+        - rms
+      anaplasia_extent:
+        in_subset:
+        - rms
+      copy_number_status:
+        in_subset:
+        - nbl
+      cytodifferentiation:
+        in_subset:
+        - nrsts
+      dna_index:
+        in_subset:
+        - nbl
+      dna_index_numeric:
+        in_subset:
+        - nbl
+      karyotype_status:
+        in_subset:
+        - gct
+      mitoses:
+        in_subset:
+        - nrsts
+      num_chromosomes:
+        in_subset:
+        - gct
+  Biospecimen:
+    slots:
+    - subjects_submitter_id
+    - biospecimen_container_type
+    - biospecimen_media
+    - biospecimen_type
+    - current_qty_unit
+    - current_qty_value
+    comments:
+    - 'D4CGNote: One observation/row per biospecimen when instantiated'
+    in_subset:
+    - aml
+    - gct
+    - hl
+    - nrsts
+    - nbl
+    - rms
+    annotations:
+      domain: testing
+    slot_usage:
+      subjects_submitter_id:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nbl
+        - nrsts
+        - rms
+      biospecimen_container_type:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nrsts
+        - nbl
+        - rms
+      biospecimen_media:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nrsts
+        - nbl
+        - rms
+      biospecimen_type:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nrsts
+        - nbl
+        - rms
+      current_qty_unit:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nrsts
+        - nbl
+        - rms
+      current_qty_value:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nrsts
+        - nbl
+        - rms
+  Immunohistochemistry:
+    slots:
+    - subjects_submitter_id
+    - timings_submitter_id
+    - age_at_ihc
+    - ihc_test
+    - ihc_result
+    - ihc_result_numeric
+    comments: []
+    in_subset:
+    - gct
+    - hl
+    annotations:
+      domain: testing
+    slot_usage:
+      subjects_submitter_id:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nbl
+        - nrsts
+        - rms
+      timings_submitter_id:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nbl
+        - nrsts
+        - rms
+      age_at_ihc:
+        in_subset:
+        - gct
+        - hl
+      ihc_test:
+        in_subset:
+        - gct
+        - hl
+      ihc_result:
+        in_subset:
+        - gct
+        - hl
+      ihc_result_numeric:
+        in_subset:
+        - gct
+        - hl
+  Cytology:
+    slots:
+    - subjects_submitter_id
+    - timings_submitter_id
+    - age_at_cytology
+    - malignant_cells
+    - cytology_spec_type
+    comments: []
+    in_subset:
+    - gct
+    annotations:
+      domain: testing
+    slot_usage:
+      subjects_submitter_id:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nbl
+        - nrsts
+        - rms
+      timings_submitter_id:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nbl
+        - nrsts
+        - rms
+      age_at_cytology:
+        in_subset:
+        - gct
+      malignant_cells:
+        in_subset:
+        - gct
+      cytology_spec_type:
+        in_subset:
+        - gct
+  Imaging:
+    slots:
+    - subjects_submitter_id
+    - timings_submitter_id
+    - age_at_imaging
+    - imaging_method
+    - imaging_result
+    - deauville_score
+    - qpet_score
+    comments: []
+    in_subset:
+    - hl
+    annotations:
+      domain: testing
+    slot_usage:
+      subjects_submitter_id:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nbl
+        - nrsts
+        - rms
+      timings_submitter_id:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nbl
+        - nrsts
+        - rms
+      age_at_imaging:
+        in_subset:
+        - hl
+      imaging_method:
+        in_subset:
+        - hl
+      imaging_result:
+        in_subset:
+        - hl
+      deauville_score:
+        in_subset:
+        - hl
+      qpet_score:
+        in_subset:
+        - hl
+  Histology:
+    slots:
+    - subjects_submitter_id
+    - timings_submitter_id
+    - age_at_hist_assessment
+    - hist_assessment_review
+    - histology
+    - histology_result
+    - histology_result_numeric
+    - histology_result_unit
+    - hist_ICD_O_morph_code
+    - histology_grade
+    - mature_glial_implants
+    - somatic_malignancy_type
+    - histology_inpc
+    comments: []
+    in_subset:
+    - gct
+    - hl
+    - nbl
+    - nrsts
+    - rms
+    annotations:
+      domain: disease_attributes
+    slot_usage:
+      subjects_submitter_id:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nbl
+        - nrsts
+        - rms
+      timings_submitter_id:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nbl
+        - nrsts
+        - rms
+      age_at_hist_assessment:
+        in_subset:
+        - gct
+        - hl
+        - nbl
+        - nrsts
+        - rms
+      hist_assessment_review:
+        in_subset:
+        - gct
+      histology:
+        in_subset:
+        - gct
+        - hl
+        - nbl
+        - nrsts
+        - rms
+      histology_result:
+        in_subset:
+        - gct
+      histology_result_numeric:
+        in_subset:
+        - gct
+      histology_result_unit:
+        in_subset:
+        - gct
+      hist_ICD_O_morph_code:
+        in_subset:
+        - gct
+      histology_grade:
+        in_subset:
+        - gct
+        - nbl
+        - nrsts
+      mature_glial_implants:
+        in_subset:
+        - gct
+      somatic_malignancy_type:
+        in_subset:
+        - gct
+      histology_inpc:
+        in_subset:
+        - nbl
+  Staging:
+    slots:
+    - subjects_submitter_id
+    - timings_submitter_id
+    - age_at_staging
+    - AB
+    - E
+    - S
+    - stage_system
+    - stage
+    - irs_group
+    - tnm_finding
+    comments: []
+    in_subset:
+    - gct
+    - hl
+    - nbl
+    - rms
+    annotations:
+      domain: disease_attributes
+    slot_usage:
+      subjects_submitter_id:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nbl
+        - nrsts
+        - rms
+      timings_submitter_id:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nbl
+        - nrsts
+        - rms
+      age_at_staging:
+        in_subset:
+        - gct
+        - hl
+        - nbl
+        - rms
+      AB:
+        in_subset:
+        - hl
+      E:
+        in_subset:
+        - hl
+      S:
+        in_subset:
+        - hl
+      stage_system:
+        in_subset:
+        - gct
+        - hl
+      stage:
+        in_subset:
+        - gct
+        - hl
+        - nbl
+      irs_group:
+        in_subset:
+        - rms
+      tnm_finding:
+        in_subset:
+        - rms
+  DiseaseCharacteristic:
+    slots:
+    - subjects_submitter_id
+    - timings_submitter_id
+    - fab_type
+    - who_aml
+    - disease_site
+    - detection_method
+    - CNS_disease_status
+    - MPAL
+    - MLDS
+    - TAMDS
+    - secondary_AML
+    - bulky_nodal_aggregate
+    - BULK_MED_MASS
+    - bulk_disease
+    - fever
+    - igccc_risk_group
+    - initial_treatment_category
+    - karnofsky
+    - lansky
+    - magic_risk_group
+    - med_ratio
+    - mki
+    - night_sweats
+    - nodular_splenic
+    - weight_loss
+    - histology_inpc
+    comments: []
+    in_subset:
+    - aml
+    - gct
+    - hl
+    - nbl
+    annotations:
+      domain: disease_attributes
+    slot_usage:
+      subjects_submitter_id:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nbl
+        - nrsts
+        - rms
+      timings_submitter_id:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nbl
+        - nrsts
+        - rms
+      fab_type:
+        in_subset:
+        - aml
+      who_aml:
+        in_subset:
+        - aml
+      disease_site:
+        in_subset:
+        - aml
+      detection_method:
+        in_subset:
+        - aml
+        - gct
+        - hl
+      CNS_disease_status:
+        in_subset:
+        - aml
+      MPAL:
+        in_subset:
+        - aml
+      MLDS:
+        in_subset:
+        - aml
+      TAMDS:
+        in_subset:
+        - aml
+      secondary_AML:
+        in_subset:
+        - aml
+      bulky_nodal_aggregate:
+        in_subset:
+        - hl
+      BULK_MED_MASS:
+        in_subset:
+        - hl
+      bulk_disease:
+        in_subset:
+        - hl
+      fever:
+        in_subset:
+        - hl
+      igccc_risk_group:
+        in_subset:
+        - gct
+      initial_treatment_category:
+        in_subset:
+        - nbl
+      karnofsky:
+        in_subset:
+        - hl
+      lansky:
+        in_subset:
+        - hl
+      magic_risk_group:
+        in_subset:
+        - gct
+      med_ratio:
+        in_subset:
+        - hl
+      mki:
+        in_subset:
+        - nbl
+      night_sweats:
+        in_subset:
+        - hl
+      nodular_splenic:
+        in_subset:
+        - hl
+      weight_loss:
+        in_subset:
+        - hl
+      histology_inpc:
+        in_subset:
+        - nbl
+  MyeloidSarcomaInvolvement:
+    slots:
+    - subjects_submitter_id
+    - timings_submitter_id
+    - myeloid_sarcoma
+    - myeloid_sarcoma_site
+    comments: []
+    in_subset:
+    - aml
+    annotations:
+      domain: disease_attributes
+    slot_usage:
+      subjects_submitter_id:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nbl
+        - nrsts
+        - rms
+      timings_submitter_id:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nbl
+        - nrsts
+        - rms
+      myeloid_sarcoma:
+        in_subset:
+        - aml
+      myeloid_sarcoma_site:
+        in_subset:
+        - aml
+  TumorAssessment:
+    slots:
+    - subjects_submitter_id
+    - timings_submitter_id
+    - age_at_tumor_assessment
+    - necrosis
+    - necrosis_pct
+    - nodal_site
+    - tumor_detection_method
+    - tumor_classification
+    - tumor_site
+    - tumor_laterality
+    - tumor_state
+    - nodal_involvement
+    - depth
+    - invasiveness
+    - longest_diam_dim1
+    - longest_diam_dim2
+    - longest_diam_dim3
+    - nodal_clinical
+    - nodal_pathology
+    - parameningeal_extension
+    - pleural_effusion
+    - tumor_site_other
+    - tumor_size
+    comments: []
+    in_subset:
+    - gct
+    - nbl
+    - nrsts
+    - rms
+    annotations:
+      domain: disease_attributes
+    slot_usage:
+      subjects_submitter_id:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nbl
+        - nrsts
+        - rms
+      timings_submitter_id:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nbl
+        - nrsts
+        - rms
+      age_at_tumor_assessment:
+        in_subset:
+        - gct
+        - nbl
+        - nrsts
+        - rms
+      necrosis:
+        in_subset:
+        - nrsts
+      necrosis_pct:
+        in_subset:
+        - nrsts
+      nodal_site:
+        in_subset:
+        - hl
+      tumor_detection_method:
+        in_subset:
+        - gct
+      tumor_classification:
+        in_subset:
+        - gct
+        - nbl
+        - nrsts
+        - rms
+      tumor_site:
+        in_subset:
+        - gct
+        - nbl
+        - nrsts
+        - rms
+      tumor_laterality:
+        in_subset:
+        - gct
+      tumor_state:
+        in_subset:
+        - gct
+        - nbl
+        - rms
+      nodal_involvement:
+        in_subset:
+        - gct
+      depth:
+        in_subset:
+        - nrsts
+      invasiveness:
+        in_subset:
+        - nrsts
+        - rms
+      longest_diam_dim1:
+        in_subset:
+        - hl
+        - nrsts
+        - rms
+      longest_diam_dim2:
+        in_subset:
+        - hl
+        - nrsts
+        - rms
+      longest_diam_dim3:
+        in_subset:
+        - hl
+        - nrsts
+        - rms
+      nodal_clinical:
+        in_subset:
+        - rms
+      nodal_pathology:
+        in_subset:
+        - rms
+      parameningeal_extension:
+        in_subset:
+        - rms
+      pleural_effusion:
+        in_subset:
+        - hl
+      tumor_site_other:
+        in_subset:
+        - nbl
+        - nrsts
+        - rms
+      tumor_size:
+        in_subset:
+        - nrsts
+        - rms
+  LesionCharacteristic:
+    slots:
+    - subjects_submitter_id
+    - timings_submitter_id
+    - age_at_lesion_assessment
+    - lesion_assessment_review
+    - lesion_detection_method
+    - lesion_classification
+    - lesion_site
+    - e_extension_site
+    - lesion_laterality
+    - lesion_bulky
+    - longest_diam_dim1
+    - diam_dim1_type
+    - longest_diam_dim2
+    - diam_dim2_type
+    - longest_diam_dim3
+    - diam_dim3_type
+    - pleural_effusion
+    - pericardial_effusion
+    - lesion_response
+    - lesion_pct_change
+    comments: []
+    in_subset:
+    - hl
+    annotations:
+      domain: disease_attributes
+    slot_usage:
+      subjects_submitter_id:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nbl
+        - nrsts
+        - rms
+      timings_submitter_id:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nbl
+        - nrsts
+        - rms
+      age_at_lesion_assessment:
+        in_subset:
+        - hl
+      lesion_assessment_review:
+        in_subset:
+        - hl
+      lesion_detection_method:
+        in_subset:
+        - hl
+      lesion_classification:
+        in_subset:
+        - hl
+      lesion_site:
+        in_subset:
+        - hl
+      e_extension_site:
+        in_subset:
+        - hl
+      lesion_laterality:
+        in_subset:
+        - hl
+      lesion_bulky:
+        in_subset:
+        - hl
+      longest_diam_dim1:
+        in_subset:
+        - hl
+        - nrsts
+        - rms
+      diam_dim1_type:
+        in_subset:
+        - hl
+      longest_diam_dim2:
+        in_subset:
+        - hl
+        - nrsts
+        - rms
+      diam_dim2_type:
+        in_subset:
+        - hl
+      longest_diam_dim3:
+        in_subset:
+        - hl
+        - nrsts
+        - rms
+      diam_dim3_type:
+        in_subset:
+        - hl
+      pleural_effusion:
+        in_subset:
+        - hl
+      pericardial_effusion:
+        in_subset:
+        - hl
+      lesion_response:
+        in_subset:
+        - hl
+      lesion_pct_change:
+        in_subset:
+        - hl
+  BiopsySurgicalProcedure:
+    slots:
+    - subjects_submitter_id
+    - timings_submitter_id
+    - age_at_procedure
+    - procedure_performed
+    - procedure_treatment_timing
+    - procedure_site
+    - procedure_laterality
+    - procedure_type
+    - procedure_extent
+    - mass_present
+    - viable_tumor_specimen
+    - viable_tumor_margin
+    - margins
+    - tumor_classification
+    comments: []
+    in_subset:
+    - gct
+    - hl
+    - nrsts
+    - rms
+    annotations:
+      domain: intervention
+    slot_usage:
+      subjects_submitter_id:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nbl
+        - nrsts
+        - rms
+      timings_submitter_id:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nbl
+        - nrsts
+        - rms
+      age_at_procedure:
+        in_subset:
+        - gct
+        - hl
+      procedure_performed:
+        in_subset:
+        - rms
+      procedure_treatment_timing:
+        in_subset:
+        - rms
+      procedure_site:
+        in_subset:
+        - gct
+        - hl
+      procedure_laterality:
+        in_subset:
+        - gct
+      procedure_type:
+        in_subset:
+        - gct
+        - hl
+        - nrsts
+        - rms
+      procedure_extent:
+        in_subset:
+        - gct
+        - hl
+      mass_present:
+        in_subset:
+        - rms
+      viable_tumor_specimen:
+        in_subset:
+        - rms
+      viable_tumor_margin:
+        in_subset:
+        - rms
+      margins:
+        in_subset:
+        - gct
+        - nrsts
+        - rms
+      tumor_classification:
+        in_subset:
+        - gct
+        - nbl
+        - nrsts
+        - rms
+  StemCellTransplant:
+    slots:
+    - subjects_submitter_id
+    - timings_submitter_id
+    - age_at_sct
+    - sct_type
+    - sct_source
+    - sct_donor_relationship
+    - hla_match
+    - number_hla
+    - number_matches
+    - hla_a_result
+    - hla_b_result
+    - hla_c_result
+    - hla_drb1_result
+    - hla_dq_result
+    - sct_conditioning_type
+    - sct_tbi
+    - sct_cd34_coll
+    comments: []
+    in_subset:
+    - aml
+    - gct
+    - hl
+    annotations:
+      domain: intervention
+    slot_usage:
+      subjects_submitter_id:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nbl
+        - nrsts
+        - rms
+      timings_submitter_id:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nbl
+        - nrsts
+        - rms
+      age_at_sct:
+        in_subset:
+        - aml
+        - gct
+        - hl
+      sct_type:
+        in_subset:
+        - aml
+        - hl
+      sct_source:
+        in_subset:
+        - aml
+        - hl
+      sct_donor_relationship:
+        in_subset:
+        - aml
+        - hl
+      hla_match:
+        in_subset:
+        - aml
+      number_hla:
+        in_subset:
+        - aml
+      number_matches:
+        in_subset:
+        - aml
+      hla_a_result:
+        in_subset:
+        - aml
+      hla_b_result:
+        in_subset:
+        - aml
+      hla_c_result:
+        in_subset:
+        - aml
+      hla_drb1_result:
+        in_subset:
+        - aml
+      hla_dq_result:
+        in_subset:
+        - aml
+      sct_conditioning_type:
+        in_subset:
+        - aml
+        - hl
+      sct_tbi:
+        in_subset:
+        - aml
+      sct_cd34_coll:
+        in_subset:
+        - hl
+  TransfusionMedicineProcedure:
+    slots:
+    - subjects_submitter_id
+    - timings_submitter_id
+    - age_at_tmp_start
+    - tmp_type
+    - tmp_product
+    - tmp_product_type
+    - tmp_number_units
+    comments: []
+    in_subset:
+    - aml
+    - hl
+    annotations:
+      domain: intervention
+    slot_usage:
+      subjects_submitter_id:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nbl
+        - nrsts
+        - rms
+      timings_submitter_id:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nbl
+        - nrsts
+        - rms
+      age_at_tmp_start:
+        in_subset:
+        - aml
+        - hl
+      tmp_type:
+        in_subset:
+        - aml
+        - hl
+      tmp_product:
+        in_subset:
+        - aml
+        - hl
+      tmp_product_type:
+        in_subset:
+        - hl
+      tmp_number_units:
+        in_subset:
+        - hl
+  RadiationTherapy:
+    slots:
+    - subjects_submitter_id
+    - timings_submitter_id
+    - age_at_rt_start
+    - age_at_rt_end
+    - rt_timing
+    - administration_status
+    - rt_site
+    - rt_dose
+    - rt_unit
+    - boost_dose
+    - boost
+    - energy_type
+    - num_fraction
+    - rt_laterality
+    - tumor_classification
+    comments: []
+    in_subset:
+    - aml
+    - gct
+    - hl
+    - nrsts
+    - rms
+    annotations:
+      domain: intervention
+    slot_usage:
+      subjects_submitter_id:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nbl
+        - nrsts
+        - rms
+      timings_submitter_id:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nbl
+        - nrsts
+        - rms
+      age_at_rt_start:
+        in_subset:
+        - aml
+        - gct
+        - hl
+      age_at_rt_end:
+        in_subset:
+        - aml
+        - gct
+        - hl
+      rt_timing:
+        in_subset:
+        - nrsts
+        - rms
+      administration_status:
+        in_subset:
+        - nrsts
+        - rms
+      rt_site:
+        in_subset:
+        - aml
+        - gct
+        - hl
+      rt_dose:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nrsts
+        - rms
+      rt_unit:
+        in_subset:
+        - aml
+        - gct
+        - hl
+      boost_dose:
+        in_subset:
+        - hl
+      boost:
+        in_subset:
+        - gct
+      energy_type:
+        in_subset:
+        - gct
+        - hl
+        - nrsts
+        - rms
+      num_fraction:
+        in_subset:
+        - gct
+      rt_laterality:
+        in_subset:
+        - hl
+      tumor_classification:
+        in_subset:
+        - gct
+        - nbl
+        - nrsts
+        - rms
+  TotalDose:
+    slots:
+    - subjects_submitter_id
+    - timings_submitter_id
+    - age_at_total_dose_start
+    - age_at_total_dose_end
+    - cycle_number
+    - administration_status
+    - route
+    - antineoplastic_agent
+    - number_doses
+    - total_dose_administered
+    - total_dose_intended
+    - total_dose_units
+    - route_detail
+    comments: []
+    in_subset:
+    - gct
+    - hl
+    annotations:
+      domain: intervention
+    slot_usage:
+      subjects_submitter_id:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nbl
+        - nrsts
+        - rms
+      timings_submitter_id:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nbl
+        - nrsts
+        - rms
+      age_at_total_dose_start:
+        in_subset:
+        - aml
+        - gct
+        - hl
+      age_at_total_dose_end:
+        in_subset:
+        - aml
+        - hl
+        - gct
+      cycle_number:
+        in_subset:
+        - hl
+      administration_status:
+        in_subset:
+        - nrsts
+        - rms
+      route:
+        in_subset:
+        - aml
+        - hl
+      antineoplastic_agent:
+        in_subset:
+        - aml
+        - gct
+        - hl
+      number_doses:
+        in_subset:
+        - aml
+        - hl
+      total_dose_administered:
+        in_subset:
+        - aml
+        - gct
+        - hl
+      total_dose_intended:
+        in_subset:
+        - aml
+        - hl
+      total_dose_units:
+        in_subset:
+        - aml
+        - gct
+        - hl
+      route_detail:
+        in_subset:
+        - hl
+  ProtocolTreatmentModifications:
+    slots:
+    - subjects_submitter_id
+    - timings_submitter_id
+    - age_at_mod
+    - mod_type
+    - mod_rationale
+    - mod_reason
+    - toxicity_detail
+    - toxicity_immune
+    - toxicity_infusion
+    - original_agent
+    - sub_agent
+    comments: []
+    in_subset:
+    - hl
+    annotations:
+      domain: intervention
+    slot_usage:
+      subjects_submitter_id:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nbl
+        - nrsts
+        - rms
+      timings_submitter_id:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nbl
+        - nrsts
+        - rms
+      age_at_mod:
+        in_subset:
+        - hl
+      mod_type:
+        in_subset:
+        - hl
+      mod_rationale:
+        in_subset:
+        - hl
+      mod_reason:
+        in_subset:
+        - hl
+      toxicity_detail:
+        in_subset:
+        - hl
+      toxicity_immune:
+        in_subset:
+        - hl
+      toxicity_infusion:
+        in_subset:
+        - hl
+      original_agent:
+        in_subset:
+        - hl
+      sub_agent:
+        in_subset:
+        - hl
+  CellularImmunotherapy:
+    slots:
+    - subjects_submitter_id
+    - timings_submitter_id
+    - age_at_cimt_start
+    - cimt_type
+    comments: []
+    in_subset:
+    - aml
+    annotations:
+      domain: intervention
+    slot_usage:
+      subjects_submitter_id:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nbl
+        - nrsts
+        - rms
+      timings_submitter_id:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nbl
+        - nrsts
+        - rms
+      age_at_cimt_start:
+        in_subset:
+        - aml
+      cimt_type:
+        in_subset:
+        - aml
+  NonProtocolTherapy:
+    slots:
+    - subjects_submitter_id
+    - npt_timing
+    - npt_type
+    - npt_sct_type
+    comments: []
+    in_subset:
+    - hl
+    annotations:
+      domain: intervention
+    slot_usage:
+      subjects_submitter_id:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nbl
+        - nrsts
+        - rms
+      npt_timing:
+        in_subset:
+        - hl
+      npt_type:
+        in_subset:
+        - hl
+      npt_sct_type:
+        in_subset:
+        - hl
+  SubjectResponse:
+    slots:
+    - subjects_submitter_id
+    - timings_submitter_id
+    - age_at_response
+    - response_method
+    - response_category
+    - response_criteria
+    - response_criteria_version
+    - response
+    - bm_pct_blasts_at_response
+    - bm_analysis_method_at_response
+    - anc_at_response
+    - anc_threshold_at_response
+    - platelet_count_at_response
+    - platelet_threshold_at_response
+    - interim_response
+    - necrosis
+    - necrosis_pct
+    - nodular_splenic
+    - palpable_nodes
+    - symptoms
+    - tx_prior_response
+    comments: []
+    in_subset:
+    - aml
+    - gct
+    - hl
+    - nrsts
+    - rms
+    annotations:
+      domain: monitoring
+    slot_usage:
+      subjects_submitter_id:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nbl
+        - nrsts
+        - rms
+      timings_submitter_id:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nbl
+        - nrsts
+        - rms
+      age_at_response:
+        in_subset:
+        - aml
+        - gct
+        - hl
+      response_method:
+        in_subset:
+        - gct
+        - hl
+        - rms
+      response_category:
+        in_subset:
+        - aml
+        - gct
+        - hl
+      response_criteria:
+        in_subset:
+        - gct
+        - hl
+      response_criteria_version:
+        in_subset:
+        - gct
+        - hl
+      response:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nrsts
+        - rms
+      bm_pct_blasts_at_response:
+        in_subset:
+        - aml
+      bm_analysis_method_at_response:
+        in_subset:
+        - aml
+      anc_at_response:
+        in_subset:
+        - aml
+      anc_threshold_at_response:
+        in_subset:
+        - aml
+      platelet_count_at_response:
+        in_subset:
+        - aml
+      platelet_threshold_at_response:
+        in_subset:
+        - aml
+      interim_response:
+        in_subset:
+        - hl
+      necrosis:
+        in_subset:
+        - nrsts
+      necrosis_pct:
+        in_subset:
+        - nrsts
+      nodular_splenic:
+        in_subset:
+        - hl
+      palpable_nodes:
+        in_subset:
+        - hl
+      symptoms:
+        in_subset:
+        - hl
+      tx_prior_response:
+        in_subset:
+        - nrsts
+        - rms
+  MinimalResidualDisease:
+    slots:
+    - subjects_submitter_id
+    - timings_submitter_id
+    - age_at_mrd_assessment
+    - mrd_method
+    - flow_cytometry_type
+    - mrd_result
+    - mrd_result_numeric
+    - mrd_result_unit
+    - mrd_sensitivity
+    - mrd_sample_source
+    - mrd_molecular_markers
+    comments: []
+    in_subset:
+    - aml
+    annotations:
+      domain: monitoring
+    slot_usage:
+      subjects_submitter_id:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nbl
+        - nrsts
+        - rms
+      timings_submitter_id:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nbl
+        - nrsts
+        - rms
+      age_at_mrd_assessment:
+        in_subset:
+        - aml
+      mrd_method:
+        in_subset:
+        - aml
+      flow_cytometry_type:
+        in_subset:
+        - aml
+      mrd_result:
+        in_subset:
+        - aml
+      mrd_result_numeric:
+        in_subset:
+        - aml
+      mrd_result_unit:
+        in_subset:
+        - aml
+      mrd_sensitivity:
+        in_subset:
+        - aml
+      mrd_sample_source:
+        in_subset:
+        - aml
+      mrd_molecular_markers:
+        in_subset:
+        - aml
+  SecondaryMalignantNeoplasm:
+    slots:
+    - subjects_submitter_id
+    - timings_submitter_id
+    - age_at_smn
+    - smn_morph_sno
+    - smn_morph_txt
+    - smn_site
+    - smn_top_sno
+    - smn_top_txt
+    - smn_type
+    - smn_yn
+    - smn_morph_icdo
+    - smn_top_icdo
+    - smn_field
+    comments: []
+    in_subset:
+    - aml
+    - gct
+    - hl
+    annotations:
+      domain: monitoring
+    slot_usage:
+      subjects_submitter_id:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nbl
+        - nrsts
+        - rms
+      timings_submitter_id:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nbl
+        - nrsts
+        - rms
+      age_at_smn:
+        in_subset:
+        - aml
+        - gct
+        - hl
+      smn_morph_sno:
+        in_subset:
+        - nbl
+      smn_morph_txt:
+        in_subset:
+        - nbl
+      smn_site:
+        in_subset:
+        - nrsts
+        - rms
+      smn_top_sno:
+        in_subset:
+        - nbl
+      smn_top_txt:
+        in_subset:
+        - nbl
+      smn_type:
+        in_subset:
+        - nrsts
+        - rms
+      smn_yn:
+        in_subset:
+        - nrsts
+        - rms
+      smn_morph_icdo:
+        in_subset:
+        - aml
+        - gct
+      smn_top_icdo:
+        in_subset:
+        - aml
+        - gct
+      smn_field:
+        in_subset:
+        - hl
+  AdverseEvent:
+    slots:
+    - subjects_submitter_id
+    - timings_submitter_id
+    - age_at_ae
+    - age_at_ae_resolved
+    - adverse_event
+    - ae_code
+    - ae_system
+    - ae_system_version
+    - ae_grade
+    - ae_attribution
+    - ae_outcome
+    - ae_icu
+    - ae_medication
+    - ae_intervention
+    - ae_med_intervention_detail
+    - ae_pathogen
+    - ae_pathogen_confirmation
+    - gvhd_acuity
+    - gvhd_organ
+    comments: []
+    in_subset:
+    - aml
+    - gct
+    - hl
+    annotations:
+      domain: monitoring
+    slot_usage:
+      subjects_submitter_id:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nbl
+        - nrsts
+        - rms
+      timings_submitter_id:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nbl
+        - nrsts
+        - rms
+      age_at_ae:
+        in_subset:
+        - aml
+        - gct
+        - hl
+      age_at_ae_resolved:
+        in_subset:
+        - hl
+      adverse_event:
+        in_subset:
+        - aml
+        - gct
+        - hl
+      ae_code:
+        in_subset:
+        - aml
+        - hl
+      ae_system:
+        in_subset:
+        - aml
+        - hl
+      ae_system_version:
+        in_subset:
+        - aml
+        - hl
+      ae_grade:
+        in_subset:
+        - aml
+        - gct
+        - hl
+      ae_attribution:
+        in_subset:
+        - aml
+        - gct
+        - hl
+      ae_outcome:
+        in_subset:
+        - aml
+        - gct
+        - hl
+      ae_icu:
+        in_subset:
+        - aml
+      ae_medication:
+        in_subset:
+        - aml
+        - hl
+      ae_intervention:
+        in_subset:
+        - aml
+        - hl
+      ae_med_intervention_detail:
+        in_subset:
+        - aml
+      ae_pathogen:
+        in_subset:
+        - aml
+        - hl
+      ae_pathogen_confirmation:
+        in_subset:
+        - aml
+      gvhd_acuity:
+        in_subset:
+        - aml
+      gvhd_organ:
+        in_subset:
+        - aml
+  GrowingTeratomaSyndrome:
+    slots:
+    - subjects_submitter_id
+    - timings_submitter_id
+    - age_at_gts
+    - gts_treatment
+    comments: []
+    in_subset:
+    - gct
+    annotations:
+      domain: monitoring
+    slot_usage:
+      subjects_submitter_id:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nbl
+        - nrsts
+        - rms
+      timings_submitter_id:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nbl
+        - nrsts
+        - rms
+      age_at_gts:
+        in_subset:
+        - gct
+      gts_treatment:
+        in_subset:
+        - gct
+  LateEffects:
+    slots:
+    - subjects_submitter_id
+    - age_at_le_eval
+    - le
+    - le_detail
+    - le_sub_detail
+    - le_severity_grade
+    - le_ctcae_version
+    comments: []
+    in_subset:
+    - hl
+    annotations:
+      domain: monitoring
+    slot_usage:
+      subjects_submitter_id:
+        in_subset:
+        - aml
+        - gct
+        - hl
+        - nbl
+        - nrsts
+        - rms
+      age_at_le_eval:
+        in_subset:
+        - hl
+      le:
+        in_subset:
+        - hl
+      le_detail:
+        in_subset:
+        - hl
+      le_sub_detail:
+        in_subset:
+        - hl
+      le_severity_grade:
+        in_subset:
+        - hl
+      le_ctcae_version:
+        in_subset:
+        - hl
+annotations:
+  docs:
+    domains:
+      demographics:
+        title: Demographics
+        description: Demographics contains subject identity, enrollment, study participation, longitudinal episode structure, survival status, family and medical history, and other contextual information needed to interpret records across the model.
+      testing:
+        title: Testing
+        description: Testing contains laboratory, pathology, genomic, functional, anthropometric, and specimen-related observations used to characterize subjects, disease biology, eligibility, monitoring, and research sample availability.
+      disease_attributes:
+        title: Disease Attributes
+        description: Disease Attributes contains diagnostic, staging, anatomic, histologic, biologic, risk, extent-of-disease, and disease-site concepts used to characterize the subject's cancer or cancer-related condition.
+      intervention:
+        title: Intervention
+        description: Intervention contains treatment and procedure records, including surgery, medications, radiation therapy, transplantation, transfusion, cellular therapy, locoregional therapy, fertility preservation procedures, and protocol treatment modifications.
+      monitoring:
+        title: Monitoring
+        description: Monitoring contains response, residual disease, toxicity, late effects, subsequent neoplasms, reproductive outcomes, patient-reported outcomes, and other follow-up concepts used to evaluate disease course and treatment impact over time.
