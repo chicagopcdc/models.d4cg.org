@@ -5,1366 +5,2209 @@ prefixes:
   linkml: https://w3id.org/linkml/
   ncit: http://purl.obolibrary.org/obo/NCIT_
 imports:
-- linkml:types
+  - linkml:types
 enums:
   DataContributorIDEnum:
     permissible_values:
       UChicago Monogenic Diabetes Research Group:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Barbara Davis Center / UColorado:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Baylor:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Boston Children's:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Cincinnati Children's Hospital:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Endeavor:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Indiana:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       MGH:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Maryland:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Michigan:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Nebraska:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       NorthShore:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       WashU:
         meaning: ''
         comments: []
+        in_subset:
+          - base
   DataSourceEnum:
     permissible_values:
       Self-Reported:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       EHR:
         meaning: ''
         comments: []
+        in_subset:
+          - base
   LastKnownSurvivalStatusEnum:
     permissible_values:
       Alive:
-        meaning: ''
+        meaning: 'ncit:C37987'
         comments: []
+        in_subset:
+          - base
       Dead:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Unknown:
-        meaning: ''
+        meaning: 'ncit:C17998'
         comments: []
+        in_subset:
+          - base
       Not Reported:
         meaning: ''
         comments: []
+        in_subset:
+          - base
   AgeLastContactUnitEnum:
     permissible_values:
       Years:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Months:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Weeks:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Days:
         meaning: ''
         comments: []
+        in_subset:
+          - base
   AgeLastContactPrecisionEnum:
     permissible_values:
       Approximate:
-        meaning: ''
+        meaning: 'ncit:C45828'
         comments: []
+        in_subset:
+          - base
       Exact:
-        meaning: ''
+        meaning: 'ncit:C86021'
         comments: []
+        in_subset:
+          - base
   TimepointEnum:
     permissible_values:
       Prediabetes Diagnosis:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Monogenic Diabetes Diagnosis:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Gestational Diabetes Diagnosis:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Type 1 Diabetes Diagnosis:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Type 2 Diabetes Diagnosis:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Relapse:
-        meaning: ''
+        meaning: 'ncit:C38155'
         comments: []
+        in_subset:
+          - base
       Remission:
         meaning: ''
         comments: []
+        in_subset:
+          - base
   RelationEnum:
     permissible_values:
       Father:
-        meaning: ''
+        meaning: 'ncit:C96572'
         comments: []
+        in_subset:
+          - base
       Mother:
-        meaning: ''
+        meaning: 'ncit:C96580'
         comments: []
+        in_subset:
+          - base
       Son:
-        meaning: ''
+        meaning: 'ncit:C150888'
         comments: []
+        in_subset:
+          - base
       Daughter:
-        meaning: ''
+        meaning: 'ncit:C150887'
         comments: []
+        in_subset:
+          - base
       Brother:
-        meaning: ''
+        meaning: 'ncit:C96570'
         comments: []
+        in_subset:
+          - base
       Sister:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Spouse/Partner:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Grandfather (Paternal):
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Grandfather (Maternal):
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Grandfather (Paternal/Maternal Unknown):
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Grandmother (Paternal):
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Grandmother (Maternal):
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Grandmother (Paternal/Maternal Unknown):
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Uncle (Paternal):
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Uncle (Maternal):
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Uncle (Paternal/Maternal Unknown):
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Aunt (Paternal):
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Aunt (Maternal):
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Aunt (Paternal/Maternal Unknown):
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Niece:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Nephew:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       First Cousin (Paternal):
         meaning: ''
         comments: []
+        in_subset:
+          - base
       First Cousin (Maternal):
         meaning: ''
         comments: []
+        in_subset:
+          - base
       First Cousin (Paternal/Maternal Unknown):
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Great-Grandfather (Paternal):
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Great-Grandfather (Maternal):
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Great-Grandfather (Paternal/Maternal Unknown):
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Great-Grandmother (Paternal):
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Great-Grandmother (Maternal):
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Great-Grandmother (Paternal/Maternal Unknown):
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Great-Uncle (Paternal):
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Great-Uncle (Maternal):
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Great-Uncle (Paternal/Maternal Unknown):
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Great-Aunt (Paternal):
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Great-Aunt (Maternal):
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Great-Aunt (Paternal/Maternal Unknown):
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Other:
-        meaning: ''
+        meaning: 'ncit:C17649'
         comments: []
+        in_subset:
+          - base
   ConditionEnum:
     permissible_values:
       Prediabetes:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Type 1 Diabetes:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Type 2 Diabetes:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Monogenic Diabetes:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Gestational Diabetes:
         meaning: ''
         comments: {}
+        in_subset:
+          - base
       Diabetes, NOS:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Hypoglycemia:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Genitourinary Developmental Malformation Or Abnormality:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Abnormal Kidney Shape, Size, Or Number:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Kidney Cysts:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Hypomagnesemia:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Encephalomyopathy:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Lactic Acidosis:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Stroke-Like Episodes:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Hearing Loss:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Optic Atrophy:
         meaning: ''
         comments: []
+        in_subset:
+          - base
   SourceEnum:
     permissible_values:
       Confirmed By Genetic Test:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Clinical Diagnosis Only:
         meaning: ''
         comments: []
+        in_subset:
+          - base
   SexEnum:
     permissible_values:
       Male:
-        meaning: ''
+        meaning: 'ncit:C20197'
         comments: []
+        in_subset:
+          - base
       Female:
-        meaning: ''
+        meaning: 'ncit:C16576'
         comments: []
+        in_subset:
+          - base
       Undifferentiated:
-        meaning: ''
+        meaning: 'ncit:C41438'
         comments: []
+        in_subset:
+          - base
   EthnicityEnum:
     permissible_values:
       Hispanic or Latino:
-        meaning: ''
+        meaning: 'ncit:C17459'
         comments: []
+        in_subset:
+          - base
       Not Hispanic or Latino:
-        meaning: ''
+        meaning: 'ncit:C41222'
         comments: []
+        in_subset:
+          - base
       Unknown:
-        meaning: ''
+        meaning: 'ncit:C17998'
         comments: []
+        in_subset:
+          - base
       Not Reported:
         meaning: ''
         comments: []
+        in_subset:
+          - base
   RaceEnum:
     permissible_values:
       American Indian or Alaska Native:
-        meaning: ''
+        meaning: 'ncit:C41259'
         comments: []
+        in_subset:
+          - base
       Asian:
-        meaning: ''
+        meaning: 'ncit:C41260'
         comments: []
+        in_subset:
+          - base
       Black or African American:
-        meaning: ''
+        meaning: 'ncit:C16352'
         comments: []
+        in_subset:
+          - base
       Native Hawaiian or Other Pacific Islander:
-        meaning: ''
+        meaning: 'ncit:C41219'
         comments: []
+        in_subset:
+          - base
       White:
-        meaning: ''
+        meaning: 'ncit:C41261'
         comments: []
+        in_subset:
+          - base
       Multiracial:
-        meaning: ''
+        meaning: 'ncit:C67109'
         comments: []
+        in_subset:
+          - base
       Unknown:
-        meaning: ''
+        meaning: 'ncit:C17998'
         comments: []
+        in_subset:
+          - base
       Not Reported:
         meaning: ''
         comments: []
+        in_subset:
+          - base
   MedicalHistoryConditionEnum:
     permissible_values:
       Abnormal Kidney Shape, Size, Or Number:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Absent Or Missing Pancreas:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Behavioral Difficulties:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Congenital Heart Defect:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Coronary Artery Disease:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Difficulty With Social Interactions:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Elevated Liver Enzymes / LFTs:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Fatty Liver:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Genitourinary Developmental Malformation Or Abnormality:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Gestational Diabetes:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Hepatomegaly:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       High Cholesterol, NOS:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       High Frequency Hearing Loss:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       High LDL:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       High Total Cholesterol:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       High Triglycerides:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Hypertension:
-        meaning: ''
+        meaning: 'ncit:C3117'
         comments: []
+        in_subset:
+          - base
       Hypoglycemia In Infancy:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Intrauterine Growth Restriction:
-        meaning: ''
+        meaning: 'ncit:C87088'
         comments: []
+        in_subset:
+          - base
       Liver Adenoma:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Low Frequency Hearing Loss:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Low HDL:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Macroglossia:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Nephropathy:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Peripheral Artery Disease:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Peripheral Neuropathy:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Polycystic Kidney Disease:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Proteinuria:
-        meaning: ''
+        meaning: 'ncit:C38012'
         comments: []
+        in_subset:
+          - base
       Renal Cyst:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Retinopathy:
-        meaning: ''
+        meaning: 'ncit:C55891'
         comments: []
+        in_subset:
+          - base
       Small For Gestational Age:
-        meaning: ''
+        meaning: 'ncit:C114934'
         comments: []
+        in_subset:
+          - base
       Small Pancreas:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Stroke:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Umbilical Hernia:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Other:
-        meaning: ''
+        meaning: 'ncit:C17649'
         comments:
-        - '(md_v1.3) ConsortiumNote: Only select ''Other'' if the condition is not related to the provided list (which are designated as ''of interest'' by the PREDICT group).'
+          - '(base) ConsortiumNote: Only select ''Other'' if the condition is not related to the provided list (which are
+            designated as ''of interest'' by the PREDICT group).'
+        in_subset:
+          - base
   CodeSystemEnum:
     permissible_values:
       CTCAE:
-        meaning: ''
+        meaning: 'ncit:C49704'
         comments: []
+        in_subset:
+          - base
       ICD-9:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       ICD-10:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       SNOMED-CT:
         meaning: ''
         comments: []
+        in_subset:
+          - base
   MeasurementTypeEnum:
     permissible_values:
       Height/Length:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Weight:
-        meaning: ''
+        meaning: 'ncit:C81328'
         comments: []
+        in_subset:
+          - base
       BMI:
-        meaning: ''
+        meaning: 'ncit:C138901'
         comments: []
+        in_subset:
+          - base
       Raw BMI:
         meaning: ''
         comments: []
+        in_subset:
+          - base
   MeasurementUnitEnum:
     permissible_values:
       kg:
-        meaning: ''
+        meaning: 'ncit:C28252'
         comments: []
+        in_subset:
+          - base
       cm:
-        meaning: ''
+        meaning: 'ncit:C49668'
         comments: []
+        in_subset:
+          - base
       kg/m^2:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       percentile:
         meaning: ''
         comments:
-        - '(md_v1.3) ConsortiumNote: Use percentile as a unit when reporting pediatric BMI.'
+          - '(base) ConsortiumNote: Use percentile as a unit when reporting pediatric BMI.'
+        in_subset:
+          - base
   SampleTypeEnum:
     permissible_values:
       Saliva:
-        meaning: ''
+        meaning: 'ncit:C174119'
         comments: []
+        in_subset:
+          - base
       Blood:
-        meaning: ''
+        meaning: 'ncit:C17610'
         comments: []
+        in_subset:
+          - base
       DNA:
-        meaning: ''
+        meaning: 'ncit:C449'
         comments: []
+        in_subset:
+          - base
       Plasma:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Serum:
-        meaning: ''
+        meaning: 'ncit:C178987'
         comments: []
+        in_subset:
+          - base
       Urine:
-        meaning: ''
+        meaning: 'ncit:C13283'
         comments: []
+        in_subset:
+          - base
       PBMC:
         meaning: ''
         comments: []
+        in_subset:
+          - base
   YesNoEnum:
     permissible_values:
       'Yes':
-        meaning: ''
+        meaning: 'ncit:C49488'
         comments: []
+        in_subset:
+          - base
       'No':
-        meaning: ''
+        meaning: 'ncit:C49487'
         comments: []
+        in_subset:
+          - base
       Unknown:
-        meaning: ''
+        meaning: 'ncit:C17998'
         comments: []
+        in_subset:
+          - base
       Not Reported:
         meaning: ''
         comments: []
+        in_subset:
+          - base
   StatusEnum:
     permissible_values:
       Present:
-        meaning: ''
+        meaning: 'ncit:C25566'
         comments: []
+        in_subset:
+          - base
       Absent:
-        meaning: ''
+        meaning: 'ncit:C25567'
         comments: []
+        in_subset:
+          - base
       Unknown:
-        meaning: ''
+        meaning: 'ncit:C17998'
         comments: []
+        in_subset:
+          - base
       Not Reported:
         meaning: ''
         comments: []
+        in_subset:
+          - base
   GeneticAnalysisSampleTypeEnum:
     permissible_values:
       Saliva:
-        meaning: ''
+        meaning: 'ncit:C174119'
         comments: []
+        in_subset:
+          - base
       Blood:
-        meaning: ''
+        meaning: 'ncit:C17610'
         comments: []
+        in_subset:
+          - base
       Buccal:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Urine:
-        meaning: ''
+        meaning: 'ncit:C13283'
         comments: []
+        in_subset:
+          - base
       Unknown:
-        meaning: ''
+        meaning: 'ncit:C17998'
         comments: []
+        in_subset:
+          - base
       Not Reported:
         meaning: ''
         comments: []
+        in_subset:
+          - base
   LaboratoryNameEnum:
     permissible_values:
       Ambry Genetics:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Athena:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Baylor Genetics:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Blueprint:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Exeter:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       GeneDx:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Invitae:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       LMG:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Research Lab:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Seattle Children's Hospital:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       UCGSL:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Prevention Genetics:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Unknown:
-        meaning: ''
+        meaning: 'ncit:C17998'
         comments: []
+        in_subset:
+          - base
       Not Reported:
         meaning: ''
         comments: []
+        in_subset:
+          - base
   MethodEnum:
     permissible_values:
       Karyotyping:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Fluorescence In Situ Hybridization:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       RT-PCR:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       PCR:
-        meaning: ''
+        meaning: 'ncit:C17003'
         comments: []
+        in_subset:
+          - base
       MLPA:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Sequencing, Sanger, Capillary Electropheresis:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Sequencing, Sanger, Gel Electropheresis:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Sequencing, Sanger, NOS:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Sequencing, NGS, Whole Genome:
-        meaning: ''
+        meaning: 'ncit:C101294'
         comments: []
+        in_subset:
+          - base
       Sequencing, NGS, lcWGS:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Sequencing, NGS, Whole Exome:
-        meaning: ''
+        meaning: 'ncit:C101295'
         comments: []
+        in_subset:
+          - base
       Sequencing, NGS, Multi-Gene Panel:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Sequencing, NGS, Single Site:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Sequencing, NGS, Single Gene DNA:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Sequencing, NGS, Targeted DNA:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Sequencing, NGS, Targeted RNA:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Sequencing, NGS, Total RNA:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Sequencing, NGS, TDS:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Sequencing, NGS, NOS:
-        meaning: ''
+        meaning: 'ncit:C101293'
         comments: []
+        in_subset:
+          - base
       Sequencing, Methylation Array:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Sequencing, Nanostring:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       SNP Array:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Array CGH:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Genotyping, NOS:
-        meaning: ''
+        meaning: 'ncit:C45447'
         comments: []
+        in_subset:
+          - base
       Cytogenetics, NOS:
-        meaning: ''
+        meaning: 'ncit:C16487'
         comments: []
+        in_subset:
+          - base
       Other:
-        meaning: ''
+        meaning: 'ncit:C17649'
         comments: []
+        in_subset:
+          - base
       Unknown:
-        meaning: ''
+        meaning: 'ncit:C17998'
         comments: []
+        in_subset:
+          - base
       Not Reported:
         meaning: ''
         comments: []
+        in_subset:
+          - base
   GeneEnum:
     permissible_values:
       6q24-Related Abnormalities:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       ABCC8:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       CEL:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       CFTR:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       DCAF17:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       EIF2AK3:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       FOXP3:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       GATA4:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       GATA6:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       GCK:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       GLIS3:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       HNF1A:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       HNF1B:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       HNF4A:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       IAPP (Amylin):
         meaning: ''
         comments: []
+        in_subset:
+          - base
       IER3IP1:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       IGF2/Russell Silver Syndrome:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       IL2RA:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       INS:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       INSR:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       KCNJ11:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       LRBA:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       mtDNA:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       NEUROD1:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       PAX4:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       PCBD1:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       PDX1 (IPF1):
         meaning: ''
         comments: []
+        in_subset:
+          - base
       PTF1A:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       RFX6:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       STAT3:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       WFS1:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Unknown:
-        meaning: ''
+        meaning: 'ncit:C17998'
         comments: []
+        in_subset:
+          - base
       Not Reported:
         meaning: ''
         comments: []
+        in_subset:
+          - base
   AlterationTypeEnum:
     permissible_values:
       Chromosome Arm Gain:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Chromosome Arm Loss:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Substitution:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Deletion:
-        meaning: ''
+        meaning: 'ncit:C16606'
         comments: []
+        in_subset:
+          - base
       Insertion:
-        meaning: ''
+        meaning: 'so:0000667'
         comments: []
+        in_subset:
+          - base
       Indel:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Duplication:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Unknown:
-        meaning: ''
+        meaning: 'ncit:C17998'
         comments: []
+        in_subset:
+          - base
       Not Reported:
         meaning: ''
         comments: []
+        in_subset:
+          - base
   AlterationEffectEnum:
     permissible_values:
       Frameshift:
-        meaning: ''
+        meaning: 'ncit:C17354'
         comments: []
+        in_subset:
+          - base
       Missense:
-        meaning: ''
+        meaning: 'ncit:C18133'
         comments: []
+        in_subset:
+          - base
       Stop Gained (Nonsense):
         meaning: ''
         comments: []
+        in_subset:
+          - base
       None (Inframe):
         meaning: ''
         comments: []
+        in_subset:
+          - base
   AlterationRegionEnum:
     permissible_values:
       Splice Site:
-        meaning: ''
+        meaning: 'ncit:C45574'
         comments: []
+        in_subset:
+          - base
       5' UTR:
-        meaning: ''
+        meaning: 'ncit:C13371'
         comments: []
+        in_subset:
+          - base
       3' UTR:
-        meaning: ''
+        meaning: 'ncit:C13373'
         comments: []
+        in_subset:
+          - base
   ReportedSignificanceEnum:
     permissible_values:
       Pathogenic:
-        meaning: ''
+        meaning: 'ncit:C168799'
         comments: []
+        in_subset:
+          - base
       Likely Pathogenic:
-        meaning: ''
+        meaning: 'ncit:C168800'
         comments: []
+        in_subset:
+          - base
       Pathogenic/Likely Pathogenic:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Likely Pathogenic/Uncertain Significance:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Uncertain Significance:
-        meaning: ''
+        meaning: 'ncit:C94187'
         comments: []
+        in_subset:
+          - base
       Likely Benign:
-        meaning: ''
+        meaning: 'ncit:C168801'
         comments: []
+        in_subset:
+          - base
       Uncertain Significance/Likely Benign:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Benign:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Likely Benign/Benign:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Unknown:
-        meaning: ''
+        meaning: 'ncit:C17998'
         comments: []
+        in_subset:
+          - base
       Not Reported:
         meaning: ''
         comments: []
+        in_subset:
+          - base
   AllelicStateEnum:
     permissible_values:
       Homozygous:
-        meaning: ''
+        meaning: 'ncit:C45826'
         comments: []
+        in_subset:
+          - base
       Heterozygous:
-        meaning: ''
+        meaning: 'ncit:C45825'
         comments: []
+        in_subset:
+          - base
       Compound Heterozygous:
-        meaning: ''
+        meaning: 'ncit:C198518'
         comments: []
+        in_subset:
+          - base
       Unknown:
-        meaning: ''
+        meaning: 'ncit:C17998'
         comments: []
+        in_subset:
+          - base
       Not Reported:
         meaning: ''
         comments: []
+        in_subset:
+          - base
   ExternalRefIDSystemEnum:
     permissible_values:
       ClinGen:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       ClinVar:
         meaning: ''
         comments: []
+        in_subset:
+          - base
   TestTypeEnum:
     permissible_values:
       HbA1c:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       C-Peptide:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Blood Glucose:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Autoantibodies, GAD65:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Autoantibodies, ZnT8:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Autoantibodies, IA-2:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Autoantibodies, Insulin:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Autoantibodies, Islet Cell:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Autoantibodies, NOS:
-        meaning: ''
+        meaning: 'ncit:C181397'
         comments: []
+        in_subset:
+          - base
       Total Cholesterol:
-        meaning: ''
+        meaning: 'ncit:C61032'
         comments: []
+        in_subset:
+          - base
       Triglycerides:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       HDL:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       LDL:
-        meaning: ''
+        meaning: 'ncit:C189506'
         comments: []
+        in_subset:
+          - base
       Serum Magnesium:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Serum Potassium:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Serum Creatinine:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Serum BUN:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       GFR:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Urine Microalbumin:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Urine Creatinine:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Microalbumin/Creatinine Ratio:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Urine Magnesium:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       ALT:
-        meaning: ''
+        meaning: 'ncit:C64433'
         comments: []
+        in_subset:
+          - base
       AST:
-        meaning: ''
+        meaning: 'ncit:C64467'
         comments: []
+        in_subset:
+          - base
   TestingMethodEnum:
     permissible_values:
       Continuous Glucose Monitoring:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Laboratory Test:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Home Glucose Test:
         meaning: ''
         comments: []
+        in_subset:
+          - base
   TestingMeasurementTypeEnum:
     permissible_values:
       Average High:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       14-day Average:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       30-day Average:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       90-day Average:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Average:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Average Low:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Point:
         meaning: ''
         comments: []
+        in_subset:
+          - base
   ResultUnitEnum:
     permissible_values:
       '%':
-        meaning: ''
+        meaning: 'ncit:C48570'
         comments: []
+        in_subset:
+          - base
       mg/dL:
-        meaning: ''
+        meaning: 'ncit:C67015'
         comments: []
+        in_subset:
+          - base
       U/L:
-        meaning: ''
+        meaning: 'ncit:C67456'
         comments: []
+        in_subset:
+          - base
       U/mL:
-        meaning: ''
+        meaning: 'ncit:C77607'
         comments: []
+        in_subset:
+          - base
       mmol/L:
-        meaning: ''
+        meaning: 'ncit:C64387'
         comments: []
+        in_subset:
+          - base
       ng/mL:
-        meaning: ''
+        meaning: 'ncit:C67306'
         comments: []
+        in_subset:
+          - base
       nmol/L:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       mg/g:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       mg/L:
-        meaning: ''
+        meaning: 'ncit:C64572'
         comments: []
+        in_subset:
+          - base
       IU/mL:
         meaning: ''
         comments: []
+        in_subset:
+          - base
   ResultInterpretationEnum:
     permissible_values:
       Positive:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Negative:
-        meaning: ''
+        meaning: 'ncit:C38757'
         comments: []
+        in_subset:
+          - base
   FastingStatusEnum:
     permissible_values:
       Fasting:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Non-Fasting:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Random:
-        meaning: ''
+        meaning: 'ncit:C60702'
         comments: []
+        in_subset:
+          - base
   PostGlucoseTimepointUnitEnum:
     permissible_values:
       Minutes:
         meaning: ''
         comments: []
+        in_subset:
+          - base
   DiabetesStatusEnum:
     permissible_values:
       'Yes':
-        meaning: ''
+        meaning: 'ncit:C49488'
         comments: []
+        in_subset:
+          - base
       'No':
-        meaning: ''
+        meaning: 'ncit:C49487'
         comments: []
+        in_subset:
+          - base
   HypoglycemiaFrequencyEnum:
     permissible_values:
       Once or twice in past year:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Every few months:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Once or twice a month:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Once or twice a week:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Daily or every other day:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Never:
-        meaning: ''
+        meaning: 'ncit:C70543'
         comments: []
+        in_subset:
+          - base
       Unknown:
-        meaning: ''
+        meaning: 'ncit:C17998'
         comments: []
+        in_subset:
+          - base
   DKAEnum:
     permissible_values:
       Yes - Hyperglycemic DKA:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Yes - Euglycemic DKA:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       'No':
-        meaning: ''
+        meaning: 'ncit:C49487'
         comments: {}
+        in_subset:
+          - base
       Unknown:
-        meaning: ''
+        meaning: 'ncit:C17998'
         comments: []
+        in_subset:
+          - base
   CGMRangeEnum:
     permissible_values:
       Standard:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Non-Standard:
         meaning: ''
         comments: []
+        in_subset:
+          - base
   CGMContextEnum:
     permissible_values:
       Most Recent:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       'Change In Treatment ':
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Other:
-        meaning: ''
+        meaning: 'ncit:C17649'
         comments: []
+        in_subset:
+          - base
   ReasonStopEnum:
     permissible_values:
       Planned Stop:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       No Significant Effect:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Side Effects:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Not Insured:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Cost:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Unknown:
-        meaning: ''
+        meaning: 'ncit:C17998'
         comments: []
+        in_subset:
+          - base
   DMMedicationClassEnum:
     permissible_values:
       Insulin, Rapid-Acting:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Insulin, Long-Acting:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Insulin, Intermediate-Acting:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Insulin, Combination:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Insulin, NOS:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Biguanide:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Sulfonylurea:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Meglitinide:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Thiazolidinedione:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Dipeptidylpeptidase 4 Inhibitor:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Sodium-Glucose Co-Transporter 2 Inhibitor:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       GLP-1 Receptor Agonist:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Dual GLP-1/GIP Receptor Agonist:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Amylin Analog:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Alpha-Glucosidase Inhibitor:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Bile Acid-Binding Resin:
         meaning: ''
         comments: []
+        in_subset:
+          - base
   MedicationClassOtherEnum:
     permissible_values:
       ACE Inhibitor:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       ACL Inhibitor:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Angiotensin II Receptor Blockers:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       ANGPTL3 Inhibitor:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Antiepileptic:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Antilipemic siRNA:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Beta Blocker:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Calcium Channel Blocker:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Cholesterol Absorption Inhibitor:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Coenzyme Q:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Diuretic:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Fibrates:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Finerenone:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Glucagon:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Magnesium:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Mineralcorticoid Receptor:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Pancreatic Enzymes:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       PCSK9 Inhibitor:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Psychoactive:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Statin:
         meaning: ''
         comments: []
+        in_subset:
+          - base
   MedicationConcentrationEnum:
     permissible_values:
       U100:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       U200:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       U300:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       U500:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Not Applicable:
-        meaning: ''
+        meaning: 'ncit:C48660'
         comments: []
+        in_subset:
+          - base
   MedicationUnitEnum:
     permissible_values:
       Units:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       mg:
-        meaning: ''
+        meaning: 'ncit:C28253'
         comments: []
+        in_subset:
+          - base
       mcg:
-        meaning: ''
+        meaning: 'ncit:C48152'
         comments: []
+        in_subset:
+          - base
       gm:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       ml:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       tbsp:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       tsp:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       IU:
-        meaning: ''
+        meaning: 'ncit:C48579'
         comments: []
+        in_subset:
+          - base
       puffs:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Packets:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       mg/ml:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       application:
         meaning: ''
         comments: []
+        in_subset:
+          - base
   FrequencyEnum:
     permissible_values:
       Once per day:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Once per day, Morning:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Once per day, Evening:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Two times a day:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Three times a day:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Four times a day:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       As needed:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Before every meal:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Before meals and at bedtime:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Every week:
         meaning: ''
         comments: []
+        in_subset:
+          - base
   RouteEnum:
     permissible_values:
       Oral:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Nasally:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       Subcutaneous:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       IM:
         meaning: ''
         comments: []
+        in_subset:
+          - base
       IV:
         meaning: ''
         comments: []
+        in_subset:
+          - base

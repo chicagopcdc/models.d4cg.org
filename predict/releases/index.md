@@ -9,4 +9,4 @@ nav_order: 1
 
 | Release | Status | Date | Notes |
 | --- | --- | --- | --- |
-| [1.0 (current)](./1.0/) | Current |  |  |
+| [1.3 (current)](./1.3/) | Current |  |  |

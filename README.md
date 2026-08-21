@@ -39,7 +39,7 @@ The site is built with Jekyll and the Just the Docs theme. Model reference pages
    python scripts/generate_docs.py {commons}/releases/{version}/model
    ```
 
-   This will generate the documentation for the release, creating new views and updating existing views based on the subsets defined in the schema. Review the generated site locally, then commit and push the generated files via pull request.
+   This will generate the documentation for the release. Review the generated site locally, then commit and push the generated files via pull request.
 
 ## Running Locally
 
@@ -98,6 +98,6 @@ The exporter creates a new Google Spreadsheet, with formatting drawn from a [sta
 
 ### Exports Are Temporary Artifacts
 
-Exported spreadsheets are derived artifacts for modeling workflows. They are **not sources of truth.**.
+Exported spreadsheets are derived artifacts for modeling workflows. They are **not sources of truth.**
 
-Modeling work may temporarily occur in an exported spreadsheet when that is useful for collaboration, but any resulting model changes should be translated into the LinkML source and submitted through a pull request as quickly as possible.
+Modeling work may temporarily occur in an exported spreadsheet when that is useful for collaboration, but any resulting model changes should be translated into the LinkML source, recorded in `change_notes.yaml`, and submitted through a pull request as quickly as possible.

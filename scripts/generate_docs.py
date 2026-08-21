@@ -155,38 +155,6 @@ def terminology_concept(curie, terminology_index):
     return terminology_index.get(normalize_curie(curie), {})
 
 
-def curie_to_url(curie, schema, terminology_index):
-    if not curie:
-        return ""
-
-    normalized = normalize_curie(curie)
-
-    if normalized.startswith("ncit:"):
-        local_id = normalized.split(":", 1)[1]
-        return "https://evsexplore.semantics.cancer.gov/evsexplore/concept/ncit/" + local_id
-
-    term = terminology_concept(curie, terminology_index)
-    source_url = term.get("source_url", "")
-
-    if source_url:
-        return source_url
-
-    if ":" not in str(curie):
-        return ""
-
-    prefix, local_id = str(curie).split(":", 1)
-    prefixes = schema.get("prefixes", {})
-    prefix_url = prefixes.get(prefix) or prefixes.get(prefix.lower()) or prefixes.get(prefix.upper()) or ""
-
-    if isinstance(prefix_url, dict):
-        prefix_url = prefix_url.get("prefix_reference") or prefix_url.get("reference") or ""
-
-    if not prefix_url:
-        return ""
-
-    return str(prefix_url) + local_id
-
-
 def safe_id(value):
     return str(value).replace(" ", "-").replace("_", "-").replace(".", "-").lower()
 
@@ -614,19 +582,14 @@ def render_enum_modals(schema, terminology_index):
             '<div class="enum-modal-loaded-content"></div>',
             '<template class="enum-modal-template">',
             '<table class="model-table enum-table">',
-            "<thead><tr><th>Permissible Value</th><th>Description</th><th>Meaning</th></tr></thead>",
+            "<thead><tr><th>Permissible Value</th><th>Meaning</th><th>Description</th></tr></thead>",
             "<tbody>",
         ]
 
         for pv_name, pv_def in enum_def.get("permissible_values", {}).items():
             meaning = pv_def.get("meaning", "")
             subsets = pv_def.get("in_subset", [])
-            meaning_url = curie_to_url(meaning, schema, terminology_index)
-
-            if meaning_url:
-                meaning_html = f'<a href="{html_escape(meaning_url)}" target="_blank" rel="noopener">{html_escape(meaning)}</a>'
-            else:
-                meaning_html = html_escape(meaning)
+            meaning_html = f'<code class="slot-uri">{html_escape(meaning)}</code>' if meaning else ""
 
             term = terminology_concept(meaning, terminology_index)
             description = term.get("description", "")
@@ -636,8 +599,8 @@ def render_enum_modals(schema, terminology_index):
             rows.append(
                 f'<tr{subset_attr(subsets)}>'
                 f'{copyable_clipped_cell(html_escape(pv_name), pv_name, "enum-pv", copy_button)}'
-                f'{clipped_cell(description, description, "enum-description")}'
                 f'<td class="enum-meaning" title="{html_escape(meaning)}"><span>{meaning_html}</span></td>'
+                f'{clipped_cell(description, description, "enum-description")}'
                 "</tr>"
             )
 
@@ -815,13 +778,15 @@ def render_class_table(class_name, class_def, schema, terminology_index):
         else:
             range_html = f'<code class="primitive-range">{html_escape(slot_range)}</code>' if slot_range else ""
 
+        slot_uri_html = f'<code class="slot-uri">{html_escape(slot_uri)}</code>' if slot_uri else ""
         copy_button = render_slot_copy_icon(class_name, slot_name, usage_def)
 
         rows.append(
             f'<tr{subset_attr(subsets)}>'
             f'{copyable_clipped_cell(html_escape(slot_name), slot_name, "slot-name", copy_button)}'
-            f'{clipped_cell(html_escape(description), description, "slot-description")}'
             f'<td class="slot-range" title="{html_escape(slot_range)}"><span>{range_html}</span></td>'
+            f'{clipped_cell(slot_uri_html, slot_uri, "slot-uri")}'
+            f'{clipped_cell(html_escape(description), description, "slot-description")}'
             "</tr>"
         )
 
@@ -829,7 +794,7 @@ def render_class_table(class_name, class_def, schema, terminology_index):
         '<div class="class-table-wrap">'
         f"{render_class_copy_icon(class_name)}"
         '<table class="model-table class-slot-table">'
-        "<thead><tr><th>Slot</th><th>Description</th><th>Range</th></tr></thead>"
+        "<thead><tr><th>Slot</th><th>Range</th><th>Slot URI</th><th>Description</th></tr></thead>"
         "<tbody>"
         + "\n".join(rows)
         + "</tbody>"
@@ -932,6 +897,29 @@ def render_view_metadata_payload(schema):
 def version_sort_key(value):
     return tuple(int(part) if part.isdigit() else part for part in str(value).split("."))
 
+def get_current_version(commons_folder):
+    releases_dir = Path(commons_folder) / "releases"
+
+    if not releases_dir.exists():
+        return None
+
+    versions = []
+
+    for path in releases_dir.iterdir():
+        if not path.is_dir():
+            continue
+
+        model_path = path / "model" / "schema.yaml"
+
+        if not model_path.exists():
+            continue
+
+        versions.append(path.name)
+
+    if not versions:
+        return None
+
+    return max(versions, key=version_sort_key)
 
 def release_sort_key(release):
     return version_sort_key(release["version"])
@@ -955,17 +943,17 @@ def discover_releases(commons_folder, current_version):
             continue
 
         version = path.name
-        status = "Current" if version == current_version else "Past"
 
         releases.append({
             "version": version,
-            "status": status,
+            "status": "Current" if version == current_version else "Past",
             "url": f"./{version}/",
             "date": "",
             "notes": "",
         })
 
     releases.sort(key=release_sort_key, reverse=True)
+
     return releases
 
 
@@ -1039,12 +1027,15 @@ def assemble_view(schema, notes, commons, page_context, terminology_index, raw_f
     view_comps.append('<div class="model-header" markdown="1">')
     view_comps.append(render_view_header(schema, notes))
 
-    view_comps.append(
-        '<details class="scope-matrix-details">\n'
-        '<summary class="text-delta">Scope Matrix</summary>\n\n'
-        + render_view_matrix(schema)
-        + "\n\n</details>"
-    )
+    non_base_views = [view for view in schema.get("subsets", {}) if view != "base"]
+
+    if non_base_views:
+        view_comps.append(
+            '<details class="scope-matrix-details">\n'
+            '<summary class="text-delta">Scope Matrix</summary>\n\n'
+            + render_view_matrix(schema)
+            + "\n\n</details>"
+        )
 
     view_comps.append(render_view_mode_toggle())
     view_comps.append("</div>")
@@ -1066,42 +1057,90 @@ def main(commons, version, notes_path):
     schema_version = str(schema["version"])
 
     if schema_version != str(version):
-        raise ValueError(f"Version mismatch: command line version is {version}, but schema.yaml declares {schema_version}")
+        raise ValueError(
+            f"Version mismatch: command line version is {version}, "
+            f"but schema.yaml declares {schema_version}"
+        )
+
+    current_version = get_current_version(commons_folder)
+    is_current = version == current_version
+
+    print(f"Generating release: {version}")
+    print(f"Current release: {current_version}")
 
     pages = []
 
-    current_view = assemble_view(schema, notes, commons, "current", terminology_index, raw_files)
-    release_view = assemble_view(schema, notes, commons, "release", terminology_index, raw_files)
+    release_view = assemble_view(
+        schema,
+        notes,
+        commons,
+        "release",
+        terminology_index,
+        raw_files,
+    )
 
-    pages.append((Path(f"{commons_folder}/index.md"), current_view))
-    pages.append((Path(f"{commons_folder}/releases/{version}/index.md"), release_view))
+    pages.append(
+        (
+            Path(f"{commons_folder}/releases/{version}/index.md"),
+            release_view,
+        )
+    )
 
-    releases = discover_releases(commons_folder, version)
+    if is_current:
+        current_view = assemble_view(
+            schema,
+            notes,
+            commons,
+            "current",
+            terminology_index,
+            raw_files,
+        )
 
-    found_current_release = False
+        pages.append(
+            (
+                Path(f"{commons_folder}/index.md"),
+                current_view,
+            )
+        )
+
+    releases = discover_releases(
+        commons_folder,
+        current_version,
+    )
+
+    found_release = False
 
     for release in releases:
         if release["version"] == version:
-            found_current_release = True
+            found_release = True
             break
 
-    if not found_current_release:
+    if not found_release:
         releases.append({
             "version": version,
-            "status": "Current",
+            "status": "Current" if is_current else "Past",
             "url": f"./{version}/",
             "date": "",
             "notes": "",
         })
 
-    releases.sort(key=release_sort_key, reverse=True)
+    releases.sort(
+        key=release_sort_key,
+        reverse=True,
+    )
 
-    pages.insert(0, (Path(f"{commons_folder}/releases/index.md"), render_release_archive(commons, releases)))
+    pages.insert(
+        0,
+        (
+            Path(f"{commons_folder}/releases/index.md"),
+            render_release_archive(commons, releases),
+        ),
+    )
 
     for path, markdown in pages:
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(markdown, encoding="utf-8")
-
+        
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Generate static D4CG Data Model docs site.")

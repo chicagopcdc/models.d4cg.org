@@ -5,562 +5,382 @@ prefixes:
   linkml: https://w3id.org/linkml/
   ncit: http://purl.obolibrary.org/obo/NCIT_
 imports:
-- linkml:types
+  - linkml:types
 slots:
   honest_broker_subject_id:
-    slot_uri: ''
+    slot_uri: 'ncit:C168949'
     range: string
-    required: true
     comments: []
-    annotations:
-      tier_mandatory: md_v1.3
   data_contributor_id:
-    slot_uri: ''
+    slot_uri: 'ncit:C168950'
     range: DataContributorIDEnum
-    required: true
     comments: []
-    annotations:
-      tier_mandatory: md_v1.3
   data_source:
-    slot_uri: ''
+    slot_uri: 'ncit:C16493'
     range: DataSourceEnum
-    required: true
     comments: []
-    annotations:
-      tier_mandatory: md_v1.3
   last_known_survival_status:
     slot_uri: ''
     range: LastKnownSurvivalStatusEnum
     comments: []
-    annotations:
-      tier_priority: md_v1.3
   age_last_contact:
     slot_uri: ''
     range: decimal
     comments:
-    - '(md_v1.3) ConsortiumNote: Only applicable for survey source data'
-    annotations:
-      tier_priority: md_v1.3
+      - '(base) ConsortiumNote: Only applicable for survey source data'
   age_last_contact_unit:
     slot_uri: ''
     range: AgeLastContactUnitEnum
     comments: []
-    annotations:
-      tier_priority: md_v1.3
   age_last_contact_precision:
     slot_uri: ''
     range: AgeLastContactPrecisionEnum
     comments: []
-    annotations:
-      tier_priority: md_v1.3
   subject_characteristics:
     slot_uri: ''
     range: SubjectCharacteristics
-    required: true
     multivalued: false
     comments: []
     annotations:
-      tier_mandatory: md_v1.3
       ignore_in_export: 'true'
   timepoint:
     slot_uri: ''
     range: TimepointEnum
-    required: true
     comments: []
-    annotations:
-      tier_mandatory: md_v1.3
   timing_age_at:
     slot_uri: ''
     range: decimal
     comments:
-    - '(md_v1.3) ConsortiumNote: For reporting at the time of birth, report 0 day.'
-    annotations:
-      tier_priority: md_v1.3
+      - '(base) ConsortiumNote: For reporting at the time of birth, report 0 day.'
   age_at:
     slot_uri: ''
     range: decimal
     comments: []
-    annotations:
-      tier_priority: md_v1.3
   age_unit:
     slot_uri: ''
     range: AgeLastContactUnitEnum
     comments: []
-    annotations:
-      tier_priority: md_v1.3
   age_precision:
-    slot_uri: ''
+    slot_uri: 'ncit:C48045'
     range: AgeLastContactPrecisionEnum
     comments: []
-    annotations:
-      tier_priority: md_v1.3
   relation_honest_broker_subject_id:
     slot_uri: ''
     range: string
     comments: []
-    annotations:
-      tier_priority: md_v1.3
   relation:
-    slot_uri: ''
+    slot_uri: 'ncit:C21480'
     range: RelationEnum
-    required: true
     comments: []
-    annotations:
-      tier_mandatory: md_v1.3
   condition:
     slot_uri: ''
     range: ConditionEnum
     comments:
-    - '(md_v1.3) ConsortiumNotes: Only report diabetes-related conditions. Omit any other conditions from family members.'
-    annotations:
-      tier_optional: md_v1.3
+      - '(base) ConsortiumNotes: Only report diabetes-related conditions. Omit any other conditions from family members.'
   source:
     slot_uri: ''
     range: SourceEnum
     comments: []
-    annotations:
-      tier_priority: md_v1.3
   sex:
-    slot_uri: ''
+    slot_uri: 'ncit:C28421'
     range: SexEnum
     comments: []
-    annotations:
-      tier_priority: md_v1.3
   ethnicity:
-    slot_uri: ''
+    slot_uri: 'ncit:C16564'
     range: EthnicityEnum
     comments: []
-    annotations:
-      tier_priority: md_v1.3
   race:
-    slot_uri: ''
+    slot_uri: 'ncit:C17049'
     range: RaceEnum
     multivalued: true
     comments: []
-    annotations:
-      tier_priority: md_v1.3
   medical_history_condition:
-    slot_uri: ''
+    slot_uri: 'ncit:C18772'
     range: MedicalHistoryConditionEnum
     comments: []
-    annotations:
-      tier_priority: md_v1.3
   condition_other:
-    slot_uri: ''
+    slot_uri: 'ncit:C53263'
     range: string
     comments: []
-    annotations:
-      tier_priority: md_v1.3
   condition_code:
     slot_uri: ''
     range: string
     comments:
-    - '(md_v1.3) ConsortiumNote: If you have a more specific form of a condition listed above, select the condition from the list and use this field to provide the more specific coded value. Do not use the ''Other'' value.'
-    annotations:
-      tier_optional: md_v1.3
+      - '(base) ConsortiumNote: If you have a more specific form of a condition listed above, select the condition from the
+        list and use this field to provide the more specific coded value. Do not use the ''Other'' value.'
   code_system:
     slot_uri: ''
     range: CodeSystemEnum
     comments: []
-    annotations:
-      tier_optional: md_v1.3
   measurement_type:
     slot_uri: ''
     range: MeasurementTypeEnum
     comments: []
-    annotations:
-      tier_priority: md_v1.3
   measurement_numeric:
     slot_uri: ''
     range: decimal
     comments: []
-    annotations:
-      tier_priority: md_v1.3
   measurement_unit:
     slot_uri: ''
     range: MeasurementUnitEnum
     comments: []
-    annotations:
-      tier_priority: md_v1.3
   z_score:
     slot_uri: ''
     range: decimal
     comments: []
-    annotations:
-      tier_priority: md_v1.3
   sample_type:
     slot_uri: ''
     range: SampleTypeEnum
-    required: true
     comments: []
-    annotations:
-      tier_mandatory: md_v1.3
   causative_alteration:
     slot_uri: ''
     range: YesNoEnum
-    required: true
     comments: []
-    annotations:
-      tier_mandatory: md_v1.3
   status:
     slot_uri: ''
     range: StatusEnum
-    required: true
     comments:
-    - '(md_v1.3) ConsortiumNote: Can use this field and select ''Absent'' to indicate if a subject tested negative for a particular genetic variant.'
-    annotations:
-      tier_mandatory: md_v1.3
+      - '(base) ConsortiumNote: Can use this field and select ''Absent'' to indicate if a subject tested negative for a particular
+        genetic variant.'
   genetic_analysis_sample_type:
     slot_uri: ''
     range: GeneticAnalysisSampleTypeEnum
-    required: true
     comments: []
-    annotations:
-      tier_priority: md_v1.3
   laboratory_name:
     slot_uri: ''
     range: LaboratoryNameEnum
-    required: true
     comments: []
-    annotations:
-      tier_mandatory: md_v1.3
   cytogenetic_location:
     slot_uri: ''
     range: string
     comments: []
-    annotations:
-      tier_optional: md_v1.3
   method:
     slot_uri: ''
     range: MethodEnum
-    required: true
     comments:
-    - '(md_v1.3) ConsortiumNote: For cases where confirmatory testing was performed, this field should be used to indicate the method of the initial test, not the confirmatory testing method.'
-    annotations:
-      tier_priority: md_v1.3
+      - '(base) ConsortiumNote: For cases where confirmatory testing was performed, this field should be used to indicate
+        the method of the initial test, not the confirmatory testing method.'
   gene:
-    slot_uri: ''
+    slot_uri: 'ncit:C173595'
     range: GeneEnum
     comments:
-    - '(md_v1.3) ConsortiumNote: Use this field for ''mtDNA'' alteration.'
-    annotations:
-      tier_optional: md_v1.3
+      - '(base) ConsortiumNote: Use this field for ''mtDNA'' alteration.'
   alteration_type:
     slot_uri: ''
     range: AlterationTypeEnum
-    required: true
     comments: []
-    annotations:
-      tier_priority: md_v1.3
   alteration_effect:
-    slot_uri: ''
+    slot_uri: 'ncit:C204195'
     range: AlterationEffectEnum
     comments: []
-    annotations:
-      tier_priority: md_v1.3
   alteration_region:
     slot_uri: ''
     range: AlterationRegionEnum
     comments: []
-    annotations:
-      tier_priority: md_v1.3
   hgvs_accession:
     slot_uri: ''
     range: string
     comments: []
-    annotations:
-      tier_optional: md_v1.3
   hgvs_coding:
-    slot_uri: ''
+    slot_uri: 'ncit:C198546'
     range: string
     comments: []
-    annotations:
-      tier_optional: md_v1.3
   hgvs_protein:
-    slot_uri: ''
+    slot_uri: 'ncit:C97928'
     range: string
     comments: []
-    annotations:
-      tier_optional: md_v1.3
   hgvs_genomic:
     slot_uri: ''
     range: string
     comments: []
-    annotations:
-      tier_optional: md_v1.3
   iscn:
-    slot_uri: ''
+    slot_uri: 'ncit:C156450'
     range: string
     comments: []
-    annotations:
-      tier_optional: md_v1.3
   reported_significance:
     slot_uri: ''
     range: ReportedSignificanceEnum
     comments: []
-    annotations:
-      tier_optional: md_v1.3
   allelic_state:
     slot_uri: ''
     range: AllelicStateEnum
-    required: true
     comments: []
-    annotations:
-      tier_mandatory: md_v1.3
   maf_numeric:
-    slot_uri: ''
+    slot_uri: 'ncit:C173545'
     range: decimal
     comments: []
-    annotations:
-      tier_priority: md_v1.3
   mosaicism:
-    slot_uri: ''
+    slot_uri: 'ncit:C92976'
     range: YesNoEnum
-    required: true
     comments: []
-    annotations:
-      tier_priority: md_v1.3
   external_ref_id:
     slot_uri: ''
     range: string
     comments: []
-    annotations:
-      tier_optional: md_v1.3
   external_ref_id_system:
     slot_uri: ''
     range: ExternalRefIDSystemEnum
     comments: []
-    annotations:
-      tier_optional: md_v1.3
   test_type:
     slot_uri: ''
     range: TestTypeEnum
     comments:
-    - '(md_v1.3) ConsortiumNote: Please report relevant labs at time points of dx, highest ever, most recent, and any other time periods you have bandwidth to report. For example, could report Blood Glucose value at time of dx, highest ever, and most recent. But do not necessarily need to report all values in the EMR.'
-    annotations:
-      tier_priority: md_v1.3
+      - '(base) ConsortiumNote: Please report relevant labs at time points of dx, highest ever, most recent, and any other
+        time periods you have bandwidth to report. For example, could report Blood Glucose value at time of dx, highest ever,
+        and most recent. But do not necessarily need to report all values in the EMR.'
   testing_method:
     slot_uri: ''
     range: TestingMethodEnum
     comments: []
-    annotations:
-      tier_optional: md_v1.3
   testing_measurement_type:
     slot_uri: ''
     range: TestingMeasurementTypeEnum
     comments: []
-    annotations:
-      tier_priority: md_v1.3
   result_modifier:
     slot_uri: ''
     range: string
     comments: []
-    annotations:
-      tier_priority: md_v1.3
   result_numeric:
-    slot_uri: ''
+    slot_uri: 'ncit:C185629'
     range: string
     comments: []
-    annotations:
-      tier_priority: md_v1.3
   result_unit:
     slot_uri: ''
     range: ResultUnitEnum
     comments: []
-    annotations:
-      tier_priority: md_v1.3
   reference_range:
     slot_uri: ''
     range: string
     comments: []
-    annotations:
-      tier_priority: md_v1.3
   result_interpretation:
     slot_uri: ''
     range: ResultInterpretationEnum
     comments: []
-    annotations:
-      tier_priority: md_v1.3
   fasting_status:
     slot_uri: ''
     range: FastingStatusEnum
     comments: []
-    annotations:
-      tier_priority: md_v1.3
   post_glucose_timepoint:
     slot_uri: ''
     range: string
     comments:
-    - '(md_v1.3) ConsortiumNote: Only use for glucose tolerance testing.'
-    annotations:
-      tier_priority: md_v1.3
+      - '(base) ConsortiumNote: Only use for glucose tolerance testing.'
   post_glucose_timepoint_unit:
     slot_uri: ''
     range: PostGlucoseTimepointUnitEnum
     comments:
-    - '(md_v1.3) ConsortiumNote: Only use for glucose tolerance testing.'
-    annotations:
-      tier_priority: md_v1.3
+      - '(base) ConsortiumNote: Only use for glucose tolerance testing.'
   diabetes_status:
     slot_uri: ''
     range: DiabetesStatusEnum
-    required: true
     comments: []
-    annotations:
-      tier_priority: md_v1.3
   hypoglycemia_frequency:
     slot_uri: ''
     range: HypoglycemiaFrequencyEnum
     comments: []
-    annotations:
-      tier_optional: md_v1.3
   severe_hypoglycemia_frequency:
     slot_uri: ''
     range: HypoglycemiaFrequencyEnum
     comments: []
-    annotations:
-      tier_optional: md_v1.3
   dka:
     slot_uri: ''
     range: DKAEnum
     comments: []
-    annotations:
-      tier_priority: md_v1.3
   time_in_range:
     slot_uri: ''
     range: decimal
     comments: []
-    annotations:
-      tier_priority: md_v1.3
   cgm_range:
     slot_uri: ''
     range: CGMRangeEnum
     comments: []
-    annotations:
-      tier_priority: md_v1.3
   cgm_context:
     slot_uri: ''
     range: CGMContextEnum
     comments: []
-    annotations:
-      tier_priority: md_v1.3
   diet:
     slot_uri: ''
     range: DiabetesStatusEnum
     comments: []
-    annotations:
-      tier_priority: md_v1.3
   exercise:
     slot_uri: ''
     range: DiabetesStatusEnum
     comments: []
-    annotations:
-      tier_priority: md_v1.3
   age_at_start:
     slot_uri: ''
     range: decimal
     comments: []
-    annotations:
-      tier_priority: md_v1.3
   age_at_stop:
     slot_uri: ''
     range: decimal
     comments: []
-    annotations:
-      tier_priority: md_v1.3
   reason_stop:
     slot_uri: ''
     range: ReasonStopEnum
     comments: []
-    annotations:
-      tier_priority: md_v1.3
   dm_medication_class:
     slot_uri: ''
     range: DMMedicationClassEnum
-    required: true
     comments: []
-    annotations:
-      tier_mandatory: md_v1.3
   medication_class_other:
     slot_uri: ''
     range: MedicationClassOtherEnum
     comments: []
-    annotations:
-      tier_priority: md_v1.3
   medication_name:
     slot_uri: ''
     range: string
     comments: []
-    annotations:
-      tier_priority: md_v1.3
   medication_code:
     slot_uri: ''
     range: string
     comments: []
-    annotations:
-      tier_priority: md_v1.3
   medication_concentration:
     slot_uri: ''
     range: MedicationConcentrationEnum
     comments: []
-    annotations:
-      tier_priority: md_v1.3
   medication_dose:
     slot_uri: ''
     range: decimal
     comments: []
-    annotations:
-      tier_priority: md_v1.3
   medication_unit:
     slot_uri: ''
     range: MedicationUnitEnum
     comments: []
-    annotations:
-      tier_priority: md_v1.3
   frequency:
     slot_uri: ''
     range: FrequencyEnum
     comments: []
-    annotations:
-      tier_priority: md_v1.3
   route:
-    slot_uri: ''
+    slot_uri: 'ncit:C186559'
     range: RouteEnum
     comments: []
-    annotations:
-      tier_priority: md_v1.3
   age_last_contact_normalized:
     slot_uri: ''
     range: decimal
     comments: []
     annotations:
-      tier_priority: md_v1.3
       ignore_in_export: 'true'
   timing_age_at_normalized:
     slot_uri: ''
     range: decimal
     comments: []
     annotations:
-      tier_priority: md_v1.3
       ignore_in_export: 'true'
   age_at_normalized:
     slot_uri: ''
     range: decimal
     comments: []
     annotations:
-      tier_priority: md_v1.3
       ignore_in_export: 'true'
   age_at_start_normalized:
     slot_uri: ''
     range: decimal
     comments: []
     annotations:
-      tier_priority: md_v1.3
       ignore_in_export: 'true'
   age_at_stop_normalized:
     slot_uri: ''
     range: decimal
     comments: []
     annotations:
-      tier_priority: md_v1.3
       ignore_in_export: 'true'
