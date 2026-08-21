@@ -30,7 +30,7 @@ nav_order: 1
 
 ## Consensus Modeling
 
-D4CG modeling benefits from the collective expertise of dozens of the world's leading clinical researchers. Since each D4CG data commons consists of line-level harmonized data, modeling strategy and decision-making is shared across all data contributors. This ensures thaat the resulting fields are gold-standard international representations of the most relevant areas of clinical oncology.
+D4CG modeling benefits from the collective expertise of dozens of the world's leading clinical researchers. Since each D4CG data commons consists of line-level harmonized data, modeling strategy and decision-making is shared across all data contributors. This ensures that the resulting fields are gold-standard international representations of the most relevant areas of clinical oncology.
 
 
 ## About LinkML

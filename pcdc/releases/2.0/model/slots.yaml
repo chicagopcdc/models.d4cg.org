@@ -1,0 +1,3395 @@
+id: https://models.d4cg.org/pcdc/slots
+name: pcdc_slots
+prefixes:
+  pcdc: https://example.org/pcdc/
+  linkml: https://w3id.org/linkml/
+  ncit: http://purl.obolibrary.org/obo/NCIT_
+  so: http://purl.obolibrary.org/obo/SO_
+  uberon: http://purl.obolibrary.org/obo/UBERON_
+  icdo: 'https://bioregistry.io/icdo:'
+  ucum: 'https://bioregistry.io/ucum:'
+  rxnorm: 'https://bioregistry.io/rxnorm:'
+imports:
+- linkml:types
+slots:
+  submitter_id:
+    slot_uri: ''
+    range: string
+    comments: []
+    annotations: {}
+  honest_broker_subject_id:
+    slot_uri: ncit:C168949
+    range: string
+    comments: []
+    annotations: {}
+  episode_submitter_id:
+    slot_uri: ''
+    range: string
+    comments: []
+    annotations: {}
+  parent_episode_submitter_id:
+    slot_uri: ''
+    range: string
+    comments: []
+    annotations: {}
+  person:
+    slot_uri: ''
+    range: Person
+    comments: []
+    annotations:
+      ignore_in_export: 'true'
+  subject:
+    slot_uri: ''
+    range: Subject
+    comments: []
+    annotations:
+      ignore_in_export: 'true'
+  episode:
+    slot_uri: ''
+    range: ClinicalEpisode
+    comments: []
+    annotations:
+      ignore_in_export: 'true'
+  parent_episode:
+    slot_uri: ''
+    range: ClinicalEpisode
+    comments: []
+    annotations:
+      ignore_in_export: 'true'
+  study:
+    slot_uri: ''
+    range: StudyMetadata
+    comments: []
+    annotations:
+      ignore_in_export: 'true'
+  urls:
+    slot_uri: ''
+    range: string
+    comments:
+    - 'D4CGNote: Mapping from a URL label (key) to a URL string'
+    multivalued: true
+    inlined_as_list: false
+    annotations: {}
+  data_contributor_id:
+    slot_uri: ncit:C168950
+    range: DataContributorIdEnum
+    comments: []
+  consortium:
+    slot_uri: ncit:C61538
+    range: ConsortiumEnum
+    comments: []
+  disease_group:
+    slot_uri: ''
+    range: DiseaseGroupEnum
+    comments: []
+  age_at_enrollment:
+    slot_uri: ncit:C168843
+    range: integer
+    comments:
+    - '(fa) ConsortiumNote: Includes patients in a registry, trial, institutional databases, or other sources.'
+  enrolled_status:
+    slot_uri: ncit:C168928
+    range: YesNoEnum
+    comments:
+    - '(aml) ConsortiumNote: This variable indicates if the subject was enrolled in the study, or if the subject was not enrolled in the study but received treatment per the study''s protocol.'
+  external_links:
+    slot_uri: ''
+    range: string
+    comments: []
+  external_resource_icon_path:
+    slot_uri: ''
+    range: string
+    comments: []
+  external_resource_id:
+    slot_uri: ''
+    range: string
+    comments: []
+  external_resource_name:
+    slot_uri: ''
+    range: string
+    comments: []
+  external_subject_id:
+    slot_uri: ''
+    range: string
+    comments: []
+  external_subject_submitter_id:
+    slot_uri: ''
+    range: string
+    comments: []
+  external_subject_url:
+    slot_uri: ''
+    range: string
+    comments: []
+  study_id:
+    slot_uri: ncit:C83082
+    range: StudyIdEnum
+    comments: []
+  subgroup_type:
+    slot_uri: ''
+    range: SubgroupTypeEnum
+    comments:
+    - 'D4CGNote: <mandatory_if>subgroup_name not null</mandatory_if>'
+  subgroup_name:
+    slot_uri: ncit:C15538
+    range: SubgroupNameEnum
+    comments:
+    - '(ews) ConsortiumNote: Assigned at the time of randomization'
+  subgroup_assignment_order:
+    slot_uri: ''
+    range: integer
+    comments:
+    - 'D4CGNote: <mandatory_if>subgroup_name not null</mandatory_if>'
+  year_at_enrollment:
+    slot_uri: ncit:C177353
+    range: integer
+  age_at_censor_status:
+    slot_uri: ''
+    range: integer
+  efs_censor_status:
+    slot_uri: ''
+    range: EfsCensorStatusEnum
+    comments: []
+  sex:
+    slot_uri: ncit:C28421
+    range: SexEnum
+    comments: []
+  race:
+    slot_uri: ncit:C17049
+    range: RaceEnum
+    comments:
+    - '(fa) ConsortiumNote: US-based patients only'
+  ethnicity:
+    slot_uri: ncit:C16564
+    range: EthnicityEnum
+    comments:
+    - '(fa) ConsortiumNote: US-based patients only'
+  episode_type:
+    slot_uri: ''
+    range: EpisodeTypeEnum
+    comments:
+    - 'D4CGNote: The type of time period being reported.'
+    - 'D4CGNote: <mandatory_if>disease_phase or course not null</mandatory_if>'
+  disease_phase:
+    slot_uri: ncit:C168878
+    range: DiseasePhaseEnum
+    comments:
+    - 'D4CGNote: <mandatory_if>''episode_TYPE'' == ''Disease Phase''</mandatory_if>'
+    - '(aml) ConsortiumNote: Disease Phase could be ''Initial Diagnosis'' phase, or a ''Relapse'' phase, etc...'
+    - '(cns) ConsortiumNote: For COG initial MB data, all will be initial diagnosis.'
+    - '(ews) ConsortiumNote: Disease Phase could be ''Initial Diagnosis'' phase, or a ''Relapse'' phase, etc...'
+    - "(npc) D4CGNote: <mandatory_if>'episode_TYPE' == 'Disease Phase'</mandatory_if> \n ConsortiumNote: For COG initial MB data, all will be initial diagnosis."
+  course:
+    slot_uri: ncit:C168807
+    range: CourseEnum
+    comments:
+    - 'D4CGNote: <mandatory_if>''episode_TYPE'' == ''Course''</mandatory_if>'
+  episode_number:
+    slot_uri: ''
+    range: integer
+    comments:
+    - 'D4CGNote: This variable indicates the ordinal numbering of time periods of the same episode_TYPE within its various subgroups (e.g., Relapse 1, Relapse 2, Relapse 3, etc.). The observations across domains can therefore be organized longitudinally without the need for specific dates.'
+    - 'D4CGNote: <mandatory_if>disease_phase or course not null</mandatory_if>'
+    - '(rb) ConsortiumNote: The order of this exam in relation to others (EUA 1, EUA 2, etc.)'
+  episode_sequence:
+    slot_uri: ''
+    range: integer
+    comments: []
+  year_at_start:
+    slot_uri: ''
+    range: integer
+    comments:
+    - '(rb) ConsortiumNote: Year in which exam occured'
+  age_at_start:
+    slot_uri: ''
+    range: integer
+    comments:
+    - '(rb) ConsortiumNote: Age at time of exam'
+  age_at_end:
+    slot_uri: ''
+    range: integer
+    comments: []
+  age_at_course_anc_500:
+    slot_uri: ncit:C168852
+    range: integer
+    comments:
+    - '(aml) ConsortiumNote: This variable is used as a proxy for the age at course end, when appropriate.'
+  age_off:
+    slot_uri: ncit:C168844
+    range: integer
+    comments: []
+  off_type:
+    slot_uri: ncit:C173256
+    range: OffTypeEnum
+    comments:
+    - '(aml) ConsortiumNote: Off protocol therapy means they have stopped protocol treatment, but are still being followed in the study'
+  reason_off:
+    slot_uri: ncit:C173519
+    range: ReasonOffEnum
+    comments:
+    - '(aml) ConsortiumNote: If multiple reasons ''off protocol therapy'' or ''off study'', include one observation per reason.'
+    - '(cns) ConsortiumNote: If multiple reasons off ''protocol therapy'' or ''study'', include one observation per reason.'
+    - '(ews) ConsortiumNote: If multiple reasons off ''protocol therapy'' or ''study'', include one observation per reason.'
+    - '(npc) ConsortiumNote: If multiple reasons off ''protocol therapy'' or ''study'', include one observation per reason.'
+  another_study:
+    slot_uri: ncit:C178073
+    range: YesNoEnum
+    comments: []
+  age_at_lkss:
+    slot_uri: ncit:C168844
+    range: integer
+    comments: []
+  lkss:
+    slot_uri: ncit:C168931
+    range: LkssEnum
+    comments: []
+  age_lost_to_follow_up:
+    slot_uri: ncit:C172679
+    range: integer
+    comments: []
+  cause_of_death:
+    slot_uri: ncit:C81239
+    range: CauseOfDeathEnum
+    comments:
+    - 'D4CGNote: If multiple causes of death, include one observation per cause of death. However, only one cause of death can have the varaiable CAUSE_OF_DEATH_RANKING=Primary.'
+    - 'D4CGNote: Only fill in this variable if LKSS is ''Dead''.'
+  cause_of_death_other:
+    slot_uri: ''
+    range: string
+    comments: []
+  trm_type:
+    slot_uri: ncit:C173260
+    range: TrmTypeEnum
+    comments:
+    - '(aml) ConsortiumNote: If multiple treatment types, include one observation per treatment type.'
+    - '(aml) ConsortiumNote:  Only fill in this variable if LKSS is ''Dead'' and CAUSE_OF_DEATH is ''Treatment-related mortality'''
+  cause_of_death_detail:
+    slot_uri: ncit:C168868
+    range: CauseOfDeathDetailEnum
+    comments:
+    - '(aml) ConsortiumNote: If multiple cause of death details, include one observation per cause of death detail.'
+    - '(aml) ConsortiumNote:  Only fill in this variable if LKSS is ''Dead'''
+    - '(fa) ConsortiumNote: Multi-select'
+  cause_of_death_ranking:
+    slot_uri: ncit:C168932
+    range: CauseOfDeathRankingEnum
+    comments:
+    - 'D4CGNote: There may be multiple contributory causes of death, but only one primary cause of death.
+
+      D4CGNote: Only fill in this variable if LKSS is "Dead"'
+  lkss_with_disease:
+    slot_uri: ncit:C178074
+    range: YesNoEnum
+    comments: []
+  condition_state:
+    slot_uri: ''
+    range: ActiveResolvedEnum
+    comments: []
+  condition_status:
+    slot_uri: ''
+    range: YesNoEnum
+    comments: []
+  medical_history_condition:
+    slot_uri: ncit:C18772
+    range: MedicalHistoryConditionEnum
+    comments:
+    - '(aml) ConsortiumNote: If subject had multiple prior medical conditions, include one observation per condition.'
+    - '(pre) ConsortiumNote: If subject had multiple prior medical conditions, include one observation per condition.'
+    - '(ews) ConsortiumNote: If subject had multiple prior medical conditions, include one observation per condition.'
+    - '(rb) ConsortiumNote: If subject had multiple prior medical conditions, include one observation per condition.'
+  family_medical_history_condition:
+    slot_uri: ncit:C18772
+    range: string
+    comments:
+    - '(fa) ConsortiumNote: Prioritize the following conditions: Fanconi Anemia, Squamous Cell Carcinoma, Breast Cancer, Ovarian Cancer, Leukemia, Cancer, NOS, Vertebral Anomaly, Anal Anomaly, Cardiac Structure Anomaly, Esophageal or Duodenal Atresia, Renal Anomaly, Upper Limb Anomaly, Hydrocephalus, Skin Pigmentation, Small Head, Small Eyes, Nervous System Abnormality, Otological Abnormality, and Short Stature.'
+  relation:
+    slot_uri: ncit:C21480
+    range: RelationEnum
+    comments: []
+  age_at_measurement:
+    slot_uri: ncit:C154628
+    range: integer
+    comments: []
+  vital_measurement_type:
+    slot_uri: ncit:C49672
+    range: VitalMeasurementTypeEnum
+    comments: []
+    annotations: {}
+  vital_measurement_result_unit:
+    slot_uri: ''
+    range: VitalMeasurementResultUnitEnum
+    comments: []
+    annotations: {}
+  anthropometric_measurement_result_unit:
+    slot_uri: ''
+    range: AnthropometricMeasurementResultUnitEnum
+    comments: []
+  functional_measurement_result_unit:
+    slot_uri: ''
+    range: FunctionalMeasurementResultUnitEnum
+    comments: []
+  anthropometric_measurement_type:
+    slot_uri: ncit:C219071
+    range: AnthropometricMeasurementTypeEnum
+    comments:
+    - '(cns) ConsortiumNote: BMI should only be what is reported on CRF, not calculated from weight and height when submitting data to the PCDC'
+    - '(ews) ConsortiumNote: BMI should only be what is reported on CRF, not calculated from weight and height when submitting data to the PCDC'
+    - '(hl) ConsortiumNote: BMI should only be what is reported on CRF, not calculated from weight and height when submitting data to the PCDC'
+  functional_measurement_type:
+    slot_uri: ncit:C185625
+    range: FunctionalMeasurementTypeEnum
+    comments: []
+  result_text:
+    slot_uri: ncit:C36292
+    range: string
+    comments:
+    - '(rb) ConsortiumNote: For Visual Acuity tests, report specifically these results: ''Blinks to Light'', ''Fix and Follow'', ''Central Steady Maintained'', ''Counting Fingers'', ''Hand Motion'', ''Light Perception'', ''No Light Perception'''
+    - 'D4CGNote: String result can include anything that is not a single numeric result, i.e. ''Positive'', ''Negative'', ''Present'', ''Absent'', ''Yes'', ''No'', ''Elevated,'' ''Depressed'', ''Above threshold'', ''Below threshold'', ranges, as well as bucketed categories, etc... Note: Only fill in this variable when the available data is anything EXCEPT a single numeric value, and include the entire available data as a string, including units if applicable'
+    - 'D4CGNote: modifier note'
+    - '(ls) ConsortiumNote: Positive/Negative or Her2 Scores: 0, 1+, 2+, 3+'
+  result_numeric:
+    slot_uri: ncit:C185629
+    range: decimal
+    comments:
+    - 'D4CGNote: Only fill in this variable if the available data is a single numeric value.'
+  age_at_lab:
+    slot_uri: ncit:C172691
+    range: integer
+    comments: []
+  medication_category:
+    slot_uri: ncit:C459
+    range: MedicationCategoryEnum
+    comments: []
+    annotations: {}
+  laboratory_test_status:
+    slot_uri: ''
+    range: YesNoEnum
+    comments: []
+  laboratory_test:
+    slot_uri: ncit:C117142
+    range: LaboratoryTestEnum
+    comments: []
+  laboratory_result:
+    slot_uri: ncit:C36292
+    range: LaboratoryResultEnum
+    comments: []
+  result_hormone_status:
+    slot_uri: ncit:C36292
+    range: YesNoEnum
+    comments: []
+  laboratory_test_specimen_obtained_method:
+    slot_uri: ''
+    range: LaboratoryTestSpecimenObtainedMethodEnum
+    comments: []
+    annotations: {}
+  function_test:
+    slot_uri: ncit:C186304
+    range: FunctionTestEnum
+    comments: []
+  genetic_analysis_specimen:
+    slot_uri: ncit:C70713
+    range: GeneticAnalysisSpecimenEnum
+    comments: []
+  mrd_specimen:
+    slot_uri: ncit:C168958
+    range: MrdSpecimenEnum
+    comments: []
+  laboratory_test_specimen:
+    slot_uri: ncit:C70713
+    range: LaboratoryTestSpecimenEnum
+    comments: []
+  laboratory_test_method:
+    slot_uri: ncit:C83312
+    range: LaboratoryTestMethodEnum
+    comments:
+    - '(hl) ConsortiumNote: Only fill in this variable only when relevant, for example if the LAB_TEST is ''blasts'' and the LAB_SAMPLE_SOURCE is ''Bone Marrow'' - ie bone marrow blasts'
+  mrd_method:
+    slot_uri: ncit:C168933
+    range: MrdMethodEnum
+    comments: []
+  ihc_result_unit:
+    slot_uri: ''
+    range: IhcResultUnitEnum
+    comments: []
+    annotations: {}
+  ihc_method:
+    slot_uri: ''
+    range: IhcMethodEnum
+    comments: []
+    annotations: {}
+  laboratory_test_result_unit:
+    slot_uri: ''
+    range: LaboratoryTestResultUnitEnum
+    comments: []
+  traumatic_tap:
+    slot_uri: ncit:C168879
+    range: YesNoEnum
+    comments:
+    - '(aml) ConsortiumNote: Traumatic tap is defined as cerebrospinal fluid with greater than 10 RBC/mm3. Note: Only fill in this variable if LAB_SAMPLE_SOURCE is ''CSF'''
+    - '(all) ConsortiumNote: Traumatic tap is defined as cerebrospinal fluid with greater than 10 RBC/mm3. Note: Only fill in this variable if LAB_SAMPLE_SOURCE is ''CSF'''
+    annotations: {}
+  bm_morphology:
+    slot_uri: ncit:C178079
+    range: BmMorphologyEnum
+    comments: []
+    annotations: {}
+  quantification_type:
+    slot_uri: ncit:C49142
+    range: QuantificationTypeEnum
+    comments: []
+    annotations: {}
+  threshold_high:
+    slot_uri: ncit:C177365
+    range: decimal
+    comments: []
+    annotations: {}
+  threshold_low:
+    slot_uri: ncit:C177366
+    range: decimal
+    comments: []
+    annotations: {}
+  pmid_ref:
+    slot_uri: ncit:C127797
+    range: decimal
+    comments: []
+    annotations: {}
+  age_at_genetic_analysis:
+    slot_uri: ncit:C168848
+    range: integer
+    comments: []
+  source_lab:
+    slot_uri: ''
+    range: SourceLabEnum
+    comments: []
+  test_name:
+    slot_uri: ''
+    range: string
+    comments:
+    - '(rb) ConsortiumNote: OncoKids should be designated in this field.'
+  test_version:
+    slot_uri: ''
+    range: string
+    comments: []
+  cascade_testing:
+    slot_uri: ncit:C200724
+    range: YesNoEnum
+    comments: []
+  gene_panel_size:
+    slot_uri: ''
+    range: GenePanelSizeEnum
+    comments: []
+    annotations: {}
+  genomic_source_class:
+    slot_uri: ''
+    range: GenomicSourceClassEnum
+    comments: []
+  mosaicism:
+    slot_uri: ncit:C92976
+    range: YesNoEnum
+    comments: []
+  mosaicism_percent:
+    slot_uri: ncit:C92976
+    range: decimal
+    comments: []
+  procedure_performed:
+    slot_uri: ''
+    range: YesNoEnum
+    comments: []
+    annotations: {}
+  alteration:
+    slot_uri: ncit:C3910
+    range: AlterationEnum
+    comments:
+    - '(aml) ConsortiumNote: If multiple molecular abnormalities, include one observation per molecular abnormality.'
+    - '(nbl) ConsortiumNote: If multiple molecular abnormalities, include one observation per molecular abnormality.'
+  chromosome:
+    slot_uri: ncit:C13202
+    range: ChromosomeEnum
+    comments: []
+  chromosomal_translocation_partner:
+    slot_uri: ''
+    range: ChromosomalTranslocationPartnerEnum
+    comments: []
+    annotations: {}
+  iscn:
+    slot_uri: ncit:C156450
+    range: string
+    comments:
+    - '(aml) ConsortiumNote: Only fill in this variable if MOLECULAR_ANALYSIS_METHOD is ''Karyotype'''
+  gene:
+    slot_uri: ncit:C173595
+    range: string
+    comments:
+    - '(fa) ConsortiumNote: Prioritize reporting the following Genes: FANCA, FANCB, FANCC, FANCD1/BRCA2, FANCD2, FANCD3, FANCE, FANCF, FANCG, FANCI, FANCJ/PALB2, FANCO/RAD51C, FANCP/SLCX4, FANCQ/ERCC4/XPF, FANCR/RAD51, FANCS/BRCA1, FANCT/UBE2T, FANCU/XRCC2, FANCV/REV7/MAD2L2, FANCW/RFWD3, and FANCX/FAAP100.'
+  gene_fusion_partner:
+    slot_uri: ncit:C171253
+    range: string
+    comments: []
+  hgvs_genomic_transcript:
+    slot_uri: ''
+    range: string
+    comments: []
+    annotations: {}
+  hgvs_genomic:
+    slot_uri: ''
+    range: string
+    comments: []
+  hgvs_coding:
+    slot_uri: ncit:C198546
+    range: string
+    comments: []
+  hgvs_protein:
+    slot_uri: ncit:C97928
+    range: string
+    comments: []
+  alteration_type:
+    slot_uri: ncit:C13202
+    range: AlterationTypeEnum
+    comments: []
+  copy_number:
+    slot_uri: ncit:C49142
+    range: decimal
+    comments: []
+  alteration_effect:
+    slot_uri: ncit:C204195
+    range: AlterationEffectEnum
+    comments: []
+  alteration_region:
+    slot_uri: ''
+    range: AlterationRegionEnum
+    comments: []
+  exon_number:
+    slot_uri: ''
+    range: decimal
+    comments: []
+  allelic_state:
+    slot_uri: ''
+    range: AllelicStateEnum
+    comments: []
+  parental_status:
+    slot_uri: ''
+    range: ParentalStatusEnum
+    comments: []
+  reported_significance:
+    slot_uri: ''
+    range: ReportedSignificanceEnum
+    comments: []
+  reported_significance_numeric:
+    slot_uri: ''
+    range: integer
+    comments: []
+    annotations: {}
+  external_ref_id_system:
+    slot_uri: ''
+    range: ExternalRefIdSystemEnum
+    comments: []
+  external_ref_id:
+    slot_uri: ''
+    range: string
+    comments: []
+  maf:
+    slot_uri: ''
+    range: MafEnum
+    comments: []
+    annotations: {}
+  maf_numeric:
+    slot_uri: ncit:C173545
+    range: decimal
+    comments: []
+  vaf_numeric:
+    slot_uri: ''
+    range: decimal
+    comments: []
+  dna_index:
+    slot_uri: ''
+    range: DnaIndexEnum
+    comments:
+    - '(nbl) ConsortiumNote: If multiple statuses apply, include one observation per status.'
+    annotations: {}
+  dna_index_numeric:
+    slot_uri: ncit:C86972
+    range: decimal
+    comments: []
+    annotations: {}
+  karyotype_status:
+    slot_uri: ncit:C168871
+    range: KaryotypeStatusEnum
+    comments: []
+    annotations: {}
+  total_chromosomes:
+    slot_uri: ncit:C177370
+    range: decimal
+    comments: []
+    annotations: {}
+  independent_aberrations:
+    slot_uri: ncit:C173279
+    range: decimal
+    comments: []
+  cells_in_metaphase:
+    slot_uri: ncit:C168918
+    range: decimal
+    comments: []
+  allele_count:
+    slot_uri: ''
+    range: decimal
+    comments: []
+    annotations: {}
+  inheritance_pattern:
+    slot_uri: ncit:C45827
+    range: InheritancePatternEnum
+    comments: []
+    annotations: {}
+  review_source:
+    slot_uri: ncit:C185324
+    range: ReviewSourceEnum
+    comments: []
+  site_classification:
+    slot_uri: ncit:C174459
+    range: SiteClassificationEnum
+    comments: []
+  biological_analyte:
+    slot_uri: ''
+    range: BiologicalAnalyteEnum
+    comments: []
+  source_pct:
+    slot_uri: ''
+    range: SourcePctEnum
+    comments: []
+    annotations: {}
+  source_pct_numeric:
+    slot_uri: ''
+    range: decimal
+    comments: []
+    annotations: {}
+  clonal_status:
+    slot_uri: ''
+    range: ClonalStatusEnum
+    comments: []
+    annotations: {}
+  cytodifferentiation:
+    slot_uri: ''
+    range: CytodifferentiationEnum
+    comments: []
+    annotations: {}
+  mitotic_rate:
+    slot_uri: ncit:C138982
+    range: MitoticRateEnum
+    comments: []
+    annotations: {}
+  alt_status:
+    slot_uri: ''
+    range: AltStatusEnum
+    comments: []
+    annotations: {}
+  biospecimen_container_type:
+    slot_uri: ''
+    range: string
+    comments: []
+  biospecimen_media:
+    slot_uri: ''
+    range: string
+    comments: []
+  biospecimen_type:
+    slot_uri: ''
+    range: string
+    comments: []
+  biospecimen_container_id:
+    slot_uri: ''
+    range: string
+    comments: []
+  age_at_collection:
+    slot_uri: ''
+    range: integer
+    comments: []
+    annotations: {}
+  biospecimen_tissue_type:
+    slot_uri: ''
+    range: string
+    comments: []
+  endoscope_adjunct_technique:
+    slot_uri: ''
+    range: EndoscopeAdjunctTechniqueEnum
+    comments: []
+    annotations: {}
+  endoscope_adjunct_technique_other:
+    slot_uri: ''
+    range: string
+    comments: []
+    annotations: {}
+  insertion_time:
+    slot_uri: ''
+    range: integer
+    comments: []
+    annotations: {}
+  insertion_time_unit:
+    slot_uri: ''
+    range: InsertionTimeUnitEnum
+    comments: []
+    annotations: {}
+  withdrawal_time:
+    slot_uri: ''
+    range: integer
+    comments: []
+    annotations: {}
+  withdrawal_time_unit:
+    slot_uri: ''
+    range: InsertionTimeUnitEnum
+    comments: []
+    annotations: {}
+  total_procedure_time:
+    slot_uri: ''
+    range: integer
+    comments: []
+    annotations: {}
+  total_procedure_time_unit:
+    slot_uri: ''
+    range: InsertionTimeUnitEnum
+    comments: []
+    annotations: {}
+  insertion_extent:
+    slot_uri: ''
+    range: InsertionExtentEnum
+    comments: []
+    annotations: {}
+  polyp_morphology:
+    slot_uri: ''
+    range: PolypMorphologyEnum
+    comments: []
+    annotations: {}
+  polyp_morphology_system:
+    slot_uri: ''
+    range: PolypMorphologySystemEnum
+    comments: []
+    annotations: {}
+  finding_status:
+    slot_uri: ''
+    range: FindingStatusEnum
+    comments: []
+    annotations: {}
+  biospecimen_site:
+    slot_uri: ''
+    range: string
+    comments: []
+    annotations: {}
+  biospecimen_preservation_method:
+    slot_uri: ''
+    range: string
+    comments: []
+    annotations: {}
+  biospecimen_storage_temperature:
+    slot_uri: ''
+    range: decimal
+    comments: []
+    annotations: {}
+  specimen_gross_dimension:
+    slot_uri: ''
+    range: decimal
+    comments: []
+  specimen_dimension_unit:
+    slot_uri: ''
+    range: string
+    comments: []
+  specimen_fragment_count:
+    slot_uri: ''
+    range: integer
+    comments: []
+  current_qty_unit:
+    slot_uri: ''
+    range: string
+    comments: []
+  current_qty_value:
+    slot_uri: ''
+    range: string
+    comments: []
+  age_at_function_test:
+    slot_uri: ncit:C185624
+    range: integer
+    comments: []
+  age_at_ihc:
+    slot_uri: ncit:C175006
+    range: integer
+    comments: []
+  markers:
+    slot_uri: ncit:C51944
+    range: MarkersEnum
+    comments: []
+  age_at_diag_assessment:
+    slot_uri: ncit:C175004
+    range: integer
+    comments: []
+  diagnosis_basis:
+    slot_uri: ''
+    range: DiagnosisBasisEnum
+    comments: []
+  diagnosis:
+    slot_uri: ncit:C15220
+    range: DiagnosisEnum
+    comments: []
+  cns_disease_status:
+    slot_uri: ncit:C116832
+    range: CnsDiseaseStatusEnum
+    comments: []
+  mpal:
+    slot_uri: ncit:C82179
+    range: YesNoEnum
+    comments: []
+    annotations: {}
+  mlds:
+    slot_uri: ncit:C43223
+    range: YesNoEnum
+    comments: []
+    annotations: {}
+  tam:
+    slot_uri: ncit:C82339
+    range: YesNoEnum
+    comments: []
+    annotations: {}
+  secondary_aml:
+    slot_uri: ncit:C25765
+    range: YesNoEnum
+    comments: []
+    annotations: {}
+  morph_code:
+    slot_uri: ''
+    range: string
+    comments: []
+  morph_code_system:
+    slot_uri: ''
+    range: MorphCodeSystemEnum
+    comments: []
+  function_test_grade:
+    slot_uri: ''
+    range: FunctionTestGradeEnum
+    comments: []
+    annotations: {}
+  mature_glial_implants:
+    slot_uri: ncit:C177363
+    range: YesNoEnum
+    comments:
+    - '(gct) ConsortiumNote: Only associated with Mature and Immature Teratoma'
+    annotations: {}
+  somatic_malignancy_type:
+    slot_uri: ncit:C177364
+    range: SomaticMalignancyTypeEnum
+    comments:
+    - '(gct) ConsortiumNote: Only associated with Somatic Malignancy'
+    annotations: {}
+  histology_grade:
+    slot_uri: ncit:C18000
+    range: HistologyGradeEnum
+    comments: []
+  revised_inpc:
+    slot_uri: ''
+    range: RevisedInpcEnum
+    comments: []
+    annotations: {}
+  age_at_staging:
+    slot_uri: ncit:C177359
+    range: integer
+    comments: []
+  stage:
+    slot_uri: ncit:C16899
+    range: StageEnum
+    comments:
+    - '(nbl) ConsortiumNote: Tied to stage system.'
+  ann_arbor_mod_ab:
+    slot_uri: ncit:C181839
+    range: AnnArborModAbEnum
+    comments: []
+  ann_arbor_mod_e:
+    slot_uri: ncit:C177586
+    range: YesNoEnum
+    comments: []
+  ann_arbor_mod_s:
+    slot_uri: ncit:C185484
+    range: YesNoEnum
+    comments: []
+  tnm_finding:
+    slot_uri: ''
+    range: TnmFindingEnum
+    comments: []
+    annotations: {}
+  tnm_overall:
+    slot_uri: ''
+    range: TnmOverallEnum
+    comments: []
+    annotations: {}
+  group:
+    slot_uri: ''
+    range: GroupEnum
+    comments: []
+  age_at_disease_site_assessment:
+    slot_uri: ncit:C174997
+    range: integer
+    comments: []
+  tumor_state:
+    slot_uri: ''
+    range: PresentAbsentEnum
+    comments: []
+  detection_method:
+    slot_uri: ncit:C173262
+    range: DetectionMethodEnum
+    comments:
+    - '(aml) ConsortiumNote: If there were multiple detection methods, include one observation per detection method. If disease site provided, detection method should be linked to each disease site. If no disease sites provided, detection method should be linked to overall disease.'
+    - '(hl) ConsortiumNote: If there were multiple detection methods, include one observation per detection method. If disease site provided, detection method should be linked to each disease site. If no disease sites provided, detection method should be linked to overall disease.'
+  disease_site:
+    slot_uri: ncit:C166232
+    range: DiseaseSiteEnum
+    comments: []
+  rt_site:
+    slot_uri: ncit:C173281
+    range: RtSiteEnum
+    comments: []
+  procedure_site:
+    slot_uri: ncit:C157120
+    range: ProcedureSiteEnum
+    comments: []
+  smn_site:
+    slot_uri: ''
+    range: SmnSiteEnum
+    comments: []
+  smn_type:
+    slot_uri: ''
+    range: SmnTypeEnum
+    comments: []
+  site_other:
+    slot_uri: ''
+    range: string
+    comments: []
+  laterality:
+    slot_uri: ncit:C164550
+    range: LateralityEnum
+    comments: []
+  function_test_laterality:
+    slot_uri: ''
+    range: FunctionTestLateralityEnum
+    comments: []
+  measurement1:
+    slot_uri: ncit:C96684
+    range: decimal
+    comments: []
+  measurement1_axis:
+    slot_uri: ''
+    range: LesionMeasurementAxisEnum
+    comments: []
+  measurement2:
+    slot_uri: ncit:C96684
+    range: decimal
+    comments: []
+  measurement2_axis:
+    slot_uri: ''
+    range: LesionMeasurementAxisEnum
+    comments: []
+  measurement3:
+    slot_uri: ncit:C16809
+    range: decimal
+    comments: []
+  measurement3_axis:
+    slot_uri: ''
+    range: LesionMeasurementAxisEnum
+    comments: []
+  measurement_unit:
+    slot_uri: ''
+    range: LesionMeasurementUnitEnum
+    comments: []
+  nodes_assessed_number:
+    slot_uri: ''
+    range: integer
+    comments: []
+  myeloid_sarcoma_involvement:
+    slot_uri: ''
+    range: YesNoEnum
+    comments: []
+    annotations: {}
+  bulky_disease:
+    slot_uri: ncit:C38655
+    range: YesNoEnum
+    comments: []
+    annotations: {}
+  bulk_med_mass:
+    slot_uri: ncit:C178075
+    range: YesNoEnum
+    comments: []
+    annotations: {}
+  pleural_effusion:
+    slot_uri: ncit:C3331
+    range: YesNoEnum
+    comments: []
+  peritoneal_effusion:
+    slot_uri: ncit:C34402
+    range: YesNoEnum
+    comments: []
+    annotations: {}
+  pericardial_effusion:
+    slot_uri: ncit:C3319
+    range: YesNoEnum
+    comments: []
+  bulk_nodal_aggregate:
+    slot_uri: ncit:C185476
+    range: YesNoEnum
+    comments: []
+    annotations: {}
+  med_ratio:
+    slot_uri: ncit:C185323
+    range: decimal
+    comments: []
+    annotations: {}
+  nodular_splenic:
+    slot_uri: ncit:C185322
+    range: YesNoEnum
+    comments: []
+  tumor_size:
+    slot_uri: ''
+    range: TumorSizeEnum
+    comments:
+    - '(ews) ConsortiumNote: For EE99, this is only applicable to lung mets'
+  invasiveness:
+    slot_uri: ''
+    range: InvasivenessEnum
+    comments: []
+    annotations: {}
+  depth:
+    slot_uri: ncit:C25333
+    range: DepthEnum
+    comments: []
+    annotations: {}
+  nodal_pathology:
+    slot_uri: ''
+    range: NodalPathologyEnum
+    comments: []
+    annotations: {}
+  nodal_clinical:
+    slot_uri: ''
+    range: NodalClinicalEnum
+    comments: []
+    annotations: {}
+  parameningeal_extension:
+    slot_uri: ''
+    range: YesNoEnum
+    comments: []
+    annotations: {}
+  risk_group:
+    slot_uri: ''
+    range: RiskGroupEnum
+    comments: []
+    annotations: {}
+  gts_treatment:
+    slot_uri: ncit:C177376
+    range: GtsTreatmentEnum
+    comments: []
+    annotations: {}
+  imaging_result:
+    slot_uri: ncit:C176708
+    range: ImagingResultEnum
+    comments: []
+  deauville_score:
+    slot_uri: ncit:C99723
+    range: DeauvilleScoreEnum
+    comments: []
+  qpet_score:
+    slot_uri: ncit:C185623
+    range: decimal
+    comments: []
+  performance_score:
+    slot_uri: ''
+    range: PerformanceScoreEnum
+    comments: []
+  physical_status:
+    slot_uri: ''
+    range: PhysicalStatusEnum
+    comments: []
+  initial_treatment_category:
+    slot_uri: ''
+    range: InitialTreatmentCategoryEnum
+    comments: []
+    annotations: {}
+  mki:
+    slot_uri: ''
+    range: MkiEnum
+    comments: []
+    annotations: {}
+  age_at_procedure:
+    slot_uri: ncit:C175008
+    range: integer
+    comments: []
+  protocol_procedure:
+    slot_uri: ncit:C175038
+    range: YesNoEnum
+    comments: []
+  non_protocol_timing:
+    slot_uri: ncit:C175038
+    range: NonProtocolTimingEnum
+    comments: []
+    annotations: {}
+  procedure_timing:
+    slot_uri: ''
+    range: ProcedureTimingEnum
+    comments: []
+    annotations: {}
+  extent:
+    slot_uri: ncit:C157443
+    range: ExtentEnum
+    comments: []
+  mass_present:
+    slot_uri: ''
+    range: YesNoEnum
+    comments: []
+  viable_tumor_specimen:
+    slot_uri: ''
+    range: YesNoEnum
+    comments: []
+  viable_tumor_margin:
+    slot_uri: ''
+    range: YesNoEnum
+    comments: []
+  margins:
+    slot_uri: ncit:C41227
+    range: MarginsEnum
+    comments:
+    - '(ews) ConsortiumNote: Should be the result of a the pathologic assessment'
+  rt_margins:
+    slot_uri: ncit:C41227
+    range: RtMarginsEnum
+    comments: []
+    annotations: {}
+  number_nodes:
+    slot_uri: ncit:C185516
+    range: NumberNodesEnum
+    comments: []
+  number_nodes_numeric:
+    slot_uri: ncit:C124446
+    range: decimal
+    comments: []
+  number_nodes_examined_numeric:
+    slot_uri: ncit:C124446
+    range: decimal
+    comments: []
+  surveillance_recommendation:
+    slot_uri: ''
+    range: SurveillanceRecommendationEnum
+    comments: []
+  purpose:
+    slot_uri: ncit:C185526
+    range: PurposeEnum
+    comments: []
+  age_at_medication_start:
+    slot_uri: ncit:C172698
+    range: integer
+    comments:
+    - '(aml) ConsortiumNote: In the case of ''Intrathecal Chemotherapy,'' the age at the start is based on intention-to-treat.'
+  age_at_medication_end:
+    slot_uri: ncit:C172686
+    range: integer
+    comments: []
+  age_at_locoregional_therapy:
+    slot_uri: ''
+    range: integer
+    comments: []
+    annotations: {}
+  locoregional_therapy_technique:
+    slot_uri: ''
+    range: LocoregionalTherapyTechniqueEnum
+    comments: []
+    annotations: {}
+  locoregional_therapy_dose:
+    slot_uri: ''
+    range: decimal
+    comments: []
+    annotations: {}
+  locoregional_therapy_dose_unit:
+    slot_uri: ''
+    range: LocoregionalTherapyDoseUnitEnum
+    comments: []
+    annotations: {}
+  protocol_medication:
+    slot_uri: ncit:C175038
+    range: YesNoEnum
+    comments: []
+  medication_administration_status:
+    slot_uri: ncit:C173297
+    range: MedicationAdministrationStatusEnum
+    comments: []
+  rt_administration_status:
+    slot_uri: ncit:C173297
+    range: RtAdministrationStatusEnum
+    comments: []
+  locoregional_therapy_administration_status:
+    slot_uri: ncit:C173297
+    range: MedicationAdministrationStatusEnum
+    comments: []
+  route:
+    slot_uri: ncit:C186559
+    range: RouteEnum
+    comments: []
+  medication:
+    slot_uri: ncit:C459
+    range: MedicationEnum
+    comments: []
+  regimen:
+    slot_uri: ncit:C15697
+    range: RegimenEnum
+    comments: []
+    annotations: {}
+  number_doses:
+    slot_uri: ncit:C173293
+    range: decimal
+    comments:
+    - '(aml) ConsortiumNote: Number of doses of chemotherapy agent administered over the indicated start and end time points Note: Only fill in this variable if this information is available.'
+    - '(hl) ConsortiumNote: Number of doses of chemotherapy agent administered over the indicated start and end time points Note: Only fill in this variable if this information is available.'
+    - '(rb) ConsortiumNote: Number of doses of chemotherapy agent administered over the indicated start and end time points Note: Only fill in this variable if this information is available.'
+  medication_dose_administered:
+    slot_uri: ncit:C94394
+    range: decimal
+    comments:
+    - '(aml) ConsortiumNote: Total dose of the chemotherapy agent administered to the subject over the indicated start and end time points. Note: Only fill in this variable if this information is available.'
+    - '(gct) ConsortiumNote: Total dose of the chemotherapy agent administered to the subject over the indicated start and end time points.'
+    - '(hl) ConsortiumNote: Total dose of the chemotherapy agent administered to the subject over the indicated start and end time points. Note: Only fill in this variable if this information is available.'
+    - '(rb) ConsortiumNote: Total dose of the chemotherapy agent administered to the subject over the indicated start and end time points. Note: Only fill in this variable if this information is available.'
+  medication_dose_intended:
+    slot_uri: ncit:C173294
+    range: decimal
+    comments:
+    - '(aml) ConsortiumNote: Intention-to-treat total dose of the chemotherapy agent over the indicated start and end time points. Note: Only fill in this variable if this information is available.'
+    - '(hl) ConsortiumNote: Intention-to-treat total dose of the chemotherapy agent over the indicated start and end time points. Note: Only fill in this variable if this information is available.'
+    - '(rb) ConsortiumNote: Intention-to-treat total dose of the chemotherapy agent over the indicated start and end time points. Note: Only fill in this variable if this information is available.'
+  medication_dose_unit:
+    slot_uri: ncit:C17395
+    range: MedicationDoseUnitEnum
+    comments:
+    - '(aml) ConsortiumNote: Unit for TOTAL_DOSE_ADMINISTERED and TOTAL_DOSE_INTENDED must be the same.'
+    - '(hl) ConsortiumNote: Unit for TOTAL_DOSE_ADMINISTERED and TOTAL_DOSE_INTENDED must be the same.'
+    - '(rb) ConsortiumNote: Unit for TOTAL_DOSE_ADMINISTERED and TOTAL_DOSE_INTENDED must be the same.'
+  supportive_care_detail:
+    slot_uri: ''
+    range: SupportiveCareDetailEnum
+    comments: []
+    annotations: {}
+  age_at_modification:
+    slot_uri: ''
+    range: integer
+    comments: []
+  modification:
+    slot_uri: ncit:C185632
+    range: ModificationEnum
+    comments: []
+  modification_basis:
+    slot_uri: ncit:C93529
+    range: ModificationBasisEnum
+    comments: []
+  reason:
+    slot_uri: ncit:C185636
+    range: ReasonEnum
+    comments: []
+  toxicity_detail:
+    slot_uri: ncit:C185693
+    range: ToxicityDetailEnum
+    comments: []
+    annotations: {}
+  toxicity_immune:
+    slot_uri: ncit:C63814
+    range: YesNoEnum
+    comments: []
+    annotations: {}
+  toxicity_infusion:
+    slot_uri: ncit:C185649
+    range: YesNoEnum
+    comments: []
+    annotations: {}
+  original_agent:
+    slot_uri: ncit:C185650
+    range: OriginalAgentEnum
+    comments: []
+  sub_agent:
+    slot_uri: ncit:C185634
+    range: SubAgentEnum
+    comments: []
+    annotations: {}
+  age_at_rt_start:
+    slot_uri: ncit:C172695
+    range: integer
+    comments:
+    - '(rb) ConsortiumNote: If TECHNIQUE == ''Brachytherapy'', this should be the plaque insertion date'
+  age_at_rt_end:
+    slot_uri: ncit:C172696
+    range: integer
+    comments:
+    - '(rb) ConsortiumNote: If TECHNIQUE == ''Brachytherapy'', this should be the plaque removal date'
+  protocol_radiation_therapy:
+    slot_uri: ncit:C175038
+    range: YesNoEnum
+    comments: []
+    annotations: {}
+  energy_type:
+    slot_uri: ncit:C15313
+    range: EnergyTypeEnum
+    comments: []
+  rt_dose:
+    slot_uri: ncit:C173282
+    range: decimal
+    comments:
+    - '(aml) ConsortiumNote: Total dose of radiation over the period encompassed by AGE_AT_RT_START to _AGE_AT_RT_END'
+  rt_dose_unit:
+    slot_uri: ncit:C18068
+    range: RtDoseUnitEnum
+    comments: []
+  num_fraction:
+    slot_uri: ncit:C175034
+    range: integer
+    comments:
+    - '(rb) ConsortiumNote: Only applies to external beam'
+  boost_dose:
+    slot_uri: ncit:C185679
+    range: decimal
+    comments: []
+  age_at_sct:
+    slot_uri: ncit:C168853
+    range: integer
+    comments: []
+  protocol_sct:
+    slot_uri: ''
+    range: YesNoEnum
+    comments: []
+    annotations: {}
+  sct_status:
+    slot_uri: ''
+    range: YesNoEnum
+    comments: []
+  sct_type:
+    slot_uri: ncit:C168864
+    range: SctTypeEnum
+    comments: []
+  stem_cell_source:
+    slot_uri: ncit:C168870
+    range: StemCellSourceEnum
+    comments: []
+  donor_relationship:
+    slot_uri: ncit:C168869
+    range: DonorRelationshipEnum
+    comments: []
+  hla_match:
+    slot_uri: ncit:C169009
+    range: HlaMatchEnum
+    comments:
+    - '(aml) ConsortiumNote: the term should be about the HLA matching result (ie match status), not the process - NCI will massage this term''s definition (HLA Match status)'
+  number_hla:
+    slot_uri: ncit:C173301
+    range: decimal
+    comments: []
+  number_matches:
+    slot_uri: ncit:C173302
+    range: decimal
+    comments: []
+  hla_a_result:
+    slot_uri: ncit:C168923
+    range: HlaAResultEnum
+    comments: []
+  hla_b_result:
+    slot_uri: ncit:C168924
+    range: HlaBResultEnum
+    comments: []
+  hla_c_result:
+    slot_uri: ncit:C168925
+    range: HlaCResultEnum
+    comments: []
+  hla_drb1_result:
+    slot_uri: ncit:C168926
+    range: HlaDrb1ResultEnum
+    comments: []
+  hla_dq_result:
+    slot_uri: ncit:C168927
+    range: HlaDqResultEnum
+    comments: []
+  conditioning_type:
+    slot_uri: ncit:C169014
+    range: ConditioningTypeEnum
+    comments: []
+  prior_tbi:
+    slot_uri: ncit:C15350
+    range: YesNoEnum
+    comments: []
+  total_cycles:
+    slot_uri: ncit:C177373
+    range: decimal
+    comments: []
+    annotations: {}
+  age_at_tmp_start:
+    slot_uri: ncit:C172697
+    range: integer
+    comments: []
+  tmp_type:
+    slot_uri: ncit:C173057
+    range: TmpTypeEnum
+    comments: []
+  cimt_type:
+    slot_uri: ncit:C173057
+    range: CimtTypeEnum
+    comments: []
+    annotations: {}
+  tmp_product:
+    slot_uri: ncit:C173287
+    range: TmpProductEnum
+    comments: []
+  product_type:
+    slot_uri: ncit:C185655
+    range: ProductTypeEnum
+    comments: []
+  number_units:
+    slot_uri: ncit:C185656
+    range: decimal
+    comments: []
+  age_at_cimt_start:
+    slot_uri: ncit:C173195
+    range: integer
+    comments: []
+  age_at_response:
+    slot_uri: ncit:C168856
+    range: integer
+    comments: []
+  response_category:
+    slot_uri: ncit:C173306
+    range: ResponseCategoryEnum
+    comments: []
+  response:
+    slot_uri: ncit:C50995
+    range: ResponseEnum
+    comments: []
+  bm_pct_blasts_at_response:
+    slot_uri: ncit:C168959
+    range: decimal
+    comments: []
+    annotations: {}
+  bm_analysis_method_at_response:
+    slot_uri: ncit:C168960
+    range: BmAnalysisMethodAtResponseEnum
+    comments:
+    - '(aml) ConsortiumNote: Only fill in the variable if a value is available for BM_PCT_BLASTS_AT_RESPONSE'
+    annotations: {}
+  anc_at_response:
+    slot_uri: ncit:C168961
+    range: decimal
+    comments: []
+    annotations: {}
+  anc_threshold_at_response:
+    slot_uri: ncit:C168962
+    range: YesNoEnum
+    comments: []
+    annotations: {}
+  platelet_count_at_response:
+    slot_uri: ncit:C168963
+    range: decimal
+    comments: []
+    annotations: {}
+  platelet_threshold_at_response:
+    slot_uri: ncit:C168964
+    range: YesNoEnum
+    comments: []
+    annotations: {}
+  response_method:
+    slot_uri: ncit:C178148
+    range: ResponseMethodEnum
+    comments: []
+  response_system:
+    slot_uri: ncit:C125932
+    range: ResponseSystemEnum
+    comments: []
+  response_system_version:
+    slot_uri: ncit:C175042
+    range: string
+    comments: []
+    annotations: {}
+  mibg_score_type:
+    slot_uri: ''
+    range: MibgScoreTypeEnum
+    comments: []
+    annotations: {}
+  mibg_score:
+    slot_uri: ''
+    range: decimal
+    comments: []
+    annotations: {}
+  interim_response:
+    slot_uri: ncit:C185657
+    range: InterimResponseEnum
+    comments: []
+  pct_change:
+    slot_uri: ncit:C185497
+    range: decimal
+    comments: []
+    annotations: {}
+  palpable_nodes:
+    slot_uri: ncit:C185660
+    range: YesNoEnum
+    comments: []
+  tx_prior_response:
+    slot_uri: ''
+    range: TxPriorResponseEnum
+    comments: []
+    annotations: {}
+  necrosis:
+    slot_uri: ncit:C159481
+    range: NecrosisEnum
+    comments: []
+    annotations: {}
+  necrosis_pct:
+    slot_uri: ncit:C159481
+    range: decimal
+    comments:
+    - '(os) ConsortiumNote: This should be the mean, not the min or max.'
+    - '(ews) ConsortiumNote: Include one decimal place.'
+    annotations: {}
+  age_at_mrd_assessment:
+    slot_uri: ncit:C168855
+    range: integer
+    comments: []
+  mrd_result_unit:
+    slot_uri: ''
+    range: MrdResultUnitEnum
+    comments: []
+  sensitivity:
+    slot_uri: ncit:C168957
+    range: decimal
+    comments: []
+  molecular_markers:
+    slot_uri: ncit:C168895
+    range: MolecularMarkersEnum
+    comments:
+    - '(aml) ConsortiumNote: If multiple MRD markers, include one observation per marker.'
+  genetic_analysis_method:
+    slot_uri: ncit:C158954
+    range: GeneticAnalysisMethodEnum
+    comments: []
+  genetic_analysis_method_other:
+    slot_uri: ''
+    range: string
+    comments: []
+    annotations: {}
+  alteration_presence:
+    slot_uri: ncit:C173596
+    range: PresentAbsentEnum
+    comments:
+    - '(aml) ConsortiumNote: This variable indicates the result of testing for the molecular abnormality listed in alteration.'
+  allelic_ratio:
+    slot_uri: ncit:C173545
+    range: decimal
+    comments:
+    - '(aml) ConsortiumNote: Only fill in this variable if the information is available.'
+    - '(nbl) ConsortiumNote: Only fill in this variable if the information is available.'
+  age_at_ae:
+    slot_uri: ncit:C172677
+    range: integer
+    comments: []
+  age_at_ae_resolved:
+    slot_uri: ncit:C175043
+    range: integer
+    comments: []
+  ae_detection_method:
+    slot_uri: ncit:C185658
+    range: AeDetectionMethodEnum
+    comments: []
+    annotations: {}
+  adverse_event:
+    slot_uri: ncit:C41331
+    range: AdverseEventEnum
+    comments:
+    - '(aml) ConsortiumNote: For AML, COG will omit multiorgan failure, hemorrhage, and neurotoxcity. Infection for AML COG will be CRF question about sterile site'
+  ae_treatment:
+    slot_uri: ''
+    range: AeTreatmentEnum
+    comments: []
+  ae_code:
+    slot_uri: ncit:C173313
+    range: string
+    comments:
+    - '(aml) ConsortiumNote: For AML, include when available if a 1:1 mapping to the ADVERSE_EVENT bucket'
+  ae_system:
+    slot_uri: ncit:C168872
+    range: AeSystemEnum
+    comments: []
+  ae_system_version:
+    slot_uri: ncit:C173314
+    range: string
+    comments: []
+  attribution:
+    slot_uri: ncit:C41358
+    range: AttributionEnum
+    comments: []
+    annotations: {}
+  modification_required:
+    slot_uri: ncit:C55606
+    range: YesNoEnum
+    comments: []
+    annotations: {}
+  tox_delay:
+    slot_uri: ''
+    range: YesNoEnum
+    comments: []
+    annotations: {}
+  tox_high_grade_events:
+    slot_uri: ''
+    range: integer
+    comments: []
+    annotations: {}
+  tox_dose_reductions:
+    slot_uri: ''
+    range: integer
+    comments: []
+    annotations: {}
+  outcome:
+    slot_uri: ncit:C49489
+    range: OutcomeEnum
+    comments: []
+  icu:
+    slot_uri: ncit:C173316
+    range: YesNoEnum
+    comments: []
+    annotations: {}
+  supportive_medication:
+    slot_uri: ncit:C173317
+    range: YesNoEnum
+    comments: []
+    annotations: {}
+  ae_intervention_status:
+    slot_uri: ncit:C173318
+    range: YesNoEnum
+    comments:
+    - '(aml) ConsortiumNote: changed to general INTERVENTION variable (was previously SOS_INTERVENTION)'
+  ae_intervention:
+    slot_uri: ncit:C173319
+    range: AeInterventionEnum
+    comments:
+    - '(aml) ConsortiumNote: If multiple medications or interventions performed, include one observation per medication or intervention'
+    - '(aml) ConsortiumNote:  Only fill in this variable if MEDICATION and/or INTERVENTION are marker as ''Yes'''
+    - '(all) ConsortiumNote: If multiple medications or interventions performed, include one observation per medication or intervention'
+    - '(all) ConsortiumNote:  Only fill in this variable if MEDICATION and/or INTERVENTION are marker as ''Yes'''
+    annotations: {}
+  ae_pathogen:
+    slot_uri: ncit:C185665
+    range: AePathogenEnum
+    comments:
+    - '(aml) ConsortiumNote: If multiple pathogens involved, include one observation per pathogen.'
+    - '(aml) ConsortiumNote:  Only fill in this variable if ADVERSE_EVENT is ''Infection.'''
+    - '(all) ConsortiumNote: If multiple pathogens involved, include one observation per pathogen.'
+    - '(all) ConsortiumNote:  Only fill in this variable if ADVERSE_EVENT is ''Infection.'''
+  ae_pathogen_confirmation:
+    slot_uri: ncit:C168955
+    range: AePathogenConfirmationEnum
+    comments:
+    - '(aml) ConsortiumNote: Only fill in this variable if ADVERSE_EVENT is ''Infection'' and there is a value filled in for PATHOGEN.'
+    annotations: {}
+  infection_classification:
+    slot_uri: ncit:C178091
+    range: InfectionClassificationEnum
+    comments: []
+    annotations: {}
+  gvhd_acuity:
+    slot_uri: ncit:C168861
+    range: GvhdAcuityEnum
+    comments:
+    - '(aml) ConsortiumNote: Only fill in this variable if ADVERSE_EVENT is ''GVHD.'''
+  gvhd_organ:
+    slot_uri: ncit:C168883
+    range: GvhdOrganEnum
+    comments:
+    - '(aml) ConsortiumNote: If multiple organs involved in GVHD, include one observation per organ.'
+    - '(aml) ConsortiumNote:  Only fill in this variable if ADVERSE_EVENT is ''GVHD.'''
+  age_at_condition:
+    slot_uri: ncit:C18772
+    range: integer
+    comments: []
+  condition_other:
+    slot_uri: ncit:C53263
+    range: string
+    comments: []
+  laboratory_test_specimen_other:
+    slot_uri: ''
+    range: string
+    comments: []
+  cytoband:
+    slot_uri: ncit:C13202
+    range: string
+    comments: []
+    annotations: {}
+  hgvs_coding_transcript:
+    slot_uri: ''
+    range: string
+    comments: []
+    annotations: {}
+  hgvs_protein_transcript:
+    slot_uri: ''
+    range: string
+    comments: []
+    annotations: {}
+  reported_significance_other:
+    slot_uri: ''
+    range: string
+    comments: []
+  associated_condition:
+    slot_uri: ''
+    range: AssociatedConditionEnum
+    comments: []
+    annotations: {}
+  genetic_analysis_indication:
+    slot_uri: ''
+    range: GeneticAnalysisIndicationEnum
+    comments: []
+    annotations: {}
+  assessment_reason:
+    slot_uri: ncit:C171003
+    range: AssessmentReasonEnum
+    comments: []
+  morph_code_text:
+    slot_uri: ''
+    range: string
+    comments: []
+  morph_code_system_version:
+    slot_uri: ''
+    range: string
+    comments: []
+  top_code:
+    slot_uri: ''
+    range: string
+    comments: []
+  top_code_text:
+    slot_uri: ''
+    range: string
+    comments: []
+  top_code_system:
+    slot_uri: ''
+    range: TopCodeSystemEnum
+    comments: []
+  top_code_system_version:
+    slot_uri: ''
+    range: string
+    comments: []
+  tumor_number:
+    slot_uri: ''
+    range: decimal
+    comments: []
+  stage_system:
+    slot_uri: ncit:C18004
+    range: StageSystemEnum
+    comments:
+    - '(pre) ConsortiumNote: If there were multiple staging systems used, include one observation per staging system'
+  stage_system_version:
+    slot_uri: ''
+    range: string
+    comments: []
+  stage_text:
+    slot_uri: ''
+    range: string
+    comments: []
+    annotations: {}
+  disease_extent:
+    slot_uri: ''
+    range: DiseaseExtentEnum
+    comments: []
+    annotations: {}
+  path_morph_reporting:
+    slot_uri: ''
+    range: string
+    comments: []
+    annotations: {}
+  diagnosis_conf_source:
+    slot_uri: ''
+    range: DiagnosisConfSourceEnum
+    comments: []
+    annotations: {}
+  transformation:
+    slot_uri: ''
+    range: YesNoEnum
+    comments: []
+    annotations: {}
+  transformation_conf_source:
+    slot_uri: ''
+    range: TransformationConfSourceEnum
+    comments: []
+    annotations: {}
+  modification_other:
+    slot_uri: ''
+    range: string
+    comments: []
+    annotations: {}
+  reason_other:
+    slot_uri: ''
+    range: string
+    comments: []
+    annotations: {}
+  toxicity_detail_other:
+    slot_uri: ''
+    range: string
+    comments: []
+    annotations: {}
+  original_agent_other:
+    slot_uri: ''
+    range: string
+    comments: []
+    annotations: {}
+  sub_agent_other:
+    slot_uri: ''
+    range: string
+    comments: []
+    annotations: {}
+  nephron_sparing_partial_nephrectomy:
+    slot_uri: ''
+    range: YesNoEnum
+    comments: []
+    annotations: {}
+  tumor_rupture:
+    slot_uri: ''
+    range: YesNoEnum
+    comments: []
+    annotations: {}
+  surgical_complications:
+    slot_uri: ncit:C164157
+    range: SurgicalComplicationsEnum
+    comments: []
+    annotations: {}
+  surgical_complications_other:
+    slot_uri: ''
+    range: string
+    comments: []
+    annotations: {}
+  age_at_subgroup_assignment:
+    slot_uri: ''
+    range: integer
+    comments:
+    - '(ews) ConsortiumNote: Date of assignment, regardless of if the treatment was received'
+    - '(os) ConsortiumNote: use date of randomization, for non-randomized patients use enrollment date.'
+  data_source:
+    slot_uri: ncit:C16493
+    range: DataSourceEnum
+    comments: []
+  age_precision:
+    slot_uri: ncit:C48045
+    range: AgePrecisionEnum
+    comments:
+    - '(cns) ConsortiumNote: PNOC uses more general dates to avoid PHI'
+  reason_off_other:
+    slot_uri: ''
+    range: string
+    comments: []
+  country:
+    slot_uri: ''
+    range: string
+    comments:
+    - '(cns) ConsortiumNote: Might have to manually extract from site for COG data if needed.'
+  sedation_type:
+    slot_uri: ''
+    range: SedationTypeEnum
+    comments: []
+    annotations: {}
+  mri_sequence:
+    slot_uri: ''
+    range: MriSequenceEnum
+    comments:
+    - '(cns) ConsortiumNote: Only use if the sequence is clearly reported in the source data, otherwise use ''Not Reported'''
+    annotations: {}
+  tumor_presentation:
+    slot_uri: ''
+    range: TumorPresentationEnum
+    comments:
+    - '(cns) ConsortiumNote: Only use if the presentation is clearly reported in the source data, otherwise use ''Not Reported''.'
+    annotations: {}
+  determination_source:
+    slot_uri: ''
+    range: DeterminationSourceEnum
+    comments:
+    - '(cns) ConsortiumNote: For current MB data, this will all be research/retrospective. For future COG MB, will be prospective/clinical.'
+    annotations: {}
+  diagnosis_category:
+    slot_uri: ''
+    range: DiagnosisCategoryEnum
+    comments: []
+  non_protocol_reason:
+    slot_uri: ''
+    range: NonProtocolReasonEnum
+    comments: []
+    annotations: {}
+  medication_other:
+    slot_uri: ''
+    range: string
+    comments: []
+    annotations: {}
+  technique:
+    slot_uri: ncit:C15313
+    range: TechniqueEnum
+    comments: []
+  rt_data_source:
+    slot_uri: ''
+    range: RtDataSourceEnum
+    comments:
+    - '(cns) ConsortiumNote: All XRT data for COG will be intended dose.'
+    annotations: {}
+  boost_type:
+    slot_uri: ncit:C137812
+    range: BoostTypeEnum
+    comments: []
+  fraction_dose:
+    slot_uri: ''
+    range: decimal
+    comments: []
+  fraction_dose_unit:
+    slot_uri: ncit:C18068
+    range: FractionDoseUnitEnum
+    comments: []
+  procedure:
+    slot_uri: ncit:C161601
+    range: ProcedureEnum
+    comments: []
+  hydrocephalus:
+    slot_uri: ncit:C3111
+    range: HydrocephalusEnum
+    comments: []
+    annotations: {}
+  posterior_fossa_syndrome:
+    slot_uri: ''
+    range: YesNoEnum
+    comments: []
+    annotations: {}
+  csf_diversion:
+    slot_uri: ''
+    range: CsfDiversionEnum
+    comments: []
+    annotations: {}
+  neurological_status:
+    slot_uri: ''
+    range: NeurologicalStatusEnum
+    comments: []
+    annotations: {}
+  threshold_level:
+    slot_uri: ''
+    range: ThresholdLevelEnum
+    comments: []
+    annotations: {}
+  tissue_type:
+    slot_uri: ncit:C119940
+    range: TissueTypeEnum
+    comments: []
+  disease_presence:
+    slot_uri: ''
+    range: PresentAbsentEnum
+    comments: []
+  multiplicity:
+    slot_uri: ''
+    range: MultiplicityEnum
+    comments:
+    - '(ews) ConsortiumNote: Only if the ''multiple'' tumors/lesions don''t have individual characteristics to report. Otherwise, report as multiple rows.'
+  tumor_volume:
+    slot_uri: ncit:C94515
+    range: TumorVolumeEnum
+    comments:
+    - '(ews) ConsortiumNote: In EICESS 92, the cutoff was 100 ml. Conversion to the 200 cutoff is only possible for patients with a volume <100. For patients with a volume >100, we can only calculate this for those with accurate volume. Assuming some missings'
+    annotations: {}
+  estimated_volume:
+    slot_uri: ''
+    range: decimal
+    comments: []
+    annotations: {}
+  fracture:
+    slot_uri: ncit:C3046
+    range: YesNoEnum
+    comments: []
+    annotations: {}
+  skip_lesion:
+    slot_uri: ncit:C174454
+    range: SkipLesionEnum
+    comments: []
+    annotations: {}
+  ipsilateral_nodules:
+    slot_uri: ncit:C174455
+    range: YesNoEnum
+    comments: []
+    annotations: {}
+  joint_involvement:
+    slot_uri: ncit:C174453
+    range: YesNoEnum
+    comments: []
+    annotations: {}
+  site_within_bone:
+    slot_uri: ncit:C174998
+    range: SiteWithinBoneEnum
+    comments: []
+    annotations: {}
+  age_at_disease_characteristic:
+    slot_uri: ''
+    range: integer
+    comments: []
+  transposition_organ:
+    slot_uri: ncit:C175035
+    range: TranspositionOrganEnum
+    comments: []
+  procedure_extent:
+    slot_uri: ncit:C157443
+    range: ProcedureExtentEnum
+    comments: []
+  age_at_sct_harvest:
+    slot_uri: ncit:C198866
+    range: integer
+    comments: []
+    annotations: {}
+  age_at_recovery:
+    slot_uri: ncit:C113053
+    range: integer
+    comments:
+    - '(ews) ConsortiumNote: Only fill in when answered ''Yes'' for RECOVERY_STATUS. The first day you reach the recovery level per RECOVERY_TYPE.'
+    annotations: {}
+  recovery_type:
+    slot_uri: ''
+    range: RecoveryTypeEnum
+    comments: []
+    annotations: {}
+  recovery_status:
+    slot_uri: ''
+    range: YesNoEnum
+    comments: []
+    annotations: {}
+  cd34_collected:
+    slot_uri: ncit:C175036
+    range: decimal
+    comments: []
+  cd34_transplant:
+    slot_uri: ncit:C175037
+    range: decimal
+    comments: []
+  age_at_status:
+    slot_uri: ''
+    range: integer
+    comments: []
+  gender_identity:
+    slot_uri: ''
+    range: GenderIdentityEnum
+    comments: []
+  exposure:
+    slot_uri: ncit:C17941
+    range: ExposureEnum
+    comments: []
+  exposure_amount:
+    slot_uri: ''
+    range: decimal
+    comments: []
+  exposure_amount_type:
+    slot_uri: ''
+    range: ExposureAmountTypeEnum
+    comments: []
+    annotations: {}
+  exposure_status:
+    slot_uri: ''
+    range: ExposureStatusEnum
+    comments: []
+  exposure_amount_frequency:
+    slot_uri: ''
+    range: ExposureAmountFrequencyEnum
+    comments: []
+    annotations: {}
+  alcohol_consumption:
+    slot_uri: ''
+    range: AlcoholConsumptionEnum
+    comments: []
+    annotations: {}
+  marital_status:
+    slot_uri: ncit:C25188
+    range: MaritalStatusEnum
+    comments: []
+  religion_type:
+    slot_uri: ncit:C17085
+    range: ReligionTypeEnum
+    comments: []
+  religion_type_other:
+    slot_uri: ''
+    range: string
+    comments: []
+  sunscreen_use:
+    slot_uri: ''
+    range: YesNoEnum
+    comments: []
+  occupation:
+    slot_uri: ncit:C25193
+    range: string
+    comments: []
+  relative_sct_status:
+    slot_uri: ''
+    range: YesNoEnum
+    comments: []
+  number_of_pregnancies:
+    slot_uri: ncit:C106551
+    range: integer
+    comments:
+    - '(fa) ConsortiumNote: ConditionalityStatement: if RELATION = ''Mother'''
+  number_of_live_births:
+    slot_uri: ncit:C178141
+    range: integer
+    comments:
+    - '(fa) ConsortiumNote: ConditionalityStatement: if RELATION = ''Mother'''
+  number_of_abortions:
+    slot_uri: ncit:C106550
+    range: integer
+    comments:
+    - '(fa) ConsortiumNote: ConditionalityStatement: if RELATION = ''Mother'''
+  family_medical_history_procedure:
+    slot_uri: ncit:C161601
+    range: FamilyMedicalHistoryProcedureEnum
+    comments: []
+  age_at_last_follow_up:
+    slot_uri: ''
+    range: integer
+    comments: []
+  trm_type_other:
+    slot_uri: ''
+    range: string
+    comments: []
+  cause_of_death_detail_other:
+    slot_uri: ''
+    range: string
+    comments: []
+  gestational_age_at_birth:
+    slot_uri: ncit:C124435
+    range: integer
+    comments:
+    - '(fa) ConsortiumNote: Gestational age in days.'
+  breakage_source_lab:
+    slot_uri: ''
+    range: BreakageSourceLabEnum
+    comments: []
+  year_at_genetic_analysis:
+    slot_uri: ''
+    range: integer
+    comments: []
+  reference_genome:
+    slot_uri: ncit:C164815
+    range: string
+    comments: []
+  reference_genome_accession:
+    slot_uri: ''
+    range: string
+    comments: []
+  founder_population:
+    slot_uri: ''
+    range: FounderPopulationEnum
+    comments: []
+  acmg_based_significance:
+    slot_uri: ''
+    range: YesNoEnum
+    comments: []
+    annotations: {}
+  age_at_diag_resolved:
+    slot_uri: ''
+    range: integer
+    comments: []
+  year_at_diagnosis:
+    slot_uri: ''
+    range: integer
+    comments: []
+  diagnosis_context:
+    slot_uri: ''
+    range: DiagnosisContextEnum
+    comments: []
+    annotations: {}
+  stage_category:
+    slot_uri: ncit:C15608
+    range: StageCategoryEnum
+    comments: []
+  tnm_tumor_t:
+    slot_uri: ''
+    range: TnmTumorTEnum
+    comments: []
+  tnm_node_n:
+    slot_uri: ''
+    range: TnmNodeNEnum
+    comments: []
+  tnm_metastasis_m:
+    slot_uri: ''
+    range: TnmMetastasisMEnum
+    comments: []
+  vacterlh:
+    slot_uri: ''
+    range: VacterlhEnum
+    comments:
+    - '(fa) ConsortiumNote: Must provide a row for each association.'
+    - '(fa)  ConsortiumNote: No VACTERLH and PHENOS in the same row'
+  phenos:
+    slot_uri: ''
+    range: PhenosEnum
+    comments:
+    - '(fa) ConsortiumNote: Must provide a row for each association.'
+    - '(fa)  ConsortiumNote: No VACTERLH and PHENOS in the same row'
+  vacterlh_phenos_status:
+    slot_uri: ''
+    range: PresentAbsentEnum
+    comments: []
+  clinical_finding:
+    slot_uri: ''
+    range: ClinicalFindingEnum
+    comments: []
+  clinical_finding_other:
+    slot_uri: ''
+    range: string
+    comments: []
+    annotations: {}
+  modified_rankin_scale:
+    slot_uri: ncit:C111383
+    range: integer
+    comments: []
+  fans_symptom_acuity:
+    slot_uri: ''
+    range: FansSymptomAcuityEnum
+    comments: []
+  dysplasia:
+    slot_uri: ncit:C4086
+    range: DysplasiaEnum
+    comments: []
+  hpv_status:
+    slot_uri: ''
+    range: HpvStatusEnum
+    comments: []
+  year_at_rt_start:
+    slot_uri: ''
+    range: integer
+    comments: []
+  year_at_sct:
+    slot_uri: ''
+    range: integer
+    comments: []
+  stem_cell_processing:
+    slot_uri: ''
+    range: StemCellProcessingEnum
+    comments: []
+  stem_cell_processing_other:
+    slot_uri: ''
+    range: string
+    comments: []
+  chimerism:
+    slot_uri: ''
+    range: decimal
+    comments: []
+  chimerism_unit:
+    slot_uri: ''
+    range: ChimerismUnitEnum
+    comments: []
+  year_at_medication_start:
+    slot_uri: ''
+    range: integer
+    comments: []
+  frequency_other:
+    slot_uri: ''
+    range: string
+    comments: []
+    annotations: {}
+  frequency:
+    slot_uri: ''
+    range: FrequencyEnum
+    comments: []
+    annotations: {}
+  procedure_other:
+    slot_uri: ''
+    range: string
+    comments: []
+    annotations: {}
+  procedure_method:
+    slot_uri: ''
+    range: ProcedureMethodEnum
+    comments: []
+    annotations: {}
+  age_at_smn:
+    slot_uri: ncit:C168860
+    range: integer
+    comments: []
+  study_phase:
+    slot_uri: ncit:C48281
+    range: StudyPhaseEnum
+    comments: []
+  study_type:
+    slot_uri: ncit:C142175
+    range: StudyTypeEnum
+    comments: []
+  assisted_conception:
+    slot_uri: ''
+    range: AssistedConceptionEnum
+    comments: []
+  ibd_colon_involvement:
+    slot_uri: ''
+    range: YesNoEnum
+    comments: []
+    annotations: {}
+  ae_grade:
+    slot_uri: ncit:C166200
+    range: AeGradeEnum
+    comments:
+    - '(aml) ConsortiumNote: Only applicable for CTCAE- or EBMT-coded AEs'
+    - '(all) ConsortiumNote: Only applicable for CTCAE- or EBMT-coded AEs'
+  ae_immune:
+    slot_uri: ncit:C185661
+    range: YesNoEnum
+    comments: []
+  ae_infusion:
+    slot_uri: ncit:C185663
+    range: YesNoEnum
+    comments: []
+  ae_reported:
+    slot_uri: ncit:C185669
+    range: YesNoEnum
+    comments: []
+  ae_attribution:
+    slot_uri: ncit:C41358
+    range: AeAttributionEnum
+    comments: []
+  ae_expected:
+    slot_uri: ncit:C93710
+    range: AeExpectedEnum
+    comments: []
+  ae_tx_mod:
+    slot_uri: ncit:C53606
+    range: YesNoEnum
+    comments: []
+  ae_hospitalization:
+    slot_uri: ncit:C83052
+    range: YesNoEnum
+    comments: []
+  ae_medication:
+    slot_uri: ncit:C173317
+    range: YesNoEnum
+    comments: []
+  ae_pathogen_status:
+    slot_uri: ncit:C168955
+    range: AePathogenStatusEnum
+    comments: []
+  ae_outcome:
+    slot_uri: ncit:C49489
+    range: AeOutcomeEnum
+    comments: []
+  smn_field:
+    slot_uri: ncit:C175044
+    range: SmnFieldEnum
+    comments: []
+  age_at_le_eval:
+    slot_uri: ncit:C185670
+    range: integer
+    comments: []
+  le:
+    slot_uri: ncit:C4808
+    range: LeEnum
+    comments:
+    - '(hl) ConsortiumNote: If multiple late effects, include one observation per late effect.'
+  le_detail:
+    slot_uri: ncit:C185686
+    range: LeDetailEnum
+    comments:
+    - '(hl) ConsortiumNote: If multiple late effect details, include one observation per late effect detail.'
+  le_sub_detail:
+    slot_uri: ncit:C186352
+    range: LeSubDetailEnum
+    comments:
+    - '(hl) ConsortiumNote: If multiple late effect sub-details, include one observation per late effect sub-detail.'
+  le_severity_grade:
+    slot_uri: ncit:C186476
+    range: LeSeverityGradeEnum
+    comments: []
+  le_ctcae_version:
+    slot_uri: ncit:C185691
+    range: string
+    comments: []
+  histologic_features:
+    slot_uri: ''
+    range: HistologicFeaturesEnum
+    comments:
+    - '(lt) ConsortiumNote: Use for Teratoid Features.'
+  pretext_mod_v:
+    slot_uri: ''
+    range: PresentAbsentEnum
+    comments: []
+  pretext_mod_p:
+    slot_uri: ''
+    range: PresentAbsentEnum
+    comments: []
+  pretext_mod_e:
+    slot_uri: ''
+    range: PresentAbsentEnum
+    comments: []
+  pretext_mod_m:
+    slot_uri: ''
+    range: PresentAbsentEnum
+    comments: []
+  pretext_mod_f:
+    slot_uri: ''
+    range: PretextModFEnum
+    comments: []
+  pretext_mod_r:
+    slot_uri: ''
+    range: PresentAbsentEnum
+    comments: []
+  kaposi_sarcoma_t:
+    slot_uri: C134970
+    range: KaposiSarcomaTEnum
+    comments: []
+    annotations: {}
+  kaposi_sarcoma_i:
+    slot_uri: C134978
+    range: KaposiSarcomaIEnum
+    comments: []
+    annotations: {}
+  kaposi_sarcoma_s:
+    slot_uri: C134981
+    range: KaposiSarcomaSEnum
+    comments: []
+    annotations: {}
+  cycles_planned:
+    slot_uri: ''
+    range: decimal
+    comments:
+    - '(rb) ConsortiumNote: For RB, this field should be used to designate the anticipated number of cycles of systemic chemotherapy that will be administered to the patient,'
+  hz_frequency:
+    slot_uri: ''
+    range: HzFrequencyEnum
+    comments: []
+  average_loss_low:
+    slot_uri: ''
+    range: decimal
+    comments: []
+  average_loss_high:
+    slot_uri: ''
+    range: decimal
+    comments: []
+  cycle_number:
+    slot_uri: ncit:C166208
+    range: decimal
+    comments:
+    - '(rb) ConsortiumNote: For RB, this field should be used to designate the cycle of systemic chemotherapy being described in the observation'
+  treatment_volume:
+    slot_uri: ''
+    range: TreatmentVolumeEnum
+    comments: []
+  randomized:
+    slot_uri: ncit:C25196
+    range: RandomizedEnum
+    comments: []
+  study_age_precision:
+    slot_uri: ''
+    range: StudyAgePrecisionEnum
+    comments:
+    - '(os) ConsortiumNote: this variable should only be used for ISG, to indicate that the AGE_AT variables througout are approximate. This is due to only having the birth year.'
+  skip_met_involvement:
+    slot_uri: ncit:C186745
+    range: SkipMetInvolvementEnum
+    comments: []
+    annotations: {}
+  intraop_adjuvant:
+    slot_uri: ''
+    range: IntraopAdjuvantEnum
+    comments: []
+    annotations: {}
+  distance_from_margin:
+    slot_uri: ncit:C137815
+    range: decimal
+    comments: []
+    annotations: {}
+  normalization_basis:
+    slot_uri: ncit:C186693
+    range: NormalizationBasisEnum
+    comments: []
+    annotations: {}
+  exam_type:
+    slot_uri: ''
+    range: ExamTypeEnum
+    comments: []
+  race_identification_source:
+    slot_uri: ''
+    range: RaceIdentificationSourceEnum
+    comments: []
+  extension_tumor_type:
+    slot_uri: ''
+    range: ExtensionTumorTypeEnum
+    comments: []
+  visual_discrete_tumors:
+    slot_uri: ''
+    range: YesNoEnum
+    comments: []
+  number_of_tumors_numeric:
+    slot_uri: ''
+    range: decimal
+    comments: []
+  tumor_from_fovea:
+    slot_uri: ''
+    range: TumorFromFoveaEnum
+    comments: []
+  optic_nerve_obscuration:
+    slot_uri: ''
+    range: YesNoEnum
+    comments: []
+  optic_nerve_obscuration_degree:
+    slot_uri: ''
+    range: OpticNerveObscurationDegreeEnum
+    comments: []
+  tumor_from_optic_nerve:
+    slot_uri: ''
+    range: TumorFromOpticNerveEnum
+    comments: []
+  fluid_from_tumor:
+    slot_uri: ''
+    range: FluidFromTumorEnum
+    comments: []
+  seeds_present:
+    slot_uri: ''
+    range: YesNoEnum
+    comments: []
+  seeds_pattern:
+    slot_uri: ''
+    range: SeedsPatternEnum
+    comments: []
+  seeds_type:
+    slot_uri: ''
+    range: SeedsTypeEnum
+    comments:
+    - '(rb) ConsortiumNote: If SEEDS_PRESENT == Yes'
+  seeds_classification:
+    slot_uri: ''
+    range: SeedsClassificationEnum
+    comments: []
+  finding:
+    slot_uri: ''
+    range: FindingEnum
+    comments: []
+  h_stage:
+    slot_uri: ''
+    range: HStageEnum
+    comments: []
+  group_system:
+    slot_uri: ''
+    range: GroupSystemEnum
+    comments: []
+  trilateral_retinoblastoma:
+    slot_uri: ncit:C7019
+    range: YesNoEnum
+    comments: []
+  evaluator:
+    slot_uri: ncit:C51824
+    range: EvaluatorEnum
+    comments: []
+  staging_site:
+    slot_uri: ncit:C157120
+    range: StagingSiteEnum
+    comments: []
+  diagnosis_site:
+    slot_uri: ncit:C157120
+    range: DiagnosisSiteEnum
+    comments: []
+  disease_characteristics_site:
+    slot_uri: ncit:C157120
+    range: DiseaseCharacteristicsSiteEnum
+    comments: []
+  response_site:
+    slot_uri: ncit:C157120
+    range: ResponseSiteEnum
+    comments: []
+  ae_site:
+    slot_uri: ncit:C157120
+    range: AeSiteEnum
+    comments: []
+  presentation_symptoms:
+    slot_uri: ''
+    range: PresentationSymptomsEnum
+    comments: []
+  presentation_symptoms_status:
+    slot_uri: ''
+    range: YesNoEnum
+    comments: []
+  symptoms_at_response:
+    slot_uri: ncit:C25269
+    range: YesNoEnum
+    comments: []
+  suspected_referring_diagnosis:
+    slot_uri: ''
+    range: SuspectedReferringDiagnosisEnum
+    comments: []
+  anterior_segment_exam:
+    slot_uri: ''
+    range: AnteriorSegmentExamEnum
+    comments: []
+  retinal_detachment:
+    slot_uri: ''
+    range: RetinalDetachmentEnum
+    comments: []
+  prior_steroids_week:
+    slot_uri: ''
+    range: YesNoEnum
+    comments: []
+    annotations: {}
+  prior_steroids_month:
+    slot_uri: ''
+    range: YesNoEnum
+    comments: []
+    annotations: {}
+  session_number:
+    slot_uri: ''
+    range: integer
+    comments:
+    - '(rb) ConsortiumNote: For RB, this field should be used to designate the intra-arterial chemotherapy session'
+  administration_site:
+    slot_uri: ''
+    range: AdministrationSiteEnum
+    comments: []
+  total_dose_given:
+    slot_uri: ''
+    range: YesNoEnum
+    comments: []
+  delivery_status:
+    slot_uri: ''
+    range: YesNoEnum
+    comments: []
+  indication:
+    slot_uri: ''
+    range: IndicationEnum
+    comments: []
+  reporting_level:
+    slot_uri: ''
+    range: ReportingLevelEnum
+    comments: []
+  rt_completed:
+    slot_uri: ''
+    range: YesNoEnum
+    comments: []
+  plaque_size:
+    slot_uri: ''
+    range: PlaqueSizeEnum
+    comments:
+    - '(rb) ConsortiumNote: Use if TECHNIQUE == ''Brachytherapy'''
+  rad_seeds_type:
+    slot_uri: ''
+    range: RadSeedsTypeEnum
+    comments:
+    - '(rb) ConsortiumNote: Use if TECHNIQUE == ''Brachytherapy'''
+  rad_seeds_num:
+    slot_uri: ''
+    range: decimal
+    comments:
+    - '(rb) ConsortiumNote: Use if TECHNIQUE == ''Brachytherapy'''
+  plaque_source:
+    slot_uri: ''
+    range: PlaqueSourceEnum
+    comments:
+    - '(rb) ConsortiumNote: Use if TECHNIQUE == ''Brachytherapy'''
+  plaque_model:
+    slot_uri: ''
+    range: string
+    comments:
+    - '(rb) ConsortiumNote: Use if TECHNIQUE == ''Brachytherapy'''
+  brach_calc_type:
+    slot_uri: ''
+    range: BrachCalcTypeEnum
+    comments:
+    - '(rb) ConsortiumNote: Use if TECHNIQUE == ''Brachytherapy'''
+  apex_dose:
+    slot_uri: ''
+    range: decimal
+    comments:
+    - '(rb) ConsortiumNote: Use if TECHNIQUE == ''Brachytherapy'''
+  dose_rate_at_apex:
+    slot_uri: ''
+    range: decimal
+    comments:
+    - '(rb) ConsortiumNote: Use if TECHNIQUE == ''Brachytherapy'''
+  implant_duration:
+    slot_uri: ''
+    range: decimal
+    comments:
+    - '(rb) ConsortiumNote: Use if TECHNIQUE == ''Brachytherapy'''
+  suture_coordinates:
+    slot_uri: ''
+    range: string
+    comments:
+    - '(rb) ConsortiumNote: Use if TECHNIQUE == ''Brachytherapy'''
+  laser_type:
+    slot_uri: ''
+    range: LaserTypeEnum
+    comments: []
+  laser_power:
+    slot_uri: ''
+    range: LaserPowerEnum
+    comments: []
+  laser_duration:
+    slot_uri: ''
+    range: LaserDurationEnum
+    comments: []
+  laser_duration_numeric:
+    slot_uri: ''
+    range: decimal
+    comments: []
+  cryotherapy_freezes:
+    slot_uri: ''
+    range: integer
+    comments: []
+  freeze_thaw_cycle_number:
+    slot_uri: ''
+    range: integer
+    comments: []
+  sct_success:
+    slot_uri: ''
+    range: YesNoEnum
+    comments: []
+  hospitalization:
+    slot_uri: ncit:C83052
+    range: YesNoEnum
+    comments: []
+  hospitalization_reason:
+    slot_uri: ''
+    range: HospitalizationReasonEnum
+    comments: []
+  hospitalization_reason_other:
+    slot_uri: ''
+    range: string
+    comments: []
+  avn_joint:
+    slot_uri: ncit:C178082
+    range: AvnJointEnum
+    comments: []
+    annotations: {}
+  avn_joint_laterality:
+    slot_uri: ncit:C178083
+    range: LateralityEnum
+    comments: []
+    annotations: {}
+  anaplasia:
+    slot_uri: ''
+    range: PresentAbsentEnum
+    comments: []
+    annotations: {}
+  anaplasia_type:
+    slot_uri: ''
+    range: AnaplasiaTypeEnum
+    comments: []
+    annotations: {}
+  anaplasia_pct_numeric:
+    slot_uri: ''
+    range: decimal
+    comments: []
+    annotations: {}
+  remaining_colon:
+    slot_uri: ''
+    range: RemainingColonEnum
+    comments: []
+  colon_polyp_size:
+    slot_uri: ''
+    range: ColonPolypSizeEnum
+    comments: []
+    annotations: {}
+  all_mucosa_visualized:
+    slot_uri: ''
+    range: YesNoEnum
+    comments: []
+    annotations: {}
+  bowel_preparation:
+    slot_uri: ncit:C62659
+    range: BowelPreparationEnum
+    comments: []
+    annotations: {}
+  bbps_score_left:
+    slot_uri: ''
+    range: BbpsScoreEnum
+    comments: []
+    annotations: {}
+  bbps_score_right:
+    slot_uri: ''
+    range: BbpsScoreEnum
+    comments: []
+    annotations: {}
+  bbps_score_transverse:
+    slot_uri: ''
+    range: BbpsScoreEnum
+    comments: []
+    annotations: {}
+  tumor_budding:
+    slot_uri: ''
+    range: TumorBuddingEnum
+    comments: []
+    annotations: {}
+  colon_polyps_total:
+    slot_uri: ''
+    range: decimal
+    comments: []
+    annotations: {}
+  gastric_polyps_total:
+    slot_uri: ''
+    range: decimal
+    comments: []
+    annotations: {}
+  small_bowel_polyps_total:
+    slot_uri: ''
+    range: decimal
+    comments: []
+    annotations: {}
+  pro_study_id:
+    slot_uri: ''
+    range: string
+    comments: []
+    annotations: {}
+  pro_measures:
+    slot_uri: ncit:C177377
+    range: ProMeasuresEnum
+    comments: []
+    annotations: {}
+  pro_measurement_type:
+    slot_uri: ncit:C186353
+    range: ProMeasurementTypeEnum
+    comments: []
+    annotations: {}
+  raters:
+    slot_uri: ncit:C185700
+    range: RatersEnum
+    comments: []
+    annotations: {}
+  eligible_age_lower:
+    slot_uri: ncit:C185672
+    range: integer
+    comments: []
+    annotations: {}
+  eligible_age_upper:
+    slot_uri: ncit:C185673
+    range: integer
+    comments: []
+    annotations: {}
+  time_point:
+    slot_uri: ncit:C82576
+    range: TimePointEnum
+    comments: []
+    annotations: {}
+  race_other:
+    slot_uri: ''
+    range: string
+    comments: []
+    annotations: {}
+  race_specified:
+    slot_uri: ''
+    range: RaceSpecifiedEnum
+    comments: []
+    annotations: {}
+  ethnicity_other:
+    slot_uri: ''
+    range: string
+    comments: []
+  ethnicity_specified:
+    slot_uri: ''
+    range: EthnicitySpecifiedEnum
+    comments: []
+  ashkenazi_jewish_ancestry:
+    slot_uri: ''
+    range: YesNoEnum
+    comments: []
+  year_at_pedigree_creation:
+    slot_uri: ''
+    range: integer
+    comments: []
+    annotations: {}
+  relation_lineage:
+    slot_uri: ''
+    range: RelationLineageEnum
+    comments: []
+    annotations: {}
+  gonadotoxic_risk:
+    slot_uri: ''
+    range: GonadotoxicRiskEnum
+    comments: []
+  gonadotoxic_risk_system:
+    slot_uri: ''
+    range: string
+    comments: []
+  gonadotoxic_risk_system_version:
+    slot_uri: ''
+    range: string
+    comments: []
+  site_finding:
+    slot_uri: ''
+    range: SiteFindingEnum
+    comments: []
+  volume:
+    slot_uri: ''
+    range: decimal
+    comments: []
+  volume_unit:
+    slot_uri: ''
+    range: VolumeUnitEnum
+    comments: []
+  endometrial_stripe_thickness:
+    slot_uri: ''
+    range: decimal
+    comments: []
+  endometrial_stripe_thickness_unit:
+    slot_uri: ''
+    range: EndometrialStripeThicknessUnitEnum
+    comments: []
+  shielding:
+    slot_uri: ''
+    range: YesNoEnum
+    comments: []
+  lifetime_cumulative_dose:
+    slot_uri: ''
+    range: decimal
+    comments: []
+  lifetime_cumulative_dose_unit:
+    slot_uri: ''
+    range: LifetimeCumulativeDoseUnitEnum
+    comments: []
+  fertility_procedure:
+    slot_uri: ''
+    range: FertilityProcedureEnum
+    comments: []
+  procedure_class:
+    slot_uri: ''
+    range: ProcedureClassEnum
+    comments: []
+  age_at_fertility_procedure:
+    slot_uri: ''
+    range: integer
+    comments: []
+  transport_media:
+    slot_uri: ''
+    range: TransportMediaEnum
+    comments: []
+  transport_media_other:
+    slot_uri: ''
+    range: string
+    comments: []
+  cryopreservation_media:
+    slot_uri: ''
+    range: CryopreservationMediaEnum
+    comments: []
+  cryopreservation_media_other:
+    slot_uri: ''
+    range: string
+    comments: []
+  freezing_method:
+    slot_uri: ''
+    range: FreezingMethodEnum
+    comments: []
+  freezing_method_other:
+    slot_uri: ''
+    range: string
+    comments: []
+  monitor_method:
+    slot_uri: ''
+    range: MonitorMethodEnum
+    comments: []
+  retrieval_method:
+    slot_uri: ''
+    range: RetrievalMethodEnum
+    comments: []
+  collection_status:
+    slot_uri: ''
+    range: YesNoEnum
+    comments: []
+  cryopreservation_status:
+    slot_uri: ''
+    range: YesNoEnum
+    comments: []
+  oocyte_collection_attempts:
+    slot_uri: ''
+    range: integer
+    comments: []
+  mature_oocytes_numeric:
+    slot_uri: ''
+    range: integer
+    comments: []
+  oocyte_retrieved_numeric:
+    slot_uri: ''
+    range: integer
+    comments: []
+  oocytes_fertilized_numeric:
+    slot_uri: ''
+    range: decimal
+    comments: []
+  fertilization_rate:
+    slot_uri: ''
+    range: decimal
+    comments: []
+  maturity_rate:
+    slot_uri: ''
+    range: decimal
+    comments: []
+  cryopreserved_embryo_numeric:
+    slot_uri: ''
+    range: decimal
+    comments: []
+  cryopreserved_oocyte_numeric:
+    slot_uri: ''
+    range: decimal
+    comments: []
+  embryo_cryopreserved_day:
+    slot_uri: ''
+    range: integer
+    comments: []
+  menstrual_phase:
+    slot_uri: ''
+    range: MenstrualPhaseEnum
+    comments: []
+  embryo_vitrification_stage:
+    slot_uri: ''
+    range: EmbryoVitrificationStageEnum
+    comments: []
+  preimplantation_genetic_testing:
+    slot_uri: ''
+    range: YesNoEnum
+    comments: []
+  preimplantation_genetic_testing_type:
+    slot_uri: ''
+    range: PreimplantationGeneticTestingTypeEnum
+    comments: []
+  semen_volume:
+    slot_uri: ''
+    range: decimal
+    comments: []
+  semen_concentration:
+    slot_uri: ''
+    range: decimal
+    comments: []
+  semen_motility:
+    slot_uri: ''
+    range: decimal
+    comments: []
+  semen_morphology:
+    slot_uri: ''
+    range: decimal
+    comments: []
+  semen_count:
+    slot_uri: ''
+    range: decimal
+    comments: []
+  semen_motility_count:
+    slot_uri: ''
+    range: decimal
+    comments: []
+  semen_abnormality:
+    slot_uri: ''
+    range: SemenAbnormalityEnum
+    comments: []
+  cryopreserved_semen_vials_numeric:
+    slot_uri: ''
+    range: decimal
+    comments: []
+  semen_cryopreservation_attempts:
+    slot_uri: ''
+    range: decimal
+    comments: []
+  testicular_tissue_weight_processed:
+    slot_uri: ''
+    range: integer
+    comments: []
+  testicular_tissue_weight_unit:
+    slot_uri: ''
+    range: OtcStripsWeightUnitEnum
+    comments: []
+  testicular_tissue_pieces_cryopreserved:
+    slot_uri: ''
+    range: integer
+    comments: []
+  testicular_tissue_vials_cryopreserved:
+    slot_uri: ''
+    range: integer
+    comments: []
+  sperm_present:
+    slot_uri: ''
+    range: YesNoEnum
+    comments: []
+  surgeon_type:
+    slot_uri: ''
+    range: SurgeonTypeEnum
+    comments: []
+  otc_surgical_technique:
+    slot_uri: ''
+    range: OtcSurgicalTechniqueEnum
+    comments: []
+  otc_conversion_reason:
+    slot_uri: ''
+    range: OtcConversionReasonEnum
+    comments: []
+  otc_surgical_energy_source:
+    slot_uri: ''
+    range: OtcSurgicalEnergySourceEnum
+    comments: []
+  germ_cells_present_spermatogonia:
+    slot_uri: ''
+    range: YesNoEnum
+    comments: []
+  spermatogonia_density:
+    slot_uri: ''
+    range: decimal
+    comments: []
+  spermatogonia_density_unit:
+    slot_uri: ''
+    range: SpermatogoniaDensityUnitEnum
+    comments: []
+  germ_cells_present_follicles:
+    slot_uri: ''
+    range: YesNoEnum
+    comments: []
+  follicle_density:
+    slot_uri: ''
+    range: decimal
+    comments: []
+  follicle_density_unit:
+    slot_uri: ''
+    range: FollicleDensityUnitEnum
+    comments: []
+  ovary_resect_percent:
+    slot_uri: ''
+    range: decimal
+    comments: []
+  otc_vials_number:
+    slot_uri: ''
+    range: integer
+    comments: []
+  otc_strips_number:
+    slot_uri: ''
+    range: integer
+    comments: []
+  otc_strips_weight:
+    slot_uri: ''
+    range: decimal
+    comments: []
+  otc_strips_weight_unit:
+    slot_uri: ''
+    range: OtcStripsWeightUnitEnum
+    comments: []
+  age_at_pregnancy:
+    slot_uri: ''
+    range: integer
+    comments: []
+  gestational_age_end_of_pregnancy_days:
+    slot_uri: ''
+    range: integer
+    comments: []
+  age_at_pregnancy_method:
+    slot_uri: ''
+    range: AgeAtPregnancyMethodEnum
+    comments: []
+  pregnancy_attempted:
+    slot_uri: ''
+    range: YesNoEnum
+    comments: []
+  pregnancy_achieved:
+    slot_uri: ''
+    range: YesNoEnum
+    comments: []
+  pregnancy_person:
+    slot_uri: ''
+    range: PregnancyPersonEnum
+    comments: []
+  fertility_tissue_utilized:
+    slot_uri: ''
+    range: YesNoEnum
+    comments: []
+  tissue_type_utilized:
+    slot_uri: ''
+    range: TissueTypeUtilizedEnum
+    comments: []
+  conception_type:
+    slot_uri: ''
+    range: ConceptionTypeEnum
+    comments: []
+  oocyte_or_embryo_source:
+    slot_uri: ''
+    range: OocyteOrEmbryoSourceEnum
+    comments: []
+  sperm_source:
+    slot_uri: ''
+    range: SpermSourceEnum
+    comments: []
+  oocyte_or_embryo_state:
+    slot_uri: ''
+    range: OocyteOrEmbryoStateEnum
+    comments: []
+  sperm_state:
+    slot_uri: ''
+    range: OocyteOrEmbryoStateEnum
+    comments: []
+  plurality:
+    slot_uri: ''
+    range: integer
+    comments: []
+  pregnancy_outcome:
+    slot_uri: ''
+    range: PregnancyOutcomeEnum
+    comments: []
+  delivery_route:
+    slot_uri: ''
+    range: DeliveryRouteEnum
+    comments: []
+  birth_order:
+    slot_uri: ''
+    range: integer
+    comments: []
+  birth_weight:
+    slot_uri: ''
+    range: decimal
+    comments: []
+  birth_weight_unit:
+    slot_uri: ''
+    range: BirthWeightUnitEnum
+    comments: []
+  age_at_fertility_consult:
+    slot_uri: ''
+    range: integer
+    comments: []
+  fertility_consult_completed:
+    slot_uri: ''
+    range: FertilityConsultCompletedEnum
+    comments: []
+  fertility_consult_not_completed_reason:
+    slot_uri: ''
+    range: FertilityConsultNotCompletedReasonEnum
+    comments: []
+  reason_declined_fertility_consult:
+    slot_uri: ''
+    range: string
+    comments: []
+  reason_declined_fertility_preservation:
+    slot_uri: ''
+    range: ReasonDeclinedFertilityPreservationEnum
+    comments: []
+  fertility_consult_who_present:
+    slot_uri: ''
+    range: FertilityConsultWhoPresentEnum
+    comments: []
+  fertility_consult_outcome:
+    slot_uri: ''
+    range: FertilityConsultOutcomeEnum
+    comments: []
+  interpreter_used:
+    slot_uri: ''
+    range: YesNoEnum
+    comments: []
+  insurance_type:
+    slot_uri: ''
+    range: InsuranceTypeEnum
+    comments: []
+  age_at_assessment:
+    slot_uri: ''
+    range: integer
+    comments: []
+  female_pubertal_status:
+    slot_uri: ncit:C204694
+    range: FemalePubertalStatusEnum
+    comments: []
+  male_pubertal_status:
+    slot_uri: ''
+    range: MalePubertalStatusEnum
+    comments: []
+  sexual_maturity_index:
+    slot_uri: ''
+    range: SexualMaturityIndexEnum
+    comments: []
+  mentrual_regularity:
+    slot_uri: ncit:C156587
+    range: MenstrualRegularityEnum
+    comments: []
+  time_to_resumption_menses:
+    slot_uri: ''
+    range: TimeToResumptionMensesEnum
+    comments: []
+  spontaneous_gonadal_function:
+    slot_uri: ''
+    range: YesNoEnum
+    comments: []
+  premature_ovarian_insufficiency:
+    slot_uri: ncit:C80099
+    range: YesNoEnum
+    comments: []
+  menstrual_regularity:
+    slot_uri: ''
+    range: MenstrualRegularityEnum
+    comments: []
+  provider_honest_broker_id:
+    slot_uri: ''
+    range: string
+    comments: []
+  provider_age_at_survey:
+    slot_uri: ''
+    range: ProviderAgeAtSurveyEnum
+    comments: []
+  provider_data_source:
+    slot_uri: ''
+    range: ProviderDataSourceEnum
+    comments: []
+  provider_sex:
+    slot_uri: ''
+    range: ProviderSexEnum
+    comments: []
+  provider_speciality:
+    slot_uri: ''
+    range: ProviderSpecialityEnum
+    comments: []
+  provider_speciality_other:
+    slot_uri: ''
+    range: string
+    comments: []
+  hereditary_gi_specialist_status:
+    slot_uri: ''
+    range: YesNoEnum
+    comments: []
+  practice_region:
+    slot_uri: ''
+    range: string
+    comments: []
+  adenoma_detection_rate:
+    slot_uri: ''
+    range: integer
+    comments: []
+  adenoma_detection_rate_unit:
+    slot_uri: ''
+    range: FunctionalMeasurementResultUnitEnum
+    comments: []
+  adenoma_detection_rate_numerator:
+    slot_uri: ''
+    range: AdenomaDetectionRateNumeratorEnum
+    comments: []
+  adenoma_detection_rate_denominator:
+    slot_uri: ''
+    range: AdenomaDetectionRateDenominatorEnum
+    comments: []
+  provider_gender_identity:
+    slot_uri: ''
+    range: ProviderGenderIdentityEnum
+    comments: []
+  age_at_training_complete:
+    slot_uri: ''
+    range: ProviderAgeAtSurveyEnum
+    comments: []
+  training_type:
+    slot_uri: ''
+    range: TrainingTypeEnum
+    comments: []
+  training_type_other:
+    slot_uri: ''
+    range: string
+    comments: []
+  training_country:
+    slot_uri: ''
+    range: string
+    comments: []
+  practice_location:
+    slot_uri: ''
+    range: PracticeLocationEnum
+    comments: []
+  practice_type:
+    slot_uri: ''
+    range: PracticeTypeEnum
+    comments: []
+  practice_type_other:
+    slot_uri: ''
+    range: string
+    comments: []
+  practice_hereditary_gi_cancer_patients:
+    slot_uri: ''
+    range: PracticeHereditaryGICancerPatientsEnum
+    comments: []
+  lynch_colonoscopy_month:
+    slot_uri: ''
+    range: LynchColonoscopyMonthEnum
+    comments: []
+  lynch_upper_endoscopy_month:
+    slot_uri: ''
+    range: LynchColonoscopyMonthEnum
+    comments: []
+  colonoscopy_month:
+    slot_uri: ''
+    range: LynchColonoscopyMonthEnum
+    comments: []
+  upper_endoscopy_month:
+    slot_uri: ''
+    range: LynchColonoscopyMonthEnum
+    comments: []

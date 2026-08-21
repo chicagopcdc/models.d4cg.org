@@ -62,7 +62,7 @@ table.compact {
   background-color: #155f83;
 }
 
-.json-renderer {
+.yaml-renderer {
   background: #f5f6fa;
   padding: 1rem 1.25rem;
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
@@ -72,46 +72,99 @@ table.compact {
   white-space: nowrap;
 }
 
-.json-node {
+.yaml-node {
   margin: 0;
 }
 
-.json-node > summary {
+.yaml-node > summary {
   cursor: pointer;
   list-style: disclosure-closed;
 }
 
-.json-node[open] > summary {
+.yaml-node[open] > summary {
   list-style: disclosure-open;
 }
 
-.json-node[open] > summary .json-closed {
+.yaml-node[open] > summary .yaml-closed {
   display: none;
 }
 
-.json-node:not([open]) > summary .json-open {
+.yaml-node:not([open]) > summary .yaml-open {
   display: none;
 }
 
-.json-children {
+.yaml-children {
   margin-left: 1.5rem;
 }
 
-.json-key {
+.yaml-key {
   color: #a05a00;
 }
 
-.json-value {
+.yaml-value {
   color: #22863a;
 }
 
-.json-line {
+.yaml-line {
   display: block;
 }
 
-.json-end {
+.yaml-end {
   margin-left: 0;
 }
+
+.raw-file-selector {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.25rem;
+  overflow-x: auto;
+}
+
+.raw-file-button {
+  padding: 0.4rem 0.75rem;
+  border: 1px solid #d9e0e7;
+  border-bottom: 0;
+  background: #eef0f5;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  font-size: 0.75rem;
+  line-height: 1.45;
+  cursor: pointer;
+}
+
+.raw-file-button:hover {
+  background: #e5e8ef;
+}
+
+.raw-file-button.active {
+  background: #f5f6fa;
+  font-weight: 600;
+}
+
+.raw-file-selector + .raw-content-wrap {
+  border-top: 1px solid #d9e0e7;
+}
+
+/* Raw copy */
+
+.raw-content-wrap {
+  position: relative;
+}
+
+.raw-copy-icon {
+  position: absolute;
+  top: 0.65rem;
+  left: 0.55rem;
+  z-index: 4;
+}
+
+.raw-content-wrap:hover .raw-copy-icon {
+  opacity: 1;
+}
+
+.raw-content-wrap .yaml-renderer {
+  padding-left: 2.5rem;
+}
+
 .view-selector {
   margin: 1rem 0;
 }
@@ -130,6 +183,24 @@ table.compact {
   color: #155f83;
 }
 
+.enum-modal-body {
+  position: relative;
+  min-height: 28rem;
+}
+
+.enum-modal-loading {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: #fff;
+  align-items: center;
+  justify-content: center;
+}
+
+.enum-modal-loaded-content {
+  visibility: hidden;
+}
+
 .raw-loading {
   display: flex;
   align-items: center;
@@ -138,7 +209,7 @@ table.compact {
   min-height: 10rem;
   padding: 2rem;
   background: #f5f6fa;
-  border-radius: 4px;
+  border-radius: 0;
   color: #155f83;
   font-weight: 600;
 }
@@ -443,6 +514,255 @@ table.compact {
   overflow: hidden;
   text-overflow: ellipsis;
   vertical-align: bottom;
+}
+
+/* =========================================================
+   Copy controls
+========================================================= */
+
+.class-table-wrap {
+  position: relative;
+}
+
+.copy-action {
+  appearance: none;
+  -webkit-appearance: none;
+  border: 0;
+  background: transparent;
+  color: #155f83;
+  padding: 0;
+  margin: 0;
+  width: 1.15rem;
+  height: 1.15rem;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.15s ease, color 0.15s ease;
+}
+
+.copy-action svg {
+  display: block;
+  width: 0.95rem;
+  height: 0.95rem;
+}
+
+.slot-required-icon svg {
+  width: 10px;
+  height: 10px;
+}
+
+.slot-priority-icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+.model-display-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+}
+
+.class-table-wrap > .table-wrapper {
+  margin-bottom: 0.5rem;
+}
+
+.slot-icon-legend {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-top: 0;
+  margin-left:1rem;
+  font-size: 0.7rem;
+  color: #6b7280;
+}
+
+.slot-icon-legend-label {
+  margin: 0;
+}
+
+.slot-icon-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.slot-icon-legend-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 0.8rem;
+}
+
+.class-cardinality {
+  margin-left: 0.35rem;
+  text-decoration: none;
+}
+
+.class-cardinality code {
+  font-size: 0.7em;
+  font-weight: 400;
+  vertical-align: middle;
+}
+
+.class-cardinality:hover code {
+  text-decoration: underline;
+}
+
+.model-meta-wrap {
+  position: relative;
+}
+
+.model-export-actions {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.25rem;
+}
+
+.contribution-template-button {
+  appearance: none;
+  -webkit-appearance: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.75rem;
+  border: 1px solid #d9e0e7;
+  border-radius: 0.25rem;
+  background: #155f83;
+  color: #fff;
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+
+.contribution-template-button:hover {
+  background: #0f4f6d;
+  border-color: #0f4f6d;
+  color: #fff;
+}
+
+.contribution-template-button:focus-visible {
+  outline: 2px solid #5b96ad;
+  outline-offset: 2px;
+}
+
+.contribution-template-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contribution-template-icon svg {
+  width: 0.9rem;
+  height: 0.9rem;
+}
+
+.contribution-template-help {
+  font-size: 0.65rem;
+  white-space: nowrap;
+}
+
+.copy-action:hover {
+  color: #5b96ad;
+}
+
+.copy-action:focus-visible {
+  opacity: 1;
+  outline: 2px solid #5b96ad;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.copy-action.copy-success {
+  opacity: 1;
+  color: #0f766e;
+}
+
+.copy-action.copy-success svg {
+  display: none;
+}
+
+.copy-action.copy-success::after {
+  content: "✓";
+  display: block;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.15rem;
+  text-align: center;
+}
+
+
+/* Class-level copy */
+
+.class-copy-icon {
+  position: absolute;
+  top: 0.55rem;
+  left: 0.55rem;
+  z-index: 3;
+}
+
+.class-table-wrap:hover .class-copy-icon {
+  opacity: 1;
+}
+
+
+/* Slot/PV copy */
+
+.copyable-cell {
+  position: relative;
+}
+
+.class-slot-table td.slot-name.copyable-cell,
+.enum-table td.enum-pv.copyable-cell {
+  padding-left: 1.85rem;
+}
+
+.slot-copy-icon,
+.pv-copy-icon {
+  position: absolute;
+  left: 0.45rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+}
+
+/* Required / priority slot indicators */
+
+.slot-action-icon {
+  opacity: 1;
+}
+
+.slot-required-icon,
+.slot-priority-icon,
+.slot-copy-hover-icon {
+  display: none;
+}
+
+.slot-action-icon.is-required .slot-required-icon {
+  display: block;
+}
+
+.slot-action-icon.is-priority .slot-priority-icon {
+  display: block;
+}
+
+/* On row hover, replace star/flag/nothing with copy icon */
+
+.class-slot-table tbody tr:hover .slot-action-icon .slot-required-icon,
+.class-slot-table tbody tr:hover .slot-action-icon .slot-priority-icon {
+  display: none;
+}
+
+.class-slot-table tbody tr:hover .slot-action-icon .slot-copy-hover-icon {
+  display: block;
+}
+
+/* PV copy behavior remains unchanged */
+
+.enum-table tbody tr:hover .pv-copy-icon {
+  opacity: 1;
 }
 
 .cell-details summary {
