@@ -1,8 +1,8 @@
 ---
 layout: default
-title: Monogenic Diabetes
-nav_order: 3
-has_children: true
+title: 1.3
+nav_exclude: true
+search_exclude: true
 ---
 
 

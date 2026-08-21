@@ -60,7 +60,7 @@ search_exclude: true
 </tr>
 </thead>
 <tbody>
-<tr class="view-matrix-row" data-class-ref="class-externalreference" data-subsets="nbl aml base"><td title="Demographics">Demographics</td><td title="ExternalReference"><a href="#class-externalreference">ExternalReference</a></td>
+<tr class="view-matrix-row" data-class-ref="class-externalreference" data-subsets="aml base nbl"><td title="Demographics">Demographics</td><td title="ExternalReference"><a href="#class-externalreference">ExternalReference</a></td>
 <td class="view-matrix-col included" data-view-col="aml"></td>
 <td class="view-matrix-col not-included" data-view-col="gct"></td>
 <td class="view-matrix-col not-included" data-view-col="hl"></td>
@@ -76,7 +76,7 @@ search_exclude: true
 <td class="view-matrix-col not-included" data-view-col="nrsts"></td>
 <td class="view-matrix-col not-included" data-view-col="rms"></td>
 </tr>
-<tr class="view-matrix-row" data-class-ref="class-medicalhistory" data-subsets="aml base nrsts gct hl"><td title="Demographics">Demographics</td><td title="MedicalHistory"><a href="#class-medicalhistory">MedicalHistory</a></td>
+<tr class="view-matrix-row" data-class-ref="class-medicalhistory" data-subsets="aml nrsts hl base gct"><td title="Demographics">Demographics</td><td title="MedicalHistory"><a href="#class-medicalhistory">MedicalHistory</a></td>
 <td class="view-matrix-col included" data-view-col="aml"></td>
 <td class="view-matrix-col included" data-view-col="gct"></td>
 <td class="view-matrix-col included" data-view-col="hl"></td>
@@ -84,7 +84,7 @@ search_exclude: true
 <td class="view-matrix-col included" data-view-col="nrsts"></td>
 <td class="view-matrix-col not-included" data-view-col="rms"></td>
 </tr>
-<tr class="view-matrix-row" data-class-ref="class-offprotocoltherapystudy" data-subsets="aml hl base"><td title="Demographics">Demographics</td><td title="OffProtocolTherapyStudy"><a href="#class-offprotocoltherapystudy">OffProtocolTherapyStudy</a></td>
+<tr class="view-matrix-row" data-class-ref="class-offprotocoltherapystudy" data-subsets="hl aml base"><td title="Demographics">Demographics</td><td title="OffProtocolTherapyStudy"><a href="#class-offprotocoltherapystudy">OffProtocolTherapyStudy</a></td>
 <td class="view-matrix-col included" data-view-col="aml"></td>
 <td class="view-matrix-col not-included" data-view-col="gct"></td>
 <td class="view-matrix-col included" data-view-col="hl"></td>
@@ -92,7 +92,7 @@ search_exclude: true
 <td class="view-matrix-col not-included" data-view-col="nrsts"></td>
 <td class="view-matrix-col not-included" data-view-col="rms"></td>
 </tr>
-<tr class="view-matrix-row" data-class-ref="class-person" data-subsets="aml base rms nrsts nbl gct hl"><td title="Demographics">Demographics</td><td title="Person"><a href="#class-person">Person</a></td>
+<tr class="view-matrix-row" data-class-ref="class-person" data-subsets="aml rms nbl nrsts hl base gct"><td title="Demographics">Demographics</td><td title="Person"><a href="#class-person">Person</a></td>
 <td class="view-matrix-col included" data-view-col="aml"></td>
 <td class="view-matrix-col included" data-view-col="gct"></td>
 <td class="view-matrix-col included" data-view-col="hl"></td>
@@ -100,7 +100,7 @@ search_exclude: true
 <td class="view-matrix-col included" data-view-col="nrsts"></td>
 <td class="view-matrix-col included" data-view-col="rms"></td>
 </tr>
-<tr class="view-matrix-row" data-class-ref="class-study" data-subsets="aml base rms nrsts nbl gct hl"><td title="Demographics">Demographics</td><td title="Study"><a href="#class-study">Study</a></td>
+<tr class="view-matrix-row" data-class-ref="class-study" data-subsets="aml rms nbl nrsts hl base gct"><td title="Demographics">Demographics</td><td title="Study"><a href="#class-study">Study</a></td>
 <td class="view-matrix-col included" data-view-col="aml"></td>
 <td class="view-matrix-col included" data-view-col="gct"></td>
 <td class="view-matrix-col included" data-view-col="hl"></td>
@@ -108,7 +108,7 @@ search_exclude: true
 <td class="view-matrix-col included" data-view-col="nrsts"></td>
 <td class="view-matrix-col included" data-view-col="rms"></td>
 </tr>
-<tr class="view-matrix-row" data-class-ref="class-subject" data-subsets="aml base rms nrsts nbl gct hl"><td title="Demographics">Demographics</td><td title="Subject"><a href="#class-subject">Subject</a></td>
+<tr class="view-matrix-row" data-class-ref="class-subject" data-subsets="aml rms nbl nrsts hl base gct"><td title="Demographics">Demographics</td><td title="Subject"><a href="#class-subject">Subject</a></td>
 <td class="view-matrix-col included" data-view-col="aml"></td>
 <td class="view-matrix-col included" data-view-col="gct"></td>
 <td class="view-matrix-col included" data-view-col="hl"></td>
@@ -116,7 +116,7 @@ search_exclude: true
 <td class="view-matrix-col included" data-view-col="nrsts"></td>
 <td class="view-matrix-col included" data-view-col="rms"></td>
 </tr>
-<tr class="view-matrix-row" data-class-ref="class-survivalcharacteristic" data-subsets="aml base rms nrsts nbl gct hl"><td title="Demographics">Demographics</td><td title="SurvivalCharacteristic"><a href="#class-survivalcharacteristic">SurvivalCharacteristic</a></td>
+<tr class="view-matrix-row" data-class-ref="class-survivalcharacteristic" data-subsets="aml rms nbl nrsts hl base gct"><td title="Demographics">Demographics</td><td title="SurvivalCharacteristic"><a href="#class-survivalcharacteristic">SurvivalCharacteristic</a></td>
 <td class="view-matrix-col included" data-view-col="aml"></td>
 <td class="view-matrix-col included" data-view-col="gct"></td>
 <td class="view-matrix-col included" data-view-col="hl"></td>
@@ -124,7 +124,7 @@ search_exclude: true
 <td class="view-matrix-col included" data-view-col="nrsts"></td>
 <td class="view-matrix-col included" data-view-col="rms"></td>
 </tr>
-<tr class="view-matrix-row" data-class-ref="class-timing" data-subsets="aml base rms nrsts nbl gct hl"><td title="Demographics">Demographics</td><td title="Timing"><a href="#class-timing">Timing</a></td>
+<tr class="view-matrix-row" data-class-ref="class-timing" data-subsets="aml rms nbl nrsts hl base gct"><td title="Demographics">Demographics</td><td title="Timing"><a href="#class-timing">Timing</a></td>
 <td class="view-matrix-col included" data-view-col="aml"></td>
 <td class="view-matrix-col included" data-view-col="gct"></td>
 <td class="view-matrix-col included" data-view-col="hl"></td>
@@ -132,7 +132,7 @@ search_exclude: true
 <td class="view-matrix-col included" data-view-col="nrsts"></td>
 <td class="view-matrix-col included" data-view-col="rms"></td>
 </tr>
-<tr class="view-matrix-row" data-class-ref="class-diseasecharacteristic" data-subsets="aml base nbl gct hl"><td title="Disease Attributes">Disease Attributes</td><td title="DiseaseCharacteristic"><a href="#class-diseasecharacteristic">DiseaseCharacteristic</a></td>
+<tr class="view-matrix-row" data-class-ref="class-diseasecharacteristic" data-subsets="aml nbl hl base gct"><td title="Disease Attributes">Disease Attributes</td><td title="DiseaseCharacteristic"><a href="#class-diseasecharacteristic">DiseaseCharacteristic</a></td>
 <td class="view-matrix-col included" data-view-col="aml"></td>
 <td class="view-matrix-col included" data-view-col="gct"></td>
 <td class="view-matrix-col included" data-view-col="hl"></td>
@@ -140,7 +140,7 @@ search_exclude: true
 <td class="view-matrix-col not-included" data-view-col="nrsts"></td>
 <td class="view-matrix-col not-included" data-view-col="rms"></td>
 </tr>
-<tr class="view-matrix-row" data-class-ref="class-histology" data-subsets="base rms nrsts nbl gct hl"><td title="Disease Attributes">Disease Attributes</td><td title="Histology"><a href="#class-histology">Histology</a></td>
+<tr class="view-matrix-row" data-class-ref="class-histology" data-subsets="rms nbl nrsts hl base gct"><td title="Disease Attributes">Disease Attributes</td><td title="Histology"><a href="#class-histology">Histology</a></td>
 <td class="view-matrix-col not-included" data-view-col="aml"></td>
 <td class="view-matrix-col included" data-view-col="gct"></td>
 <td class="view-matrix-col included" data-view-col="hl"></td>
@@ -164,7 +164,7 @@ search_exclude: true
 <td class="view-matrix-col not-included" data-view-col="nrsts"></td>
 <td class="view-matrix-col not-included" data-view-col="rms"></td>
 </tr>
-<tr class="view-matrix-row" data-class-ref="class-staging" data-subsets="base rms nbl gct hl"><td title="Disease Attributes">Disease Attributes</td><td title="Staging"><a href="#class-staging">Staging</a></td>
+<tr class="view-matrix-row" data-class-ref="class-staging" data-subsets="rms nbl hl base gct"><td title="Disease Attributes">Disease Attributes</td><td title="Staging"><a href="#class-staging">Staging</a></td>
 <td class="view-matrix-col not-included" data-view-col="aml"></td>
 <td class="view-matrix-col included" data-view-col="gct"></td>
 <td class="view-matrix-col included" data-view-col="hl"></td>
@@ -172,7 +172,7 @@ search_exclude: true
 <td class="view-matrix-col not-included" data-view-col="nrsts"></td>
 <td class="view-matrix-col included" data-view-col="rms"></td>
 </tr>
-<tr class="view-matrix-row" data-class-ref="class-tumorassessment" data-subsets="base rms nrsts nbl gct"><td title="Disease Attributes">Disease Attributes</td><td title="TumorAssessment"><a href="#class-tumorassessment">TumorAssessment</a></td>
+<tr class="view-matrix-row" data-class-ref="class-tumorassessment" data-subsets="rms nbl nrsts base gct"><td title="Disease Attributes">Disease Attributes</td><td title="TumorAssessment"><a href="#class-tumorassessment">TumorAssessment</a></td>
 <td class="view-matrix-col not-included" data-view-col="aml"></td>
 <td class="view-matrix-col included" data-view-col="gct"></td>
 <td class="view-matrix-col not-included" data-view-col="hl"></td>
@@ -180,7 +180,7 @@ search_exclude: true
 <td class="view-matrix-col included" data-view-col="nrsts"></td>
 <td class="view-matrix-col included" data-view-col="rms"></td>
 </tr>
-<tr class="view-matrix-row" data-class-ref="class-biopsysurgicalprocedure" data-subsets="base rms nrsts gct hl"><td title="Intervention">Intervention</td><td title="BiopsySurgicalProcedure"><a href="#class-biopsysurgicalprocedure">BiopsySurgicalProcedure</a></td>
+<tr class="view-matrix-row" data-class-ref="class-biopsysurgicalprocedure" data-subsets="rms nrsts hl base gct"><td title="Intervention">Intervention</td><td title="BiopsySurgicalProcedure"><a href="#class-biopsysurgicalprocedure">BiopsySurgicalProcedure</a></td>
 <td class="view-matrix-col not-included" data-view-col="aml"></td>
 <td class="view-matrix-col included" data-view-col="gct"></td>
 <td class="view-matrix-col included" data-view-col="hl"></td>
@@ -212,7 +212,7 @@ search_exclude: true
 <td class="view-matrix-col not-included" data-view-col="nrsts"></td>
 <td class="view-matrix-col not-included" data-view-col="rms"></td>
 </tr>
-<tr class="view-matrix-row" data-class-ref="class-radiationtherapy" data-subsets="aml base rms nrsts gct hl"><td title="Intervention">Intervention</td><td title="RadiationTherapy"><a href="#class-radiationtherapy">RadiationTherapy</a></td>
+<tr class="view-matrix-row" data-class-ref="class-radiationtherapy" data-subsets="aml rms nrsts hl base gct"><td title="Intervention">Intervention</td><td title="RadiationTherapy"><a href="#class-radiationtherapy">RadiationTherapy</a></td>
 <td class="view-matrix-col included" data-view-col="aml"></td>
 <td class="view-matrix-col included" data-view-col="gct"></td>
 <td class="view-matrix-col included" data-view-col="hl"></td>
@@ -220,7 +220,7 @@ search_exclude: true
 <td class="view-matrix-col included" data-view-col="nrsts"></td>
 <td class="view-matrix-col included" data-view-col="rms"></td>
 </tr>
-<tr class="view-matrix-row" data-class-ref="class-stemcelltransplant" data-subsets="gct aml hl base"><td title="Intervention">Intervention</td><td title="StemCellTransplant"><a href="#class-stemcelltransplant">StemCellTransplant</a></td>
+<tr class="view-matrix-row" data-class-ref="class-stemcelltransplant" data-subsets="hl aml base gct"><td title="Intervention">Intervention</td><td title="StemCellTransplant"><a href="#class-stemcelltransplant">StemCellTransplant</a></td>
 <td class="view-matrix-col included" data-view-col="aml"></td>
 <td class="view-matrix-col included" data-view-col="gct"></td>
 <td class="view-matrix-col included" data-view-col="hl"></td>
@@ -228,7 +228,7 @@ search_exclude: true
 <td class="view-matrix-col not-included" data-view-col="nrsts"></td>
 <td class="view-matrix-col not-included" data-view-col="rms"></td>
 </tr>
-<tr class="view-matrix-row" data-class-ref="class-totaldose" data-subsets="gct hl base"><td title="Intervention">Intervention</td><td title="TotalDose"><a href="#class-totaldose">TotalDose</a></td>
+<tr class="view-matrix-row" data-class-ref="class-totaldose" data-subsets="hl base gct"><td title="Intervention">Intervention</td><td title="TotalDose"><a href="#class-totaldose">TotalDose</a></td>
 <td class="view-matrix-col not-included" data-view-col="aml"></td>
 <td class="view-matrix-col included" data-view-col="gct"></td>
 <td class="view-matrix-col included" data-view-col="hl"></td>
@@ -236,7 +236,7 @@ search_exclude: true
 <td class="view-matrix-col not-included" data-view-col="nrsts"></td>
 <td class="view-matrix-col not-included" data-view-col="rms"></td>
 </tr>
-<tr class="view-matrix-row" data-class-ref="class-transfusionmedicineprocedure" data-subsets="aml hl base"><td title="Intervention">Intervention</td><td title="TransfusionMedicineProcedure"><a href="#class-transfusionmedicineprocedure">TransfusionMedicineProcedure</a></td>
+<tr class="view-matrix-row" data-class-ref="class-transfusionmedicineprocedure" data-subsets="hl aml base"><td title="Intervention">Intervention</td><td title="TransfusionMedicineProcedure"><a href="#class-transfusionmedicineprocedure">TransfusionMedicineProcedure</a></td>
 <td class="view-matrix-col included" data-view-col="aml"></td>
 <td class="view-matrix-col not-included" data-view-col="gct"></td>
 <td class="view-matrix-col included" data-view-col="hl"></td>
@@ -244,7 +244,7 @@ search_exclude: true
 <td class="view-matrix-col not-included" data-view-col="nrsts"></td>
 <td class="view-matrix-col not-included" data-view-col="rms"></td>
 </tr>
-<tr class="view-matrix-row" data-class-ref="class-adverseevent" data-subsets="gct aml hl base"><td title="Monitoring">Monitoring</td><td title="AdverseEvent"><a href="#class-adverseevent">AdverseEvent</a></td>
+<tr class="view-matrix-row" data-class-ref="class-adverseevent" data-subsets="hl aml base gct"><td title="Monitoring">Monitoring</td><td title="AdverseEvent"><a href="#class-adverseevent">AdverseEvent</a></td>
 <td class="view-matrix-col included" data-view-col="aml"></td>
 <td class="view-matrix-col included" data-view-col="gct"></td>
 <td class="view-matrix-col included" data-view-col="hl"></td>
@@ -252,7 +252,7 @@ search_exclude: true
 <td class="view-matrix-col not-included" data-view-col="nrsts"></td>
 <td class="view-matrix-col not-included" data-view-col="rms"></td>
 </tr>
-<tr class="view-matrix-row" data-class-ref="class-growingteratomasyndrome" data-subsets="gct base"><td title="Monitoring">Monitoring</td><td title="GrowingTeratomaSyndrome"><a href="#class-growingteratomasyndrome">GrowingTeratomaSyndrome</a></td>
+<tr class="view-matrix-row" data-class-ref="class-growingteratomasyndrome" data-subsets="base gct"><td title="Monitoring">Monitoring</td><td title="GrowingTeratomaSyndrome"><a href="#class-growingteratomasyndrome">GrowingTeratomaSyndrome</a></td>
 <td class="view-matrix-col not-included" data-view-col="aml"></td>
 <td class="view-matrix-col included" data-view-col="gct"></td>
 <td class="view-matrix-col not-included" data-view-col="hl"></td>
@@ -276,7 +276,7 @@ search_exclude: true
 <td class="view-matrix-col not-included" data-view-col="nrsts"></td>
 <td class="view-matrix-col not-included" data-view-col="rms"></td>
 </tr>
-<tr class="view-matrix-row" data-class-ref="class-secondarymalignantneoplasm" data-subsets="gct aml hl base"><td title="Monitoring">Monitoring</td><td title="SecondaryMalignantNeoplasm"><a href="#class-secondarymalignantneoplasm">SecondaryMalignantNeoplasm</a></td>
+<tr class="view-matrix-row" data-class-ref="class-secondarymalignantneoplasm" data-subsets="hl aml base gct"><td title="Monitoring">Monitoring</td><td title="SecondaryMalignantNeoplasm"><a href="#class-secondarymalignantneoplasm">SecondaryMalignantNeoplasm</a></td>
 <td class="view-matrix-col included" data-view-col="aml"></td>
 <td class="view-matrix-col included" data-view-col="gct"></td>
 <td class="view-matrix-col included" data-view-col="hl"></td>
@@ -284,7 +284,7 @@ search_exclude: true
 <td class="view-matrix-col not-included" data-view-col="nrsts"></td>
 <td class="view-matrix-col not-included" data-view-col="rms"></td>
 </tr>
-<tr class="view-matrix-row" data-class-ref="class-subjectresponse" data-subsets="aml base rms nrsts gct hl"><td title="Monitoring">Monitoring</td><td title="SubjectResponse"><a href="#class-subjectresponse">SubjectResponse</a></td>
+<tr class="view-matrix-row" data-class-ref="class-subjectresponse" data-subsets="aml rms nrsts hl base gct"><td title="Monitoring">Monitoring</td><td title="SubjectResponse"><a href="#class-subjectresponse">SubjectResponse</a></td>
 <td class="view-matrix-col included" data-view-col="aml"></td>
 <td class="view-matrix-col included" data-view-col="gct"></td>
 <td class="view-matrix-col included" data-view-col="hl"></td>
@@ -292,7 +292,7 @@ search_exclude: true
 <td class="view-matrix-col included" data-view-col="nrsts"></td>
 <td class="view-matrix-col included" data-view-col="rms"></td>
 </tr>
-<tr class="view-matrix-row" data-class-ref="class-biospecimen" data-subsets="aml base rms nrsts nbl gct hl"><td title="Testing">Testing</td><td title="Biospecimen"><a href="#class-biospecimen">Biospecimen</a></td>
+<tr class="view-matrix-row" data-class-ref="class-biospecimen" data-subsets="aml rms nbl nrsts hl base gct"><td title="Testing">Testing</td><td title="Biospecimen"><a href="#class-biospecimen">Biospecimen</a></td>
 <td class="view-matrix-col included" data-view-col="aml"></td>
 <td class="view-matrix-col included" data-view-col="gct"></td>
 <td class="view-matrix-col included" data-view-col="hl"></td>
@@ -300,7 +300,7 @@ search_exclude: true
 <td class="view-matrix-col included" data-view-col="nrsts"></td>
 <td class="view-matrix-col included" data-view-col="rms"></td>
 </tr>
-<tr class="view-matrix-row" data-class-ref="class-cytology" data-subsets="gct base"><td title="Testing">Testing</td><td title="Cytology"><a href="#class-cytology">Cytology</a></td>
+<tr class="view-matrix-row" data-class-ref="class-cytology" data-subsets="base gct"><td title="Testing">Testing</td><td title="Cytology"><a href="#class-cytology">Cytology</a></td>
 <td class="view-matrix-col not-included" data-view-col="aml"></td>
 <td class="view-matrix-col included" data-view-col="gct"></td>
 <td class="view-matrix-col not-included" data-view-col="hl"></td>
@@ -324,7 +324,7 @@ search_exclude: true
 <td class="view-matrix-col not-included" data-view-col="nrsts"></td>
 <td class="view-matrix-col not-included" data-view-col="rms"></td>
 </tr>
-<tr class="view-matrix-row" data-class-ref="class-immunohistochemistry" data-subsets="gct hl base"><td title="Testing">Testing</td><td title="Immunohistochemistry"><a href="#class-immunohistochemistry">Immunohistochemistry</a></td>
+<tr class="view-matrix-row" data-class-ref="class-immunohistochemistry" data-subsets="hl base gct"><td title="Testing">Testing</td><td title="Immunohistochemistry"><a href="#class-immunohistochemistry">Immunohistochemistry</a></td>
 <td class="view-matrix-col not-included" data-view-col="aml"></td>
 <td class="view-matrix-col included" data-view-col="gct"></td>
 <td class="view-matrix-col included" data-view-col="hl"></td>
@@ -332,7 +332,7 @@ search_exclude: true
 <td class="view-matrix-col not-included" data-view-col="nrsts"></td>
 <td class="view-matrix-col not-included" data-view-col="rms"></td>
 </tr>
-<tr class="view-matrix-row" data-class-ref="class-lab" data-subsets="aml base nbl gct hl"><td title="Testing">Testing</td><td title="Lab"><a href="#class-lab">Lab</a></td>
+<tr class="view-matrix-row" data-class-ref="class-lab" data-subsets="aml nbl hl base gct"><td title="Testing">Testing</td><td title="Lab"><a href="#class-lab">Lab</a></td>
 <td class="view-matrix-col included" data-view-col="aml"></td>
 <td class="view-matrix-col included" data-view-col="gct"></td>
 <td class="view-matrix-col included" data-view-col="hl"></td>
@@ -340,7 +340,7 @@ search_exclude: true
 <td class="view-matrix-col not-included" data-view-col="nrsts"></td>
 <td class="view-matrix-col not-included" data-view-col="rms"></td>
 </tr>
-<tr class="view-matrix-row" data-class-ref="class-molecularanalysis" data-subsets="aml base rms nrsts nbl gct"><td title="Testing">Testing</td><td title="MolecularAnalysis"><a href="#class-molecularanalysis">MolecularAnalysis</a></td>
+<tr class="view-matrix-row" data-class-ref="class-molecularanalysis" data-subsets="aml rms nbl nrsts base gct"><td title="Testing">Testing</td><td title="MolecularAnalysis"><a href="#class-molecularanalysis">MolecularAnalysis</a></td>
 <td class="view-matrix-col included" data-view-col="aml"></td>
 <td class="view-matrix-col included" data-view-col="gct"></td>
 <td class="view-matrix-col not-included" data-view-col="hl"></td>
@@ -348,7 +348,7 @@ search_exclude: true
 <td class="view-matrix-col included" data-view-col="nrsts"></td>
 <td class="view-matrix-col included" data-view-col="rms"></td>
 </tr>
-<tr class="view-matrix-row" data-class-ref="class-vital" data-subsets="gct aml hl base"><td title="Testing">Testing</td><td title="Vital"><a href="#class-vital">Vital</a></td>
+<tr class="view-matrix-row" data-class-ref="class-vital" data-subsets="hl aml base gct"><td title="Testing">Testing</td><td title="Vital"><a href="#class-vital">Vital</a></td>
 <td class="view-matrix-col included" data-view-col="aml"></td>
 <td class="view-matrix-col included" data-view-col="gct"></td>
 <td class="view-matrix-col included" data-view-col="hl"></td>

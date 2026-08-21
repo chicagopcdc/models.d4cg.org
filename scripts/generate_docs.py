@@ -897,6 +897,29 @@ def render_view_metadata_payload(schema):
 def version_sort_key(value):
     return tuple(int(part) if part.isdigit() else part for part in str(value).split("."))
 
+def get_current_version(commons_folder):
+    releases_dir = Path(commons_folder) / "releases"
+
+    if not releases_dir.exists():
+        return None
+
+    versions = []
+
+    for path in releases_dir.iterdir():
+        if not path.is_dir():
+            continue
+
+        model_path = path / "model" / "schema.yaml"
+
+        if not model_path.exists():
+            continue
+
+        versions.append(path.name)
+
+    if not versions:
+        return None
+
+    return max(versions, key=version_sort_key)
 
 def release_sort_key(release):
     return version_sort_key(release["version"])
@@ -920,17 +943,17 @@ def discover_releases(commons_folder, current_version):
             continue
 
         version = path.name
-        status = "Current" if version == current_version else "Past"
 
         releases.append({
             "version": version,
-            "status": status,
+            "status": "Current" if version == current_version else "Past",
             "url": f"./{version}/",
             "date": "",
             "notes": "",
         })
 
     releases.sort(key=release_sort_key, reverse=True)
+
     return releases
 
 
@@ -1004,12 +1027,15 @@ def assemble_view(schema, notes, commons, page_context, terminology_index, raw_f
     view_comps.append('<div class="model-header" markdown="1">')
     view_comps.append(render_view_header(schema, notes))
 
-    view_comps.append(
-        '<details class="scope-matrix-details">\n'
-        '<summary class="text-delta">Scope Matrix</summary>\n\n'
-        + render_view_matrix(schema)
-        + "\n\n</details>"
-    )
+    non_base_views = [view for view in schema.get("subsets", {}) if view != "base"]
+
+    if non_base_views:
+        view_comps.append(
+            '<details class="scope-matrix-details">\n'
+            '<summary class="text-delta">Scope Matrix</summary>\n\n'
+            + render_view_matrix(schema)
+            + "\n\n</details>"
+        )
 
     view_comps.append(render_view_mode_toggle())
     view_comps.append("</div>")
@@ -1031,42 +1057,90 @@ def main(commons, version, notes_path):
     schema_version = str(schema["version"])
 
     if schema_version != str(version):
-        raise ValueError(f"Version mismatch: command line version is {version}, but schema.yaml declares {schema_version}")
+        raise ValueError(
+            f"Version mismatch: command line version is {version}, "
+            f"but schema.yaml declares {schema_version}"
+        )
+
+    current_version = get_current_version(commons_folder)
+    is_current = version == current_version
+
+    print(f"Generating release: {version}")
+    print(f"Current release: {current_version}")
 
     pages = []
 
-    current_view = assemble_view(schema, notes, commons, "current", terminology_index, raw_files)
-    release_view = assemble_view(schema, notes, commons, "release", terminology_index, raw_files)
+    release_view = assemble_view(
+        schema,
+        notes,
+        commons,
+        "release",
+        terminology_index,
+        raw_files,
+    )
 
-    pages.append((Path(f"{commons_folder}/index.md"), current_view))
-    pages.append((Path(f"{commons_folder}/releases/{version}/index.md"), release_view))
+    pages.append(
+        (
+            Path(f"{commons_folder}/releases/{version}/index.md"),
+            release_view,
+        )
+    )
 
-    releases = discover_releases(commons_folder, version)
+    if is_current:
+        current_view = assemble_view(
+            schema,
+            notes,
+            commons,
+            "current",
+            terminology_index,
+            raw_files,
+        )
 
-    found_current_release = False
+        pages.append(
+            (
+                Path(f"{commons_folder}/index.md"),
+                current_view,
+            )
+        )
+
+    releases = discover_releases(
+        commons_folder,
+        current_version,
+    )
+
+    found_release = False
 
     for release in releases:
         if release["version"] == version:
-            found_current_release = True
+            found_release = True
             break
 
-    if not found_current_release:
+    if not found_release:
         releases.append({
             "version": version,
-            "status": "Current",
+            "status": "Current" if is_current else "Past",
             "url": f"./{version}/",
             "date": "",
             "notes": "",
         })
 
-    releases.sort(key=release_sort_key, reverse=True)
+    releases.sort(
+        key=release_sort_key,
+        reverse=True,
+    )
 
-    pages.insert(0, (Path(f"{commons_folder}/releases/index.md"), render_release_archive(commons, releases)))
+    pages.insert(
+        0,
+        (
+            Path(f"{commons_folder}/releases/index.md"),
+            render_release_archive(commons, releases),
+        ),
+    )
 
     for path, markdown in pages:
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(markdown, encoding="utf-8")
-
+        
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Generate static D4CG Data Model docs site.")

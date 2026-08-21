@@ -1,0 +1,1055 @@
+id: https://models.d4cg.org/predict
+name: predict
+title: PREDICT Data Model
+license: CC BY-NC 4.0
+version: 1.3
+prefixes:
+  predict: https://example.org/predict/
+  linkml: https://w3id.org/linkml/
+  ncit: http://purl.obolibrary.org/obo/NCIT_
+default_prefix: predict
+default_range: string
+imports:
+  - linkml:types
+  - slots
+  - enums
+subsets:
+  base:
+    name: base
+    title: Base Model
+    description: The PREDICT data model represents consensus data modeling by an international group of monogenic 
+      diabetes experts and is maintained by Data for the Common Good (D4CG) at the University of Chicago. It is based on
+      the collective requirements of its contributors.
+classes:
+  SubjectCharacteristics:
+    slots:
+      - honest_broker_subject_id
+      - data_contributor_id
+      - data_source
+      - last_known_survival_status
+      - age_last_contact
+      - age_last_contact_normalized
+      - age_last_contact_unit
+      - age_last_contact_precision
+    comments: []
+    annotations:
+      domain: demographics
+      cardinality: 1..1
+    description: Core identifying and administrative characteristics for each subject in the data model.
+    in_subset:
+      - base
+    slot_usage:
+      honest_broker_subject_id:
+        in_subset:
+          - base
+        required: true
+      data_contributor_id:
+        in_subset:
+          - base
+        required: true
+      data_source:
+        in_subset:
+          - base
+        required: true
+      last_known_survival_status:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority:
+            - base
+      age_last_contact:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority:
+            - base
+      age_last_contact_normalized:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority:
+            - base
+      age_last_contact_unit:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority:
+            - base
+      age_last_contact_precision:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority:
+            - base
+  Timing:
+    slots:
+      - honest_broker_subject_id
+      - subject_characteristics
+      - timepoint
+      - timing_age_at
+      - timing_age_at_normalized
+      - age_unit
+      - age_precision
+    comments: []
+    annotations:
+      domain: demographics
+      cardinality: 0..*
+    description: Timing information used to associate observations and events with a subject and timepoint.
+    in_subset:
+      - base
+    slot_usage:
+      honest_broker_subject_id:
+        in_subset:
+          - base
+        required: true
+      subject_characteristics:
+        in_subset:
+          - base
+        required: true
+      timepoint:
+        in_subset:
+          - base
+        required: true
+      timing_age_at:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority:
+            - base
+      timing_age_at_normalized:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority:
+            - base
+      age_unit:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority:
+            - base
+      age_precision:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority:
+            - base
+  FamilyMedicalHistory:
+    slots:
+      - honest_broker_subject_id
+      - subject_characteristics
+      - relation_honest_broker_subject_id
+      - relation
+      - condition
+      - source
+    comments:
+      - '(base) ConsortiumNote: Only enter family members who have a history of dysglycemia.'
+    annotations:
+      domain: demographics
+      cardinality: 0..*
+    description: Family medical history information for conditions reported among a subject's relatives.
+    in_subset:
+      - base
+    slot_usage:
+      honest_broker_subject_id:
+        in_subset:
+          - base
+        required: true
+      subject_characteristics:
+        in_subset:
+          - base
+        required: true
+      relation_honest_broker_subject_id:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority:
+            - base
+      relation:
+        in_subset:
+          - base
+        required: true
+      condition:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority: []
+      source:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority:
+            - base
+  Demographics:
+    slots:
+      - honest_broker_subject_id
+      - subject_characteristics
+      - sex
+      - ethnicity
+      - race
+    comments: []
+    annotations:
+      domain: demographics
+      cardinality: 1..1
+    description: Demographic characteristics of each subject, including sex, race, and ethnicity.
+    in_subset:
+      - base
+    slot_usage:
+      honest_broker_subject_id:
+        in_subset:
+          - base
+        required: true
+      subject_characteristics:
+        in_subset:
+          - base
+        required: true
+      sex:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority:
+            - base
+      ethnicity:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority:
+            - base
+      race:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority:
+            - base
+  MedicalHistory:
+    slots:
+      - honest_broker_subject_id
+      - subject_characteristics
+      - age_at
+      - age_at_normalized
+      - age_unit
+      - age_precision
+      - medical_history_condition
+      - condition_other
+      - condition_code
+      - code_system
+    comments: []
+    annotations:
+      domain: demographics
+      cardinality: 0..*
+    description: Medical history conditions reported for a subject.
+    in_subset:
+      - base
+    slot_usage:
+      honest_broker_subject_id:
+        in_subset:
+          - base
+        required: true
+      subject_characteristics:
+        in_subset:
+          - base
+        required: true
+      age_at:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority:
+            - base
+      age_at_normalized:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority:
+            - base
+      age_unit:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority:
+            - base
+      age_precision:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority:
+            - base
+      medical_history_condition:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority:
+            - base
+      condition_other:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority:
+            - base
+      condition_code:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority: []
+      code_system:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority: []
+  Biometrics:
+    slots:
+      - honest_broker_subject_id
+      - subject_characteristics
+      - age_at
+      - age_at_normalized
+      - age_unit
+      - age_precision
+      - measurement_type
+      - measurement_numeric
+      - measurement_unit
+      - z_score
+    comments: []
+    annotations:
+      domain: testing
+      cardinality: 0..*
+    description: Biometric measurements collected for a subject, including measurement values and associated timing.
+    in_subset:
+      - base
+    slot_usage:
+      honest_broker_subject_id:
+        in_subset:
+          - base
+        required: true
+      subject_characteristics:
+        in_subset:
+          - base
+        required: true
+      age_at:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority:
+            - base
+      age_at_normalized:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority:
+            - base
+      age_unit:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority:
+            - base
+      age_precision:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority:
+            - base
+      measurement_type:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority:
+            - base
+      measurement_numeric:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority:
+            - base
+      measurement_unit:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority:
+            - base
+      z_score:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority:
+            - base
+  Biospecimen:
+    slots:
+      - honest_broker_subject_id
+      - subject_characteristics
+      - sample_type
+    comments: []
+    annotations:
+      domain: testing
+      cardinality: 0..*
+    description: Biospecimens collected from a subject and their specimen types.
+    in_subset:
+      - base
+    slot_usage:
+      honest_broker_subject_id:
+        in_subset:
+          - base
+        required: true
+      subject_characteristics:
+        in_subset:
+          - base
+        required: true
+      sample_type:
+        in_subset:
+          - base
+        required: true
+  GeneticAnalysis:
+    slots:
+      - honest_broker_subject_id
+      - subject_characteristics
+      - age_at
+      - age_at_normalized
+      - age_unit
+      - age_precision
+      - causative_alteration
+      - status
+      - genetic_analysis_sample_type
+      - laboratory_name
+      - cytogenetic_location
+      - method
+      - gene
+      - alteration_type
+      - alteration_effect
+      - alteration_region
+      - hgvs_accession
+      - hgvs_coding
+      - hgvs_protein
+      - hgvs_genomic
+      - iscn
+      - reported_significance
+      - allelic_state
+      - maf_numeric
+      - mosaicism
+      - external_ref_id
+      - external_ref_id_system
+    comments: []
+    annotations:
+      domain: testing
+      cardinality: 0..*
+    description: Genetic and genomic analysis results for a subject, including genes, alterations, methods, and reported
+      significance.
+    in_subset:
+      - base
+    slot_usage:
+      honest_broker_subject_id:
+        in_subset:
+          - base
+        required: true
+      subject_characteristics:
+        in_subset:
+          - base
+        required: true
+      age_at:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority:
+            - base
+      age_at_normalized:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority:
+            - base
+      age_unit:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority:
+            - base
+      age_precision:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority:
+            - base
+      causative_alteration:
+        in_subset:
+          - base
+        required: true
+      status:
+        in_subset:
+          - base
+        required: true
+      genetic_analysis_sample_type:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority:
+            - base
+      laboratory_name:
+        in_subset:
+          - base
+        required: true
+      cytogenetic_location:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority: []
+      method:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority:
+            - base
+      gene:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority: []
+      alteration_type:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority:
+            - base
+      alteration_effect:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority:
+            - base
+      alteration_region:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority:
+            - base
+      hgvs_accession:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority: []
+      hgvs_coding:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority: []
+      hgvs_protein:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority: []
+      hgvs_genomic:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority: []
+      iscn:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority: []
+      reported_significance:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority: []
+      allelic_state:
+        in_subset:
+          - base
+        required: true
+      maf_numeric:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority:
+            - base
+      mosaicism:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority:
+            - base
+      external_ref_id:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority: []
+      external_ref_id_system:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority: []
+  Testing:
+    slots:
+      - honest_broker_subject_id
+      - subject_characteristics
+      - age_at
+      - age_at_normalized
+      - age_unit
+      - age_precision
+      - test_type
+      - testing_method
+      - testing_measurement_type
+      - result_modifier
+      - result_numeric
+      - result_unit
+      - reference_range
+      - result_interpretation
+      - fasting_status
+      - post_glucose_timepoint
+      - post_glucose_timepoint_unit
+    comments: []
+    annotations:
+      domain: testing
+      cardinality: 0..*
+    description: Clinical laboratory and diagnostic test results collected for a subject.
+    in_subset:
+      - base
+    slot_usage:
+      honest_broker_subject_id:
+        in_subset:
+          - base
+        required: true
+      subject_characteristics:
+        in_subset:
+          - base
+        required: true
+      age_at:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority:
+            - base
+      age_at_normalized:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority:
+            - base
+      age_unit:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority:
+            - base
+      age_precision:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority:
+            - base
+      test_type:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority:
+            - base
+      testing_method:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority: []
+      testing_measurement_type:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority:
+            - base
+      result_modifier:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority:
+            - base
+      result_numeric:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority:
+            - base
+      result_unit:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority:
+            - base
+      reference_range:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority:
+            - base
+      result_interpretation:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority:
+            - base
+      fasting_status:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority:
+            - base
+      post_glucose_timepoint:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority:
+            - base
+      post_glucose_timepoint_unit:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority:
+            - base
+  DiseaseCharacteristics:
+    slots:
+      - honest_broker_subject_id
+      - subject_characteristics
+      - age_at
+      - age_at_normalized
+      - age_unit
+      - age_precision
+      - diabetes_status
+      - hypoglycemia_frequency
+      - severe_hypoglycemia_frequency
+      - dka
+      - time_in_range
+      - cgm_range
+      - cgm_context
+      - diet
+      - exercise
+    comments: []
+    annotations:
+      domain: disease_attributes
+      cardinality: 0..*
+    description: Clinical characteristics and observations related to a subject's diabetes and glycemic status.
+    in_subset:
+      - base
+    slot_usage:
+      honest_broker_subject_id:
+        in_subset:
+          - base
+        required: true
+      subject_characteristics:
+        in_subset:
+          - base
+        required: true
+      age_at:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority:
+            - base
+      age_at_normalized:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority:
+            - base
+      age_unit:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority:
+            - base
+      age_precision:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority:
+            - base
+      diabetes_status:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority:
+            - base
+      hypoglycemia_frequency:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority: []
+      severe_hypoglycemia_frequency:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority: []
+      dka:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority:
+            - base
+      time_in_range:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority:
+            - base
+      cgm_range:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority:
+            - base
+      cgm_context:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority:
+            - base
+      diet:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority:
+            - base
+      exercise:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority:
+            - base
+  Treatment:
+    slots:
+      - honest_broker_subject_id
+      - subject_characteristics
+      - age_at_start
+      - age_at_start_normalized
+      - age_at_stop
+      - age_at_stop_normalized
+      - age_unit
+      - age_precision
+      - reason_stop
+      - dm_medication_class
+      - medication_class_other
+      - medication_name
+      - medication_code
+      - medication_concentration
+      - medication_dose
+      - medication_unit
+      - frequency
+      - route
+    comments: []
+    annotations:
+      domain: intervention
+      cardinality: 0..*
+    description: Medication and treatment information for a subject, including dose, route, frequency, and treatment 
+      timing.
+    in_subset:
+      - base
+    slot_usage:
+      honest_broker_subject_id:
+        in_subset:
+          - base
+        required: true
+      subject_characteristics:
+        in_subset:
+          - base
+        required: true
+      age_at_start:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority:
+            - base
+      age_at_start_normalized:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority:
+            - base
+      age_at_stop:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority:
+            - base
+      age_at_stop_normalized:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority:
+            - base
+      age_unit:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority:
+            - base
+      age_precision:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority:
+            - base
+      reason_stop:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority:
+            - base
+      dm_medication_class:
+        in_subset:
+          - base
+        required: true
+      medication_class_other:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority:
+            - base
+      medication_name:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority:
+            - base
+      medication_code:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority:
+            - base
+      medication_concentration:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority:
+            - base
+      medication_dose:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority:
+            - base
+      medication_unit:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority:
+            - base
+      frequency:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority:
+            - base
+      route:
+        in_subset:
+          - base
+        required: false
+        annotations:
+          priority:
+            - base
+annotations:
+  docs:
+    domains:
+      demographics:
+        title: Demographics
+        description: Demographics contains subject identity, demographic characteristics, survival status, family and 
+          medical history, and longitudinal timing information needed to interpret records across the model.
+      testing:
+        title: Testing
+        description: Testing contains biometric, biospecimen, laboratory, and genetic observations used to characterize 
+          subjects and support diagnosis and longitudinal evaluation.
+      disease_attributes:
+        title: Disease Attributes
+        description: Disease Attributes contains clinical characteristics related to diabetes, glycemic status, 
+          hypoglycemia, diabetic ketoacidosis, glucose monitoring, diet, exercise, and other features used to 
+          characterize disease status over time.
+      intervention:
+        title: Intervention
+        description: Intervention contains medication and treatment records, including medication class, drug, dose, 
+          route, frequency, treatment timing, and reasons for treatment discontinuation.
