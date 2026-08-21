@@ -40,6 +40,23 @@ function withLoading(callback) {
   });
 }
 
+function updateSlotIndicators() {
+  const view = getSelectedView();
+
+  document.querySelectorAll(".slot-action-icon").forEach(function(button) {
+    const required = button.dataset.required === "true";
+    const priorities = (button.dataset.prioritySubsets || "").split(/\s+/).filter(Boolean);
+    const priority = !required && view !== "base" && priorities.includes(view);
+
+    button.classList.toggle("is-required", required);
+    button.classList.toggle("is-priority", priority);
+    button.classList.toggle("is-optional", !required && !priority);
+  });
+
+  document.querySelectorAll(".priority-legend-item").forEach(function(item) {
+    item.style.display = view === "base" ? "none" : "inline-flex";
+  });
+}
 
 /* =========================================================
    Current state
@@ -73,6 +90,12 @@ function switchView(view) {
 
 
 function switchModelMode(isRaw) {
+  const slotLegend = document.querySelector(".slot-icon-legend");
+
+  if (slotLegend) {
+    slotLegend.style.display = isRaw ? "none" : "";
+  }
+
   withLoading(function() {
     document.getElementById("docs-model-view").style.display =
       isRaw ? "none" : "block";
@@ -287,6 +310,7 @@ function applyViewFilter(view) {
   updateModelTocPosition();
   renderMermaidDiagrams();
   updateClippedCells();
+  updateSlotIndicators();
 }
 
 
@@ -675,11 +699,9 @@ function rowsToTsv(rows) {
 
 function buildSlotCopyRows(className, slotName, view) {
   const files = loadRawSchemaFiles();
-
   const schemaSource = files["schema.yaml"] || {};
   const slotsSource = files["slots.yaml"] || {};
   const enumsSource = files["enums.yaml"] || {};
-
   const classDef = (schemaSource.classes || {})[className];
 
   if (!classDef) {
@@ -702,28 +724,20 @@ function buildSlotCopyRows(className, slotName, view) {
 
   const slotRange = slotDef.range || "";
   const dataType = getCopyDataType(slotDef, enumsSource);
+  const tier = getCopyTier(classDef, slotName, view);
   const slotMeaning = slotDef.slot_uri || "";
 
   const rows = [
-    [
-      slotName,
-      dataType,
-      slotMeaning,
-      "",
-      ""
-    ]
+    ["slot", slotName, dataType, tier, "", slotMeaning, "", ""]
   ];
 
-  const enumDef =
-    (enumsSource.enums || {})[slotRange];
+  const enumDef = (enumsSource.enums || {})[slotRange];
 
   if (!enumDef) {
     return rows;
   }
 
-  Object.entries(
-    enumDef.permissible_values || {}
-  ).forEach(function(entry) {
+  Object.entries(enumDef.permissible_values || {}).forEach(function(entry) {
     const pvName = entry[0];
     const pvDef = entry[1];
 
@@ -731,13 +745,7 @@ function buildSlotCopyRows(className, slotName, view) {
       return;
     }
 
-    rows.push([
-      "",
-      "",
-      "",
-      pvName,
-      pvDef.meaning || ""
-    ]);
+    rows.push(["pv", "", "", "", pvName, pvDef.meaning || "", "", ""]);
   });
 
   return rows;
@@ -757,18 +765,22 @@ function buildClassCopyRows(className, view) {
     return [];
   }
 
-  const rows = [];
+  let cardinality = ((classDef.annotations || {}).cardinality || "");
+
+  if (cardinality && typeof cardinality === "object" && "value" in cardinality) {
+    cardinality = cardinality.value;
+  }
+
+ const rows = [
+    ["class", className, "class", cardinality, "", "", "", ""]
+  ];
 
   (classDef.slots || []).forEach(function(slotName) {
     if (!slotIsInView(classDef, slotName, view)) {
       return;
     }
 
-    const slotRows = buildSlotCopyRows(
-      className,
-      slotName,
-      view
-    );
+    const slotRows = buildSlotCopyRows(className, slotName, view);
 
     slotRows.forEach(function(row) {
       rows.push(row);
@@ -778,6 +790,29 @@ function buildClassCopyRows(className, view) {
   return rows;
 }
 
+function getCopyTier(classDef, slotName, view) {
+  const usageDef = (classDef.slot_usage || {})[slotName] || {};
+
+  if (usageDef.required === true) {
+    return "required";
+  }
+
+  let priority = ((usageDef.annotations || {}).priority || []);
+
+  if (priority && typeof priority === "object" && !Array.isArray(priority) && "value" in priority) {
+    priority = priority.value;
+  }
+
+  if (!Array.isArray(priority)) {
+    priority = priority ? [priority] : [];
+  }
+
+  if (view !== "base" && priority.includes(view)) {
+    return "priority";
+  }
+
+  return "optional";
+}
 
 function fallbackCopyText(text) {
   const textarea = document.createElement("textarea");
@@ -894,23 +929,13 @@ function copySlot(button) {
 
 
 function copyPv(button) {
-  const pvName =
-    button.dataset.pvName || "";
-
-  const pvMeaning =
-    button.dataset.pvMeaning || "";
-
+  const pvName = button.dataset.pvName || "";
+  const pvMeaning = button.dataset.pvMeaning || "";
   const rows = [
-    [
-      pvName,
-      pvMeaning
-    ]
+    ["pv", "", "", "", pvName, pvMeaning, "", ""]
   ];
 
-  copyTextToClipboard(
-    rowsToTsv(rows),
-    button
-  );
+  copyTextToClipboard(rowsToTsv(rows), button);
 }
 
 
@@ -1498,3 +1523,391 @@ document.addEventListener(
     updateClippedCells();
   }
 );
+
+
+/* =========================================================
+   Bundle Export
+========================================================= */
+
+let terminologyDescriptions = null;
+
+function loadTerminologyDescriptions() {
+  if (terminologyDescriptions) {
+    return terminologyDescriptions;
+  }
+
+  const payload = document.getElementById("terminology-description-payload");
+  terminologyDescriptions = payload ? JSON.parse(payload.textContent) : {};
+  return terminologyDescriptions;
+}
+
+function normalizeExportCurie(value) {
+  if (!value) {
+    return "";
+  }
+
+  const curie = String(value).trim();
+
+  if (!curie.includes(":")) {
+    if (/^C\d+$/i.test(curie)) {
+      return "ncit:" + curie.toUpperCase();
+    }
+
+    return curie;
+  }
+
+  const separator = curie.indexOf(":");
+  const prefix = curie.substring(0, separator).trim().toLowerCase();
+  const code = curie.substring(separator + 1).trim();
+
+  return prefix + ":" + code;
+}
+
+function getExportDescription(meaning) {
+  if (!meaning) {
+    return "";
+  }
+
+  const descriptions = loadTerminologyDescriptions();
+  return descriptions[normalizeExportCurie(meaning)] || "";
+}
+
+function getExportNotes(itemDef) {
+  const comments = itemDef.comments || [];
+
+  if (Array.isArray(comments)) {
+    return comments.join("\n");
+  }
+
+  return comments ? String(comments) : "";
+}
+
+function getClassCardinality(classDef) {
+  let cardinality = ((classDef.annotations || {}).cardinality || "");
+
+  if (cardinality && typeof cardinality === "object" && "value" in cardinality) {
+    cardinality = cardinality.value;
+  }
+
+  return cardinality ? String(cardinality) : "";
+}
+
+function getClassDomain(classDef) {
+  let domain = ((classDef.annotations || {}).domain || "");
+
+  if (domain && typeof domain === "object" && "value" in domain) {
+    domain = domain.value;
+  }
+
+  return domain ? String(domain) : "";
+}
+
+function classIsInternal(classDef) {
+  let domain = ((classDef.annotations || {}).domain || "");
+
+  if (domain && typeof domain === "object" && "value" in domain) {
+    domain = domain.value;
+  }
+
+  return String(domain).toLowerCase() === "internal";
+}
+
+function getBundleClasses(view) {
+  const files = loadRawSchemaFiles();
+  const schemaSource = files["schema.yaml"] || {};
+  const classes = [];
+
+  Object.entries(schemaSource.classes || {}).forEach(function(entry) {
+    const className = entry[0];
+    const classDef = entry[1];
+
+    if (classIsInternal(classDef)) {
+      return;
+    }
+
+    if (view !== "base" && !itemHasView(classDef, view)) {
+      return;
+    }
+
+    const slots = (classDef.slots || []).filter(function(slotName) {
+      return slotIsInView(classDef, slotName, view);
+    });
+
+    if (slots.length) {
+      classes.push({
+        name: className,
+        definition: classDef,
+        slots: slots
+      });
+    }
+  });
+
+  return classes;
+}
+
+function buildBundleDictionaryRows(view) {
+  const files = loadRawSchemaFiles();
+  const schemaSource = files["schema.yaml"] || {};
+  const slotsSource = files["slots.yaml"] || {};
+  const enumsSource = files["enums.yaml"] || {};
+  const viewDef = (schemaSource.subsets || {})[view] || {};
+
+  const rows = [
+    ["info", "Title", schemaSource.title || schemaSource.name || "", "", "", "", "", ""],
+    ["info", "Subset", viewDef.title || viewDef.name || view, "", "", "", "", ""],
+    ["info", "Version", schemaSource.version || "", "", "", "", "", ""],
+    ["info", "License", "CC BY-NC 4.0", "", "", "", "", ""],
+    ["info", "Export Date", new Date().toISOString().split("T")[0], "", "", "", "", ""],
+    [],
+    [
+      "RowType",
+      "Name",
+      "Data Type",
+      "Cardinality/Tier",
+      "Permissible Value",
+      "Meaning",
+      "Description",
+      "Implementation Notes"
+    ]
+  ];
+
+  const classes = getBundleClasses(view);
+  let currentDomain = "";
+
+  classes.forEach(function(classInfo, classIndex) {
+    const className = classInfo.name;
+    const classDef = classInfo.definition;
+
+    if (classIndex > 0) {
+      rows.push([]);
+    }
+
+    const domain = getClassDomain(classDef);
+
+    if (domain && domain !== currentDomain) {
+      rows.push(["domain", domain, "", "", "", "", "", ""]);
+      currentDomain = domain;
+    }
+
+    rows.push([
+      "class",
+      className,
+      "class",
+      getClassCardinality(classDef),
+      "",
+      "",
+      classDef.description || "",
+      getExportNotes(classDef)
+    ]);
+
+    classInfo.slots.forEach(function(slotName) {
+      const slotDef = (slotsSource.slots || {})[slotName];
+
+      if (!slotDef) {
+        return;
+      }
+
+      const slotRange = slotDef.range || "";
+      const meaning = slotDef.slot_uri || "";
+
+      rows.push([
+        "slot",
+        slotName,
+        getCopyDataType(slotDef, enumsSource),
+        getCopyTier(classDef, slotName, view),
+        "",
+        meaning,
+        getExportDescription(meaning),
+        getExportNotes(slotDef)
+      ]);
+
+      const enumDef = (enumsSource.enums || {})[slotRange];
+
+      if (!enumDef) {
+        return;
+      }
+
+      Object.entries(enumDef.permissible_values || {}).forEach(function(entry) {
+        const pvName = entry[0];
+        const pvDef = entry[1];
+
+        if (!pvIsInView(pvDef, view)) {
+          return;
+        }
+
+        const pvMeaning = pvDef.meaning || "";
+
+        rows.push([
+          "pv",
+          "",
+          "",
+          "",
+          pvName,
+          pvMeaning,
+          getExportDescription(pvMeaning),
+          getExportNotes(pvDef)
+        ]);
+      });
+    });
+  });
+
+  return rows;
+}
+
+function escapeTsvValue(value) {
+  if (value === null || value === undefined) {
+    return "";
+  }
+
+  return String(value)
+    .replace(/\t/g, " ")
+    .replace(/\r?\n/g, " ");
+}
+
+function rowsToBundleTsv(rows) {
+  return rows.map(function(row) {
+    return row.map(escapeTsvValue).join("\t");
+  }).join("\n") + "\n";
+}
+
+function buildClassTemplateTsv(classInfo) {
+  return classInfo.slots.map(escapeTsvValue).join("\t") + "\n";
+}
+
+function writeTarString(header, offset, length, value) {
+  const bytes = new TextEncoder().encode(String(value));
+
+  for (let index = 0; index < Math.min(bytes.length, length); index += 1) {
+    header[offset + index] = bytes[index];
+  }
+}
+
+function writeTarOctal(header, offset, length, value) {
+  const text = Number(value).toString(8).padStart(length - 1, "0") + "\0";
+  writeTarString(header, offset, length, text);
+}
+
+function createTarHeader(filename, size, modifiedTime) {
+  const header = new Uint8Array(512);
+
+  writeTarString(header, 0, 100, filename);
+  writeTarOctal(header, 100, 8, 420);
+  writeTarOctal(header, 108, 8, 0);
+  writeTarOctal(header, 116, 8, 0);
+  writeTarOctal(header, 124, 12, size);
+  writeTarOctal(header, 136, 12, modifiedTime);
+
+  for (let index = 148; index < 156; index += 1) {
+    header[index] = 32;
+  }
+
+  writeTarString(header, 156, 1, "0");
+  writeTarString(header, 257, 6, "ustar");
+  writeTarString(header, 263, 2, "00");
+  writeTarString(header, 265, 32, "D4CG");
+  writeTarString(header, 297, 32, "D4CG");
+
+  let checksum = 0;
+
+  for (let index = 0; index < header.length; index += 1) {
+    checksum += header[index];
+  }
+
+  const checksumText = checksum.toString(8).padStart(6, "0") + "\0 ";
+  writeTarString(header, 148, 8, checksumText);
+
+  return header;
+}
+
+function buildTar(files) {
+  const encoder = new TextEncoder();
+  const parts = [];
+  const baseTime = Math.floor(Date.now() / 1000);
+  let totalLength = 1024;
+
+  const tarFiles = files.map(function(file, index) {
+    return {
+      file: file,
+      originalIndex: index
+    };
+  }).reverse();
+
+  tarFiles.forEach(function(item) {
+    const content = encoder.encode(item.file.content);
+    const paddingLength = (512 - (content.length % 512)) % 512;
+    const modifiedTime = baseTime - item.originalIndex;
+
+    parts.push({
+      header: createTarHeader(item.file.name, content.length, modifiedTime),
+      content: content,
+      padding: new Uint8Array(paddingLength)
+    });
+
+    totalLength += 512 + content.length + paddingLength;
+  });
+
+  const output = new Uint8Array(totalLength);
+  let offset = 0;
+
+  parts.forEach(function(part) {
+    output.set(part.header, offset);
+    offset += part.header.length;
+
+    output.set(part.content, offset);
+    offset += part.content.length;
+
+    output.set(part.padding, offset);
+    offset += part.padding.length;
+  });
+
+  return output;
+}
+
+function safeBundleFilename(value) {
+  return String(value)
+    .trim()
+    .replace(/[^A-Za-z0-9._-]+/g, "_")
+    .replace(/^_+|_+$/g, "");
+}
+
+function exportContributorBundle(button) {
+  const view = getSelectedView();
+  const files = loadRawSchemaFiles();
+  const schemaSource = files["schema.yaml"] || {};
+  const version = schemaSource.version || "";
+  const classes = getBundleClasses(view);
+  const bundleFiles = [];
+
+  bundleFiles.push({
+    name: "00_data_dictionary.tsv",
+    content: rowsToBundleTsv(buildBundleDictionaryRows(view))
+  });
+
+  classes.forEach(function(classInfo, index) {
+    const number = String(index + 1).padStart(2, "0");
+
+    bundleFiles.push({
+      name: number + "_" + safeBundleFilename(classInfo.name) + ".tsv",
+      content: buildClassTemplateTsv(classInfo)
+    });
+  });
+
+  const tar = buildTar(bundleFiles);
+  const blob = new Blob([tar], {type: "application/x-tar"});
+  const modelName = safeBundleFilename(schemaSource.name || schemaSource.title || "d4cg").toLowerCase();
+  const versionName = safeBundleFilename(version);
+  const viewName = safeBundleFilename(view);
+  const filename = [modelName, versionName, viewName, "contributor-bundle"].filter(Boolean).join("-") + ".tar";
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+
+  link.href = url;
+  link.download = filename;
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+
+  setTimeout(function() {
+    URL.revokeObjectURL(url);
+  }, 1000);
+}

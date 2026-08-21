@@ -20,7 +20,11 @@ COMMONS = {
 }
 
 # See https://lucide.dev/icons for future options
-DOMAIN_ICONS = {
+ICONS = {
+    "file": """<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-folder-down-icon lucide-folder-down"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/><path d="M12 10v6"/><path d="m15 13-3 3-3-3"/></svg>""",
+    "copy": """<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-copy-icon lucide-copy"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>""",
+    "priority": """<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-dot-icon lucide-dot"><circle cx="12" cy="12" r="1"/></svg>""",
+    "required": """<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-asterisk-icon lucide-asterisk"><path d="M12 6v12"/><path d="M17.196 9 6.804 15"/><path d="m6.804 9 10.392 6"/></svg>""",
     "demographics": """<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-icon lucide-user"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>""",
     "testing": """<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-dna-icon lucide-dna"><path d="m10 16 1.5 1.5"/><path d="m14 8-1.5-1.5"/><path d="M15 2c-1.798 1.998-2.518 3.995-2.807 5.993"/><path d="m16.5 10.5 1 1"/><path d="m17 6-2.891-2.891"/><path d="M2 15c6.667-6 13.333 0 20-6"/><path d="m20 9 .891.891"/><path d="M3.109 14.109 4 15"/><path d="m6.5 12.5 1 1"/><path d="m7 18 2.891 2.891"/><path d="M9 22c1.798-1.998 2.518-3.995 2.807-5.993"/></svg>""",
     "disease_attributes": """<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-network-icon lucide-network"><rect x="16" y="16" width="6" height="6" rx="1"/><rect x="2" y="16" width="6" height="6" rx="1"/><rect x="9" y="2" width="6" height="6" rx="1"/><path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3"/><path d="M12 12V8"/></svg>""",
@@ -28,7 +32,20 @@ DOMAIN_ICONS = {
     "monitoring": """<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-stethoscope-icon lucide-stethoscope"><path d="M11 2v2"/><path d="M5 2v2"/><path d="M5 3H4a2 2 0 0 0-2 2v4a6 6 0 0 0 12 0V5a2 2 0 0 0-2-2h-1"/><path d="M8 15a6 6 0 0 0 12 0v-3"/><circle cx="20" cy="10" r="2"/></svg>""",
 }
 
-COPY_ICON = """<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-copy-icon lucide-copy"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>"""
+
+def get_priority_subsets(usage_def):
+    priority = usage_def.get("annotations", {}).get("priority", [])
+
+    if isinstance(priority, dict):
+        priority = priority.get("value", [])
+
+    if priority is None:
+        return []
+
+    if not isinstance(priority, list):
+        priority = [priority]
+
+    return [str(view) for view in priority]
 
 
 def load_yaml(path, required=True):
@@ -248,6 +265,14 @@ def init_view_front_matter(schema, commons, page_context):
 
     return "\n".join(lines)
 
+def render_slot_icon_legend():
+    return (
+        '<div class="slot-icon-legend">'
+        '<span class="text-delta slot-icon-legend-label">Slot Icons:</span>'
+        f'<span class="slot-icon-legend-item"><span class="slot-icon-legend-icon">{ICONS["required"]}</span>Required</span>'
+        f'<span class="slot-icon-legend-item priority-legend-item" style="display:none;">;<span class="slot-icon-legend-icon">{ICONS["priority"]}</span>Priority</span>'
+        "</div>"
+    )
 
 def render_view_selector(schema):
     rows = [
@@ -326,6 +351,14 @@ def render_model_meta(schema):
     study_count = count_pvs(schema, study_enum) if study_enum else 0
 
     lines = [
+        '<div class="model-meta-wrap">',
+        '<div class="model-export-actions">',
+        '<button type="button" id="contribution-template-button" class="contribution-template-button" onclick="exportContributorBundle(this)">',
+        f'<span class="contribution-template-icon">{ICONS["file"]}</span>',
+        '<span>Export Bundle</span>',
+        '</button>',
+        '<a class="contribution-template-help" href="/documentation/#contributor-bundle">What is a contributor bundle?</a>',
+        '</div>',
         '<div class="model-meta-grid">',
         '<div><span>Schema ID</span><span class="model-meta-value">' + f'<code>{html_escape(schema.get("id", ""))}</code>' + "</span></div>",
         '<div><span>License</span><span class="model-meta-value">' + html_escape(schema.get("license", "")) + "</span></div>",
@@ -344,6 +377,8 @@ def render_model_meta(schema):
         lines.append('<div><span>Community</span><span class="model-meta-value">' + " · ".join(provenance) + "</span></div>")
 
     lines.append("</div>")
+    lines.append("</div>")
+
     return "\n".join(lines)
 
 
@@ -494,21 +529,28 @@ def render_class_copy_icon(class_name):
         'onclick="copyClass(this)" '
         'aria-label="Copy class" '
         'title="Copy class">'
-        f"{COPY_ICON}"
+        f'{ICONS["copy"]}'
         "</button>"
     )
 
 
-def render_slot_copy_icon(class_name, slot_name):
+def render_slot_copy_icon(class_name, slot_name, usage_def):
+    required = usage_def.get("required", False) is True
+    priority_subsets = [] if required else get_priority_subsets(usage_def)
+
     return (
         '<button type="button" '
-        'class="copy-action slot-copy-icon" '
+        'class="copy-action slot-copy-icon slot-action-icon" '
         f'data-class-name="{html_escape(class_name)}" '
         f'data-slot-name="{html_escape(slot_name)}" '
+        f'data-required="{"true" if required else "false"}" '
+        f'data-priority-subsets="{html_escape(" ".join(priority_subsets))}" '
         'onclick="copySlot(this)" '
         'aria-label="Copy slot" '
         'title="Copy slot">'
-        f"{COPY_ICON}"
+        f'<span class="slot-required-icon">{ICONS["required"]}</span>'
+        f'<span class="slot-priority-icon">{ICONS["priority"]}</span>'
+        f'<span class="slot-copy-hover-icon">{ICONS["copy"]}</span>'
         "</button>"
     )
 
@@ -522,7 +564,7 @@ def render_pv_copy_icon(pv_name, meaning):
         'onclick="copyPv(this)" '
         'aria-label="Copy permissible value" '
         'title="Copy permissible value">'
-        f"{COPY_ICON}"
+        f'{ICONS["copy"]}'
         "</button>"
     )
 
@@ -621,7 +663,6 @@ def render_view_matrix(schema):
 
     rows = [
         '<div id="view-matrix-wrap" class="view-matrix-wrap">',
-        '<div class="view-matrix-title">Class Inclusion by View</div>',
         '<div class="view-matrix-scroll">',
         '<table class="view-matrix">',
         "<thead>",
@@ -721,7 +762,23 @@ def render_class_section(class_name, class_def, schema, terminology_index):
         f'<section id="{class_id}" class="class-section"{subset_attr(subsets)} markdown="1">'
     ]
 
-    comps.append(f"## {class_name}")
+    cardinality = class_def.get("annotations", {}).get("cardinality", "")
+
+    if isinstance(cardinality, dict):
+        cardinality = cardinality.get("value", "")
+
+    cardinality_link = ""
+
+    if cardinality:
+        cardinality_link = (
+            ' <a class="class-cardinality" '
+            'href="/documentation/#cardinality-required-fields-and-tiering" '
+            'title="Learn about class cardinality">'
+            f'<code>{html_escape(cardinality)}</code>'
+            "</a>"
+        )
+
+    comps.append(f"## {class_name}{cardinality_link}")
 
     description = class_def.get("description", "")
 
@@ -758,7 +815,7 @@ def render_class_table(class_name, class_def, schema, terminology_index):
         else:
             range_html = f'<code class="primitive-range">{html_escape(slot_range)}</code>' if slot_range else ""
 
-        copy_button = render_slot_copy_icon(class_name, slot_name)
+        copy_button = render_slot_copy_icon(class_name, slot_name, usage_def)
 
         rows.append(
             f'<tr{subset_attr(subsets)}>'
@@ -777,6 +834,7 @@ def render_class_table(class_name, class_def, schema, terminology_index):
         + "\n".join(rows)
         + "</tbody>"
         "</table>"
+        f"{render_slot_icon_legend()}"
         "</div>"
     )
 
@@ -786,7 +844,7 @@ def render_domain_intro(domain, schema):
     domain_docs = docs.get("domains", {}).get(domain, {})
     title = domain_docs.get("title", str(domain).title())
     description = domain_docs.get("description", "")
-    icon = DOMAIN_ICONS.get(domain, "")
+    icon = ICONS.get(domain, "")
 
     parts = [f'<div class="domain-banner domain-{safe_id(domain)}">']
 
@@ -844,6 +902,16 @@ def render_raw_schema_payload(raw_files):
 
     return f'<script id="raw-schema-payload" type="application/json">{raw}</script>'
 
+def render_terminology_description_payload(terminology_index):
+    descriptions = {}
+
+    for curie, term in terminology_index.items():
+        descriptions[curie] = term.get("description", "")
+
+    raw = json.dumps(descriptions)
+    raw = raw.replace("</", "<\\/")
+
+    return f'<script id="terminology-description-payload" type="application/json">{raw}</script>'
 
 def render_view_metadata_payload(schema):
     view_metadata = {}
@@ -947,7 +1015,7 @@ def render_model(schema, terminology_index, raw_files):
         'onclick="copyRaw(this)" '
         'aria-label="Copy displayed YAML" '
         'title="Copy displayed YAML">'
-        f'{COPY_ICON}'
+        f'{ICONS["copy"]}'
         '</button>'
     )
     comps.append('<div id="raw-loading" class="raw-loading" style="display:none;">Loading…</div>')
@@ -957,6 +1025,7 @@ def render_model(schema, terminology_index, raw_files):
     comps.append("</div>")
 
     comps.append(render_view_metadata_payload(schema))
+    comps.append(render_terminology_description_payload(terminology_index))
     comps.append(render_raw_schema_payload(raw_files))
 
     return "\n\n".join(comp for comp in comps if comp)

@@ -545,6 +545,125 @@ table.compact {
   height: 0.95rem;
 }
 
+.slot-required-icon svg {
+  width: 10px;
+  height: 10px;
+}
+
+.slot-priority-icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+.model-display-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+}
+
+.class-table-wrap > .table-wrapper {
+  margin-bottom: 0.5rem;
+}
+
+.slot-icon-legend {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-top: 0;
+  margin-left:1rem;
+  font-size: 0.7rem;
+  color: #6b7280;
+}
+
+.slot-icon-legend-label {
+  margin: 0;
+}
+
+.slot-icon-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.slot-icon-legend-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 0.8rem;
+}
+
+.class-cardinality {
+  margin-left: 0.35rem;
+  text-decoration: none;
+}
+
+.class-cardinality code {
+  font-size: 0.7em;
+  font-weight: 400;
+  vertical-align: middle;
+}
+
+.class-cardinality:hover code {
+  text-decoration: underline;
+}
+
+.model-meta-wrap {
+  position: relative;
+}
+
+.model-export-actions {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.25rem;
+}
+
+.contribution-template-button {
+  appearance: none;
+  -webkit-appearance: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.75rem;
+  border: 1px solid #d9e0e7;
+  border-radius: 0.25rem;
+  background: #155f83;
+  color: #fff;
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+
+.contribution-template-button:hover {
+  background: #0f4f6d;
+  border-color: #0f4f6d;
+  color: #fff;
+}
+
+.contribution-template-button:focus-visible {
+  outline: 2px solid #5b96ad;
+  outline-offset: 2px;
+}
+
+.contribution-template-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contribution-template-icon svg {
+  width: 0.9rem;
+  height: 0.9rem;
+}
+
+.contribution-template-help {
+  font-size: 0.65rem;
+  white-space: nowrap;
+}
+
 .copy-action:hover {
   color: #5b96ad;
 }
@@ -609,7 +728,39 @@ table.compact {
   z-index: 2;
 }
 
-.class-slot-table tbody tr:hover .slot-copy-icon,
+/* Required / priority slot indicators */
+
+.slot-action-icon {
+  opacity: 1;
+}
+
+.slot-required-icon,
+.slot-priority-icon,
+.slot-copy-hover-icon {
+  display: none;
+}
+
+.slot-action-icon.is-required .slot-required-icon {
+  display: block;
+}
+
+.slot-action-icon.is-priority .slot-priority-icon {
+  display: block;
+}
+
+/* On row hover, replace star/flag/nothing with copy icon */
+
+.class-slot-table tbody tr:hover .slot-action-icon .slot-required-icon,
+.class-slot-table tbody tr:hover .slot-action-icon .slot-priority-icon {
+  display: none;
+}
+
+.class-slot-table tbody tr:hover .slot-action-icon .slot-copy-hover-icon {
+  display: block;
+}
+
+/* PV copy behavior remains unchanged */
+
 .enum-table tbody tr:hover .pv-copy-icon {
   opacity: 1;
 }
