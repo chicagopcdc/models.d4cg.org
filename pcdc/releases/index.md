@@ -9,5 +9,5 @@ nav_order: 1
 
 | Release | Status | Date | Notes |
 | --- | --- | --- | --- |
-| [2.0 (current)](./2.0/) | Current |  |  |
-| [1.15](./1.15/) | Past |  |  |
+| [2.0](./2.0/) | Past |  |  |
+| [1.15 (current)](./1.15/) | Current |  |  |

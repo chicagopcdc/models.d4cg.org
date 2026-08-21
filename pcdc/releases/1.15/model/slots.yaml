@@ -13,8 +13,6 @@ slots:
     range: string
     comments:
     - 'D4CGNote: Submitter-provided identifer'
-    annotations:
-      tier_optional: rms
   subjects_submitter_id:
     slot_uri: ''
     range: Subject
@@ -22,8 +20,6 @@ slots:
     - 'D4CGNote: Foreign-key reference to a Subject record (by submitter_id)'
     inlined: false
     multivalued: true
-    annotations:
-      tier_optional: rms
   timings_submitter_id:
     slot_uri: ''
     range: Timing
@@ -31,56 +27,40 @@ slots:
     - 'D4CGNote: Foreign-key reference to a Timing record (by submitter_id)'
     inlined: false
     multivalued: true
-    annotations:
-      tier_optional: rms
   consortium:
     slot_uri: ncit:C61538
     range: ConsortiumEnum
     comments: []
-    annotations: {}
   honest_broker_subject_id:
     slot_uri: ncit:C168949
     range: string
     comments: []
-    annotations:
-      tier_priority: aml,hl,rms
   data_contributor_id:
     slot_uri: ncit:C168950
     range: DataContributorIdEnum
     comments: []
-    annotations:
-      tier_priority: aml,hl,rms
   study_id:
     slot_uri: ncit:C83082
     range: StudyIdEnum
     comments: []
-    annotations:
-      tier_priority: aml,hl,rms
   age_at_enrollment:
     slot_uri: ncit:C168843
     range: integer
     comments: []
-    annotations:
-      tier_priority: aml,hl
   treatment_arm:
     slot_uri: ncit:C15538
     range: TreatmentArmEnum
     comments: []
-    annotations:
-      tier_priority: aml,hl,rms
   enrolled_status:
     slot_uri: ncit:C168928
     range: EnrolledStatusEnum
     comments:
-    - '(aml) ConsortiumNote: This variable indicates if the subject was enrolled in the study, or if the subject was not enrolled in the study but received treatment per the study''s protocol.'
-    annotations:
-      tier_priority: aml
+    - '(aml) ConsortiumNote: This variable indicates if the subject was enrolled in the study, or if the subject was not enrolled
+      in the study but received treatment per the study''s protocol.'
   timing_type:
     slot_uri: ''
     range: TimingTypeEnum
     comments: []
-    annotations:
-      tier_optional: rms
   disease_phase:
     slot_uri: ncit:C168878
     range: DiseasePhaseEnum
@@ -92,1909 +72,1385 @@ slots:
     - '(nbl) ConsortiumNote: Disease phase could be ''Initial Diagnosis'' phase, or a ''Relapse'' phase, etc...'
     - '(nbl) ConsortiumNote: Only fill in Disease phase, Disease phase number, Course, and Course number if ''AGE_'' not known'
     - '(nbl) ConsortiumNote:  Disease phase could be ''Initial Diagnosis'' phase, or a ''Relapse'' phase, etc...'
-    annotations:
-      tier_priority: aml,hl,rms
-      tier_optional: hl
   disease_phase_number:
     slot_uri: ncit:C173258
     range: integer
     comments:
-    - '(aml) ConsortiumNote: Ordinal number of the disease phase, grouped within subcategory. I.e. number Relapse 1, 2, 3, 4, etc...'
+    - '(aml) ConsortiumNote: Ordinal number of the disease phase, grouped within subcategory. I.e. number Relapse 1, 2, 3,
+      4, etc...'
     - '(aml) ConsortiumNote: Only fill in Disease Phase, Disease Phase Number, Course, and Course Number if ''AGE_'' not known'
-    - '(aml) ConsortiumNote:  Ordinal number of the Disease Phase, grouped within subcategory. I.e. number Relapse 1, 2, 3, 4, etc... and Progression 1, 2, 3, 4, etc...'
-    - '(nbl) ConsortiumNote: Ordinal number of the disease phase, grouped within subcategory. I.e. number Relapse 1, 2, 3, 4, etc... and Progression 1, 2, 3, 4, etc...'
+    - '(aml) ConsortiumNote:  Ordinal number of the Disease Phase, grouped within subcategory. I.e. number Relapse 1, 2, 3,
+      4, etc... and Progression 1, 2, 3, 4, etc...'
+    - '(nbl) ConsortiumNote: Ordinal number of the disease phase, grouped within subcategory. I.e. number Relapse 1, 2, 3,
+      4, etc... and Progression 1, 2, 3, 4, etc...'
     - '(nbl) ConsortiumNote: Only fill in Disease phase, Disease phase number, Course, and Course number if ''AGE_'' not known'
-    - '(nbl) ConsortiumNote:  Ordinal number of the disease phase, grouped within subcategory. I.e. number Relapse 1, 2, 3, 4, etc... and Progression 1, 2, 3, 4, etc...'
-    annotations:
-      tier_priority: hl,rms
-      tier_optional: hl
+    - '(nbl) ConsortiumNote:  Ordinal number of the disease phase, grouped within subcategory. I.e. number Relapse 1, 2, 3,
+      4, etc... and Progression 1, 2, 3, 4, etc...'
   age_at_disease_phase:
     slot_uri: ncit:C168972
     range: integer
     comments:
     - '(aml) ConsortiumNote: Disease phase could be the ''Initial Diagnosis'' phase, or a ''Relapse'' phase, etc...'
     - '(nbl) ConsortiumNote: Disease phase could be the ''Initial Diagnosis'' phase, or a ''Relapse'' phase, etc...'
-    annotations:
-      tier_priority: aml,hl,rms
   year_at_disease_phase:
     slot_uri: ncit:C168823
     range: integer
     comments:
     - '(aml) ConsortiumNote: Disease phase could be the ''Initial Diagnosis'' phase, or a ''Relapse'' phase, etc...'
     - '(nbl) ConsortiumNote: Disease phase could be the ''Initial Diagnosis'' phase, or a ''Relapse'' phase, etc...'
-    annotations:
-      tier_priority: aml,hl,rms
   course:
     slot_uri: ncit:C168807
     range: CourseEnum
     comments:
     - '(aml) ConsortiumNote: Only fill in Disease Phase, Disease Phase Number, Course, and Course Number if ''AGE_'' not known'
-    annotations:
-      tier_priority: aml,hl
-      tier_optional: hl
   course_number:
     slot_uri: ncit:C166235
     range: integer
     comments:
-    - '(aml) ConsortiumNote: Course number is grouped within subcategory. I.e. number Induction 1, 2, 3, 4, etc..., Prephase 1, 2, 3, 4, etc..., Maintenance 1,2,3,4,5,6 etc...'
+    - '(aml) ConsortiumNote: Course number is grouped within subcategory. I.e. number Induction 1, 2, 3, 4, etc..., Prephase
+      1, 2, 3, 4, etc..., Maintenance 1,2,3,4,5,6 etc...'
     - '(aml) ConsortiumNote: Only fill in Disease Phase, Disease Phase Number, Course, and Course Number if ''AGE_'' not known'
-    - '(aml) ConsortiumNote:  Course Number is grouped within subcategory. I.e. number Induction 1, 2, 3, 4, etc..., Prephase 1, 2, 3, 4, etc..., Maintenance 1,2,3,4,5,6 etc...'
-    annotations:
-      tier_priority: hl
-      tier_optional: hl
+    - '(aml) ConsortiumNote:  Course Number is grouped within subcategory. I.e. number Induction 1, 2, 3, 4, etc..., Prephase
+      1, 2, 3, 4, etc..., Maintenance 1,2,3,4,5,6 etc...'
   age_at_course_start:
     slot_uri: ncit:C168850
     range: integer
     comments: []
-    annotations:
-      tier_priority: hl
   age_at_course_end:
     slot_uri: ncit:C168851
     range: integer
     comments: []
-    annotations:
-      tier_priority: hl
   age_at_course_anc_500:
     slot_uri: ncit:C168852
     range: integer
     comments:
     - '(aml) ConsortiumNote: This variable is used as a proxy for the age at course end, when appropriate.'
-    annotations: {}
   age_off:
     slot_uri: ncit:C172678
     range: integer
     comments: []
-    annotations:
-      tier_priority: hl
   off_type:
     slot_uri: ncit:C173256
     range: OffTypeEnum
     comments:
-    - '(aml) ConsortiumNote: Off protocol therapy means they have stopped protocol treatment, but are still being followed in the study'
-    annotations:
-      tier_priority: hl
+    - '(aml) ConsortiumNote: Off protocol therapy means they have stopped protocol treatment, but are still being followed
+      in the study'
   reason_off:
     slot_uri: ncit:C169005
     range: ReasonOffEnum
     comments:
     - '(aml) ConsortiumNote: If multiple reasons ''off protocol therapy'' or ''off study'', include one observation per reason.'
-    annotations:
-      tier_priority: hl
   sex:
     slot_uri: ncit:C28421
     range: SexEnum
     comments: []
-    annotations:
-      tier_priority: aml,hl,rms
   race:
     slot_uri: ncit:C17049
     range: RaceEnum
     comments: []
-    annotations:
-      tier_priority: aml,hl,rms
   ethnicity:
     slot_uri: ncit:C16564
     range: EthnicityEnum
     comments: []
-    annotations:
-      tier_priority: aml,hl,rms
   medical_history:
     slot_uri: ncit:C18772
     range: MedicalHistoryEnum
     comments:
     - '(aml) ConsortiumNote: If subject had multiple prior medical conditions, include one observation per condition.'
-    annotations:
-      tier_optional: hl
   age_at_lkss:
     slot_uri: ncit:C168844
     range: integer
     comments: []
-    annotations:
-      tier_priority: aml,hl,rms
   lkss:
     slot_uri: ncit:C168931
     range: LkssEnum
     comments: []
-    annotations:
-      tier_priority: aml,hl,rms
   age_lost_to_follow_up:
     slot_uri: ncit:C172679
     range: integer
     comments: []
-    annotations:
-      tier_priority: aml,hl
   cause_of_death:
     slot_uri: ncit:C81239
     range: CauseOfDeathEnum
     comments:
-    - '(aml) ConsortiumNote: If multiple causes of death, include one observation per cause of death. However, only one cause of death can have the varaiable CAUSE_OF_DEATH_RANKING=Primary.'
+    - '(aml) ConsortiumNote: If multiple causes of death, include one observation per cause of death. However, only one cause
+      of death can have the varaiable CAUSE_OF_DEATH_RANKING=Primary.'
     - '(aml) ConsortiumNote:  Only fill in this variable if LKSS is ''Dead'''
-    annotations:
-      tier_priority: aml,hl,rms
   TRM_type:
     slot_uri: ncit:C173260
     range: TrmTypeEnum
     comments:
     - '(aml) ConsortiumNote: If multiple treatment types, include one observation per treatment type.'
     - '(aml) ConsortiumNote:  Only fill in this variable if LKSS is ''Dead'' and CAUSE_OF_DEATH is ''Treatment-related mortality'''
-    annotations:
-      tier_priority: aml,hl
   cause_of_death_detail:
     slot_uri: ncit:C168868
     range: CauseOfDeathDetailEnum
     comments:
     - '(aml) ConsortiumNote: If multiple cause of death details, include one observation per cause of death detail.'
     - '(aml) ConsortiumNote:  Only fill in this variable if LKSS is ''Dead'''
-    annotations:
-      tier_priority: aml,hl
   cause_of_death_ranking:
     slot_uri: ncit:C168932
     range: CauseOfDeathRankingEnum
     comments:
     - '(aml) ConsortiumNote: There may be multiple contributory causes of death, but only one primary cause of death.'
     - '(aml) ConsortiumNote:  Only fill in this variable if LKSS is ''Dead'''
-    annotations:
-      tier_priority: aml,hl
   fab_type:
     slot_uri: ncit:C91220
     range: FabTypeEnum
     comments: []
-    annotations: {}
   who_aml:
     slot_uri: ncit:C159157
     range: WhoAmlEnum
     comments: []
-    annotations:
-      tier_priority: aml
   disease_site:
     slot_uri: ncit:C173263
     range: DiseaseSiteEnum
     comments:
     - '(aml) ConsortiumNote: If multiple sites of disease involvement, include one observation per site.'
-    - '(aml) ConsortiumNote:  For AML, disease sites refer to sites of leukemic involvement and exclude myeloid sarcomas, which are detailed separately'
-    annotations: {}
+    - '(aml) ConsortiumNote:  For AML, disease sites refer to sites of leukemic involvement and exclude myeloid sarcomas,
+      which are detailed separately'
   detection_method:
     slot_uri: ncit:C173262
     range: DetectionMethodEnum
     comments:
-    - '(aml) ConsortiumNote: If there were multiple detection methods, include one observation per detection method. If disease site provided, detection method should be linked to each disease site. If no disease sites provided, detection method should be linked to overall disease.'
-    annotations:
-      tier_priority: hl
+    - '(aml) ConsortiumNote: If there were multiple detection methods, include one observation per detection method. If disease
+      site provided, detection method should be linked to each disease site. If no disease sites provided, detection method
+      should be linked to overall disease.'
   CNS_disease_status:
     slot_uri: ncit:C173264
     range: CnsDiseaseStatusEnum
     comments:
     - '(aml) ConsortiumNote: Only fill in this variable if DISEASE_SITE is ''Central Nervous System'''
-    annotations: {}
   MPAL:
     slot_uri: ncit:C82179
     range: YesNoEnum
     comments: []
-    annotations: {}
   MLDS:
     slot_uri: ncit:C43223
     range: YesNoEnum
     comments: []
-    annotations: {}
   TAMDS:
     slot_uri: ncit:C82339
     range: YesNoEnum
     comments: []
-    annotations: {}
   secondary_AML:
     slot_uri: ncit:C25765
     range: YesNoEnum
     comments: []
-    annotations: {}
   bulky_nodal_aggregate:
     slot_uri: ''
     range: YesNoEnum
     comments: []
-    annotations: {}
   myeloid_sarcoma:
     slot_uri: ncit:C3520
     range: YesNoEnum
     comments: []
-    annotations: {}
   myeloid_sarcoma_site:
     slot_uri: ncit:C168822
     range: MyeloidSarcomaSiteEnum
     comments:
     - '(aml) ConsortiumNote: If multiple myeloid sarcoma sites, include one observation per myeloid sarcoma site.'
-    annotations: {}
   age_at_vitals:
     slot_uri: ncit:C168845
     range: integer
     comments: []
-    annotations:
-      tier_optional: hl
   vitals_test:
     slot_uri: ncit:C49672
     range: VitalsTestEnum
     comments:
-    - '(aml) ConsortiumNote: BMI should only be what is reported on CRF, not calculated from weight and height when submitting data to the PCDC'
-    annotations:
-      tier_optional: hl
+    - '(aml) ConsortiumNote: BMI should only be what is reported on CRF, not calculated from weight and height when submitting
+      data to the PCDC'
   vitals_result:
     slot_uri: ncit:C173522
     range: string
     comments:
-    - '(aml) ConsortiumNote: String result can include anything that is not a single numeric result, i.e. ''Positive'', ''Negative'', ''Present'', ''Absent'', ''Yes'', ''No'', ''Elevated,'' ''Depressed'', ''Above threshold'', ''Below threshold'', ranges, as well as bucketed categories, etc...'
-    - '(aml) ConsortiumNote:  Only fill in this variable when the available data is anything EXCEPT a single numeric value, and include the entire available data as a string, including units if applicable'
-    annotations:
-      tier_optional: hl
+    - '(aml) ConsortiumNote: String result can include anything that is not a single numeric result, i.e. ''Positive'', ''Negative'',
+      ''Present'', ''Absent'', ''Yes'', ''No'', ''Elevated,'' ''Depressed'', ''Above threshold'', ''Below threshold'', ranges,
+      as well as bucketed categories, etc...'
+    - '(aml) ConsortiumNote:  Only fill in this variable when the available data is anything EXCEPT a single numeric value,
+      and include the entire available data as a string, including units if applicable'
   vitals_result_numeric:
     slot_uri: ncit:C173268
     range: decimal
     comments:
     - '(aml) ConsortiumNote: Only fill in this variable if the available data is a single numeric value.'
-    annotations:
-      tier_optional: hl
   vitals_result_unit:
     slot_uri: ncit:C83161
     range: VitalsResultUnitEnum
     comments:
     - '(aml) ConsortiumNote: Only fill in this variable if a numeric result is provided in VITALS_RESULT_NUMERIC.'
-    annotations:
-      tier_optional: hl
   age_at_lab:
     slot_uri: ncit:C172691
     range: integer
     comments: []
-    annotations:
-      tier_priority: hl
   lab_cat:
     slot_uri: ncit:C83017
     range: LabCatEnum
     comments: []
-    annotations:
-      tier_priority: hl
   lab_test:
     slot_uri: ncit:C117142
     range: LabTestEnum
     comments: []
-    annotations:
-      tier_priority: hl
   lab_spec_type:
     slot_uri: ncit:C83315
     range: LabSpecTypeEnum
     comments: []
-    annotations:
-      tier_priority: hl
   lab_result:
     slot_uri: ncit:C36292
     range: string
     comments:
-    - '(aml) ConsortiumNote: String result can include anything that is not a single numeric result, i.e. ''Positive'', ''Negative'', ''Present'', ''Absent'', ''Yes'', ''No'', ''Elevated,'' ''Depressed'', ''Above threshold'', ''Below threshold'', ranges, as well as bucketed categories, etc...'
-    - '(aml) ConsortiumNote:  Only fill in this variable when the available data is anything EXCEPT a single numeric value, and include the entire available data as a string, including units if applicable'
-    annotations:
-      tier_priority: hl
+    - '(aml) ConsortiumNote: String result can include anything that is not a single numeric result, i.e. ''Positive'', ''Negative'',
+      ''Present'', ''Absent'', ''Yes'', ''No'', ''Elevated,'' ''Depressed'', ''Above threshold'', ''Below threshold'', ranges,
+      as well as bucketed categories, etc...'
+    - '(aml) ConsortiumNote:  Only fill in this variable when the available data is anything EXCEPT a single numeric value,
+      and include the entire available data as a string, including units if applicable'
   lab_result_numeric:
     slot_uri: ncit:C83320
     range: decimal
     comments:
     - '(aml) ConsortiumNote: Only fill in this variable if the available data is a single numeric value.'
-    annotations:
-      tier_priority: hl
   lab_result_unit:
     slot_uri: ncit:C83106
     range: LabResultUnitEnum
     comments:
     - '(aml) ConsortiumNote: Only fill in this variable if a numeric result is provided in LAB_RESULT_NUMERIC.'
-    annotations:
-      tier_priority: hl
   lab_method:
     slot_uri: ncit:C83312
     range: LabMethodEnum
     comments:
-    - '(aml) ConsortiumNote: Only fill in this variable only when relevant, for example if the LAB_TEST is ''Blasts'' and the LAB_SAMPLE_SOURCE is ''Bone Marrow'' - ie bone marrow blasts'
-    annotations:
-      tier_priority: hl
+    - '(aml) ConsortiumNote: Only fill in this variable only when relevant, for example if the LAB_TEST is ''Blasts'' and
+      the LAB_SAMPLE_SOURCE is ''Bone Marrow'' - ie bone marrow blasts'
   traumatic_tap:
     slot_uri: ncit:C168879
     range: YesNoEnum
     comments:
     - '(aml) ConsortiumNote: Notes: For AML Traumatic tap is defined as cerebrospinal fluid with greater than 10 RBC/mm3.'
     - '(aml) ConsortiumNote:  Only fill in this variable if LAB_SAMPLE_SOURCE is ''CSF'''
-    annotations: {}
   age_at_molecular_analysis:
     slot_uri: ncit:C168848
     range: integer
     comments: []
-    annotations:
-      tier_priority: aml,rms
   molecular_analysis_method:
     slot_uri: ncit:C158954
     range: MolecularAnalysisMethodEnum
     comments: []
-    annotations:
-      tier_priority: aml
   iscn:
     slot_uri: ncit:C173278
     range: string
     comments:
     - '(aml) ConsortiumNote: Only fill in this variable if MOLECULAR_ANALYSIS_METHOD is ''Karyotype'''
-    annotations:
-      tier_priority: aml
   indepen_abb:
     slot_uri: ncit:C173279
     range: decimal
     comments:
     - '(aml) ConsortiumNote: Only fill in this variable if MOLECULAR_ANALYSIS_METHOD is ''Karyotype'''
-    annotations:
-      tier_priority: aml
   num_metaphases:
     slot_uri: ncit:C168918
     range: decimal
     comments:
     - '(aml) ConsortiumNote: Only fill in this variable if MOLECULAR_ANALYSIS_METHOD is ''Karyotype'''
-    annotations:
-      tier_priority: aml
   molecular_abnormality:
     slot_uri: ncit:C3910
     range: MolecularAbnormalityEnum
     comments:
     - '(aml) ConsortiumNote: If multiple molecular abnormalities, include one observation per molecular abnormality.'
     - '(nbl) ConsortiumNote: If multiple molecular abnormalities, include one observation per molecular abnormality.'
-    annotations:
-      tier_priority: aml,rms
   chromosome:
     slot_uri: ncit:C13202
     range: string
     comments: []
-    annotations:
-      tier_priority: aml
   gene1:
     slot_uri: ncit:C173595
     range: string
     comments: []
-    annotations:
-      tier_priority: aml,rms
   gene2:
     slot_uri: ncit:C171253
     range: string
     comments: []
-    annotations:
-      tier_priority: aml,rms
   variant_type:
     slot_uri: ncit:C97926
     range: VariantTypeEnum
     comments: []
-    annotations:
-      tier_priority: aml
   genetic_seq:
     slot_uri: ncit:C97927
     range: string
     comments: []
-    annotations:
-      tier_priority: aml
   aa_mutation:
     slot_uri: ncit:C97928
     range: string
     comments: []
-    annotations:
-      tier_priority: aml
   molecular_abnormality_result:
     slot_uri: ncit:C173596
     range: MolecularAbnormalityResultEnum
     comments:
     - '(aml) ConsortiumNote: This variable indicates the result of testing for the molecular abnormality listed in MOLECULAR_ABNORMALITY'
-    annotations:
-      tier_priority: aml,rms
   allelic_ratio:
     slot_uri: ncit:C173545
     range: decimal
     comments:
     - '(aml) ConsortiumNote: Only fill in this variable if the information is available.'
     - '(nbl) ConsortiumNote: Only fill in this variable if the information is available.'
-    annotations:
-      tier_priority: aml
   age_at_rt_start:
     slot_uri: ncit:C172695
     range: integer
     comments: []
-    annotations:
-      tier_priority: hl
   age_at_rt_end:
     slot_uri: ncit:C172696
     range: integer
     comments: []
-    annotations:
-      tier_priority: hl
   rt_timing:
     slot_uri: ''
     range: RtTimingEnum
     comments: []
-    annotations:
-      tier_optional: rms
   administration_status:
     slot_uri: ''
     range: AdministrationStatusEnum
     comments: []
-    annotations:
-      tier_optional: rms
   rt_site:
     slot_uri: ncit:C173281
     range: RtSiteEnum
     comments: []
-    annotations:
-      tier_priority: hl
   rt_dose:
     slot_uri: ncit:C173282
     range: decimal
     comments:
     - '(aml) ConsortiumNote: Total dose of radiation over the period encompassed by AGE_AT_RT_START to _AGE_AT_RT_END'
-    annotations:
-      tier_priority: hl,rms
   rt_unit:
     slot_uri: ncit:C18068
     range: RtUnitEnum
     comments: []
-    annotations:
-      tier_priority: hl
   age_at_tmp_start:
     slot_uri: ncit:C172697
     range: integer
     comments: []
-    annotations:
-      tier_optional: hl
   tmp_type:
     slot_uri: ncit:C173057
     range: TmpTypeEnum
     comments: []
-    annotations:
-      tier_optional: hl
   tmp_product:
     slot_uri: ncit:C173287
     range: TmpProductEnum
     comments: []
-    annotations:
-      tier_optional: hl
   age_at_cimt_start:
     slot_uri: ncit:C173195
     range: integer
     comments: []
-    annotations: {}
   cimt_type:
     slot_uri: ncit:C173289
     range: CimtTypeEnum
     comments: []
-    annotations: {}
   age_at_total_dose_start:
     slot_uri: ncit:C172698
     range: integer
     comments:
     - '(aml) ConsortiumNote: For AML, in the case of ''Intrathecal Chemotherapy,'' the age at the start is based on intention-to-treat.'
-    annotations:
-      tier_optional: hl
   age_at_total_dose_end:
     slot_uri: ncit:C172686
     range: integer
     comments:
     - '(aml) ConsortiumNote: For AML, in the case of ''Intrathecal Chemotherapy,'' the age at the end is based on intention-to-treat.'
-    annotations:
-      tier_optional: hl
   route:
     slot_uri: ncit:C38114
     range: RouteEnum
     comments: []
-    annotations:
-      tier_optional: hl
   antineoplastic_agent:
     slot_uri: ncit:C274
     range: AntineoplasticAgentEnum
     comments: []
-    annotations:
-      tier_optional: hl
   number_doses:
     slot_uri: ncit:C173293
     range: decimal
     comments:
     - '(aml) ConsortiumNote: Number of doses of chemotherapy agent administered over the indicated start and end time points'
     - '(aml) ConsortiumNote:  Only fill in this variable if this information is available.'
-    annotations:
-      tier_optional: hl
   total_dose_administered:
     slot_uri: ncit:C94394
     range: decimal
     comments:
-    - '(aml) ConsortiumNote: Total dose of the chemotherapy agent administered to the subject over the indicated start and end time points.'
+    - '(aml) ConsortiumNote: Total dose of the chemotherapy agent administered to the subject over the indicated start and
+      end time points.'
     - '(aml) ConsortiumNote:  Only fill in this variable if this information is available.'
-    annotations:
-      tier_optional: hl
   total_dose_intended:
     slot_uri: ncit:C173294
     range: decimal
     comments:
-    - '(aml) ConsortiumNote: Intention-to-treat total dose of the chemotherapy agent over the indicated start and end time points.'
+    - '(aml) ConsortiumNote: Intention-to-treat total dose of the chemotherapy agent over the indicated start and end time
+      points.'
     - '(aml) ConsortiumNote:  Only fill in this variable if this information is available.'
-    annotations:
-      tier_optional: hl
   total_dose_units:
     slot_uri: ncit:C173295
     range: TotalDoseUnitsEnum
     comments:
     - '(aml) ConsortiumNote: Unit for TOTAL_DOSE_ADMINISTERED and TOTAL_DOSE_INTENDED must be the same.'
-    annotations:
-      tier_optional: hl
   age_at_sct:
     slot_uri: ncit:C168853
     range: integer
     comments: []
-    annotations:
-      tier_priority: aml,hl
   sct_type:
     slot_uri: ncit:C168864
     range: SctTypeEnum
     comments: []
-    annotations:
-      tier_priority: aml,hl
   sct_source:
     slot_uri: ncit:C168870
     range: SctSourceEnum
     comments: []
-    annotations:
-      tier_priority: aml,hl
   sct_donor_relationship:
     slot_uri: ncit:C168869
     range: SctDonorRelationshipEnum
     comments: []
-    annotations:
-      tier_priority: aml,hl
   hla_match:
     slot_uri: ncit:C169009
     range: HlaMatchEnum
     comments:
-    - '(aml) ConsortiumNote: the term should be about the HLA matching result (ie match status), not the process - NCI will massage this term''s definition (HLA Match status)'
-    annotations:
-      tier_priority: aml
+    - '(aml) ConsortiumNote: the term should be about the HLA matching result (ie match status), not the process - NCI will
+      massage this term''s definition (HLA Match status)'
   number_hla:
     slot_uri: ncit:C173301
     range: decimal
     comments: []
-    annotations:
-      tier_priority: aml
   number_matches:
     slot_uri: ncit:C173302
     range: decimal
     comments: []
-    annotations:
-      tier_priority: aml
   hla_a_result:
     slot_uri: ncit:C168923
     range: HlaResultEnum
     comments: []
-    annotations:
-      tier_priority: aml
   hla_b_result:
     slot_uri: ncit:C168924
     range: HlaResultEnum
     comments: []
-    annotations:
-      tier_priority: aml
   hla_c_result:
     slot_uri: ncit:C168925
     range: HlaResultEnum
     comments: []
-    annotations:
-      tier_priority: aml
   hla_drb1_result:
     slot_uri: ncit:C168926
     range: HlaResultEnum
     comments: []
-    annotations:
-      tier_priority: aml
   hla_dq_result:
     slot_uri: ncit:C168927
     range: HlaResultEnum
     comments: []
-    annotations:
-      tier_priority: aml
   sct_conditioning_type:
     slot_uri: ncit:C169014
     range: SctConditioningTypeEnum
     comments: []
-    annotations:
-      tier_priority: aml,hl
   sct_tbi:
     slot_uri: ncit:C15350
     range: YesNoEnum
     comments: []
-    annotations:
-      tier_priority: aml
   age_at_mrd_assessment:
     slot_uri: ncit:C168855
     range: integer
     comments: []
-    annotations:
-      tier_priority: aml
   mrd_method:
     slot_uri: ncit:C168933
     range: MrdMethodEnum
     comments: []
-    annotations:
-      tier_priority: aml
   flow_cytometry_type:
     slot_uri: ncit:C173732
     range: FlowCytometryTypeEnum
     comments: []
-    annotations:
-      tier_priority: aml
   mrd_result:
     slot_uri: ncit:C124433
     range: string
     comments:
-    - '(aml) ConsortiumNote: String result can include anything that is not a single numeric result, i.e. ''Positive'', ''Negative'', ''Present'', ''Absent'', ''Yes'', ''No'', ''Elevated,'' ''Depressed'', ''Above threshold'', ''Below threshold'', ranges, as well as bucketed categories, etc...'
-    - '(aml) ConsortiumNote:  Only fill in this variable when the available data is anything EXCEPT a single numeric value, and include the entire available data as a string, including units if applicable'
-    annotations:
-      tier_priority: aml
+    - '(aml) ConsortiumNote: String result can include anything that is not a single numeric result, i.e. ''Positive'', ''Negative'',
+      ''Present'', ''Absent'', ''Yes'', ''No'', ''Elevated,'' ''Depressed'', ''Above threshold'', ''Below threshold'', ranges,
+      as well as bucketed categories, etc...'
+    - '(aml) ConsortiumNote:  Only fill in this variable when the available data is anything EXCEPT a single numeric value,
+      and include the entire available data as a string, including units if applicable'
   mrd_result_numeric:
     slot_uri: ncit:C168951
     range: decimal
     comments:
     - '(aml) ConsortiumNote: Only fill in this variable if the available data is a single numeric value.'
-    annotations:
-      tier_priority: aml
   mrd_result_unit:
     slot_uri: ncit:C173304
     range: MrdResultUnitEnum
     comments:
     - '(aml) ConsortiumNote: Only fill in this variable if a numeric result is provided in MRD_RESULT_NUMERIC.'
-    annotations:
-      tier_priority: aml
   mrd_sensitivity:
     slot_uri: ncit:C168957
     range: decimal
     comments: []
-    annotations:
-      tier_priority: aml
   mrd_sample_source:
     slot_uri: ncit:C168958
     range: MrdSampleSourceEnum
     comments: []
-    annotations:
-      tier_priority: aml
   mrd_molecular_markers:
     slot_uri: ncit:C168895
     range: MrdMolecularMarkersEnum
     comments:
     - '(aml) ConsortiumNote: If multiple MRD markers, include one observation per marker.'
-    annotations:
-      tier_priority: aml
   age_at_response:
     slot_uri: ncit:C168856
     range: integer
     comments: []
-    annotations:
-      tier_priority: hl
   response_criteria:
     slot_uri: ''
     range: ResponseCriteriaEnum
     comments: []
-    annotations: {}
   response_criteria_version:
     slot_uri: ''
     range: string
     comments: []
-    annotations: {}
   response_category:
     slot_uri: ncit:C173306
     range: ResponseCategoryEnum
     comments: []
-    annotations:
-      tier_priority: hl
   response:
     slot_uri: ncit:C50995
     range: ResponseEnum
     comments: []
-    annotations:
-      tier_priority: hl
   bm_pct_blasts_at_response:
     slot_uri: ncit:C168959
     range: decimal
     comments: []
-    annotations: {}
   bm_analysis_method_at_response:
     slot_uri: ncit:C168960
     range: BmAnalysisMethodAtResponseEnum
     comments:
     - '(aml) ConsortiumNote: Only fill in the variable if a value is available for BM_PCT_BLASTS_AT_RESPONSE'
-    annotations: {}
   anc_at_response:
     slot_uri: ncit:C168961
     range: decimal
     comments: []
-    annotations: {}
   anc_threshold_at_response:
     slot_uri: ncit:C168962
     range: YesNoEnum
     comments: []
-    annotations: {}
   platelet_count_at_response:
     slot_uri: ncit:C168963
     range: decimal
     comments: []
-    annotations: {}
   platelet_threshold_at_response:
     slot_uri: ncit:C168964
     range: YesNoEnum
     comments: []
-    annotations: {}
   function_category:
     slot_uri: ncit:C185625
     range: FunctionCategoryEnum
     comments: []
-    annotations:
-      tier_optional: hl
   function_result:
     slot_uri: ncit:C162133
     range: string
     comments:
-    - '(aml) ConsortiumNote: String result can include anything that is not a single numeric result, i.e. ''Positive'', ''Negative'', ''Present'', ''Absent'', ''Yes'', ''No'', ''Elevated,'' ''Depressed'', ''Above threshold'', ''Below threshold'', ranges, as well as bucketed categories, etc...'
-    - '(aml) ConsortiumNote:  Only fill in this variable when the available data is anything EXCEPT a single numeric value, and include the entire available data as a string, including units if applicable'
-    annotations:
-      tier_optional: hl
+    - '(aml) ConsortiumNote: String result can include anything that is not a single numeric result, i.e. ''Positive'', ''Negative'',
+      ''Present'', ''Absent'', ''Yes'', ''No'', ''Elevated,'' ''Depressed'', ''Above threshold'', ''Below threshold'', ranges,
+      as well as bucketed categories, etc...'
+    - '(aml) ConsortiumNote:  Only fill in this variable when the available data is anything EXCEPT a single numeric value,
+      and include the entire available data as a string, including units if applicable'
   function_test:
     slot_uri: ''
     range: FunctionTestEnum
     comments: []
-    annotations: {}
   function_result_numeric:
     slot_uri: ncit:C185629
     range: decimal
     comments:
     - '(aml) ConsortiumNote: Only fill in this variable if the available data is a single numeric value.'
-    annotations:
-      tier_optional: hl
   function_result_unit:
     slot_uri: ncit:C67415
     range: FunctionResultUnitEnum
     comments:
     - '(aml) ConsortiumNote: Only fill in this variable if a numeric result is provided in ECHO_RESULT_NUMERIC.'
-    annotations:
-      tier_optional: hl
   age_at_ae:
     slot_uri: ncit:C172677
     range: integer
     comments: []
-    annotations:
-      tier_priority: hl
   adverse_event:
     slot_uri: ncit:C41331
     range: AdverseEventEnum
     comments:
-    - '(aml) ConsortiumNote: For AML, COG will omit multiorgan failure, hemorrhage, and neurotoxcity. Infection for AML COG will be CRF question about sterile site'
-    annotations:
-      tier_priority: hl
+    - '(aml) ConsortiumNote: For AML, COG will omit multiorgan failure, hemorrhage, and neurotoxcity. Infection for AML COG
+      will be CRF question about sterile site'
   ae_code:
     slot_uri: ncit:C173313
     range: string
     comments:
     - '(aml) ConsortiumNote: For AML, include when available if a 1:1 mapping to the ADVERSE_EVENT bucket'
-    annotations:
-      tier_priority: hl
   ae_system:
     slot_uri: ncit:C168872
     range: AeSystemEnum
     comments: []
-    annotations:
-      tier_priority: hl
   ae_system_version:
     slot_uri: ncit:C173314
     range: string
     comments: []
-    annotations:
-      tier_priority: hl
   ae_grade:
     slot_uri: ncit:C166200
     range: AeGradeEnum
     comments: []
-    annotations:
-      tier_priority: hl
   ae_attribution:
     slot_uri: ncit:C41358
     range: AeAttributionEnum
     comments: []
-    annotations:
-      tier_priority: hl
   ae_outcome:
     slot_uri: ncit:C49489
     range: AeOutcomeEnum
     comments: []
-    annotations:
-      tier_priority: hl
   ae_icu:
     slot_uri: ncit:C173316
     range: YesNoEnum
     comments: []
-    annotations: {}
   ae_medication:
     slot_uri: ncit:C173317
     range: YesNoEnum
     comments: []
-    annotations:
-      tier_priority: hl
   ae_intervention:
     slot_uri: ncit:C173318
     range: YesNoEnum
     comments:
     - '(aml) ConsortiumNote: changed to general INTERVENTION variable (was previously SOS_INTERVENTION)'
-    annotations:
-      tier_priority: hl
   ae_med_intervention_detail:
     slot_uri: ncit:C173319
     range: AeMedInterventionDetailEnum
     comments:
-    - '(aml) ConsortiumNote: If multiple medications or interventions performed, include one observation per medication or intervention'
+    - '(aml) ConsortiumNote: If multiple medications or interventions performed, include one observation per medication or
+      intervention'
     - '(aml) ConsortiumNote:  Only fill in this variable if MEDICATION and/or INTERVENTION are marker as ''Yes'''
-    annotations: {}
   ae_pathogen:
     slot_uri: ncit:C185665
     range: AePathogenEnum
     comments:
     - '(aml) ConsortiumNote: If multiple pathogens involved, include one observation per pathogen.'
     - '(aml) ConsortiumNote:  Only fill in this variable if ADVERSE_EVENT is ''Infection.'''
-    annotations:
-      tier_priority: hl
   ae_pathogen_confirmation:
     slot_uri: ncit:C168955
     range: AePathogenConfirmationEnum
     comments:
-    - '(aml) ConsortiumNote: Only fill in this variable if ADVERSE_EVENT is ''Infection'' and there is a value filled in for PATHOGEN.'
-    annotations: {}
+    - '(aml) ConsortiumNote: Only fill in this variable if ADVERSE_EVENT is ''Infection'' and there is a value filled in for
+      PATHOGEN.'
   gvhd_acuity:
     slot_uri: ncit:C168861
     range: GvhdAcuityEnum
     comments:
     - '(aml) ConsortiumNote: Only fill in this variable if ADVERSE_EVENT is ''GVHD.'''
-    annotations: {}
   gvhd_organ:
     slot_uri: ncit:C168883
     range: GvhdOrganEnum
     comments:
     - '(aml) ConsortiumNote: If multiple organs involved in GVHD, include one observation per organ.'
     - '(aml) ConsortiumNote:  Only fill in this variable if ADVERSE_EVENT is ''GVHD.'''
-    annotations: {}
   year_at_enrollment:
     slot_uri: ncit:C177353
     range: integer
     comments: []
-    annotations: {}
   age_at_censor_status:
     slot_uri: ''
     range: integer
     comments: []
-    annotations:
-      tier_optional: rms
   medical_history_status:
     slot_uri: ''
     range: MedicalHistoryStatusEnum
     comments: []
-    annotations: {}
   igccc_risk_group:
     slot_uri: ncit:C111073
     range: IgcccRiskGroupEnum
     comments: []
-    annotations: {}
   magic_risk_group:
     slot_uri: ncit:C177316
     range: MagicRiskGroupEnum
     comments: []
-    annotations: {}
   age_at_tumor_assessment:
     slot_uri: ncit:C174997
     range: integer
     comments: []
-    annotations:
-      tier_optional: rms
   nodal_site:
     slot_uri: ''
     range: NodalSiteEnum
     comments: []
-    annotations: {}
   tumor_detection_method:
     slot_uri: ncit:C117438
     range: TumorDetectionMethodEnum
     comments: []
-    annotations: {}
   tumor_classification:
     slot_uri: ncit:C174459
     range: TumorClassificationEnum
     comments: []
-    annotations:
-      tier_optional: rms
   tumor_site:
     slot_uri: ncit:C157120
     range: TumorSiteEnum
     comments:
     - '(nbl) ConsortiumNote: If there were multiple primary sites, include one observation per primary site.'
-    annotations:
-      tier_optional: rms
   tumor_laterality:
     slot_uri: ncit:C119931
     range: TumorLateralityEnum
     comments: []
-    annotations: {}
   tumor_state:
     slot_uri: ''
     range: TumorStateEnum
     comments: []
-    annotations:
-      tier_optional: rms
   nodal_involvement:
     slot_uri: ''
     range: YesNoEnum
     comments: []
-    annotations: {}
   age_at_staging:
     slot_uri: ncit:C177359
     range: integer
     comments: []
-    annotations:
-      tier_priority: hl,rms
   stage_system:
     slot_uri: ncit:C18004
     range: StageSystemEnum
     comments: []
-    annotations:
-      tier_priority: hl
   stage:
     slot_uri: ncit:C16899
     range: StageEnum
     comments:
     - '(nbl) ConsortiumNote: Tied to stage system.'
-    annotations:
-      tier_priority: hl
   age_at_hist_assessment:
     slot_uri: ncit:C175004
     range: integer
     comments: []
-    annotations:
-      tier_priority: hl,rms
   hist_assessment_review:
     slot_uri: ncit:C177360
     range: HistAssessmentReviewEnum
     comments: []
-    annotations: {}
   histology:
     slot_uri: ncit:C16681
     range: HistologyEnum
     comments:
     - '(nbl) ConsortiumNote: If multiple histological findings, include one observation per histological finding.'
-    annotations:
-      tier_priority: hl,rms
   histology_result:
     slot_uri: ncit:C166246
     range: string
     comments: []
-    annotations: {}
   histology_result_numeric:
     slot_uri: ncit:C177361
     range: decimal
     comments: []
-    annotations: {}
   histology_result_unit:
     slot_uri: ncit:C177362
     range: HistologyResultUnitEnum
     comments: []
-    annotations: {}
   hist_ICD_O_morph_code:
     slot_uri: ncit:C176985
     range: string
     comments: []
-    annotations: {}
   histology_grade:
     slot_uri: ncit:C18000
     range: HistologyGradeEnum
     comments: []
-    annotations: {}
   mature_glial_implants:
     slot_uri: ncit:C177363
     range: YesNoEnum
     comments: []
-    annotations: {}
   somatic_malignancy_type:
     slot_uri: ncit:C177364
     range: SomaticMalignancyTypeEnum
     comments: []
-    annotations: {}
   lab_seq_method:
     slot_uri: ncit:C49142
     range: LabSeqMethodEnum
     comments: []
-    annotations: {}
   threshold_high:
     slot_uri: ncit:C177365
     range: decimal
     comments: []
-    annotations:
-      tier_priority: hl
   threshold_low:
     slot_uri: ncit:C177366
     range: decimal
     comments: []
-    annotations:
-      tier_priority: hl
   pmid_ref:
     slot_uri: ncit:C127797
     range: string
     comments: []
-    annotations: {}
   age_at_ihc:
     slot_uri: ncit:C175006
     range: integer
     comments: []
-    annotations:
-      tier_optional: hl
   ihc_test:
     slot_uri: ncit:C51944
     range: IhcTestEnum
     comments: []
-    annotations:
-      tier_optional: hl
   ihc_result:
     slot_uri: ncit:C175007
     range: string
     comments: []
-    annotations:
-      tier_optional: hl
   ihc_result_numeric:
     slot_uri: ncit:C177368
     range: decimal
     comments: []
-    annotations:
-      tier_optional: hl
   age_at_cytology:
     slot_uri: ncit:C177369
     range: integer
     comments: []
-    annotations: {}
   malignant_cells:
     slot_uri: ncit:C51944
     range: MalignantCellsEnum
     comments: []
-    annotations: {}
   cytology_spec_type:
     slot_uri: ncit:C70713
     range: CytologySpecTypeEnum
     comments: []
-    annotations: {}
   karyotype_status:
     slot_uri: ncit:C168871
     range: KaryotypeStatusEnum
     comments: []
-    annotations: {}
   num_chromosomes:
     slot_uri: ncit:C177370
     range: decimal
     comments: []
-    annotations: {}
   age_at_procedure:
     slot_uri: ncit:C175008
     range: integer
     comments: []
-    annotations:
-      tier_optional: hl
   procedure_performed:
     slot_uri: ''
     range: YesNoEnum
     comments: []
-    annotations:
-      tier_optional: rms
   procedure_treatment_timing:
     slot_uri: ''
     range: ProcedureTreatmentTimingEnum
     comments: []
-    annotations:
-      tier_optional: rms
   procedure_site:
     slot_uri: ncit:C164323
     range: ProcedureSiteEnum
     comments: []
-    annotations:
-      tier_optional: hl
   procedure_laterality:
     slot_uri: ''
     range: ProcedureLateralityEnum
     comments: []
-    annotations: {}
   procedure_type:
     slot_uri: ncit:C161601
     range: ProcedureTypeEnum
     comments: []
-    annotations:
-      tier_optional: hl,rms
   procedure_extent:
     slot_uri: ncit:C157443
     range: ProcedureExtentEnum
     comments: []
-    annotations:
-      tier_optional: hl
   mass_present:
     slot_uri: ''
     range: YesNoEnum
     comments: []
-    annotations:
-      tier_optional: rms
   viable_tumor_specimen:
     slot_uri: ''
     range: YesNoEnum
     comments: []
-    annotations:
-      tier_optional: rms
   viable_tumor_margin:
     slot_uri: ''
     range: YesNoEnum
     comments: []
-    annotations:
-      tier_optional: rms
   margins:
     slot_uri: ncit:C41227
     range: MarginsEnum
     comments: []
-    annotations:
-      tier_optional: rms
   biospecimen_container_type:
     slot_uri: ''
     range: string
     comments: []
-    annotations:
-      tier_optional: rms
   biospecimen_media:
     slot_uri: ''
     range: string
     comments: []
-    annotations:
-      tier_optional: rms
   biospecimen_type:
     slot_uri: ''
     range: string
     comments: []
-    annotations:
-      tier_optional: rms
   current_qty_unit:
     slot_uri: ''
     range: string
     comments: []
-    annotations:
-      tier_optional: rms
   current_qty_value:
     slot_uri: ''
     range: string
     comments: []
-    annotations:
-      tier_optional: rms
   external_links:
     slot_uri: ''
     range: string
     comments: []
-    annotations: {}
   external_resource_icon_path:
     slot_uri: ''
     range: string
     comments: []
-    annotations: {}
   external_resource_id:
     slot_uri: ''
     range: string
     comments: []
-    annotations: {}
   external_resource_name:
     slot_uri: ''
     range: string
     comments: []
-    annotations: {}
   external_subject_id:
     slot_uri: ''
     range: string
     comments: []
-    annotations: {}
   external_subject_submitter_id:
     slot_uri: ''
     range: string
     comments: []
-    annotations: {}
   external_subject_url:
     slot_uri: ''
     range: string
     comments: []
-    annotations: {}
   energy_type:
     slot_uri: ncit:C15313
     range: EnergyTypeEnum
     comments: []
-    annotations:
-      tier_priority: hl,rms
   boost:
     slot_uri: ncit:C137812
     range: YesNoEnum
     comments: []
-    annotations: {}
   num_fraction:
     slot_uri: ncit:C175034
     range: decimal
     comments: []
-    annotations: {}
   response_method:
     slot_uri: ncit:C178148
     range: ResponseMethodEnum
     comments: []
-    annotations:
-      tier_priority: hl
   age_at_smn:
     slot_uri: ncit:C168860
     range: integer
     comments: []
-    annotations:
-      tier_priority: hl
   smn_morph_sno:
     slot_uri: ''
     range: string
     comments: []
-    annotations: {}
   smn_morph_txt:
     slot_uri: ''
     range: string
     comments: []
-    annotations: {}
   smn_site:
     slot_uri: ''
     range: SmnSiteEnum
     comments: []
-    annotations: {}
   smn_top_sno:
     slot_uri: ''
     range: string
     comments: []
-    annotations: {}
   smn_top_txt:
     slot_uri: ''
     range: string
     comments: []
-    annotations: {}
   smn_type:
     slot_uri: ''
     range: SmnTypeEnum
     comments: []
-    annotations: {}
   smn_yn:
     slot_uri: ''
     range: YesNoEnum
     comments: []
-    annotations: {}
   smn_morph_icdo:
     slot_uri: ncit:C168862
     range: string
     comments: []
-    annotations: {}
   smn_top_icdo:
     slot_uri: ncit:C168863
     range: string
     comments: []
-    annotations: {}
   age_at_gts:
     slot_uri: ncit:C177375
     range: integer
     comments: []
-    annotations: {}
   gts_treatment:
     slot_uri: ncit:C177376
     range: GtsTreatmentEnum
     comments: []
-    annotations: {}
   study_phase:
     slot_uri: ncit:C48281
     range: StudyPhaseEnum
     comments: []
-    annotations:
-      tier_priority: hl
   study_type:
     slot_uri: ncit:C142175
     range: StudyTypeEnum
     comments: []
-    annotations:
-      tier_priority: hl
   another_study:
     slot_uri: ncit:C178073
     range: YesNoEnum
     comments: []
-    annotations:
-      tier_priority: hl
   cycle_number:
     slot_uri: ncit:C166208
     range: integer
     comments: []
-    annotations:
-      tier_priority: hl
-      tier_optional: hl
   age_at_cycle_start:
     slot_uri: ncit:C185317
     range: integer
     comments: []
-    annotations:
-      tier_priority: hl
   age_at_cycle_end:
     slot_uri: ncit:C185316
     range: integer
     comments: []
-    annotations:
-      tier_priority: hl
   family_history:
     slot_uri: ncit:C17726
     range: YesNoEnum
     comments: []
-    annotations:
-      tier_optional: hl
   relative:
     slot_uri: ncit:C21480
     range: RelativeEnum
     comments: []
-    annotations:
-      tier_optional: hl
   prior_cancer:
     slot_uri: ncit:C185318
     range: string
     comments: []
-    annotations:
-      tier_optional: hl
   medical_history_category:
     slot_uri: ncit:C83018
     range: MedicalHistoryCategoryEnum
     comments: []
-    annotations:
-      tier_optional: hl
   assisted_conception:
     slot_uri: ''
     range: AssistedConceptionEnum
     comments: []
-    annotations:
-      tier_optional: hl
   lkss_with_disease:
     slot_uri: ncit:C178074
     range: YesNoEnum
     comments: []
-    annotations:
-      tier_priority: hl
   bulk_disease:
     slot_uri: ncit:C38655
     range: YesNoEnum
     comments: []
-    annotations:
-      tier_priority: hl
   BULK_MED_MASS:
     slot_uri: ncit:C178075
     range: YesNoEnum
     comments: []
-    annotations:
-      tier_priority: hl
   med_ratio:
     slot_uri: ncit:C185323
     range: decimal
     comments: []
-    annotations:
-      tier_priority: hl
   fever:
     slot_uri: ncit:C3038
     range: YesNoEnum
     comments: []
-    annotations:
-      tier_priority: hl
   night_sweats:
     slot_uri: ncit:C3279
     range: YesNoEnum
     comments: []
-    annotations:
-      tier_priority: hl
   weight_loss:
     slot_uri: ncit:C3445
     range: YesNoEnum
     comments: []
-    annotations:
-      tier_priority: hl
   nodular_splenic:
     slot_uri: ncit:C185322
     range: YesNoEnum
     comments: []
-    annotations:
-      tier_priority: hl
   karnofsky:
     slot_uri: ncit:C28013
     range: KarnofskyEnum
     comments: []
-    annotations:
-      tier_priority: hl
   lansky:
     slot_uri: ncit:C38144
     range: LanskyEnum
     comments: []
-    annotations:
-      tier_priority: hl
   AB:
     slot_uri: ncit:C181839
     range: AbEnum
     comments: []
-    annotations:
-      tier_priority: hl
   E:
     slot_uri: ncit:C177586
     range: YesNoEnum
     comments: []
-    annotations:
-      tier_priority: hl
   S:
     slot_uri: ncit:C185484
     range: YesNoEnum
     comments: []
-    annotations:
-      tier_priority: hl
   age_at_lesion_assessment:
     slot_uri: ncit:C185485
     range: integer
     comments: []
-    annotations:
-      tier_priority: hl
   lesion_assessment_review:
     slot_uri: ncit:C185324
     range: LesionAssessmentReviewEnum
     comments: []
-    annotations:
-      tier_priority: hl
   lesion_detection_method:
     slot_uri: ncit:C173262
     range: LesionDetectionMethodEnum
     comments: []
-    annotations:
-      tier_optional: hl
   lesion_classification:
     slot_uri: ncit:C185489
     range: LesionClassificationEnum
     comments: []
-    annotations:
-      tier_optional: hl
   lesion_site:
     slot_uri: ncit:C166232
     range: LesionSiteEnum
     comments: []
-    annotations:
-      tier_priority: hl
   e_extension_site:
     slot_uri: ncit:C185478
     range: EExtensionSiteEnum
     comments: []
-    annotations:
-      tier_priority: hl
   lesion_laterality:
     slot_uri: ncit:C185479
     range: LesionLateralityEnum
     comments: []
-    annotations:
-      tier_priority: hl
   lesion_bulky:
     slot_uri: ncit:C185477
     range: YesNoEnum
     comments: []
-    annotations:
-      tier_priority: hl
   longest_diam_dim1:
     slot_uri: ncit:C96684
     range: decimal
     comments: []
-    annotations:
-      tier_optional: hl,rms
   diam_dim1_type:
     slot_uri: ncit:C185494
     range: DiamDim1TypeEnum
     comments: []
-    annotations:
-      tier_optional: hl
   longest_diam_dim2:
     slot_uri: ncit:C96684
     range: decimal
     comments: []
-    annotations:
-      tier_optional: hl,rms
   diam_dim2_type:
     slot_uri: ncit:C185495
     range: DiamDim2TypeEnum
     comments: []
-    annotations:
-      tier_optional: hl
   longest_diam_dim3:
     slot_uri: ncit:C96684
     range: decimal
     comments: []
-    annotations:
-      tier_optional: hl,rms
   diam_dim3_type:
     slot_uri: ncit:C185496
     range: DiamDim3TypeEnum
     comments: []
-    annotations:
-      tier_optional: hl
   pleural_effusion:
     slot_uri: ncit:C3331
     range: YesNoEnum
     comments: []
-    annotations:
-      tier_priority: hl
   pericardial_effusion:
     slot_uri: ncit:C3319
     range: YesNoEnum
     comments: []
-    annotations:
-      tier_priority: hl
   lesion_response:
     slot_uri: ncit:C94534
     range: LesionResponseEnum
     comments: []
-    annotations:
-      tier_priority: hl
   lesion_pct_change:
     slot_uri: ncit:C185497
     range: decimal
     comments: []
-    annotations:
-      tier_optional: hl
   age_at_imaging:
     slot_uri: ncit:C185622
     range: integer
     comments: []
-    annotations:
-      tier_priority: hl
   imaging_method:
     slot_uri: ncit:C17369
     range: ImagingMethodEnum
     comments: []
-    annotations:
-      tier_priority: hl
   imaging_result:
     slot_uri: ncit:C176708
     range: ImagingResultEnum
     comments: []
-    annotations:
-      tier_priority: hl
   deauville_score:
     slot_uri: ncit:C99723
     range: DeauvilleScoreEnum
     comments: []
-    annotations:
-      tier_priority: hl
   qpet_score:
     slot_uri: ncit:C185623
     range: decimal
     comments: []
-    annotations:
-      tier_priority: hl
   age_at:
     slot_uri: ncit:C185624
     range: integer
     comments: []
-    annotations:
-      tier_optional: hl
   age_at_mod:
     slot_uri: ncit:C185630
     range: integer
     comments: []
-    annotations:
-      tier_optional: hl
   mod_type:
     slot_uri: ncit:C185632
     range: ModTypeEnum
     comments: []
-    annotations:
-      tier_optional: hl
   mod_rationale:
     slot_uri: ncit:C185636
     range: ModRationaleEnum
     comments: []
-    annotations:
-      tier_optional: hl
   mod_reason:
     slot_uri: ncit:C93529
     range: ModReasonEnum
     comments: []
-    annotations:
-      tier_optional: hl
   toxicity_detail:
     slot_uri: ncit:C185693
     range: ToxicityDetailEnum
     comments: []
-    annotations:
-      tier_optional: hl
   toxicity_immune:
     slot_uri: ncit:C63814
     range: YesNoEnum
     comments: []
-    annotations:
-      tier_optional: hl
   toxicity_infusion:
     slot_uri: ncit:C185649
     range: YesNoEnum
     comments: []
-    annotations:
-      tier_optional: hl
   original_agent:
     slot_uri: ncit:C185650
     range: OriginalAgentEnum
     comments: []
-    annotations:
-      tier_optional: hl
   sub_agent:
     slot_uri: ncit:C185634
     range: SubAgentEnum
     comments: []
-    annotations:
-      tier_optional: hl
   route_detail:
     slot_uri: ncit:C38114
     range: RouteDetailEnum
     comments: []
-    annotations:
-      tier_optional: hl
   rt_laterality:
     slot_uri: ncit:C175523
     range: RtLateralityEnum
     comments: []
-    annotations:
-      tier_priority: hl
   boost_dose:
     slot_uri: ncit:C185679
     range: decimal
     comments: []
-    annotations:
-      tier_priority: hl
   tmp_product_type:
     slot_uri: ncit:C185655
     range: TmpProductTypeEnum
     comments: []
-    annotations:
-      tier_optional: hl
   tmp_number_units:
     slot_uri: ncit:C185656
     range: decimal
     comments: []
-    annotations:
-      tier_optional: hl
   sct_cd34_coll:
     slot_uri: ncit:C175036
     range: decimal
     comments: []
-    annotations:
-      tier_priority: hl
   interim_response:
     slot_uri: ncit:C185657
     range: InterimResponseEnum
     comments: []
-    annotations:
-      tier_priority: hl
   symptoms:
     slot_uri: ncit:C25269
     range: YesNoEnum
     comments: []
-    annotations:
-      tier_priority: hl
   palpable_nodes:
     slot_uri: ncit:C185660
     range: YesNoEnum
     comments: []
-    annotations:
-      tier_priority: hl
   age_at_ae_resolved:
     slot_uri: ncit:C175043
     range: enum
     comments: []
-    annotations:
-      tier_priority: hl
   smn_field:
     slot_uri: ncit:C175044
     range: SmnFieldEnum
     comments: []
-    annotations:
-      tier_priority: hl
   age_at_le_eval:
     slot_uri: ncit:C185670
     range: integer
     comments: []
-    annotations:
-      tier_optional: hl
   le:
     slot_uri: ncit:C4808
     range: LeEnum
     comments: []
-    annotations:
-      tier_optional: hl
   le_detail:
     slot_uri: ncit:C185686
     range: LeDetailEnum
     comments: []
-    annotations:
-      tier_optional: hl
   le_sub_detail:
     slot_uri: ncit:C186352
     range: LeSubDetailEnum
     comments: []
-    annotations:
-      tier_optional: hl
   le_severity_grade:
     slot_uri: ncit:C186476
     range: LeSeverityGradeEnum
     comments: []
-    annotations:
-      tier_optional: hl
   le_ctcae_version:
     slot_uri: ncit:C185691
     range: string
     comments: []
-    annotations:
-      tier_optional: hl
   npt_timing:
     slot_uri: ncit:C175038
     range: NptTimingEnum
     comments: []
-    annotations:
-      tier_priority: hl
   npt_type:
     slot_uri: ncit:C175041
     range: NptTypeEnum
     comments: []
-    annotations:
-      tier_priority: hl
   npt_sct_type:
     slot_uri: ncit:C186477
     range: NptSctTypeEnum
     comments: []
-    annotations:
-      tier_priority: hl
   censor_status:
     slot_uri: ''
     range: CensorStatusEnum
     comments: []
-    annotations:
-      tier_optional: rms
   initial_treatment_category:
     slot_uri: ''
     range: InitialTreatmentCategoryEnum
     comments: []
-    annotations: {}
   mki:
     slot_uri: ''
     range: MkiEnum
     comments: []
-    annotations: {}
   tumor_site_other:
     slot_uri: ''
     range: string
     comments: []
-    annotations:
-      tier_optional: rms
   histology_inpc:
     slot_uri: ''
     range: HistologyInpcEnum
     comments: []
-    annotations: {}
   dna_index:
     slot_uri: ''
     range: DnaIndexEnum
     comments:
     - '(nbl) ConsortiumNote: If multiple statuses apply, include one observation per status.'
-    annotations: {}
   dna_index_numeric:
     slot_uri: ''
     range: decimal
     comments: []
-    annotations: {}
   copy_number_status:
     slot_uri: ''
     range: CopyNumberStatusEnum
     comments: []
-    annotations: {}
   tumor_size:
     slot_uri: ''
     range: TumorSizeEnum
     comments: []
-    annotations:
-      tier_optional: rms
   invasiveness:
     slot_uri: ''
     range: YesNoEnum
     comments: []
-    annotations:
-      tier_optional: rms
   depth:
     slot_uri: ''
     range: DepthEnum
     comments: []
-    annotations: {}
   mitoses:
     slot_uri: ''
     range: MitosesEnum
     comments: []
-    annotations: {}
   cytodifferentiation:
     slot_uri: ''
     range: CytodifferentiationEnum
     comments: []
-    annotations: {}
   tx_prior_response:
     slot_uri: ''
     range: TxPriorResponseEnum
     comments: []
-    annotations: {}
   necrosis:
     slot_uri: ''
     range: NecrosisEnum
     comments: []
-    annotations: {}
   necrosis_pct:
     slot_uri: ''
     range: decimal
     comments: []
-    annotations: {}
   cause_of_death_other:
     slot_uri: ''
     range: string
     comments: []
-    annotations:
-      tier_optional: rms
   nodal_pathology:
     slot_uri: ''
     range: NodalPathologyEnum
     comments: []
-    annotations:
-      tier_optional: rms
   nodal_clinical:
     slot_uri: ''
     range: NodalClinicalEnum
     comments: []
-    annotations:
-      tier_optional: rms
   parameningeal_extension:
     slot_uri: ''
     range: YesNoEnum
     comments: []
-    annotations:
-      tier_optional: rms
   tnm_finding:
     slot_uri: ''
     range: TnmFindingEnum
     comments: []
-    annotations:
-      tier_optional: rms
   irs_group:
     slot_uri: ''
     range: IrsGroupEnum
     comments: []
-    annotations:
-      tier_optional: rms
   anaplasia:
     slot_uri: ''
     range: AnaplasiaEnum
     comments: []
-    annotations:
-      tier_optional: rms
   anaplasia_extent:
     slot_uri: ''
     range: AnaplasiaExtentEnum
     comments: []
-    annotations:
-      tier_optional: rms

@@ -155,38 +155,6 @@ def terminology_concept(curie, terminology_index):
     return terminology_index.get(normalize_curie(curie), {})
 
 
-def curie_to_url(curie, schema, terminology_index):
-    if not curie:
-        return ""
-
-    normalized = normalize_curie(curie)
-
-    if normalized.startswith("ncit:"):
-        local_id = normalized.split(":", 1)[1]
-        return "https://evsexplore.semantics.cancer.gov/evsexplore/concept/ncit/" + local_id
-
-    term = terminology_concept(curie, terminology_index)
-    source_url = term.get("source_url", "")
-
-    if source_url:
-        return source_url
-
-    if ":" not in str(curie):
-        return ""
-
-    prefix, local_id = str(curie).split(":", 1)
-    prefixes = schema.get("prefixes", {})
-    prefix_url = prefixes.get(prefix) or prefixes.get(prefix.lower()) or prefixes.get(prefix.upper()) or ""
-
-    if isinstance(prefix_url, dict):
-        prefix_url = prefix_url.get("prefix_reference") or prefix_url.get("reference") or ""
-
-    if not prefix_url:
-        return ""
-
-    return str(prefix_url) + local_id
-
-
 def safe_id(value):
     return str(value).replace(" ", "-").replace("_", "-").replace(".", "-").lower()
 
@@ -614,19 +582,14 @@ def render_enum_modals(schema, terminology_index):
             '<div class="enum-modal-loaded-content"></div>',
             '<template class="enum-modal-template">',
             '<table class="model-table enum-table">',
-            "<thead><tr><th>Permissible Value</th><th>Description</th><th>Meaning</th></tr></thead>",
+            "<thead><tr><th>Permissible Value</th><th>Meaning</th><th>Description</th></tr></thead>",
             "<tbody>",
         ]
 
         for pv_name, pv_def in enum_def.get("permissible_values", {}).items():
             meaning = pv_def.get("meaning", "")
             subsets = pv_def.get("in_subset", [])
-            meaning_url = curie_to_url(meaning, schema, terminology_index)
-
-            if meaning_url:
-                meaning_html = f'<a href="{html_escape(meaning_url)}" target="_blank" rel="noopener">{html_escape(meaning)}</a>'
-            else:
-                meaning_html = html_escape(meaning)
+            meaning_html = f'<code class="slot-uri">{html_escape(meaning)}</code>' if meaning else ""
 
             term = terminology_concept(meaning, terminology_index)
             description = term.get("description", "")
@@ -636,8 +599,8 @@ def render_enum_modals(schema, terminology_index):
             rows.append(
                 f'<tr{subset_attr(subsets)}>'
                 f'{copyable_clipped_cell(html_escape(pv_name), pv_name, "enum-pv", copy_button)}'
-                f'{clipped_cell(description, description, "enum-description")}'
                 f'<td class="enum-meaning" title="{html_escape(meaning)}"><span>{meaning_html}</span></td>'
+                f'{clipped_cell(description, description, "enum-description")}'
                 "</tr>"
             )
 
@@ -815,13 +778,15 @@ def render_class_table(class_name, class_def, schema, terminology_index):
         else:
             range_html = f'<code class="primitive-range">{html_escape(slot_range)}</code>' if slot_range else ""
 
+        slot_uri_html = f'<code class="slot-uri">{html_escape(slot_uri)}</code>' if slot_uri else ""
         copy_button = render_slot_copy_icon(class_name, slot_name, usage_def)
 
         rows.append(
             f'<tr{subset_attr(subsets)}>'
             f'{copyable_clipped_cell(html_escape(slot_name), slot_name, "slot-name", copy_button)}'
-            f'{clipped_cell(html_escape(description), description, "slot-description")}'
             f'<td class="slot-range" title="{html_escape(slot_range)}"><span>{range_html}</span></td>'
+            f'{clipped_cell(slot_uri_html, slot_uri, "slot-uri")}'
+            f'{clipped_cell(html_escape(description), description, "slot-description")}'
             "</tr>"
         )
 
@@ -829,7 +794,7 @@ def render_class_table(class_name, class_def, schema, terminology_index):
         '<div class="class-table-wrap">'
         f"{render_class_copy_icon(class_name)}"
         '<table class="model-table class-slot-table">'
-        "<thead><tr><th>Slot</th><th>Description</th><th>Range</th></tr></thead>"
+        "<thead><tr><th>Slot</th><th>Range</th><th>Slot URI</th><th>Description</th></tr></thead>"
         "<tbody>"
         + "\n".join(rows)
         + "</tbody>"

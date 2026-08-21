@@ -236,7 +236,7 @@ table.compact {
   margin: 3rem 0 2rem 0;
   padding: 1.5rem 1.7rem;
   background: #f6fafd;
-  border-left: 6px solid #155f83;
+  border-left: 6px solid var(--domain-color, #155f83);
   border-radius: 0.5rem;
 }
 
@@ -248,8 +248,15 @@ table.compact {
   align-items: center;
   justify-content: center;
   border-radius: 999px;
-  background: #e8f1f7;
-  color: #155f83;
+  background: var(--domain-bg, #e8f1f7);
+  color: var(--domain-color, #155f83);
+}
+
+.domain-heading {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.65rem;
+  font-weight: 700;
+  color: var(--domain-color, #123b55);
 }
 
 .domain-icon svg {
@@ -259,13 +266,6 @@ table.compact {
 
 .domain-banner-text {
   min-width: 0;
-}
-
-.domain-heading {
-  margin: 0 0 0.5rem 0;
-  font-size: 1.65rem;
-  font-weight: 700;
-  color: #123b55;
 }
 
 .domain-description {
@@ -312,19 +312,6 @@ table.compact {
   --domain-bg: #fdecec;
 }
 
-.domain-banner {
-  border-left-color: var(--domain-color);
-}
-
-.domain-icon {
-  color: var(--domain-color);
-  background: var(--domain-bg);
-}
-
-.domain-heading {
-  color: var(--domain-color);
-}
-
 .enum-button:hover {
   background: rgba(91, 150, 173, 0.15);
 }
@@ -359,25 +346,8 @@ table.compact {
   margin-bottom: 0;
 }
 
-.enum-table td code,
-.enum-table td :not(pre, figure) > code {
-  background: transparent;
-  border: 0;
-  padding: 0;
-}
-
 .enum-table td:first-child {
   font-family: inherit;
-}
-
-.enum-table td a {
-  color: #155f83;
-  text-decoration: none;
-  font-weight: 500;
-}
-
-.enum-table td a:hover {
-  color: #5b96ad;
 }
 
 .enum-table {
@@ -385,30 +355,19 @@ table.compact {
   width: 100%;
 }
 
-.enum-table th:first-child,
+.enum-table th:nth-child(1),
 .enum-table td.enum-pv {
-  width: 12rem;
-  max-width: 12rem;
+  width: 40%;
+}
+
+.enum-table th:nth-child(2),
+.enum-table td.enum-meaning {
+  width: 20%;
 }
 
 .enum-table th:nth-child(3),
-.enum-table td.enum-meaning {
-  width: 12rem;
-  max-width: 12rem;
-}
-
-.enum-table td.enum-meaning {
-  min-width: 0;
-}
-
-.enum-table td.enum-meaning > span {
-  display: block;
-  width: 100%;
-  max-width: 100%;
-  min-width: 0;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+.enum-table td.enum-description {
+  width: 40%;
 }
 
 .enum-table td.enum-pv,
@@ -464,34 +423,47 @@ table.compact {
   width: 100%;
 }
 
-.class-slot-table th:first-child,
-.class-slot-table td.slot-name {
-  width: 12rem;
-  max-width: 12rem;
+.class-slot-table th:nth-child(1),
+.class-slot-table td:nth-child(1) {
+  width: 25%;
+}
+
+.class-slot-table th:nth-child(2),
+.class-slot-table td:nth-child(2) {
+  width: 25%;
 }
 
 .class-slot-table th:nth-child(3),
-.class-slot-table td.slot-range {
-  width: 12rem;
-  max-width: 12rem;
+.class-slot-table td:nth-child(3) {
+  width: 20%;
+}
+
+.class-slot-table th:nth-child(4),
+.class-slot-table td:nth-child(4) {
+  width: 30%;
 }
 
 .class-slot-table td.slot-name,
-.class-slot-table td.slot-range {
+.class-slot-table td.slot-range,
+.class-slot-table td.slot-uri {
+  min-width: 0;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.class-slot-table th:nth-child(3),
+.class-slot-table td.slot-uri {
+  text-align: center;
+}
+
+.enum-table th:nth-child(2),
+.enum-table td.enum-meaning {
+  text-align: center;
 }
 
 .class-slot-table td.slot-description {
   min-width: 0;
-}
-
-.class-slot-table td.slot-range {
-  min-width: 0;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .class-slot-table td.slot-range > span,
@@ -507,7 +479,7 @@ table.compact {
 
 .class-slot-table td.slot-range .enum-link,
 .class-slot-table td.slot-range code,
-.enum-table td.enum-meaning a {
+.enum-table td.enum-meaning code {
   display: inline-block;
   max-width: 100%;
   white-space: nowrap;

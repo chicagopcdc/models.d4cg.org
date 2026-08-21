@@ -17,31 +17,48 @@ subsets:
   base:
     name: base
     title: Base Model
-    description: The PCDC data model represents a harmonized consensus data model developed across all participating PCDC disease groups and consortia. It serves as the canonical model from which disease-specific and dataset-specific views are derived.
+    description: The PCDC data model represents a harmonized consensus data model developed across all participating PCDC
+      disease groups and consortia. It serves as the canonical model from which disease-specific and dataset-specific views
+      are derived.
   aml:
     name: aml
     title: Acute Myeloid Leukemia
-    description: The AML view of the PCDC data model represents consensus data modeling by an international group of pediatric acute myeloid leukemia experts and is maintained by Data for the Common Good (D4CG) at the University of Chicago in collaboration with the International Acute Myeloid Leukemia Consortium (INTERACT). It is based on the collective requirements of its contributors.
+    description: The AML view of the PCDC data model represents consensus data modeling by an international group of pediatric
+      acute myeloid leukemia experts and is maintained by Data for the Common Good (D4CG) at the University of Chicago in
+      collaboration with the International Acute Myeloid Leukemia Consortium (INTERACT). It is based on the collective requirements
+      of its contributors.
   gct:
     name: gct
     title: Germ Cell Tumors
-    description: The GCT view of the PCDC data model represents consensus data modeling by an international group of pediatric germ cell tumor experts and is maintained by Data for the Common Good (D4CG) at the University of Chicago in collaboration with the Malignant Germ Cell International Consortium (MaGIC). It is based on the collective requirements of its contributors.
+    description: The GCT view of the PCDC data model represents consensus data modeling by an international group of pediatric
+      germ cell tumor experts and is maintained by Data for the Common Good (D4CG) at the University of Chicago in collaboration
+      with the Malignant Germ Cell International Consortium (MaGIC). It is based on the collective requirements of its contributors.
   hl:
     name: hl
     title: Hodgkin Lymphoma
-    description: The HL view of the PCDC data model represents consensus data modeling by an international group of pediatric Hodgkin lymphoma experts and is maintained by Data for the Common Good (D4CG) at the University of Chicago in collaboration with the Hodgkin Lymphoma Data Collaboration (NODAL). It is based on the collective requirements of its contributors.
+    description: The HL view of the PCDC data model represents consensus data modeling by an international group of pediatric
+      Hodgkin lymphoma experts and is maintained by Data for the Common Good (D4CG) at the University of Chicago in collaboration
+      with the Hodgkin Lymphoma Data Collaboration (NODAL). It is based on the collective requirements of its contributors.
   nbl:
     name: nbl
     title: Neuroblastoma
-    description: The NBL view of the PCDC data model represents consensus data modeling by an international group of pediatric neuroblastoma experts and is maintained by Data for the Common Good (D4CG) at the University of Chicago in collaboration with the International Neuroblastoma Risk Group (INRG). It is based on the collective requirements of its contributors.
+    description: The NBL view of the PCDC data model represents consensus data modeling by an international group of pediatric
+      neuroblastoma experts and is maintained by Data for the Common Good (D4CG) at the University of Chicago in collaboration
+      with the International Neuroblastoma Risk Group (INRG). It is based on the collective requirements of its contributors.
   nrsts:
     name: nrsts
     title: Non-rhabdomyosarcoma Soft Tissue Sarcomas
-    description: The NRSTS view of the PCDC data model represents consensus data modeling by an international group of pediatric non-rhabdomyosarcoma soft tissue sarcoma experts and is maintained by Data for the Common Good (D4CG) at the University of Chicago in collaboration with the International Soft Tissue Sarcoma Consortium (INSTRuCT). It is based on the collective requirements of its contributors.
+    description: The NRSTS view of the PCDC data model represents consensus data modeling by an international group of pediatric
+      non-rhabdomyosarcoma soft tissue sarcoma experts and is maintained by Data for the Common Good (D4CG) at the University
+      of Chicago in collaboration with the International Soft Tissue Sarcoma Consortium (INSTRuCT). It is based on the collective
+      requirements of its contributors.
   rms:
     name: rms
     title: Rhabdomyosarcoma
-    description: The RMS view of the PCDC data model represents consensus data modeling by an international group of pediatric rhabdomyosarcoma experts and is maintained by Data for the Common Good (D4CG) at the University of Chicago in collaboration with the International Soft Tissue Sarcoma Consortium (INSTRuCT). It is based on the collective requirements of its contributors.
+    description: The RMS view of the PCDC data model represents consensus data modeling by an international group of pediatric
+      rhabdomyosarcoma experts and is maintained by Data for the Common Good (D4CG) at the University of Chicago in collaboration
+      with the International Soft Tissue Sarcoma Consortium (INSTRuCT). It is based on the collective requirements of its
+      contributors.
 classes:
   Person:
     slots:
@@ -52,6 +69,7 @@ classes:
     - ethnicity
     comments: []
     in_subset:
+    - base
     - aml
     - gct
     - hl
@@ -60,47 +78,75 @@ classes:
     - rms
     annotations:
       domain: demographics
+      cardinality: 1..1
     slot_usage:
       submitter_id:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nbl
         - nrsts
         - rms
+        required: true
       subjects_submitter_id:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nbl
         - nrsts
         - rms
+        required: false
+        annotations:
+          priority: []
       sex:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nbl
         - nrsts
         - rms
+        required: false
+        annotations:
+          priority:
+          - aml
+          - hl
+          - rms
       race:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nbl
         - nrsts
         - rms
+        required: false
+        annotations:
+          priority:
+          - aml
+          - hl
+          - rms
       ethnicity:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nbl
         - nrsts
         - rms
+        required: false
+        annotations:
+          priority:
+          - aml
+          - hl
+          - rms
   Subject:
     slots:
     - consortium
@@ -111,6 +157,7 @@ classes:
     - censor_status
     comments: []
     in_subset:
+    - base
     - aml
     - gct
     - hl
@@ -119,52 +166,69 @@ classes:
     - rms
     annotations:
       domain: demographics
+      cardinality: 1..1
     slot_usage:
       consortium:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nbl
         - nrsts
         - rms
+        required: true
       submitter_id:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nbl
         - nrsts
         - rms
+        required: true
       honest_broker_subject_id:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nbl
         - nrsts
         - rms
+        required: true
       data_contributor_id:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nbl
         - nrsts
         - rms
+        required: true
       age_at_censor_status:
         in_subset:
+        - base
         - aml
         - gct
         - nbl
         - rms
+        required: false
+        annotations:
+          priority: []
       censor_status:
         in_subset:
+        - base
         - aml
         - nbl
         - nrsts
         - rms
         - gct
+        required: false
+        annotations:
+          priority: []
   ExternalReference:
     slots:
     - subjects_submitter_id
@@ -178,47 +242,79 @@ classes:
     comments:
     - 'D4CGNote: One observation/row per ___ when instantiated'
     in_subset:
+    - base
     - aml
     - nbl
     annotations:
       domain: demographics
+      cardinality: 0..*
     slot_usage:
       subjects_submitter_id:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nbl
         - nrsts
         - rms
+        required: true
       external_links:
         in_subset:
+        - base
         - aml
         - nbl
+        required: false
+        annotations:
+          priority: []
       external_resource_icon_path:
         in_subset:
+        - base
         - aml
         - nbl
+        required: false
+        annotations:
+          priority: []
       external_resource_id:
         in_subset:
+        - base
         - aml
         - nbl
+        required: false
+        annotations:
+          priority: []
       external_resource_name:
         in_subset:
+        - base
         - aml
         - nbl
+        required: false
+        annotations:
+          priority: []
       external_subject_id:
         in_subset:
+        - base
         - aml
         - nbl
+        required: false
+        annotations:
+          priority: []
       external_subject_submitter_id:
         in_subset:
+        - base
         - aml
         - nbl
+        required: false
+        annotations:
+          priority: []
       external_subject_url:
         in_subset:
+        - base
         - aml
         - nbl
+        required: false
+        annotations:
+          priority: []
   Study:
     slots:
     - submitter_id
@@ -232,6 +328,7 @@ classes:
     - study_type
     comments: []
     in_subset:
+    - base
     - aml
     - gct
     - hl
@@ -240,56 +337,95 @@ classes:
     - rms
     annotations:
       domain: demographics
+      cardinality: 0..*
     slot_usage:
       submitter_id:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nbl
         - nrsts
         - rms
+        required: true
       subjects_submitter_id:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nbl
         - nrsts
         - rms
+        required: true
       age_at_enrollment:
         in_subset:
+        - base
         - aml
         - gct
         - hl
+        required: false
+        annotations:
+          priority:
+          - aml
+          - hl
       enrolled_status:
         in_subset:
+        - base
         - aml
+        required: false
+        annotations:
+          priority:
+          - aml
       study_id:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nbl
         - nrsts
         - rms
+        required: true
       treatment_arm:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nbl
         - nrsts
         - rms
+        required: false
+        annotations:
+          priority:
+          - aml
+          - hl
+          - rms
       year_at_enrollment:
         in_subset:
+        - base
         - gct
+        required: false
+        annotations:
+          priority: []
       study_phase:
         in_subset:
+        - base
         - hl
+        required: false
+        annotations:
+          priority:
+          - hl
       study_type:
         in_subset:
+        - base
         - hl
+        required: false
+        annotations:
+          priority:
+          - hl
   Timing:
     slots:
     - submitter_id
@@ -309,6 +445,7 @@ classes:
     - age_at_cycle_end
     comments: []
     in_subset:
+    - base
     - aml
     - gct
     - hl
@@ -317,92 +454,166 @@ classes:
     - rms
     annotations:
       domain: demographics
+      cardinality: 0..*
     slot_usage:
       submitter_id:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nbl
         - nrsts
         - rms
+        required: true
       subjects_submitter_id:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nbl
         - nrsts
         - rms
+        required: true
       timing_type:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nbl
         - nrsts
         - rms
+        required: true
       disease_phase:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nbl
         - nrsts
         - rms
+        required: false
+        annotations:
+          priority:
+          - aml
+          - hl
+          - rms
       disease_phase_number:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nbl
         - nrsts
         - rms
+        required: false
+        annotations:
+          priority:
+          - hl
+          - rms
       age_at_disease_phase:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nbl
         - nrsts
         - rms
+        required: false
+        annotations:
+          priority:
+          - aml
+          - hl
+          - rms
       year_at_disease_phase:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nbl
         - nrsts
         - rms
+        required: false
+        annotations:
+          priority:
+          - aml
+          - hl
+          - rms
       course:
         in_subset:
+        - base
         - aml
         - hl
         - nrsts
+        required: false
+        annotations:
+          priority:
+          - aml
+          - hl
       course_number:
         in_subset:
+        - base
         - aml
         - hl
+        required: false
+        annotations:
+          priority:
+          - hl
       age_at_course_start:
         in_subset:
+        - base
         - aml
         - hl
+        required: false
+        annotations:
+          priority:
+          - hl
       age_at_course_end:
         in_subset:
+        - base
         - aml
         - hl
+        required: false
+        annotations:
+          priority:
+          - hl
       age_at_course_anc_500:
         in_subset:
+        - base
         - aml
+        required: false
+        annotations:
+          priority: []
       cycle_number:
         in_subset:
+        - base
         - hl
+        required: false
+        annotations:
+          priority:
+          - hl
       age_at_cycle_start:
         in_subset:
+        - base
         - hl
+        required: false
+        annotations:
+          priority:
+          - hl
       age_at_cycle_end:
         in_subset:
+        - base
         - hl
+        required: false
+        annotations:
+          priority:
+          - hl
   OffProtocolTherapyStudy:
     slots:
     - subjects_submitter_id
@@ -413,42 +624,70 @@ classes:
     - another_study
     comments: []
     in_subset:
+    - base
     - aml
     - hl
     annotations:
       domain: demographics
+      cardinality: 0..*
     slot_usage:
       subjects_submitter_id:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nbl
         - nrsts
         - rms
+        required: true
       timings_submitter_id:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nbl
         - nrsts
         - rms
+        required: false
+        annotations:
+          priority: []
       age_off:
         in_subset:
+        - base
         - aml
         - hl
+        required: false
+        annotations:
+          priority:
+          - hl
       off_type:
         in_subset:
+        - base
         - aml
         - hl
+        required: false
+        annotations:
+          priority:
+          - hl
       reason_off:
         in_subset:
+        - base
         - aml
         - hl
+        required: false
+        annotations:
+          priority:
+          - hl
       another_study:
         in_subset:
+        - base
         - hl
+        required: false
+        annotations:
+          priority:
+          - hl
   SurvivalCharacteristic:
     slots:
     - subjects_submitter_id
@@ -464,6 +703,7 @@ classes:
     - cause_of_death_ranking
     comments: []
     in_subset:
+    - base
     - aml
     - gct
     - hl
@@ -472,69 +712,130 @@ classes:
     - rms
     annotations:
       domain: demographics
+      cardinality: 0..*
     slot_usage:
       subjects_submitter_id:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nbl
         - nrsts
         - rms
+        required: true
       timings_submitter_id:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nbl
         - nrsts
         - rms
+        required: false
+        annotations:
+          priority: []
       age_at_lkss:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nbl
         - nrsts
         - rms
+        required: false
+        annotations:
+          priority:
+          - aml
+          - hl
+          - rms
       lkss:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nbl
         - nrsts
         - rms
+        required: false
+        annotations:
+          priority:
+          - aml
+          - hl
+          - rms
       lkss_with_disease:
         in_subset:
+        - base
         - hl
+        required: false
+        annotations:
+          priority:
+          - hl
       age_lost_to_follow_up:
         in_subset:
+        - base
         - aml
         - hl
+        required: false
+        annotations:
+          priority:
+          - aml
+          - hl
       cause_of_death:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nbl
         - nrsts
         - rms
+        required: false
+        annotations:
+          priority:
+          - aml
+          - hl
+          - rms
       cause_of_death_other:
         in_subset:
+        - base
         - rms
+        required: false
+        annotations:
+          priority: []
       TRM_type:
         in_subset:
+        - base
         - aml
         - hl
+        required: false
+        annotations:
+          priority:
+          - aml
+          - hl
       cause_of_death_detail:
         in_subset:
+        - base
         - aml
         - hl
+        required: false
+        annotations:
+          priority:
+          - aml
+          - hl
       cause_of_death_ranking:
         in_subset:
+        - base
         - aml
         - hl
+        required: false
+        annotations:
+          priority:
+          - aml
+          - hl
   FamilyMedicalHistory:
     slots:
     - subjects_submitter_id
@@ -543,27 +844,43 @@ classes:
     - prior_cancer
     comments: []
     in_subset:
+    - base
     - hl
     annotations:
       domain: demographics
+      cardinality: 0..*
     slot_usage:
       subjects_submitter_id:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nbl
         - nrsts
         - rms
+        required: true
       family_history:
         in_subset:
+        - base
         - hl
+        required: false
+        annotations:
+          priority: []
       relative:
         in_subset:
+        - base
         - hl
+        required: false
+        annotations:
+          priority: []
       prior_cancer:
         in_subset:
+        - base
         - hl
+        required: false
+        annotations:
+          priority: []
   MedicalHistory:
     slots:
     - subjects_submitter_id
@@ -573,36 +890,56 @@ classes:
     - assisted_conception
     comments: []
     in_subset:
+    - base
     - aml
     - gct
     - hl
     - nrsts
     annotations:
       domain: demographics
+      cardinality: 0..*
     slot_usage:
       subjects_submitter_id:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nbl
         - nrsts
         - rms
+        required: true
       medical_history:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nrsts
+        required: false
+        annotations:
+          priority: []
       medical_history_status:
         in_subset:
+        - base
         - gct
+        required: false
+        annotations:
+          priority: []
       medical_history_category:
         in_subset:
+        - base
         - hl
+        required: false
+        annotations:
+          priority: []
       assisted_conception:
         in_subset:
+        - base
         - hl
+        required: false
+        annotations:
+          priority: []
   Vital:
     slots:
     - subjects_submitter_id
@@ -614,53 +951,79 @@ classes:
     - vitals_result_unit
     comments: []
     in_subset:
+    - base
     - aml
     - gct
     - hl
     annotations:
       domain: testing
+      cardinality: 0..*
     slot_usage:
       subjects_submitter_id:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nbl
         - nrsts
         - rms
+        required: true
       timings_submitter_id:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nbl
         - nrsts
         - rms
+        required: false
+        annotations:
+          priority: []
       age_at_vitals:
         in_subset:
+        - base
         - aml
         - gct
         - hl
+        required: false
+        annotations:
+          priority: []
       vitals_test:
         in_subset:
+        - base
         - aml
         - gct
         - hl
+        required: true
       vitals_result:
         in_subset:
+        - base
         - aml
         - gct
         - hl
+        required: false
+        annotations:
+          priority: []
       vitals_result_numeric:
         in_subset:
+        - base
         - aml
         - gct
         - hl
+        required: false
+        annotations:
+          priority: []
       vitals_result_unit:
         in_subset:
+        - base
         - aml
         - gct
         - hl
+        required: false
+        annotations:
+          priority: []
   FunctionTest:
     slots:
     - subjects_submitter_id
@@ -673,48 +1036,78 @@ classes:
     - function_result_unit
     comments: []
     in_subset:
+    - base
     - hl
     annotations:
       domain: testing
+      cardinality: 0..*
     slot_usage:
       subjects_submitter_id:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nbl
         - nrsts
         - rms
+        required: true
       timings_submitter_id:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nbl
         - nrsts
         - rms
+        required: false
+        annotations:
+          priority: []
       age_at:
         in_subset:
+        - base
         - hl
+        required: false
+        annotations:
+          priority: []
       function_category:
         in_subset:
+        - base
         - aml
         - hl
+        required: false
+        annotations:
+          priority: []
       function_result:
         in_subset:
+        - base
         - aml
         - hl
+        required: false
+        annotations:
+          priority: []
       function_test:
         in_subset:
+        - base
         - aml
+        required: true
       function_result_numeric:
         in_subset:
+        - base
         - aml
         - hl
+        required: false
+        annotations:
+          priority: []
       function_result_unit:
         in_subset:
+        - base
         - aml
         - hl
+        required: false
+        annotations:
+          priority: []
   Lab:
     slots:
     - subjects_submitter_id
@@ -734,89 +1127,156 @@ classes:
     - threshold_low
     comments: []
     in_subset:
+    - base
     - aml
     - gct
     - hl
     - nbl
     annotations:
       domain: testing
+      cardinality: 0..*
     slot_usage:
       subjects_submitter_id:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nbl
         - nrsts
         - rms
+        required: true
       timings_submitter_id:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nbl
         - nrsts
         - rms
+        required: false
+        annotations:
+          priority: []
       age_at_lab:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nbl
+        required: false
+        annotations:
+          priority:
+          - hl
       lab_cat:
         in_subset:
+        - base
         - aml
         - gct
         - hl
+        required: false
+        annotations:
+          priority:
+          - hl
       lab_test:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nbl
+        required: true
       lab_spec_type:
         in_subset:
+        - base
         - aml
         - gct
         - hl
+        required: false
+        annotations:
+          priority:
+          - hl
       lab_seq_method:
         in_subset:
+        - base
         - gct
+        required: false
+        annotations:
+          priority: []
       lab_result:
         in_subset:
+        - base
         - aml
         - gct
         - hl
+        required: false
+        annotations:
+          priority:
+          - hl
       lab_result_numeric:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nbl
+        required: false
+        annotations:
+          priority:
+          - hl
       lab_result_unit:
         in_subset:
+        - base
         - aml
         - gct
         - hl
+        required: false
+        annotations:
+          priority:
+          - hl
       lab_method:
         in_subset:
+        - base
         - aml
         - gct
         - hl
+        required: false
+        annotations:
+          priority:
+          - hl
       traumatic_tap:
         in_subset:
+        - base
         - aml
+        required: false
+        annotations:
+          priority: []
       pmid_ref:
         in_subset:
+        - base
         - gct
+        required: false
+        annotations:
+          priority: []
       threshold_high:
         in_subset:
+        - base
         - gct
         - hl
+        required: false
+        annotations:
+          priority:
+          - hl
       threshold_low:
         in_subset:
+        - base
         - gct
         - hl
+        required: false
+        annotations:
+          priority:
+          - hl
   MolecularAnalysis:
     slots:
     - subjects_submitter_id
@@ -846,6 +1306,7 @@ classes:
     - num_chromosomes
     comments: []
     in_subset:
+    - base
     - aml
     - gct
     - nbl
@@ -853,117 +1314,231 @@ classes:
     - rms
     annotations:
       domain: testing
+      cardinality: 0..*
     slot_usage:
       subjects_submitter_id:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nbl
         - nrsts
         - rms
+        required: true
       timings_submitter_id:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nbl
         - nrsts
         - rms
+        required: false
+        annotations:
+          priority: []
       age_at_molecular_analysis:
         in_subset:
+        - base
         - aml
         - gct
         - nbl
         - nrsts
         - rms
+        required: false
+        annotations:
+          priority:
+          - aml
+          - rms
       molecular_analysis_method:
         in_subset:
+        - base
         - aml
         - gct
+        required: false
+        annotations:
+          priority:
+          - aml
       iscn:
         in_subset:
+        - base
         - aml
         - gct
+        required: false
+        annotations:
+          priority:
+          - aml
       indepen_abb:
         in_subset:
+        - base
         - aml
         - gct
+        required: false
+        annotations:
+          priority:
+          - aml
       num_metaphases:
         in_subset:
+        - base
         - aml
+        required: false
+        annotations:
+          priority:
+          - aml
       molecular_abnormality:
         in_subset:
+        - base
         - aml
         - gct
         - nbl
         - nrsts
         - rms
+        required: true
       chromosome:
         in_subset:
+        - base
         - aml
         - gct
         - nbl
+        required: false
+        annotations:
+          priority:
+          - aml
       gene1:
         in_subset:
+        - base
         - aml
         - gct
         - nbl
         - rms
+        required: false
+        annotations:
+          priority:
+          - aml
+          - rms
       gene2:
         in_subset:
+        - base
         - aml
         - gct
         - nbl
         - rms
+        required: false
+        annotations:
+          priority:
+          - aml
+          - rms
       variant_type:
         in_subset:
+        - base
         - aml
         - gct
         - nbl
+        required: false
+        annotations:
+          priority:
+          - aml
       genetic_seq:
         in_subset:
+        - base
         - aml
+        required: false
+        annotations:
+          priority:
+          - aml
       aa_mutation:
         in_subset:
+        - base
         - aml
         - nbl
+        required: false
+        annotations:
+          priority:
+          - aml
       molecular_abnormality_result:
         in_subset:
+        - base
         - aml
         - nbl
         - rms
+        required: false
+        annotations:
+          priority:
+          - aml
+          - rms
       allelic_ratio:
         in_subset:
+        - base
         - aml
         - nbl
+        required: false
+        annotations:
+          priority:
+          - aml
       anaplasia:
         in_subset:
+        - base
         - rms
+        required: false
+        annotations:
+          priority: []
       anaplasia_extent:
         in_subset:
+        - base
         - rms
+        required: false
+        annotations:
+          priority: []
       copy_number_status:
         in_subset:
+        - base
         - nbl
+        required: false
+        annotations:
+          priority: []
       cytodifferentiation:
         in_subset:
+        - base
         - nrsts
+        required: false
+        annotations:
+          priority: []
       dna_index:
         in_subset:
+        - base
         - nbl
+        required: false
+        annotations:
+          priority: []
       dna_index_numeric:
         in_subset:
+        - base
         - nbl
+        required: false
+        annotations:
+          priority: []
       karyotype_status:
         in_subset:
+        - base
         - gct
+        required: false
+        annotations:
+          priority: []
       mitoses:
         in_subset:
+        - base
         - nrsts
+        required: false
+        annotations:
+          priority: []
       num_chromosomes:
         in_subset:
+        - base
         - gct
+        required: false
+        annotations:
+          priority: []
   Biospecimen:
     slots:
     - subjects_submitter_id
@@ -975,6 +1550,7 @@ classes:
     comments:
     - 'D4CGNote: One observation/row per biospecimen when instantiated'
     in_subset:
+    - base
     - aml
     - gct
     - hl
@@ -983,55 +1559,78 @@ classes:
     - rms
     annotations:
       domain: testing
+      cardinality: 0..*
     slot_usage:
       subjects_submitter_id:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nbl
         - nrsts
         - rms
+        required: true
       biospecimen_container_type:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nrsts
         - nbl
         - rms
+        required: false
+        annotations:
+          priority: []
       biospecimen_media:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nrsts
         - nbl
         - rms
+        required: false
+        annotations:
+          priority: []
       biospecimen_type:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nrsts
         - nbl
         - rms
+        required: false
+        annotations:
+          priority: []
       current_qty_unit:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nrsts
         - nbl
         - rms
+        required: false
+        annotations:
+          priority: []
       current_qty_value:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nrsts
         - nbl
         - rms
+        required: false
+        annotations:
+          priority: []
   Immunohistochemistry:
     slots:
     - subjects_submitter_id
@@ -1042,43 +1641,67 @@ classes:
     - ihc_result_numeric
     comments: []
     in_subset:
+    - base
     - gct
     - hl
     annotations:
       domain: testing
+      cardinality: 0..*
     slot_usage:
       subjects_submitter_id:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nbl
         - nrsts
         - rms
+        required: true
       timings_submitter_id:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nbl
         - nrsts
         - rms
+        required: false
+        annotations:
+          priority: []
       age_at_ihc:
         in_subset:
+        - base
         - gct
         - hl
+        required: false
+        annotations:
+          priority: []
       ihc_test:
         in_subset:
+        - base
         - gct
         - hl
+        required: false
+        annotations:
+          priority: []
       ihc_result:
         in_subset:
+        - base
         - gct
         - hl
+        required: false
+        annotations:
+          priority: []
       ihc_result_numeric:
         in_subset:
+        - base
         - gct
         - hl
+        required: false
+        annotations:
+          priority: []
   Cytology:
     slots:
     - subjects_submitter_id
@@ -1088,35 +1711,55 @@ classes:
     - cytology_spec_type
     comments: []
     in_subset:
+    - base
     - gct
     annotations:
       domain: testing
+      cardinality: 0..*
     slot_usage:
       subjects_submitter_id:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nbl
         - nrsts
         - rms
+        required: true
       timings_submitter_id:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nbl
         - nrsts
         - rms
+        required: false
+        annotations:
+          priority: []
       age_at_cytology:
         in_subset:
+        - base
         - gct
+        required: false
+        annotations:
+          priority: []
       malignant_cells:
         in_subset:
+        - base
         - gct
+        required: false
+        annotations:
+          priority: []
       cytology_spec_type:
         in_subset:
+        - base
         - gct
+        required: false
+        annotations:
+          priority: []
   Imaging:
     slots:
     - subjects_submitter_id
@@ -1128,41 +1771,74 @@ classes:
     - qpet_score
     comments: []
     in_subset:
+    - base
     - hl
     annotations:
       domain: testing
+      cardinality: 0..*
     slot_usage:
       subjects_submitter_id:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nbl
         - nrsts
         - rms
+        required: true
       timings_submitter_id:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nbl
         - nrsts
         - rms
+        required: false
+        annotations:
+          priority: []
       age_at_imaging:
         in_subset:
+        - base
         - hl
+        required: false
+        annotations:
+          priority:
+          - hl
       imaging_method:
         in_subset:
+        - base
         - hl
+        required: false
+        annotations:
+          priority:
+          - hl
       imaging_result:
         in_subset:
+        - base
         - hl
+        required: false
+        annotations:
+          priority:
+          - hl
       deauville_score:
         in_subset:
+        - base
         - hl
+        required: false
+        annotations:
+          priority:
+          - hl
       qpet_score:
         in_subset:
+        - base
         - hl
+        required: false
+        annotations:
+          priority:
+          - hl
   Histology:
     slots:
     - subjects_submitter_id
@@ -1180,6 +1856,7 @@ classes:
     - histology_inpc
     comments: []
     in_subset:
+    - base
     - gct
     - hl
     - nbl
@@ -1187,66 +1864,121 @@ classes:
     - rms
     annotations:
       domain: disease_attributes
+      cardinality: 0..*
     slot_usage:
       subjects_submitter_id:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nbl
         - nrsts
         - rms
+        required: true
       timings_submitter_id:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nbl
         - nrsts
         - rms
+        required: false
+        annotations:
+          priority: []
       age_at_hist_assessment:
         in_subset:
+        - base
         - gct
         - hl
         - nbl
         - nrsts
         - rms
+        required: false
+        annotations:
+          priority:
+          - hl
+          - rms
       hist_assessment_review:
         in_subset:
+        - base
         - gct
+        required: false
+        annotations:
+          priority: []
       histology:
         in_subset:
+        - base
         - gct
         - hl
         - nbl
         - nrsts
         - rms
+        required: false
+        annotations:
+          priority:
+          - hl
+          - rms
       histology_result:
         in_subset:
+        - base
         - gct
+        required: false
+        annotations:
+          priority: []
       histology_result_numeric:
         in_subset:
+        - base
         - gct
+        required: false
+        annotations:
+          priority: []
       histology_result_unit:
         in_subset:
+        - base
         - gct
+        required: false
+        annotations:
+          priority: []
       hist_ICD_O_morph_code:
         in_subset:
+        - base
         - gct
+        required: false
+        annotations:
+          priority: []
       histology_grade:
         in_subset:
+        - base
         - gct
         - nbl
         - nrsts
+        required: false
+        annotations:
+          priority: []
       mature_glial_implants:
         in_subset:
+        - base
         - gct
+        required: false
+        annotations:
+          priority: []
       somatic_malignancy_type:
         in_subset:
+        - base
         - gct
+        required: false
+        annotations:
+          priority: []
       histology_inpc:
         in_subset:
+        - base
         - nbl
+        required: false
+        annotations:
+          priority: []
   Staging:
     slots:
     - subjects_submitter_id
@@ -1261,59 +1993,106 @@ classes:
     - tnm_finding
     comments: []
     in_subset:
+    - base
     - gct
     - hl
     - nbl
     - rms
     annotations:
       domain: disease_attributes
+      cardinality: 0..*
     slot_usage:
       subjects_submitter_id:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nbl
         - nrsts
         - rms
+        required: true
       timings_submitter_id:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nbl
         - nrsts
         - rms
+        required: false
+        annotations:
+          priority: []
       age_at_staging:
         in_subset:
+        - base
         - gct
         - hl
         - nbl
         - rms
+        required: false
+        annotations:
+          priority:
+          - hl
+          - rms
       AB:
         in_subset:
+        - base
         - hl
+        required: false
+        annotations:
+          priority:
+          - hl
       E:
         in_subset:
+        - base
         - hl
+        required: false
+        annotations:
+          priority:
+          - hl
       S:
         in_subset:
+        - base
         - hl
+        required: false
+        annotations:
+          priority:
+          - hl
       stage_system:
         in_subset:
+        - base
         - gct
         - hl
+        required: false
+        annotations:
+          priority:
+          - hl
       stage:
         in_subset:
+        - base
         - gct
         - hl
         - nbl
+        required: false
+        annotations:
+          priority:
+          - hl
       irs_group:
         in_subset:
+        - base
         - rms
+        required: false
+        annotations:
+          priority: []
       tnm_finding:
         in_subset:
+        - base
         - rms
+        required: false
+        annotations:
+          priority: []
   DiseaseCharacteristic:
     slots:
     - subjects_submitter_id
@@ -1344,103 +2123,218 @@ classes:
     - histology_inpc
     comments: []
     in_subset:
+    - base
     - aml
     - gct
     - hl
     - nbl
     annotations:
       domain: disease_attributes
+      cardinality: 0..*
     slot_usage:
       subjects_submitter_id:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nbl
         - nrsts
         - rms
+        required: true
       timings_submitter_id:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nbl
         - nrsts
         - rms
+        required: false
+        annotations:
+          priority: []
       fab_type:
         in_subset:
+        - base
         - aml
+        required: false
+        annotations:
+          priority: []
       who_aml:
         in_subset:
+        - base
         - aml
+        required: false
+        annotations:
+          priority:
+          - aml
       disease_site:
         in_subset:
+        - base
         - aml
+        required: false
+        annotations:
+          priority: []
       detection_method:
         in_subset:
+        - base
         - aml
         - gct
         - hl
+        required: false
+        annotations:
+          priority:
+          - hl
       CNS_disease_status:
         in_subset:
+        - base
         - aml
+        required: false
+        annotations:
+          priority: []
       MPAL:
         in_subset:
+        - base
         - aml
+        required: false
+        annotations:
+          priority: []
       MLDS:
         in_subset:
+        - base
         - aml
+        required: false
+        annotations:
+          priority: []
       TAMDS:
         in_subset:
+        - base
         - aml
+        required: false
+        annotations:
+          priority: []
       secondary_AML:
         in_subset:
+        - base
         - aml
+        required: false
+        annotations:
+          priority: []
       bulky_nodal_aggregate:
         in_subset:
+        - base
         - hl
+        required: false
+        annotations:
+          priority: []
       BULK_MED_MASS:
         in_subset:
+        - base
         - hl
+        required: false
+        annotations:
+          priority:
+          - hl
       bulk_disease:
         in_subset:
+        - base
         - hl
+        required: false
+        annotations:
+          priority:
+          - hl
       fever:
         in_subset:
+        - base
         - hl
+        required: false
+        annotations:
+          priority:
+          - hl
       igccc_risk_group:
         in_subset:
+        - base
         - gct
+        required: false
+        annotations:
+          priority: []
       initial_treatment_category:
         in_subset:
+        - base
         - nbl
+        required: false
+        annotations:
+          priority: []
       karnofsky:
         in_subset:
+        - base
         - hl
+        required: false
+        annotations:
+          priority:
+          - hl
       lansky:
         in_subset:
+        - base
         - hl
+        required: false
+        annotations:
+          priority:
+          - hl
       magic_risk_group:
         in_subset:
+        - base
         - gct
+        required: false
+        annotations:
+          priority: []
       med_ratio:
         in_subset:
+        - base
         - hl
+        required: false
+        annotations:
+          priority:
+          - hl
       mki:
         in_subset:
+        - base
         - nbl
+        required: false
+        annotations:
+          priority: []
       night_sweats:
         in_subset:
+        - base
         - hl
+        required: false
+        annotations:
+          priority:
+          - hl
       nodular_splenic:
         in_subset:
+        - base
         - hl
+        required: false
+        annotations:
+          priority:
+          - hl
       weight_loss:
         in_subset:
+        - base
         - hl
+        required: false
+        annotations:
+          priority:
+          - hl
       histology_inpc:
         in_subset:
+        - base
         - nbl
+        required: false
+        annotations:
+          priority: []
   MyeloidSarcomaInvolvement:
     slots:
     - subjects_submitter_id
@@ -1449,32 +2343,48 @@ classes:
     - myeloid_sarcoma_site
     comments: []
     in_subset:
+    - base
     - aml
     annotations:
       domain: disease_attributes
+      cardinality: 0..*
     slot_usage:
       subjects_submitter_id:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nbl
         - nrsts
         - rms
+        required: true
       timings_submitter_id:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nbl
         - nrsts
         - rms
+        required: false
+        annotations:
+          priority: []
       myeloid_sarcoma:
         in_subset:
+        - base
         - aml
+        required: false
+        annotations:
+          priority: []
       myeloid_sarcoma_site:
         in_subset:
+        - base
         - aml
+        required: false
+        annotations:
+          priority: []
   TumorAssessment:
     slots:
     - subjects_submitter_id
@@ -1502,113 +2412,206 @@ classes:
     - tumor_size
     comments: []
     in_subset:
+    - base
     - gct
     - nbl
     - nrsts
     - rms
     annotations:
       domain: disease_attributes
+      cardinality: 0..*
     slot_usage:
       subjects_submitter_id:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nbl
         - nrsts
         - rms
+        required: true
       timings_submitter_id:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nbl
         - nrsts
         - rms
+        required: false
+        annotations:
+          priority: []
       age_at_tumor_assessment:
         in_subset:
+        - base
         - gct
         - nbl
         - nrsts
         - rms
+        required: false
+        annotations:
+          priority: []
       necrosis:
         in_subset:
+        - base
         - nrsts
+        required: false
+        annotations:
+          priority: []
       necrosis_pct:
         in_subset:
+        - base
         - nrsts
+        required: false
+        annotations:
+          priority: []
       nodal_site:
         in_subset:
+        - base
         - hl
+        required: false
+        annotations:
+          priority: []
       tumor_detection_method:
         in_subset:
+        - base
         - gct
+        required: false
+        annotations:
+          priority: []
       tumor_classification:
         in_subset:
+        - base
         - gct
         - nbl
         - nrsts
         - rms
+        required: false
+        annotations:
+          priority: []
       tumor_site:
         in_subset:
+        - base
         - gct
         - nbl
         - nrsts
         - rms
+        required: false
+        annotations:
+          priority: []
       tumor_laterality:
         in_subset:
+        - base
         - gct
+        required: false
+        annotations:
+          priority: []
       tumor_state:
         in_subset:
+        - base
         - gct
         - nbl
         - rms
+        required: false
+        annotations:
+          priority: []
       nodal_involvement:
         in_subset:
+        - base
         - gct
+        required: false
+        annotations:
+          priority: []
       depth:
         in_subset:
+        - base
         - nrsts
+        required: false
+        annotations:
+          priority: []
       invasiveness:
         in_subset:
+        - base
         - nrsts
         - rms
+        required: false
+        annotations:
+          priority: []
       longest_diam_dim1:
         in_subset:
+        - base
         - hl
         - nrsts
         - rms
+        required: false
+        annotations:
+          priority: []
       longest_diam_dim2:
         in_subset:
+        - base
         - hl
         - nrsts
         - rms
+        required: false
+        annotations:
+          priority: []
       longest_diam_dim3:
         in_subset:
+        - base
         - hl
         - nrsts
         - rms
+        required: false
+        annotations:
+          priority: []
       nodal_clinical:
         in_subset:
+        - base
         - rms
+        required: false
+        annotations:
+          priority: []
       nodal_pathology:
         in_subset:
+        - base
         - rms
+        required: false
+        annotations:
+          priority: []
       parameningeal_extension:
         in_subset:
+        - base
         - rms
+        required: false
+        annotations:
+          priority: []
       pleural_effusion:
         in_subset:
+        - base
         - hl
+        required: false
+        annotations:
+          priority:
+          - hl
       tumor_site_other:
         in_subset:
+        - base
         - nbl
         - nrsts
         - rms
+        required: false
+        annotations:
+          priority: []
       tumor_size:
         in_subset:
+        - base
         - nrsts
         - rms
+        required: false
+        annotations:
+          priority: []
   LesionCharacteristic:
     slots:
     - subjects_submitter_id
@@ -1633,86 +2636,175 @@ classes:
     - lesion_pct_change
     comments: []
     in_subset:
+    - base
     - hl
     annotations:
       domain: disease_attributes
+      cardinality: 0..*
     slot_usage:
       subjects_submitter_id:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nbl
         - nrsts
         - rms
+        required: true
       timings_submitter_id:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nbl
         - nrsts
         - rms
+        required: false
+        annotations:
+          priority: []
       age_at_lesion_assessment:
         in_subset:
+        - base
         - hl
+        required: false
+        annotations:
+          priority:
+          - hl
       lesion_assessment_review:
         in_subset:
+        - base
         - hl
+        required: false
+        annotations:
+          priority:
+          - hl
       lesion_detection_method:
         in_subset:
+        - base
         - hl
+        required: false
+        annotations:
+          priority: []
       lesion_classification:
         in_subset:
+        - base
         - hl
+        required: false
+        annotations:
+          priority: []
       lesion_site:
         in_subset:
+        - base
         - hl
+        required: false
+        annotations:
+          priority:
+          - hl
       e_extension_site:
         in_subset:
+        - base
         - hl
+        required: false
+        annotations:
+          priority:
+          - hl
       lesion_laterality:
         in_subset:
+        - base
         - hl
+        required: false
+        annotations:
+          priority:
+          - hl
       lesion_bulky:
         in_subset:
+        - base
         - hl
+        required: false
+        annotations:
+          priority:
+          - hl
       longest_diam_dim1:
         in_subset:
+        - base
         - hl
         - nrsts
         - rms
+        required: false
+        annotations:
+          priority: []
       diam_dim1_type:
         in_subset:
+        - base
         - hl
+        required: false
+        annotations:
+          priority: []
       longest_diam_dim2:
         in_subset:
+        - base
         - hl
         - nrsts
         - rms
+        required: false
+        annotations:
+          priority: []
       diam_dim2_type:
         in_subset:
+        - base
         - hl
+        required: false
+        annotations:
+          priority: []
       longest_diam_dim3:
         in_subset:
+        - base
         - hl
         - nrsts
         - rms
+        required: false
+        annotations:
+          priority: []
       diam_dim3_type:
         in_subset:
+        - base
         - hl
+        required: false
+        annotations:
+          priority: []
       pleural_effusion:
         in_subset:
+        - base
         - hl
+        required: false
+        annotations:
+          priority:
+          - hl
       pericardial_effusion:
         in_subset:
+        - base
         - hl
+        required: false
+        annotations:
+          priority:
+          - hl
       lesion_response:
         in_subset:
+        - base
         - hl
+        required: false
+        annotations:
+          priority:
+          - hl
       lesion_pct_change:
         in_subset:
+        - base
         - hl
+        required: false
+        annotations:
+          priority: []
   BiopsySurgicalProcedure:
     slots:
     - subjects_submitter_id
@@ -1731,76 +2823,132 @@ classes:
     - tumor_classification
     comments: []
     in_subset:
+    - base
     - gct
     - hl
     - nrsts
     - rms
     annotations:
       domain: intervention
+      cardinality: 0..*
     slot_usage:
       subjects_submitter_id:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nbl
         - nrsts
         - rms
+        required: true
       timings_submitter_id:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nbl
         - nrsts
         - rms
+        required: false
+        annotations:
+          priority: []
       age_at_procedure:
         in_subset:
+        - base
         - gct
         - hl
+        required: false
+        annotations:
+          priority: []
       procedure_performed:
         in_subset:
+        - base
         - rms
+        required: false
+        annotations:
+          priority: []
       procedure_treatment_timing:
         in_subset:
+        - base
         - rms
+        required: false
+        annotations:
+          priority: []
       procedure_site:
         in_subset:
+        - base
         - gct
         - hl
+        required: false
+        annotations:
+          priority: []
       procedure_laterality:
         in_subset:
+        - base
         - gct
+        required: false
+        annotations:
+          priority: []
       procedure_type:
         in_subset:
+        - base
         - gct
         - hl
         - nrsts
         - rms
+        required: false
+        annotations:
+          priority: []
       procedure_extent:
         in_subset:
+        - base
         - gct
         - hl
+        required: false
+        annotations:
+          priority: []
       mass_present:
         in_subset:
+        - base
         - rms
+        required: false
+        annotations:
+          priority: []
       viable_tumor_specimen:
         in_subset:
+        - base
         - rms
+        required: false
+        annotations:
+          priority: []
       viable_tumor_margin:
         in_subset:
+        - base
         - rms
+        required: false
+        annotations:
+          priority: []
       margins:
         in_subset:
+        - base
         - gct
         - nrsts
         - rms
+        required: false
+        annotations:
+          priority: []
       tumor_classification:
         in_subset:
+        - base
         - gct
         - nbl
         - nrsts
         - rms
+        required: false
+        annotations:
+          priority: []
   StemCellTransplant:
     slots:
     - subjects_submitter_id
@@ -1822,79 +2970,167 @@ classes:
     - sct_cd34_coll
     comments: []
     in_subset:
+    - base
     - aml
     - gct
     - hl
     annotations:
       domain: intervention
+      cardinality: 0..*
     slot_usage:
       subjects_submitter_id:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nbl
         - nrsts
         - rms
+        required: true
       timings_submitter_id:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nbl
         - nrsts
         - rms
+        required: false
+        annotations:
+          priority: []
       age_at_sct:
         in_subset:
+        - base
         - aml
         - gct
         - hl
+        required: false
+        annotations:
+          priority:
+          - aml
+          - hl
       sct_type:
         in_subset:
+        - base
         - aml
         - hl
+        required: false
+        annotations:
+          priority:
+          - aml
+          - hl
       sct_source:
         in_subset:
+        - base
         - aml
         - hl
+        required: false
+        annotations:
+          priority:
+          - aml
+          - hl
       sct_donor_relationship:
         in_subset:
+        - base
         - aml
         - hl
+        required: false
+        annotations:
+          priority:
+          - aml
+          - hl
       hla_match:
         in_subset:
+        - base
         - aml
+        required: false
+        annotations:
+          priority:
+          - aml
       number_hla:
         in_subset:
+        - base
         - aml
+        required: false
+        annotations:
+          priority:
+          - aml
       number_matches:
         in_subset:
+        - base
         - aml
+        required: false
+        annotations:
+          priority:
+          - aml
       hla_a_result:
         in_subset:
+        - base
         - aml
+        required: false
+        annotations:
+          priority:
+          - aml
       hla_b_result:
         in_subset:
+        - base
         - aml
+        required: false
+        annotations:
+          priority:
+          - aml
       hla_c_result:
         in_subset:
+        - base
         - aml
+        required: false
+        annotations:
+          priority:
+          - aml
       hla_drb1_result:
         in_subset:
+        - base
         - aml
+        required: false
+        annotations:
+          priority:
+          - aml
       hla_dq_result:
         in_subset:
+        - base
         - aml
+        required: false
+        annotations:
+          priority:
+          - aml
       sct_conditioning_type:
         in_subset:
+        - base
         - aml
         - hl
+        required: false
+        annotations:
+          priority:
+          - aml
+          - hl
       sct_tbi:
         in_subset:
+        - base
         - aml
+        required: false
+        annotations:
+          priority:
+          - aml
       sct_cd34_coll:
         in_subset:
+        - base
         - hl
+        required: false
+        annotations:
+          priority:
+          - hl
   TransfusionMedicineProcedure:
     slots:
     - subjects_submitter_id
@@ -1906,45 +3142,73 @@ classes:
     - tmp_number_units
     comments: []
     in_subset:
+    - base
     - aml
     - hl
     annotations:
       domain: intervention
+      cardinality: 0..*
     slot_usage:
       subjects_submitter_id:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nbl
         - nrsts
         - rms
+        required: true
       timings_submitter_id:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nbl
         - nrsts
         - rms
+        required: false
+        annotations:
+          priority: []
       age_at_tmp_start:
         in_subset:
+        - base
         - aml
         - hl
+        required: false
+        annotations:
+          priority: []
       tmp_type:
         in_subset:
+        - base
         - aml
         - hl
+        required: false
+        annotations:
+          priority: []
       tmp_product:
         in_subset:
+        - base
         - aml
         - hl
+        required: false
+        annotations:
+          priority: []
       tmp_product_type:
         in_subset:
+        - base
         - hl
+        required: false
+        annotations:
+          priority: []
       tmp_number_units:
         in_subset:
+        - base
         - hl
+        required: false
+        annotations:
+          priority: []
   RadiationTherapy:
     slots:
     - subjects_submitter_id
@@ -1964,6 +3228,7 @@ classes:
     - tumor_classification
     comments: []
     in_subset:
+    - base
     - aml
     - gct
     - hl
@@ -1971,82 +3236,151 @@ classes:
     - rms
     annotations:
       domain: intervention
+      cardinality: 0..*
     slot_usage:
       subjects_submitter_id:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nbl
         - nrsts
         - rms
+        required: true
       timings_submitter_id:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nbl
         - nrsts
         - rms
+        required: false
+        annotations:
+          priority: []
       age_at_rt_start:
         in_subset:
+        - base
         - aml
         - gct
         - hl
+        required: false
+        annotations:
+          priority:
+          - hl
       age_at_rt_end:
         in_subset:
+        - base
         - aml
         - gct
         - hl
+        required: false
+        annotations:
+          priority:
+          - hl
       rt_timing:
         in_subset:
+        - base
         - nrsts
         - rms
+        required: false
+        annotations:
+          priority: []
       administration_status:
         in_subset:
+        - base
         - nrsts
         - rms
+        required: false
+        annotations:
+          priority: []
       rt_site:
         in_subset:
+        - base
         - aml
         - gct
         - hl
+        required: false
+        annotations:
+          priority:
+          - hl
       rt_dose:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nrsts
         - rms
+        required: false
+        annotations:
+          priority:
+          - hl
+          - rms
       rt_unit:
         in_subset:
+        - base
         - aml
         - gct
         - hl
+        required: false
+        annotations:
+          priority:
+          - hl
       boost_dose:
         in_subset:
+        - base
         - hl
+        required: false
+        annotations:
+          priority:
+          - hl
       boost:
         in_subset:
+        - base
         - gct
+        required: false
+        annotations:
+          priority: []
       energy_type:
         in_subset:
+        - base
         - gct
         - hl
         - nrsts
         - rms
+        required: false
+        annotations:
+          priority:
+          - hl
+          - rms
       num_fraction:
         in_subset:
+        - base
         - gct
+        required: false
+        annotations:
+          priority: []
       rt_laterality:
         in_subset:
+        - base
         - hl
+        required: false
+        annotations:
+          priority:
+          - hl
       tumor_classification:
         in_subset:
+        - base
         - gct
         - nbl
         - nrsts
         - rms
+        required: false
+        annotations:
+          priority: []
   TotalDose:
     slots:
     - subjects_submitter_id
@@ -2064,74 +3398,127 @@ classes:
     - route_detail
     comments: []
     in_subset:
+    - base
     - gct
     - hl
     annotations:
       domain: intervention
+      cardinality: 0..*
     slot_usage:
       subjects_submitter_id:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nbl
         - nrsts
         - rms
+        required: true
       timings_submitter_id:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nbl
         - nrsts
         - rms
+        required: false
+        annotations:
+          priority: []
       age_at_total_dose_start:
         in_subset:
+        - base
         - aml
         - gct
         - hl
+        required: false
+        annotations:
+          priority: []
       age_at_total_dose_end:
         in_subset:
+        - base
         - aml
         - hl
         - gct
+        required: false
+        annotations:
+          priority: []
       cycle_number:
         in_subset:
+        - base
         - hl
+        required: false
+        annotations:
+          priority:
+          - hl
       administration_status:
         in_subset:
+        - base
         - nrsts
         - rms
+        required: false
+        annotations:
+          priority: []
       route:
         in_subset:
+        - base
         - aml
         - hl
+        required: false
+        annotations:
+          priority: []
       antineoplastic_agent:
         in_subset:
+        - base
         - aml
         - gct
         - hl
+        required: false
+        annotations:
+          priority: []
       number_doses:
         in_subset:
+        - base
         - aml
         - hl
+        required: false
+        annotations:
+          priority: []
       total_dose_administered:
         in_subset:
+        - base
         - aml
         - gct
         - hl
+        required: false
+        annotations:
+          priority: []
       total_dose_intended:
         in_subset:
+        - base
         - aml
         - hl
+        required: false
+        annotations:
+          priority: []
       total_dose_units:
         in_subset:
+        - base
         - aml
         - gct
         - hl
+        required: false
+        annotations:
+          priority: []
       route_detail:
         in_subset:
+        - base
         - hl
+        required: false
+        annotations:
+          priority: []
   ProtocolTreatmentModifications:
     slots:
     - subjects_submitter_id
@@ -2147,53 +3534,97 @@ classes:
     - sub_agent
     comments: []
     in_subset:
+    - base
     - hl
     annotations:
       domain: intervention
+      cardinality: 0..*
     slot_usage:
       subjects_submitter_id:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nbl
         - nrsts
         - rms
+        required: true
       timings_submitter_id:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nbl
         - nrsts
         - rms
+        required: false
+        annotations:
+          priority: []
       age_at_mod:
         in_subset:
+        - base
         - hl
+        required: false
+        annotations:
+          priority: []
       mod_type:
         in_subset:
+        - base
         - hl
+        required: false
+        annotations:
+          priority: []
       mod_rationale:
         in_subset:
+        - base
         - hl
+        required: false
+        annotations:
+          priority: []
       mod_reason:
         in_subset:
+        - base
         - hl
+        required: false
+        annotations:
+          priority: []
       toxicity_detail:
         in_subset:
+        - base
         - hl
+        required: false
+        annotations:
+          priority: []
       toxicity_immune:
         in_subset:
+        - base
         - hl
+        required: false
+        annotations:
+          priority: []
       toxicity_infusion:
         in_subset:
+        - base
         - hl
+        required: false
+        annotations:
+          priority: []
       original_agent:
         in_subset:
+        - base
         - hl
+        required: false
+        annotations:
+          priority: []
       sub_agent:
         in_subset:
+        - base
         - hl
+        required: false
+        annotations:
+          priority: []
   CellularImmunotherapy:
     slots:
     - subjects_submitter_id
@@ -2202,32 +3633,48 @@ classes:
     - cimt_type
     comments: []
     in_subset:
+    - base
     - aml
     annotations:
       domain: intervention
+      cardinality: 0..*
     slot_usage:
       subjects_submitter_id:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nbl
         - nrsts
         - rms
+        required: true
       timings_submitter_id:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nbl
         - nrsts
         - rms
+        required: false
+        annotations:
+          priority: []
       age_at_cimt_start:
         in_subset:
+        - base
         - aml
+        required: false
+        annotations:
+          priority: []
       cimt_type:
         in_subset:
+        - base
         - aml
+        required: false
+        annotations:
+          priority: []
   NonProtocolTherapy:
     slots:
     - subjects_submitter_id
@@ -2236,27 +3683,46 @@ classes:
     - npt_sct_type
     comments: []
     in_subset:
+    - base
     - hl
     annotations:
       domain: intervention
+      cardinality: 0..*
     slot_usage:
       subjects_submitter_id:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nbl
         - nrsts
         - rms
+        required: true
       npt_timing:
         in_subset:
+        - base
         - hl
+        required: false
+        annotations:
+          priority:
+          - hl
       npt_type:
         in_subset:
+        - base
         - hl
+        required: false
+        annotations:
+          priority:
+          - hl
       npt_sct_type:
         in_subset:
+        - base
         - hl
+        required: false
+        annotations:
+          priority:
+          - hl
   SubjectResponse:
     slots:
     - subjects_submitter_id
@@ -2282,6 +3748,7 @@ classes:
     - tx_prior_response
     comments: []
     in_subset:
+    - base
     - aml
     - gct
     - hl
@@ -2289,93 +3756,184 @@ classes:
     - rms
     annotations:
       domain: monitoring
+      cardinality: 0..*
     slot_usage:
       subjects_submitter_id:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nbl
         - nrsts
         - rms
+        required: true
       timings_submitter_id:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nbl
         - nrsts
         - rms
+        required: false
+        annotations:
+          priority: []
       age_at_response:
         in_subset:
+        - base
         - aml
         - gct
         - hl
+        required: false
+        annotations:
+          priority:
+          - hl
       response_method:
         in_subset:
+        - base
         - gct
         - hl
         - rms
+        required: false
+        annotations:
+          priority:
+          - hl
       response_category:
         in_subset:
+        - base
         - aml
         - gct
         - hl
+        required: false
+        annotations:
+          priority:
+          - hl
       response_criteria:
         in_subset:
+        - base
         - gct
         - hl
+        required: false
+        annotations:
+          priority: []
       response_criteria_version:
         in_subset:
+        - base
         - gct
         - hl
+        required: false
+        annotations:
+          priority: []
       response:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nrsts
         - rms
+        required: false
+        annotations:
+          priority:
+          - hl
       bm_pct_blasts_at_response:
         in_subset:
+        - base
         - aml
+        required: false
+        annotations:
+          priority: []
       bm_analysis_method_at_response:
         in_subset:
+        - base
         - aml
+        required: false
+        annotations:
+          priority: []
       anc_at_response:
         in_subset:
+        - base
         - aml
+        required: false
+        annotations:
+          priority: []
       anc_threshold_at_response:
         in_subset:
+        - base
         - aml
+        required: false
+        annotations:
+          priority: []
       platelet_count_at_response:
         in_subset:
+        - base
         - aml
+        required: false
+        annotations:
+          priority: []
       platelet_threshold_at_response:
         in_subset:
+        - base
         - aml
+        required: false
+        annotations:
+          priority: []
       interim_response:
         in_subset:
+        - base
         - hl
+        required: false
+        annotations:
+          priority:
+          - hl
       necrosis:
         in_subset:
+        - base
         - nrsts
+        required: false
+        annotations:
+          priority: []
       necrosis_pct:
         in_subset:
+        - base
         - nrsts
+        required: false
+        annotations:
+          priority: []
       nodular_splenic:
         in_subset:
+        - base
         - hl
+        required: false
+        annotations:
+          priority:
+          - hl
       palpable_nodes:
         in_subset:
+        - base
         - hl
+        required: false
+        annotations:
+          priority:
+          - hl
       symptoms:
         in_subset:
+        - base
         - hl
+        required: false
+        annotations:
+          priority:
+          - hl
       tx_prior_response:
         in_subset:
+        - base
         - nrsts
         - rms
+        required: false
+        annotations:
+          priority: []
   MinimalResidualDisease:
     slots:
     - subjects_submitter_id
@@ -2391,53 +3949,106 @@ classes:
     - mrd_molecular_markers
     comments: []
     in_subset:
+    - base
     - aml
     annotations:
       domain: monitoring
+      cardinality: 0..*
     slot_usage:
       subjects_submitter_id:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nbl
         - nrsts
         - rms
+        required: true
       timings_submitter_id:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nbl
         - nrsts
         - rms
+        required: false
+        annotations:
+          priority: []
       age_at_mrd_assessment:
         in_subset:
+        - base
         - aml
+        required: false
+        annotations:
+          priority:
+          - aml
       mrd_method:
         in_subset:
+        - base
         - aml
+        required: false
+        annotations:
+          priority:
+          - aml
       flow_cytometry_type:
         in_subset:
+        - base
         - aml
+        required: false
+        annotations:
+          priority:
+          - aml
       mrd_result:
         in_subset:
+        - base
         - aml
+        required: false
+        annotations:
+          priority:
+          - aml
       mrd_result_numeric:
         in_subset:
+        - base
         - aml
+        required: false
+        annotations:
+          priority:
+          - aml
       mrd_result_unit:
         in_subset:
+        - base
         - aml
+        required: false
+        annotations:
+          priority:
+          - aml
       mrd_sensitivity:
         in_subset:
+        - base
         - aml
+        required: false
+        annotations:
+          priority:
+          - aml
       mrd_sample_source:
         in_subset:
+        - base
         - aml
+        required: false
+        annotations:
+          priority:
+          - aml
       mrd_molecular_markers:
         in_subset:
+        - base
         - aml
+        required: false
+        annotations:
+          priority:
+          - aml
   SecondaryMalignantNeoplasm:
     slots:
     - subjects_submitter_id
@@ -2455,68 +4066,122 @@ classes:
     - smn_field
     comments: []
     in_subset:
+    - base
     - aml
     - gct
     - hl
     annotations:
       domain: monitoring
+      cardinality: 0..*
     slot_usage:
       subjects_submitter_id:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nbl
         - nrsts
         - rms
+        required: true
       timings_submitter_id:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nbl
         - nrsts
         - rms
+        required: false
+        annotations:
+          priority: []
       age_at_smn:
         in_subset:
+        - base
         - aml
         - gct
         - hl
+        required: false
+        annotations:
+          priority:
+          - hl
       smn_morph_sno:
         in_subset:
+        - base
         - nbl
+        required: false
+        annotations:
+          priority: []
       smn_morph_txt:
         in_subset:
+        - base
         - nbl
+        required: false
+        annotations:
+          priority: []
       smn_site:
         in_subset:
+        - base
         - nrsts
         - rms
+        required: false
+        annotations:
+          priority: []
       smn_top_sno:
         in_subset:
+        - base
         - nbl
+        required: false
+        annotations:
+          priority: []
       smn_top_txt:
         in_subset:
+        - base
         - nbl
+        required: false
+        annotations:
+          priority: []
       smn_type:
         in_subset:
+        - base
         - nrsts
         - rms
+        required: false
+        annotations:
+          priority: []
       smn_yn:
         in_subset:
+        - base
         - nrsts
         - rms
+        required: false
+        annotations:
+          priority: []
       smn_morph_icdo:
         in_subset:
+        - base
         - aml
         - gct
+        required: false
+        annotations:
+          priority: []
       smn_top_icdo:
         in_subset:
+        - base
         - aml
         - gct
+        required: false
+        annotations:
+          priority: []
       smn_field:
         in_subset:
+        - base
         - hl
+        required: false
+        annotations:
+          priority:
+          - hl
   AdverseEvent:
     slots:
     - subjects_submitter_id
@@ -2540,95 +4205,183 @@ classes:
     - gvhd_organ
     comments: []
     in_subset:
+    - base
     - aml
     - gct
     - hl
     annotations:
       domain: monitoring
+      cardinality: 0..*
     slot_usage:
       subjects_submitter_id:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nbl
         - nrsts
         - rms
+        required: true
       timings_submitter_id:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nbl
         - nrsts
         - rms
+        required: false
+        annotations:
+          priority: []
       age_at_ae:
         in_subset:
+        - base
         - aml
         - gct
         - hl
+        required: false
+        annotations:
+          priority:
+          - hl
       age_at_ae_resolved:
         in_subset:
+        - base
         - hl
+        required: false
+        annotations:
+          priority:
+          - hl
       adverse_event:
         in_subset:
+        - base
         - aml
         - gct
         - hl
+        required: false
+        annotations:
+          priority:
+          - hl
       ae_code:
         in_subset:
+        - base
         - aml
         - hl
+        required: false
+        annotations:
+          priority:
+          - hl
       ae_system:
         in_subset:
+        - base
         - aml
         - hl
+        required: false
+        annotations:
+          priority:
+          - hl
       ae_system_version:
         in_subset:
+        - base
         - aml
         - hl
+        required: false
+        annotations:
+          priority:
+          - hl
       ae_grade:
         in_subset:
+        - base
         - aml
         - gct
         - hl
+        required: false
+        annotations:
+          priority:
+          - hl
       ae_attribution:
         in_subset:
+        - base
         - aml
         - gct
         - hl
+        required: false
+        annotations:
+          priority:
+          - hl
       ae_outcome:
         in_subset:
+        - base
         - aml
         - gct
         - hl
+        required: false
+        annotations:
+          priority:
+          - hl
       ae_icu:
         in_subset:
+        - base
         - aml
+        required: false
+        annotations:
+          priority: []
       ae_medication:
         in_subset:
+        - base
         - aml
         - hl
+        required: false
+        annotations:
+          priority:
+          - hl
       ae_intervention:
         in_subset:
+        - base
         - aml
         - hl
+        required: false
+        annotations:
+          priority:
+          - hl
       ae_med_intervention_detail:
         in_subset:
+        - base
         - aml
+        required: false
+        annotations:
+          priority: []
       ae_pathogen:
         in_subset:
+        - base
         - aml
         - hl
+        required: false
+        annotations:
+          priority:
+          - hl
       ae_pathogen_confirmation:
         in_subset:
+        - base
         - aml
+        required: false
+        annotations:
+          priority: []
       gvhd_acuity:
         in_subset:
+        - base
         - aml
+        required: false
+        annotations:
+          priority: []
       gvhd_organ:
         in_subset:
+        - base
         - aml
+        required: false
+        annotations:
+          priority: []
   GrowingTeratomaSyndrome:
     slots:
     - subjects_submitter_id
@@ -2637,32 +4390,48 @@ classes:
     - gts_treatment
     comments: []
     in_subset:
+    - base
     - gct
     annotations:
       domain: monitoring
+      cardinality: 0..*
     slot_usage:
       subjects_submitter_id:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nbl
         - nrsts
         - rms
+        required: true
       timings_submitter_id:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nbl
         - nrsts
         - rms
+        required: false
+        annotations:
+          priority: []
       age_at_gts:
         in_subset:
+        - base
         - gct
+        required: false
+        annotations:
+          priority: []
       gts_treatment:
         in_subset:
+        - base
         - gct
+        required: false
+        annotations:
+          priority: []
   LateEffects:
     slots:
     - subjects_submitter_id
@@ -2674,51 +4443,87 @@ classes:
     - le_ctcae_version
     comments: []
     in_subset:
+    - base
     - hl
     annotations:
       domain: monitoring
+      cardinality: 0..*
     slot_usage:
       subjects_submitter_id:
         in_subset:
+        - base
         - aml
         - gct
         - hl
         - nbl
         - nrsts
         - rms
+        required: true
       age_at_le_eval:
         in_subset:
+        - base
         - hl
+        required: false
+        annotations:
+          priority: []
       le:
         in_subset:
+        - base
         - hl
+        required: false
+        annotations:
+          priority: []
       le_detail:
         in_subset:
+        - base
         - hl
+        required: false
+        annotations:
+          priority: []
       le_sub_detail:
         in_subset:
+        - base
         - hl
+        required: false
+        annotations:
+          priority: []
       le_severity_grade:
         in_subset:
+        - base
         - hl
+        required: false
+        annotations:
+          priority: []
       le_ctcae_version:
         in_subset:
+        - base
         - hl
+        required: false
+        annotations:
+          priority: []
 annotations:
   docs:
     domains:
       demographics:
         title: Demographics
-        description: Demographics contains subject identity, enrollment, study participation, longitudinal episode structure, survival status, family and medical history, and other contextual information needed to interpret records across the model.
+        description: Demographics contains subject identity, enrollment, study participation, longitudinal episode structure,
+          survival status, family and medical history, and other contextual information needed to interpret records across
+          the model.
       testing:
         title: Testing
-        description: Testing contains laboratory, pathology, genomic, functional, anthropometric, and specimen-related observations used to characterize subjects, disease biology, eligibility, monitoring, and research sample availability.
+        description: Testing contains laboratory, pathology, genomic, functional, anthropometric, and specimen-related observations
+          used to characterize subjects, disease biology, eligibility, monitoring, and research sample availability.
       disease_attributes:
         title: Disease Attributes
-        description: Disease Attributes contains diagnostic, staging, anatomic, histologic, biologic, risk, extent-of-disease, and disease-site concepts used to characterize the subject's cancer or cancer-related condition.
+        description: Disease Attributes contains diagnostic, staging, anatomic, histologic, biologic, risk, extent-of-disease,
+          and disease-site concepts used to characterize the subject's cancer or cancer-related condition.
       intervention:
         title: Intervention
-        description: Intervention contains treatment and procedure records, including surgery, medications, radiation therapy, transplantation, transfusion, cellular therapy, locoregional therapy, fertility preservation procedures, and protocol treatment modifications.
+        description: Intervention contains treatment and procedure records, including surgery, medications, radiation therapy,
+          transplantation, transfusion, cellular therapy, locoregional therapy, fertility preservation procedures, and protocol
+          treatment modifications.
       monitoring:
         title: Monitoring
-        description: Monitoring contains response, residual disease, toxicity, late effects, subsequent neoplasms, reproductive outcomes, patient-reported outcomes, and other follow-up concepts used to evaluate disease course and treatment impact over time.
+        description: Monitoring contains response, residual disease, toxicity, late effects, subsequent neoplasms, reproductive
+          outcomes, patient-reported outcomes, and other follow-up concepts used to evaluate disease course and treatment
+          impact over time.
