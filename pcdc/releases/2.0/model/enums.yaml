@@ -5490,6 +5490,24 @@ enums:
         in_subset:
         - base
         - fprh
+      University of Pittsburgh Fertility Preservation Database:
+        meaning: ''
+        comments: []
+        in_subset:
+        - base
+        - fprh
+      Seattle Children's Hospital Fertility Preservation:
+        meaning: ''
+        comments: []
+        in_subset:
+        - base
+        - fprh
+      Washington University in St. Louis Fertility Preservation:
+        meaning: ''
+        comments: []
+        in_subset:
+        - base
+        - fprh
   SubgroupTypeEnum:
     permissible_values:
       Stratum:
@@ -65763,6 +65781,12 @@ enums:
         - base
         - fprh
       Ovarian Tissue Cryopreservation:
+        meaning: ''
+        comments: []
+        in_subset:
+        - base
+        - fprh
+      Declined Fertility Preservation:
         meaning: ''
         comments: []
         in_subset:
