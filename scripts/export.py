@@ -166,6 +166,14 @@ def class_is_internal(class_def):
     return str(domain).lower() == "internal"
 
 
+def slot_is_ignored(slot_def, usage_def):
+    for item_def in (slot_def, usage_def):
+        value = annotation_value(item_def, "ignore_in_export", "false")
+        if str(value).lower() == "true":
+            return True
+    return False
+
+
 def get_subset_title(schema, subset):
     subset_def = schema.get("subsets", {}).get(subset, {})
 
@@ -236,6 +244,10 @@ def assemble_dictionary(schema, slots, enums, terminology_index, subset):
                 )
 
             usage_def = slot_usage.get(slot_name, {})
+
+            if slot_is_ignored(slot_def, usage_def):
+                continue
+
             slot_range = slot_def.get("range", "")
             meaning = slot_def.get("slot_uri", "")
 
