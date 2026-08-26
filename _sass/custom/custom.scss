@@ -419,23 +419,18 @@ table.compact {
 }
 
 .class-slot-table {
-  table-layout: fixed;
+  table-layout: auto;
   width: 100%;
 }
 
 .class-slot-table th:nth-child(1),
 .class-slot-table td:nth-child(1) {
-  width: 25%;
+  width: 28%;
 }
 
 .class-slot-table th:nth-child(2),
 .class-slot-table td:nth-child(2) {
-  width: 25%;
-}
-
-.class-slot-table th:nth-child(3),
-.class-slot-table td:nth-child(3) {
-  width: 20%;
+  width: 28%;
 }
 
 .class-slot-table th:nth-child(4),
@@ -443,12 +438,16 @@ table.compact {
   width: 30%;
 }
 
-.class-slot-table td.slot-name,
-.class-slot-table td.slot-uri {
+.class-slot-table td.slot-name {
   min-width: 0;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.class-slot-table td.slot-uri {
+  min-width: 0;
+  white-space: nowrap;
 }
 
 .class-slot-table td.slot-range {
