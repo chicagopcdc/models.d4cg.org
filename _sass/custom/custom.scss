@@ -444,12 +444,15 @@ table.compact {
 }
 
 .class-slot-table td.slot-name,
-.class-slot-table td.slot-range,
 .class-slot-table td.slot-uri {
   min-width: 0;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.class-slot-table td.slot-range {
+  min-width: 0;
 }
 
 .class-slot-table th:nth-child(3),
@@ -466,7 +469,14 @@ table.compact {
   min-width: 0;
 }
 
-.class-slot-table td.slot-range > span,
+.class-slot-table td.slot-range > span {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  word-break: break-word;
+}
+
 .enum-table td.enum-meaning > span {
   display: block;
   width: 100%;
@@ -478,7 +488,13 @@ table.compact {
 }
 
 .class-slot-table td.slot-range .enum-link,
-.class-slot-table td.slot-range code,
+.class-slot-table td.slot-range code {
+  display: inline-block;
+  max-width: 100%;
+  word-break: break-word;
+  vertical-align: bottom;
+}
+
 .enum-table td.enum-meaning code {
   display: inline-block;
   max-width: 100%;
@@ -827,9 +843,7 @@ table.compact {
   color: #5c5962;
   text-decoration: none;
   margin-bottom: 0.35rem;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  word-break: break-word;
 }
 
 .model-toc-domain {
