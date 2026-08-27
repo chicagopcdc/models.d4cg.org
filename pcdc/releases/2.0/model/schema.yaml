@@ -118,6 +118,7 @@ classes:
     - person
     - honest_broker_subject_id
     - data_contributor_id
+    - study_id
     - consortium
     - disease_group
     - sex
@@ -132,6 +133,9 @@ classes:
     - ashkenazi_jewish_ancestry
     - efs_censor_status
     - age_at_censor_status
+    - enrolled_status
+    - age_at_enrollment
+    - year_at_enrollment
     in_subset:
     - base
     - all
@@ -200,6 +204,27 @@ classes:
         - rms
         required: true
       data_contributor_id:
+        in_subset:
+        - base
+        - all
+        - aml
+        - cns
+        - ews
+        - fa
+        - fprh
+        - gct
+        - hl
+        - ls
+        - lt
+        - nbl
+        - npc
+        - nrsts
+        - os
+        - pre
+        - rb
+        - rms
+        required: true
+      study_id:
         in_subset:
         - base
         - all
@@ -441,6 +466,64 @@ classes:
         required: false
         annotations:
           priority: []
+      enrolled_status:
+        in_subset:
+        - base
+        - all
+        - aml
+        - cns
+        - ls
+        - npc
+        required: false
+        annotations:
+          priority:
+          - aml
+      age_at_enrollment:
+        in_subset:
+        - base
+        - all
+        - aml
+        - cns
+        - ews
+        - fa
+        - fprh
+        - gct
+        - hl
+        - ls
+        - lt
+        - npc
+        - os
+        - pre
+        required: false
+        annotations:
+          priority:
+          - all
+          - aml
+          - cns
+          - ews
+          - fa
+          - fprh
+          - gct
+          - hl
+          - ls
+          - lt
+          - npc
+          - os
+          - pre
+      year_at_enrollment:
+        in_subset:
+        - base
+        - fa
+        - fprh
+        - gct
+        - ls
+        - lt
+        - npc
+        required: false
+        annotations:
+          priority:
+          - fa
+          - lt
   ExternalReference:
     description: ExternalReference captures links between a PCDC subject and identifiers or URLs in external resources, enabling cross-resource navigation and provenance for linked data assets.
     slots:
@@ -546,9 +629,6 @@ classes:
     description: StudyMetadata describes the study, registry, trial, institutional database, or other data source context in which a subject or cohort was enrolled or represented.
     slots:
     - study_id
-    - enrolled_status
-    - age_at_enrollment
-    - year_at_enrollment
     - study_age_precision
     - data_source
     - study_phase
@@ -599,64 +679,6 @@ classes:
         - rb
         - rms
         required: true
-      enrolled_status:
-        in_subset:
-        - base
-        - all
-        - aml
-        - cns
-        - ls
-        - npc
-        required: false
-        annotations:
-          priority:
-          - aml
-      age_at_enrollment:
-        in_subset:
-        - base
-        - all
-        - aml
-        - cns
-        - ews
-        - fa
-        - fprh
-        - gct
-        - hl
-        - ls
-        - lt
-        - npc
-        - os
-        - pre
-        required: false
-        annotations:
-          priority:
-          - all
-          - aml
-          - cns
-          - ews
-          - fa
-          - fprh
-          - gct
-          - hl
-          - ls
-          - lt
-          - npc
-          - os
-          - pre
-      year_at_enrollment:
-        in_subset:
-        - base
-        - fa
-        - fprh
-        - gct
-        - ls
-        - lt
-        - npc
-        required: false
-        annotations:
-          priority:
-          - fa
-          - lt
       study_age_precision:
         in_subset:
         - base
