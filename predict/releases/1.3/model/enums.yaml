@@ -169,6 +169,11 @@ enums:
         comments: []
         in_subset:
           - base
+      Diabetes NOS Diagnosis:
+        meaning: ''
+        comments: []
+        in_subset:
+          - base
       Relapse:
         meaning: 'ncit:C38155'
         comments: []
