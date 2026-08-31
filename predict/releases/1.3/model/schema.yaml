@@ -1035,21 +1035,22 @@ classes:
             - base
 annotations:
   docs:
-    domains:
-      demographics:
-        title: Demographics
-        description: Demographics contains subject identity, demographic characteristics, survival status, family and 
-          medical history, and longitudinal timing information needed to interpret records across the model.
-      testing:
-        title: Testing
-        description: Testing contains biometric, biospecimen, laboratory, and genetic observations used to characterize 
-          subjects and support diagnosis and longitudinal evaluation.
-      disease_attributes:
-        title: Disease Attributes
-        description: Disease Attributes contains clinical characteristics related to diabetes, glycemic status, 
-          hypoglycemia, diabetic ketoacidosis, glucose monitoring, diet, exercise, and other features used to 
-          characterize disease status over time.
-      intervention:
-        title: Intervention
-        description: Intervention contains medication and treatment records, including medication class, drug, dose, 
-          route, frequency, treatment timing, and reasons for treatment discontinuation.
+    value:
+      domains:
+        demographics:
+          title: Demographics
+          description: Demographics contains subject identity, demographic characteristics, survival status, family and 
+            medical history, and longitudinal timing information needed to interpret records across the model.
+        testing:
+          title: Testing
+          description: Testing contains biometric, biospecimen, laboratory, and genetic observations used to characterize 
+            subjects and support diagnosis and longitudinal evaluation.
+        disease_attributes:
+          title: Disease Attributes
+          description: Disease Attributes contains clinical characteristics related to diabetes, glycemic status, 
+            hypoglycemia, diabetic ketoacidosis, glucose monitoring, diet, exercise, and other features used to 
+            characterize disease status over time.
+        intervention:
+          title: Intervention
+          description: Intervention contains medication and treatment records, including medication class, drug, dose, 
+            route, frequency, treatment timing, and reasons for treatment discontinuation.
