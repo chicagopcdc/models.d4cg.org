@@ -43213,7 +43213,7 @@ enums:
         in_subset:
         - base
         - ls
-      ZOS (Zoster/Shingles):
+      ZOS (Zoster/Shingles) Vaccine:
         meaning: ncit:C71079
         comments: []
         in_subset:
@@ -58865,66 +58865,49 @@ enums:
     permissible_values:
       Anal Anomaly:
         meaning: ''
-        comments:
-        - '(fa) ConsortiumNote: [Fiesco-Roa et al. - 2019]'
-        - '(fa) ConsortiumNote:  [Mexico Registry].[Congenital_anomalies_detected_at_birth].[1=anal]'
+        comments: []
         in_subset:
         - base
         - fa
       Cardiac Structure Anomaly:
         meaning: ''
-        comments:
-        - '(fa) ConsortiumNote: [Fiesco-Roa et al. - 2019]'
-        - '(fa) ConsortiumNote:  [German FA Support Group Questionnaire].[Questions about Fanconi Anemia].[Which or where do you have physical abnormalities?].[Heart]'
-        - '(fa) ConsortiumNote:  [Mexico Registry].[Congenital_anomalies_detected_at_birth].[2=cardiac]'
+        comments: []
         in_subset:
         - base
         - fa
       Esophageal Duodenal Atresia:
         meaning: ''
-        comments:
-        - '(fa) ConsortiumNote: [Fiesco-Roa et al. - 2019]'
+        comments: []
         in_subset:
         - base
         - fa
       Hydrocephalus:
         meaning: ''
-        comments:
-        - '(fa) ConsortiumNote: [Fiesco-Roa et al. - 2019]'
-        - '(fa) ConsortiumNote:  [Mexico].[Congenital_anomalies_detected_at_birth].[5=hydrocephalus]'
+        comments: []
         in_subset:
         - base
         - fa
       Renal Anomaly:
         meaning: ''
-        comments:
-        - '(fa) ConsortiumNote: [Israel].[Renal Anomaly]'
-        - '(fa) ConsortiumNote:  [Fiesco-Roa et al. - 2019]'
-        - '(fa) ConsortiumNote:  [German FA Support Group Questionnaire].[Questions about Fanconi Anemia].[Which or where do you have physical abnormalities?].[Kidneys]'
+        comments: []
         in_subset:
         - base
         - fa
       Tracheo-esophageal Fistula:
         meaning: ''
-        comments:
-        - '(fa) ConsortiumNote: [Fiesco-Roa et al. - 2019]'
-        - '(fa) ConsortiumNote:  [Mexico Registry].[Congenital_anomalies_detected_at_birth].[3= tracheoesophageal]'
+        comments: []
         in_subset:
         - base
         - fa
       Upper Limb Anomaly:
         meaning: ''
-        comments:
-        - '(fa) ConsortiumNote: [Fiesco-Roa et al. - 2019]'
-        - '(fa) ConsortiumNote:  [German FA Support Group Questionnaire].[Questions about Fanconi Anemia].[Which or where do you have physical abnormalities?].[Thumb/Radius]'
-        - '(fa) ConsortiumNote:  [Mexico Registry].[Congenital_anomalies_detected_at_birth].[4= radial ray]'
+        comments: []
         in_subset:
         - base
         - fa
       Vertebral Anomaly:
         meaning: ''
-        comments:
-        - '(fa) ConsortiumNote: [Fiesco-Roa et al. - 2019]'
+        comments: []
         in_subset:
         - base
         - fa
@@ -58932,49 +58915,37 @@ enums:
     permissible_values:
       Eye Abnormality:
         meaning: ''
-        comments:
-        - '(fa) ConsortiumNote: [Fiesco-Roa et al. - 2019]'
+        comments: []
         in_subset:
         - base
         - fa
       Microcephaly:
         meaning: ''
-        comments:
-        - '(fa) ConsortiumNote: [Fiesco-Roa et al. - 2019]'
-        - '(fa) ConsortiumNote:  [Mexico Registry].[Congenital_anomalies_detected_at_birth].[6=microcephaly]'
+        comments: []
         in_subset:
         - base
         - fa
       Nervous System Abnormality:
         meaning: ''
-        comments:
-        - '(fa) ConsortiumNote: [Fiesco-Roa et al. - 2019]'
-        - '(fa) ConsortiumNote:  [German FA Support Group Questionnaire].[Questions about Fanconi Anemia].[Which or where do you have physical abnormalities?].[Neurological abnormalities]'
+        comments: []
         in_subset:
         - base
         - fa
       Otological Abnormality:
         meaning: ''
-        comments:
-        - '(fa) ConsortiumNote: [Israel].[Ear Anomaly]'
-        - '(fa) ConsortiumNote:  [Fiesco-Roa et al. - 2019]'
-        - '(fa) ConsortiumNote:  [German FA Support Group Questionnaire].[Questions about Fanconi Anemia].[Which or where do you have physical abnormalities?].[Ears/Hearing]'
+        comments: []
         in_subset:
         - base
         - fa
       Short Stature:
         meaning: ''
-        comments:
-        - '(fa) ConsortiumNote: [Fiesco-Roa et al. - 2019]'
-        - '(fa) ConsortiumNote:  [German FA Support Group Questionnaire].[Questions about Fanconi Anemia].[Which or where do you have physical abnormalities?].[Growth]'
+        comments: []
         in_subset:
         - base
         - fa
       Skin Pigmentation:
         meaning: ''
-        comments:
-        - '(fa) ConsortiumNote: [Fiesco-Roa et al. - 2019]'
-        - '(fa) ConsortiumNote:  [German FA Support Group Questionnaire].[Questions about Fanconi Anemia].[Which or where do you have physical abnormalities?].[Skin]'
+        comments: []
         in_subset:
         - base
         - fa
@@ -59193,17 +59164,10 @@ enums:
         in_subset:
         - base
         - fa
-      Anemia, Moderate:
+      Anemia, Moderate/Severe:
         meaning: ''
         comments:
         - '(fa) ConsortiumNote: <8 g/dL'        
-        in_subset:
-        - base
-        - fa
-      Anemia, Severe:
-        meaning: ''
-        comments:
-        - '(fa) ConsortiumNote: <8 g/dL'
         in_subset:
         - base
         - fa
@@ -59599,8 +59563,7 @@ enums:
         - fa
       Genitalia Abnormality:
         meaning: ''
-        comments:
-        - '(fa) ConsortiumNote: [Fiesco-Roa et al. - 2019]'
+        comments: []
         in_subset:
         - base
         - fa

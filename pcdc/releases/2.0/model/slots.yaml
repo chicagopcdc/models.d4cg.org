@@ -2214,14 +2214,12 @@ slots:
     slot_uri: ''
     range: VacterlhEnum
     comments:
-    - '(fa) ConsortiumNote: Must provide a row for each association.'
-    - '(fa)  ConsortiumNote: No VACTERLH and PHENOS in the same row'
+    - '(fa) ConsortiumNote: Must provide a row for each association. No VACTERLH and PHENOS in the same row.'
   phenos:
     slot_uri: ''
     range: PhenosEnum
     comments:
-    - '(fa) ConsortiumNote: Must provide a row for each association.'
-    - '(fa)  ConsortiumNote: No VACTERLH and PHENOS in the same row'
+    - '(fa) ConsortiumNote: Must provide a row for each association. No VACTERLH and PHENOS in the same row.'
   vacterlh_phenos_status:
     slot_uri: ''
     range: PresentAbsentEnum
