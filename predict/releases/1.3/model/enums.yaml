@@ -406,10 +406,10 @@ enums:
   SyndromicConditionEnum:
     permissible_values:    
       Hypoglycemia:
-          meaning: ''
-          comments: []
-          in_subset:
-            - base
+        meaning: ''
+        comments: []
+        in_subset:
+          - base
       Genitourinary Developmental Malformation Or Abnormality:
         meaning: ''
         comments: []
