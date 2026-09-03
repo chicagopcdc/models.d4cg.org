@@ -11612,19 +11612,20 @@ classes:
           priority: []
 annotations:
   docs:
-    domains:
-      demographics:
-        title: Demographics
-        description: Demographics contains subject identity, enrollment, study participation, longitudinal episode structure, survival status, family and medical history, and other contextual information needed to interpret records across the model.
-      testing:
-        title: Testing
-        description: Testing contains laboratory, pathology, genomic, functional, anthropometric, and specimen-related observations used to characterize subjects, disease biology, eligibility, monitoring, and research sample availability.
-      disease_attributes:
-        title: Disease Attributes
-        description: Disease Attributes contains diagnostic, staging, anatomic, histologic, biologic, risk, extent-of-disease, and disease-site concepts used to characterize the subject's cancer or cancer-related condition.
-      intervention:
-        title: Intervention
-        description: Intervention contains treatment and procedure records, including surgery, medications, radiation therapy, transplantation, transfusion, cellular therapy, locoregional therapy, fertility preservation procedures, and protocol treatment modifications.
-      monitoring:
-        title: Monitoring
-        description: Monitoring contains response, residual disease, toxicity, late effects, subsequent neoplasms, reproductive outcomes, patient-reported outcomes, and other follow-up concepts used to evaluate disease course and treatment impact over time.
+    value:
+      domains:
+        demographics:
+          title: Demographics
+          description: Demographics contains subject identity, enrollment, study participation, longitudinal episode structure, survival status, family and medical history, and other contextual information needed to interpret records across the model.
+        testing:
+          title: Testing
+          description: Testing contains laboratory, pathology, genomic, functional, anthropometric, and specimen-related observations used to characterize subjects, disease biology, eligibility, monitoring, and research sample availability.
+        disease_attributes:
+          title: Disease Attributes
+          description: Disease Attributes contains diagnostic, staging, anatomic, histologic, biologic, risk, extent-of-disease, and disease-site concepts used to characterize the subject's cancer or cancer-related condition.
+        intervention:
+          title: Intervention
+          description: Intervention contains treatment and procedure records, including surgery, medications, radiation therapy, transplantation, transfusion, cellular therapy, locoregional therapy, fertility preservation procedures, and protocol treatment modifications.
+        monitoring:
+          title: Monitoring
+          description: Monitoring contains response, residual disease, toxicity, late effects, subsequent neoplasms, reproductive outcomes, patient-reported outcomes, and other follow-up concepts used to evaluate disease course and treatment impact over time.
