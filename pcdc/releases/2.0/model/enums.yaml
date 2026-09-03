@@ -20448,14 +20448,12 @@ enums:
         in_subset:
         - base
         - all
-        - aml
       CNS2:
         meaning: ncit:C116834
         comments: []
         in_subset:
         - base
         - all
-        - aml
       CNS2a:
         meaning: ncit:C116836
         comments: []
@@ -20480,7 +20478,6 @@ enums:
         in_subset:
         - base
         - all
-        - aml
       CNS3a:
         meaning: ncit:C116840
         comments: []

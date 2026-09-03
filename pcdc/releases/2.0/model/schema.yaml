@@ -3504,6 +3504,7 @@ classes:
         required: false
         annotations:
           priority:
+          - aml
           - fa
       hgvs_coding_transcript:
         in_subset:
