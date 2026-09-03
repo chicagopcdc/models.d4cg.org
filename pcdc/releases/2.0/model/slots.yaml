@@ -515,6 +515,7 @@ slots:
     range: string
     comments:
     - '(aml) ConsortiumNote: Only fill in this variable if MOLECULAR_ANALYSIS_METHOD is ''Karyotype'''
+    - '(fa) ConsortiumNote: Prioritize reporting the germline karyotype.'
   gene:
     slot_uri: ncit:C173595
     range: string
@@ -582,10 +583,16 @@ slots:
     slot_uri: ''
     range: ExternalRefIdSystemEnum
     comments: []
+    annotations: {}
+  external_ref_id_system_other:
+    slot_uri: ''
+    range: string
+    comments: []
   external_ref_id:
     slot_uri: ''
     range: string
     comments: []
+    annotations: {}
   maf:
     slot_uri: ''
     range: MafEnum
@@ -876,6 +883,10 @@ slots:
   histology_grade:
     slot_uri: ncit:C18000
     range: HistologyGradeEnum
+    comments: []
+  histology_grade_other:
+    slot_uri: 
+    range: string
     comments: []
   revised_inpc:
     slot_uri: ''
@@ -2203,14 +2214,12 @@ slots:
     slot_uri: ''
     range: VacterlhEnum
     comments:
-    - '(fa) ConsortiumNote: Must provide a row for each association.'
-    - '(fa)  ConsortiumNote: No VACTERLH and PHENOS in the same row'
+    - '(fa) ConsortiumNote: Must provide a row for each association. No VACTERLH and PHENOS in the same row.'
   phenos:
     slot_uri: ''
     range: PhenosEnum
     comments:
-    - '(fa) ConsortiumNote: Must provide a row for each association.'
-    - '(fa)  ConsortiumNote: No VACTERLH and PHENOS in the same row'
+    - '(fa) ConsortiumNote: Must provide a row for each association. No VACTERLH and PHENOS in the same row.'
   vacterlh_phenos_status:
     slot_uri: ''
     range: PresentAbsentEnum
@@ -3392,4 +3401,16 @@ slots:
   upper_endoscopy_month:
     slot_uri: ''
     range: LynchColonoscopyMonthEnum
+    comments: []
+  interruption_reason:
+    slot_uri: ''
+    range: YesNoEnum
+    comments: []
+  interruption_status:
+    slot_uri: ''
+    range: string
+    comments: []
+  exposure_other:
+    slot_uri: ''
+    range: string
     comments: []

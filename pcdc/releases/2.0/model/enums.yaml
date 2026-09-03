@@ -990,6 +990,12 @@ enums:
         in_subset:
         - base
         - ls
+      Wits Donald Gordon Cellular and Immunotherapy Centre:
+        meaning: ''
+        comments: []
+        in_subset:
+        - base
+        - fa
   ConsortiumEnum:
     permissible_values:
       ALLIES:
@@ -3153,6 +3159,13 @@ enums:
         in_subset:
         - base
         - nbl
+      Australia and New Zealand Fanconi Anemia Registry:
+        meaning: ''
+        comments:
+        - "(fa) ConsortiumNote: DATA_CONTRIBUTOR_ID == St. Vincent's Institute for Medical Research"
+        in_subset:
+        - base
+        - fa
       Ad-RTS-hIL-12:
         meaning: ''
         comments: []
@@ -10197,6 +10210,12 @@ enums:
         - pre
         - rb
         - rms
+      Differences of Sex Development:
+        meaning: ''
+        comments: []
+        in_subset:
+        - base
+        - fa
       Intersex, NOS:
         meaning: ncit:C45908
         comments: []
@@ -11374,6 +11393,7 @@ enums:
         comments: []
         in_subset:
         - base
+        - fa
         - npc
       Stem Cell Transplant:
         meaning: ncit:C15431
@@ -11385,6 +11405,12 @@ enums:
         - fa
         - hl
         - rb
+      Surgery:
+        meaning: ncit:C15292
+        comments: []
+        in_subset:
+        - base
+        - fa
       Other:
         meaning: ncit:C17649
         comments: []
@@ -11524,7 +11550,6 @@ enums:
         in_subset:
         - base
         - aml
-        - fa
         - rb
       Kidney Failure:
         meaning: ncit:C4376
@@ -11724,7 +11749,7 @@ enums:
         comments: []
         in_subset:
         - base
-        - fa_v1.0-draft
+        - fa
       Mother:
         meaning: ncit:C96580
         comments: []
@@ -12095,28 +12120,24 @@ enums:
         comments: []
         in_subset:
         - base
-        - fa
         - npc
       Cardiff Acuity Card:
         meaning: ''
         comments: []
         in_subset:
         - base
-        - fa
         - npc
       DLCO:
         meaning: ncit:C38083
         comments: []
         in_subset:
         - base
-        - fa
         - npc
       Ejection Fraction:
         meaning: ncit:C99524
         comments: []
         in_subset:
         - base
-        - fa
         - hl
         - npc
       FEF at 25-75%:
@@ -12124,7 +12145,6 @@ enums:
         comments: []
         in_subset:
         - base
-        - fa
         - hl
         - npc
       FEV1:
@@ -12132,7 +12152,6 @@ enums:
         comments: []
         in_subset:
         - base
-        - fa
         - hl
         - npc
       FVC:
@@ -12140,7 +12159,6 @@ enums:
         comments: []
         in_subset:
         - base
-        - fa
         - hl
         - npc
       HOTV Test:
@@ -12148,14 +12166,12 @@ enums:
         comments: []
         in_subset:
         - base
-        - fa
         - npc
       Landolt C:
         meaning: ''
         comments: []
         in_subset:
         - base
-        - fa
         - hl
         - npc
       Lea Numbers:
@@ -12163,28 +12179,24 @@ enums:
         comments: []
         in_subset:
         - base
-        - fa
         - npc
       Lea Symbols:
         meaning: ''
         comments: []
         in_subset:
         - base
-        - fa
         - npc
       LogMAR Chart:
         meaning: ''
         comments: []
         in_subset:
         - base
-        - fa
         - npc
       QTc:
         meaning: ncit:C100391
         comments: []
         in_subset:
         - base
-        - fa
         - hl
         - npc
       Shortening Fraction:
@@ -12200,21 +12212,18 @@ enums:
         comments: []
         in_subset:
         - base
-        - fa
         - npc
       Teller Acuity Card:
         meaning: ''
         comments: []
         in_subset:
         - base
-        - fa
         - npc
       Total Lung Capacity:
         meaning: ncit:C111325
         comments: []
         in_subset:
         - base
-        - fa
         - hl
         - npc
       Tumbling E:
@@ -12222,14 +12231,12 @@ enums:
         comments: []
         in_subset:
         - base
-        - fa
         - npc
       Visual Evoked Potentials (VEP):
         meaning: ''
         comments: []
         in_subset:
         - base
-        - fa
         - npc
   FunctionalMeasurementResultUnitEnum:
     permissible_values:
@@ -12814,6 +12821,12 @@ enums:
         in_subset:
         - base
         - npc
+      Cystatin C:
+        meaning: ncit:C88224
+        comments: []
+        in_subset:
+        - base
+        - fa
       EKG:
         meaning: ncit:C168186
         comments: []
@@ -12825,7 +12838,14 @@ enums:
         comments: []
         in_subset:
         - base
+        - fa
         - hl
+      GFR: 
+        meaning: ncit:C90505
+        comments: []
+        in_subset:
+        - base
+        - fa
       Intraocular Pressure:
         meaning: ''
         comments: []
@@ -13444,7 +13464,7 @@ enums:
         in_subset:
         - base
         - fa
-      Lactage Dehydrogenase:
+      Lactate Dehydrogenase:
         meaning: ncit:C64855
         comments: []
         in_subset:
@@ -14092,6 +14112,12 @@ enums:
         - hl
         - ls
         - npc
+      Biopsy Specimen:
+        meaning: ''
+        comments: []
+        in_subset:
+        - base
+        - fa
       Bone Marrow:
         meaning: ncit:C12431
         comments: []
@@ -14165,6 +14191,12 @@ enums:
         in_subset:
         - base
         - pre
+      Other Brush Specimen: 
+        meaning: ''
+        comments: []
+        in_subset:
+        - base
+        - fa
       Oral Brush Lesion:
         meaning: ''
         comments: []
@@ -14288,6 +14320,12 @@ enums:
         - npc
   LaboratoryTestMethodEnum:
     permissible_values:
+      Clinical Chemistry:
+        meaning: ''
+        comments: []
+        in_subset:
+        - base
+        - fa
       Cytology:
         meaning: ncit:C16491
         comments: []
@@ -18618,6 +18656,12 @@ enums:
         comments: []
         in_subset:
         - base
+      Other:
+        meaning: 'ncit:C17649'
+        comments: []
+        in_subset:
+        - base
+        - fa
   MafEnum:
     permissible_values:
       0-5:
@@ -19586,6 +19630,12 @@ enums:
         in_subset:
         - base
         - fa
+      Acute Lymphoblastic Leukemia Susceptibility - PAX5: 
+        meaning: ncit:C176907
+        comments: []
+        in_subset:
+        - base
+        - fa
       Acute megakaryoblastic leukemia:
         meaning: icdo:9910/3
         comments: []
@@ -19928,7 +19978,7 @@ enums:
         comments: []
         in_subset:
         - base
-        - fa_v1.0-draft
+        - fa
         - ls
       Adult Fibrosarcoma:
         meaning: ncit:C7809
@@ -20522,7 +20572,7 @@ enums:
         comments: []
         in_subset:
         - base
-        - fa_v1.0-draft
+        - fa
       Carcinoma showing thymus-like element:
         meaning: icdo:8589/3
         comments: []
@@ -20890,7 +20940,7 @@ enums:
         comments: []
         in_subset:
         - base
-        - fa_v1.0-draft
+        - fa
       Comb. hepatocel. carcinoma & cholangiocarcinoma:
         meaning: icdo:8180/3
         comments: []
@@ -22722,7 +22772,7 @@ enums:
         comments: []
         in_subset:
         - base
-        - fa_v1.0-draft
+        - fa
       Invasive ductal carcinoma:
         meaning: ''
         comments: []
@@ -24422,7 +24472,7 @@ enums:
         comments: []
         in_subset:
         - base
-        - fa_v1.0-draft
+        - fa
         - ls
       Oligodendroglioma, anaplastic:
         meaning: icdo:9451/3
@@ -24717,7 +24767,7 @@ enums:
         comments: []
         in_subset:
         - base
-        - fa_v1.0-draft
+        - fa
       Parietal cell carcinoma:
         meaning: icdo:8214/3
         comments: []
@@ -31196,6 +31246,7 @@ enums:
         comments: []
         in_subset:
         - base
+        - fa
         - ls
         - os
       System NOS >> Grade 2:
@@ -31203,6 +31254,7 @@ enums:
         comments: []
         in_subset:
         - base
+        - fa
         - ls
         - os
       System NOS >> Grade 3:
@@ -31210,6 +31262,7 @@ enums:
         comments: []
         in_subset:
         - base
+        - fa
         - ls
         - os
       System NOS >> Well Differentiated:
@@ -37790,6 +37843,12 @@ enums:
         in_subset:
         - base
         - lt
+      Ear: 
+        meaning: ncit:C12402
+        comments: []
+        in_subset:
+        - base
+        - fa
       Ear Skin:
         meaning: ncit:C49481
         comments: []
@@ -39477,14 +39536,14 @@ enums:
         - fa
         - npc
       Left:
-        meaning: ncit:C160200
+        meaning: ncit:C25229
         comments: []
         in_subset:
         - base
         - fa
         - npc
       Right:
-        meaning: ncit:C160199
+        meaning: ncit:C25228
         comments: []
         in_subset:
         - base
@@ -41164,7 +41223,7 @@ enums:
         - '(lt) ConsortiumNote: Supportive Care Agent, Liver Transplant'
         in_subset:
         - base
-        - fa_v1.0-draft
+        - fa
         - ls
         - lt
       BXQ-350 Nanovesicle Formulation:
@@ -41191,7 +41250,7 @@ enums:
         in_subset:
         - base
         - cns
-        - fa_v1.0-draft
+        - fa
         - fprh
         - ls
         - lt
@@ -41463,7 +41522,7 @@ enums:
         in_subset:
         - base
         - cns
-        - fa_v1.0-draft
+        - fa
         - ls
         - lt
       Cytarabine:
@@ -41486,7 +41545,7 @@ enums:
         in_subset:
         - base
         - lt
-      DTaP (Diphtheria and tetanus):
+      DTaP (Diphtheria and Tetanus) Vaccine:
         meaning: ncit:C91718
         comments: []
         in_subset:
@@ -41550,6 +41609,12 @@ enums:
         in_subset:
         - base
         - fa
+      Deferasirox: 
+        meaning: rxcui:614373
+        comments: []
+        in_subset:
+        - base
+        - fa
       Dendritic Cell Therapy:
         meaning: ncit:C28976
         comments: []
@@ -41603,7 +41668,7 @@ enums:
         in_subset:
         - base
         - ews
-        - fa_v1.0-draft
+        - fa
         - fprh
         - ls
         - lt
@@ -41665,7 +41730,7 @@ enums:
         comments: []
         in_subset:
         - base
-        - fa_v1.0-draft
+        - fa
       Entrectinib:
         meaning: rxcui:2197862
         comments: []
@@ -41703,6 +41768,7 @@ enums:
         comments: []
         in_subset:
         - base
+        - fa
         - fprh
       Etopophos:
         meaning: ncit:C1093
@@ -41738,7 +41804,7 @@ enums:
         in_subset:
         - base
         - cns
-        - fa_v1.0-draft
+        - fa
         - ls
         - lt
       Exemestane:
@@ -41783,10 +41849,16 @@ enums:
         comments: []
         in_subset:
         - base
-        - fa_v1.0-draft
+        - fa
         - ls
         - lt
         - npc
+      Folic Acid: 
+        meaning: ''
+        comments: []
+        in_subset:
+        - base
+        - fa
       Fulvestrant:
         meaning: ncit:C1379
         comments: []
@@ -41893,19 +41965,19 @@ enums:
         in_subset:
         - base
         - fa
-      HepA (Hepatitis A):
+      HepA (Hepatitis A) Vaccine:
         meaning: ncit:C29090
         comments: []
         in_subset:
         - base
         - fa
-      HepB (Hepatitis B):
+      HepB (Hepatitis B) Vaccine:
         meaning: ncit:C29091
         comments: []
         in_subset:
         - base
         - fa
-      HiB (Haemophilus influenza type B):
+      HiB (Haemophilus Influenza Type B) Vaccine:
         meaning: ncit:C1126
         comments: []
         in_subset:
@@ -41983,7 +42055,7 @@ enums:
         in_subset:
         - base
         - fprh
-      IPV (Poliovirus):
+      IPV (Poliovirus) Vaccine:
         meaning: ncit:C91715
         comments: []
         in_subset:
@@ -42053,9 +42125,9 @@ enums:
         comments: []
         in_subset:
         - base
-        - fa_v1.0-draft
+        - fa
         - ls
-      Influenza:
+      Influenza Vaccine:
         meaning: ncit:C178427
         comments: []
         in_subset:
@@ -42069,6 +42141,12 @@ enums:
         - ls
       Inotuzumab Ozogamicin:
         meaning: ncit:C71542
+        comments: []
+        in_subset:
+        - base
+        - fa
+      Insulin: 
+        meaning:
         comments: []
         in_subset:
         - base
@@ -42114,7 +42192,7 @@ enums:
         - base
         - cns
         - ews
-        - fa_v1.0-draft
+        - fa
         - ls
         - lt
       Isotretinoin:
@@ -42222,13 +42300,13 @@ enums:
         in_subset:
         - base
         - cns
-      MCV4 (Meningococcal):
+      MCV4 (Meningococcal) Vaccine:
         meaning: ncit:C96397
         comments: []
         in_subset:
         - base
         - fa
-      MMR (Measles, Mumps, & Rubella):
+      MMR (Measles, Mumps, & Rubella) Vaccine:
         meaning: ncit:C96403
         comments: []
         in_subset:
@@ -42266,13 +42344,25 @@ enums:
         - hl
         - lt
         - rb
+      Mesterolone: 
+        meaning: rxcui:6781
+        comments: []
+        in_subset:
+        - base
+        - fa
+      Methyltestosterone: 
+        meaning: rxcui:6904
+        comments: []
+        in_subset:
+        - base
+        - fa
       Metformin:
         meaning: ncit:C61612
         comments: []
         in_subset:
         - base
         - cns
-        - fa_v1.0-draft
+        - fa
         - ls
       Methotrexate:
         meaning: rxcui:6851
@@ -42368,12 +42458,18 @@ enums:
         - base
         - fprh
         - ls
+      Nandrolone Decanoate:
+        meaning: rxcui:31494
+        comments: []
+        in_subset:
+        - base
+        - fa
       Naproxen:
         meaning: ncit:C680
         comments: []
         in_subset:
         - base
-        - fa_v1.0-draft
+        - fa
         - ls
       Nelarabine:
         meaning: rxcui:274771
@@ -42449,6 +42545,12 @@ enums:
         - base
         - fa
         - ls
+      Oxymetholone: 
+        meaning: rxcui:7813
+        comments: []
+        in_subset:
+        - base
+        - fa
       Oxaliplatin:
         meaning: rxcui:32592
         comments: []
@@ -42457,7 +42559,7 @@ enums:
         - cns
         - fprh
         - lt
-      PCV (Pneumococcal):
+      PCV (Pneumococcal) Vaccine:
         meaning: ncit:C97123
         comments: []
         in_subset:
@@ -42634,7 +42736,7 @@ enums:
         in_subset:
         - base
         - lt
-      RV (Rotavirus):
+      RV (Rotavirus) Vaccine:
         meaning: ncit:C96394
         comments: []
         in_subset:
@@ -42705,7 +42807,7 @@ enums:
         comments: []
         in_subset:
         - base
-        - fa_v1.0-draft
+        - fa
       Rucaparib:
         meaning: rxcui:1862579
         comments: []
@@ -42831,7 +42933,7 @@ enums:
         in_subset:
         - base
         - lt
-      Tdap (Tetanus, diphtheria, & acellular pertussis):
+      Tdap (Tetanus, Diphtheria, & Acellular Pertussis) Vaccine:
         meaning: ncit:C91717
         comments: []
         in_subset:
@@ -42864,6 +42966,7 @@ enums:
         comments: []
         in_subset:
         - base
+        - fa
         - fprh
       Tetrathiomolybdate (TM):
         meaning: ncit:C160684
@@ -43024,7 +43127,7 @@ enums:
         in_subset:
         - base
         - fa
-      VAR (Varicella):
+      VAR (Varicella) Vaccine:
         meaning: ncit:C77799
         comments: []
         in_subset:
@@ -43110,7 +43213,7 @@ enums:
         in_subset:
         - base
         - ls
-      ZOS (Zoster/Shingles):
+      ZOS (Zoster/Shingles) Vaccine:
         meaning: ncit:C71079
         comments: []
         in_subset:
@@ -54527,7 +54630,7 @@ enums:
   DeterminationSourceEnum:
     permissible_values:
       Clinical Testing:
-        meaning: ncit:C15791
+        meaning: ''
         comments: []
         in_subset:
         - base
@@ -54545,6 +54648,18 @@ enums:
         in_subset:
         - base
         - cns
+      Unknown:
+        meaning: ncit:C17998
+        comments: []
+        in_subset:
+        - base
+        - fa
+      Not Reported:
+        meaning: ncit:C43234
+        comments: []
+        in_subset:
+        - base
+        - fa
   DiagnosisCategoryEnum:
     permissible_values:
       Atypical Teratoid/Rhabdoid Tumor:
@@ -56126,6 +56241,12 @@ enums:
         in_subset:
         - base
         - fa
+      Esophageal Dilation: 
+        meaning: ''
+        comments: []
+        in_subset:
+        - base
+        - fa
       Esophagectomy:
         meaning: ncit:C15357
         comments: []
@@ -56746,6 +56867,12 @@ enums:
         in_subset:
         - base
         - fa
+      Reconstruction: 
+        meaning: ''
+        comments: []
+        in_subset:
+        - base
+        - fa
       Random Gastric Biopsy:
         meaning: ''
         comments: []
@@ -56812,6 +56939,12 @@ enums:
         - base
         - fa
         - ls
+      Segmentectomy:
+        meaning: ''
+        comments: []
+        in_subset:
+        - base
+        - fa
       Segmentectomy / Sectionectomy:
         meaning: ''
         comments: []
@@ -57810,11 +57943,6 @@ enums:
         - fa
         - fprh
         - ls
-      Cannabis:
-        meaning: ncit:C26659
-        comments: []
-        in_subset:
-        - ls
       Cocaine:
         meaning: ncit:C80153
         comments: []
@@ -57831,6 +57959,7 @@ enums:
         comments: []
         in_subset:
         - base
+        - fa
         - ls
       Heroin:
         meaning: ncit:C424
@@ -57838,11 +57967,13 @@ enums:
         in_subset:
         - ls
       Marijuana:
-        meaning: ''
+        meaning: ncit:C26659
         comments: []
         in_subset:
         - base
+        - fa
         - fprh
+        - ls
       Methamphetamines:
         meaning: ncit:C61840
         comments: []
@@ -57855,8 +57986,22 @@ enums:
         - base
         - fa
         - ls
+      Shisha:
+        meaning: 'ncit:C214745'
+        comments: []
+        in_subset:
+        - base
+        - fa
       Tobacco:
         meaning: ncit:C18059
+        comments: []
+        in_subset:
+        - base
+        - fa
+        - fprh
+        - ls
+      Other:
+        meaning: ncit:C17649
         comments: []
         in_subset:
         - base
@@ -58209,6 +58354,12 @@ enums:
         - fa
   FounderPopulationEnum:
     permissible_values:
+      Aboriginal and/or Torres Strait Islander (Australia):
+        meaning: ''
+        comments: []
+        in_subset:
+        - base
+        - fa
       Ammish/Mennonite/Hutterite:
         meaning: ''
         comments: []
@@ -58314,6 +58465,12 @@ enums:
         - base
         - fa
       Invitae:
+        meaning: ''
+        comments: []
+        in_subset:
+        - base
+        - fa
+      Institut de Recerca Sant Pau, Hospital de Sant Pau: 
         meaning: ''
         comments: []
         in_subset:
@@ -58708,66 +58865,49 @@ enums:
     permissible_values:
       Anal Anomaly:
         meaning: ''
-        comments:
-        - '(fa) ConsortiumNote: [Fiesco-Roa et al. - 2019]'
-        - '(fa) ConsortiumNote:  [Mexico Registry].[Congenital_anomalies_detected_at_birth].[1=anal]'
+        comments: []
         in_subset:
         - base
         - fa
       Cardiac Structure Anomaly:
         meaning: ''
-        comments:
-        - '(fa) ConsortiumNote: [Fiesco-Roa et al. - 2019]'
-        - '(fa) ConsortiumNote:  [German FA Support Group Questionnaire].[Questions about Fanconi Anemia].[Which or where do you have physical abnormalities?].[Heart]'
-        - '(fa) ConsortiumNote:  [Mexico Registry].[Congenital_anomalies_detected_at_birth].[2=cardiac]'
+        comments: []
         in_subset:
         - base
         - fa
       Esophageal Duodenal Atresia:
         meaning: ''
-        comments:
-        - '(fa) ConsortiumNote: [Fiesco-Roa et al. - 2019]'
+        comments: []
         in_subset:
         - base
         - fa
       Hydrocephalus:
         meaning: ''
-        comments:
-        - '(fa) ConsortiumNote: [Fiesco-Roa et al. - 2019]'
-        - '(fa) ConsortiumNote:  [Mexico].[Congenital_anomalies_detected_at_birth].[5=hydrocephalus]'
+        comments: []
         in_subset:
         - base
         - fa
       Renal Anomaly:
         meaning: ''
-        comments:
-        - '(fa) ConsortiumNote: [Israel].[Renal Anomaly]'
-        - '(fa) ConsortiumNote:  [Fiesco-Roa et al. - 2019]'
-        - '(fa) ConsortiumNote:  [German FA Support Group Questionnaire].[Questions about Fanconi Anemia].[Which or where do you have physical abnormalities?].[Kidneys]'
+        comments: []
         in_subset:
         - base
         - fa
       Tracheo-esophageal Fistula:
         meaning: ''
-        comments:
-        - '(fa) ConsortiumNote: [Fiesco-Roa et al. - 2019]'
-        - '(fa) ConsortiumNote:  [Mexico Registry].[Congenital_anomalies_detected_at_birth].[3= tracheoesophageal]'
+        comments: []
         in_subset:
         - base
         - fa
       Upper Limb Anomaly:
         meaning: ''
-        comments:
-        - '(fa) ConsortiumNote: [Fiesco-Roa et al. - 2019]'
-        - '(fa) ConsortiumNote:  [German FA Support Group Questionnaire].[Questions about Fanconi Anemia].[Which or where do you have physical abnormalities?].[Thumb/Radius]'
-        - '(fa) ConsortiumNote:  [Mexico Registry].[Congenital_anomalies_detected_at_birth].[4= radial ray]'
+        comments: []
         in_subset:
         - base
         - fa
       Vertebral Anomaly:
         meaning: ''
-        comments:
-        - '(fa) ConsortiumNote: [Fiesco-Roa et al. - 2019]'
+        comments: []
         in_subset:
         - base
         - fa
@@ -58775,56 +58915,37 @@ enums:
     permissible_values:
       Eye Abnormality:
         meaning: ''
-        comments:
-        - '(fa) ConsortiumNote: [Fiesco-Roa et al. - 2019]'
-        in_subset:
-        - base
-        - fa
-      Genitalia Abnormality:
-        meaning: ''
-        comments:
-        - '(fa) ConsortiumNote: [Fiesco-Roa et al. - 2019]'
+        comments: []
         in_subset:
         - base
         - fa
       Microcephaly:
         meaning: ''
-        comments:
-        - '(fa) ConsortiumNote: [Fiesco-Roa et al. - 2019]'
-        - '(fa) ConsortiumNote:  [Mexico Registry].[Congenital_anomalies_detected_at_birth].[6=microcephaly]'
+        comments: []
         in_subset:
         - base
         - fa
       Nervous System Abnormality:
         meaning: ''
-        comments:
-        - '(fa) ConsortiumNote: [Fiesco-Roa et al. - 2019]'
-        - '(fa) ConsortiumNote:  [German FA Support Group Questionnaire].[Questions about Fanconi Anemia].[Which or where do you have physical abnormalities?].[Neurological abnormalities]'
+        comments: []
         in_subset:
         - base
         - fa
       Otological Abnormality:
         meaning: ''
-        comments:
-        - '(fa) ConsortiumNote: [Israel].[Ear Anomaly]'
-        - '(fa) ConsortiumNote:  [Fiesco-Roa et al. - 2019]'
-        - '(fa) ConsortiumNote:  [German FA Support Group Questionnaire].[Questions about Fanconi Anemia].[Which or where do you have physical abnormalities?].[Ears/Hearing]'
+        comments: []
         in_subset:
         - base
         - fa
       Short Stature:
         meaning: ''
-        comments:
-        - '(fa) ConsortiumNote: [Fiesco-Roa et al. - 2019]'
-        - '(fa) ConsortiumNote:  [German FA Support Group Questionnaire].[Questions about Fanconi Anemia].[Which or where do you have physical abnormalities?].[Growth]'
+        comments: []
         in_subset:
         - base
         - fa
       Skin Pigmentation:
         meaning: ''
-        comments:
-        - '(fa) ConsortiumNote: [Fiesco-Roa et al. - 2019]'
-        - '(fa) ConsortiumNote:  [German FA Support Group Questionnaire].[Questions about Fanconi Anemia].[Which or where do you have physical abnormalities?].[Skin]'
+        comments: []
         in_subset:
         - base
         - fa
@@ -59036,9 +59157,17 @@ enums:
         in_subset:
         - base
         - fa
-      Acute Lymphoblastic Leukemia Susceptibility - PAX5:
-        meaning: ncit:C176907
-        comments: []
+      Anemia, Mild:
+        meaning: ''
+        comments:
+        - '(fa) ConsortiumNote: ≥8 g/dL'
+        in_subset:
+        - base
+        - fa
+      Anemia, Moderate/Severe:
+        meaning: ''
+        comments:
+        - '(fa) ConsortiumNote: <8 g/dL'        
         in_subset:
         - base
         - fa
@@ -59199,6 +59328,12 @@ enums:
         meaning: ''
         comments:
         - '(fa) ConsortiumNote: Neurological Symptoms History'
+        in_subset:
+        - base
+        - fa
+      Conductive Hearing Loss:
+        meaning: ''
+        comments: []
         in_subset:
         - base
         - fa
@@ -59421,6 +59556,12 @@ enums:
         - base
         - fa
       Gagging:
+        meaning: ''
+        comments: []
+        in_subset:
+        - base
+        - fa
+      Genitalia Abnormality:
         meaning: ''
         comments: []
         in_subset:
@@ -59806,7 +59947,34 @@ enums:
         in_subset:
         - base
         - fa
+      Neutropenia, Mild: 
+        meaning: ''
+        comments:
+        - '(fa) ConsortiumNote: <1,500/mm3'
+        in_subset:
+        - base
+        - fa
+      Neutropenia, Moderate:
+        meaning: ''
+        comments:
+        - '(fa) ConsortiumNote: <1,000/mm3'
+        in_subset:
+        - base
+        - fa
+      Neutropenia, Severe:
+        meaning: ''
+        comments:
+        - '(fa) ConsortiumNote: <500/mm3'
+        in_subset:
+        - base
+        - fa
       Night sweats:
+        meaning: ''
+        comments: []
+        in_subset:
+        - base
+        - fa
+      Non-Severe Cytopenia:
         meaning: ''
         comments: []
         in_subset:
@@ -60124,9 +60292,24 @@ enums:
         in_subset:
         - base
         - fa
-      Thrombocytopenia:
-        meaning: ncit:C3408
-        comments: []
+      Thrombocytopenia, Mild:
+        meaning: ''
+        comments:
+        - '(fa) ConsortiumNote: 50,000-150,000/mm3'
+        in_subset:
+        - base
+        - fa
+      Thrombocytopenia, Moderate:
+        meaning: ''
+        comments:
+        - '(fa) ConsortiumNote: <50,000/mm3'
+        in_subset:
+        - base
+        - fa
+      Thrombocytopenia, Severe:
+        meaning: ''
+        comments:
+        - '(fa) ConsortiumNote: <20,000/mm3'
         in_subset:
         - base
         - fa
@@ -60532,6 +60715,12 @@ enums:
         - base
         - fa
       Two times a day:
+        meaning: ''
+        comments: []
+        in_subset:
+        - base
+        - fa
+      Other:
         meaning: ''
         comments: []
         in_subset:
@@ -61823,11 +62012,40 @@ enums:
         - pre
   HzFrequencyEnum:
     permissible_values:
+      '500':
+        meaning: ''
+        comments: []
+        in_subset:
+        - base
+        - fa
+        - npc
       '1000':
         meaning: ''
         comments: []
         in_subset:
         - base
+        - fa
+        - npc
+      '2000':
+        meaning: ''
+        comments: []
+        in_subset:
+        - base
+        - fa
+        - npc
+      '4000':
+        meaning: ''
+        comments: []
+        in_subset:
+        - base
+        - fa
+        - npc
+      '8000':
+        meaning: ''
+        comments: []
+        in_subset:
+        - base
+        - fa
         - npc
       '16000':
         meaning: ''
@@ -61835,30 +62053,7 @@ enums:
         in_subset:
         - base
         - npc
-      '2000':
-        meaning: ''
-        comments: []
-        in_subset:
-        - base
-        - npc
-      '4000':
-        meaning: ''
-        comments: []
-        in_subset:
-        - base
-        - npc
-      '500':
-        meaning: ''
-        comments: []
-        in_subset:
-        - base
-        - npc
-      '8000':
-        meaning: ''
-        comments: []
-        in_subset:
-        - base
-        - npc
+        - fa
   TreatmentVolumeEnum:
     permissible_values:
       PTV High Risk:
