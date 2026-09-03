@@ -11,7 +11,7 @@ AUTH_DIR = Path(__file__).resolve().parent / "auth"
 TOKEN_PATH = AUTH_DIR / "token-sheets.pickle"
 FORMAT_SHEET_ID = "1UDTMiw0LnLwqUBNc4O2_FAAX5UylCy-VXXRxEojK4IA"
 EXPORT_FOLDER_ID = "15MY_hV4Jz1KSmYT2tgLVr-meaDuvfAvj"
-DICTIONARY_SHEET_NAME = "Data Dictionary"
+DICTIONARY_SHEET_NAME = datetime.date.today().isoformat()
 
 
 def load_yaml(path):

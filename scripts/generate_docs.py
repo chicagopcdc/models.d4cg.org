@@ -805,7 +805,7 @@ def render_class_table(class_name, class_def, schema, terminology_index):
 
 
 def render_domain_intro(domain, schema):
-    docs = schema.get("annotations", {}).get("docs", {})
+    docs = schema.get("annotations", {}).get("docs", {}).get("value", {})
     domain_docs = docs.get("domains", {}).get(domain, {})
     title = domain_docs.get("title", str(domain).title())
     description = domain_docs.get("description", "")
