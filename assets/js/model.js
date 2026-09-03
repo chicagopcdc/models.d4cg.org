@@ -1253,6 +1253,9 @@ function buildDocsToc() {
     link.textContent =
       heading.textContent.trim();
 
+    link.title =
+      link.textContent;
+
     link.className =
       heading.tagName === "H1"
         ? "model-toc-domain"
@@ -1399,6 +1402,10 @@ function initModelTocScrollSpy() {
         ".model-toc a"
       )
     );
+
+  links.forEach(function(link) {
+    link.title = link.textContent.trim();
+  });
 
   const sections =
     links
