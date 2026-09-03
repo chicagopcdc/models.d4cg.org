@@ -85,7 +85,7 @@ def get_description(meaning, terminology_index):
     return concept_def.get("description", "")
 
 
-def get_notes(item_def):
+def get_notes(item_def, subset=None):
     comments = item_def.get("comments", [])
 
     if not comments:
@@ -93,6 +93,20 @@ def get_notes(item_def):
 
     if not isinstance(comments, list):
         comments = [comments]
+
+    if subset and subset != "base":
+        filtered = []
+        for comment in comments:
+            text = str(comment).strip()
+            if text.startswith("("):
+                end = text.find(")")
+                if end != -1:
+                    prefix = text[1:end]
+                    if prefix == subset:
+                        filtered.append(text)
+                    continue
+            filtered.append(text)
+        comments = filtered
 
     return "\n".join(str(comment) for comment in comments)
 
@@ -230,7 +244,7 @@ def assemble_dictionary(schema, slots, enums, terminology_index, subset):
             "",
             "",
             class_def.get("description", ""),
-            get_notes(class_def),
+            get_notes(class_def, subset),
         ])
 
         slot_usage = class_def.get("slot_usage", {})
@@ -259,7 +273,7 @@ def assemble_dictionary(schema, slots, enums, terminology_index, subset):
                 "",
                 meaning,
                 get_description(meaning, terminology_index),
-                get_notes(slot_def),
+                get_notes(slot_def, subset),
             ])
 
             enum_def = enums.get(slot_range)
@@ -281,7 +295,7 @@ def assemble_dictionary(schema, slots, enums, terminology_index, subset):
                     pv_name,
                     pv_meaning,
                     get_description(pv_meaning, terminology_index),
-                    get_notes(pv_def),
+                    get_notes(pv_def, subset),
                 ])
 
     return rows
