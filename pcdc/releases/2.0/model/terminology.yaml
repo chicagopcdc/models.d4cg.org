@@ -421,6 +421,11 @@ rxcui:
       description: "topotecan"
       last_updated: 2026-08-17
 
+    rxcui:614373:
+      d4cg_label: "Deferasirox"
+      description: "deferasirox"
+      last_updated: 2026-08-28
+
     rxcui:6313:
       d4cg_label: "Leucovorin"
       description: "leucovorin"
@@ -4887,7 +4892,7 @@ ncit:
       last_updated: 2026-08-17
 
     ncit:C1126:
-      d4cg_label: "HiB (Haemophilus influenza type B)"
+      d4cg_label: "HiB (Haemophilus influenza type B) Vaccine"
       description: "A vaccine against serotype b of the Gram-negative bacterium H. influenzae (Hib). Hib vaccines contain polysaccharide-protein conjugate antigens that produce greater host immune responses than first-generation purified polysaccharide vaccine. These vaccines may differ with regard to use of protein carriers, polysaccharides, diluents, and preservatives."
       last_updated: 2026-08-17
 
@@ -8431,11 +8436,6 @@ ncit:
       description: "A surgical procedure on the gastric tract to remove deep tumors via endoscope."
       last_updated: 2026-08-17
 
-    ncit:C15791:
-      d4cg_label: "Clinical Testing"
-      description: "Small-scale testing (usually on SBIRs) of new technology in a small group of patients or normal volunteers. Does not meet the rigorous criteria of a clinical trial."
-      last_updated: 2026-08-17
-
     ncit:C158080:
       d4cg_label: "Basal Ganglia-Thalamus"
       description: "The gray matter that includes the basal ganglia and/or thalamus."
@@ -10837,7 +10837,7 @@ ncit:
       last_updated: 2026-08-17
 
     ncit:C178427:
-      d4cg_label: "Influenza"
+      d4cg_label: "Influenza Vaccine"
       description: "A vaccine intended to prevent infections caused by influenza viruses."
       last_updated: 2026-08-17
 
@@ -12762,7 +12762,7 @@ ncit:
       last_updated: 2026-08-17
 
     ncit:C26659:
-      d4cg_label: "Cannabis"
+      d4cg_label: "Marijuana"
       description: "Any part of, or extract from, the female hemp plant Cannabis sativa.  Marijuana contains cannabinoids, substances with hallucinogenic, psychoactive, and addictive properties.  This agent has potential use for treating cancer pain and cachexia. (NCI04)"
       last_updated: 2026-08-17
 
@@ -13222,12 +13222,12 @@ ncit:
       last_updated: 2026-08-17
 
     ncit:C29090:
-      d4cg_label: "HepA (Hepatitis A)"
+      d4cg_label: "HepA (Hepatitis A) Vaccine"
       description: "A vaccine used to prevent infection with the hepatitis A virus, which causes a serious liver disease. The vaccine is made of a weakened form of the virus that cannot cause disease but causes the body's immune system to make antibodies that destroy the hepatitis A virus."
       last_updated: 2026-08-17
 
     ncit:C29091:
-      d4cg_label: "HepB (Hepatitis B)"
+      d4cg_label: "HepB (Hepatitis B) Vaccine"
       description: "A non-infectious mixture containing recombinant hepatitis B surface antigen (HBsAg) in a liquid vehicle. Immunization with the hepatitis B vaccine induces the formation of specific anti-hepatitis B antibodies and an active immunity against hepatitis B infection."
       last_updated: 2026-08-17
 
@@ -17537,7 +17537,7 @@ ncit:
       last_updated: 2026-08-17
 
     ncit:C77799:
-      d4cg_label: "VAR (Varicella)"
+      d4cg_label: "VAR (Varicella) Vaccine"
       description: "A sterile, lyophilized preparation of the Oka/Merck strain of the live, attenuated varicella-zoster virus (VZV), that can be used to prevent varicella, commonly known as chickenpox, or herpes zoster (HZ), commonly known as shingles. Upon reconstitution and subcutaneous vaccination with the VZV strain Oka/Merck live antigen, this vaccine induces antigen-specific T-cell and B-cell immune responses against the VZV, thereby protecting against VZV infection."
       last_updated: 2026-08-17
 
@@ -18222,7 +18222,7 @@ ncit:
       last_updated: 2026-08-17
 
     ncit:C91715:
-      d4cg_label: "IPV (Poliovirus)"
+      d4cg_label: "IPV (Poliovirus) Vaccine"
       description: "A vaccine consisting of inactivated poliovirus (IPV) types 1,2 and 3, with active immunizing activity against poliomyelitis. Upon intramuscular vaccination, inactivated poliovirus vaccine (IPV) activates the immune system to develop antibodies against polioviruses."
       last_updated: 2026-08-17
 
@@ -18232,7 +18232,7 @@ ncit:
       last_updated: 2026-08-17
 
     ncit:C91718:
-      d4cg_label: "DTaP (Diphtheria and tetanus)"
+      d4cg_label: "DTaP (Diphtheria and Tetanus) Vaccine"
       description: "A vaccine containing detoxified tetanus toxoid and detoxified diphtheria toxoid adsorbed on aluminum phosphate with active immunizing activity against diphtheria and tetanus. Intramuscular injection with this vaccine activates the immune system to develop antibodies against tetanus toxin and diphtheria toxin."
       last_updated: 2026-08-17
 
@@ -18522,17 +18522,17 @@ ncit:
       last_updated: 2026-08-17
 
     ncit:C96394:
-      d4cg_label: "RV (Rotavirus)"
+      d4cg_label: "RV (Rotavirus) Vaccine"
       description: "A viral vaccine that prevents against rotavirus infection, the leading cause of severe acute gastroenteritis."
       last_updated: 2026-08-17
 
     ncit:C96397:
-      d4cg_label: "MCV4 (Meningococcal)"
+      d4cg_label: "MCV4 (Meningococcal) Vaccine"
       description: "Any vaccine derived from Neisseria meningitidis whether in whole-cell or acellular form used for prophylaxis against meningitis."
       last_updated: 2026-08-17
 
     ncit:C96403:
-      d4cg_label: "MMR (Measles, Mumps, & Rubella)"
+      d4cg_label: "MMR (Measles, Mumps, & Rubella) Vaccine"
       description: "A trivalent vaccine containing live attenuated viruses that can cause measles, mumps and rubella. It is an injection administered subcutaneously in two separate doses."
       last_updated: 2026-08-17
 
@@ -18592,7 +18592,7 @@ ncit:
       last_updated: 2026-08-17
 
     ncit:C97123:
-      d4cg_label: "PCV (Pneumococcal)"
+      d4cg_label: "PCV (Pneumococcal) Vaccine"
       description: "An active immunizing vaccine used to prevent infection by the bacterium Streptococcus pneumoniae. It consists of a solution of saccharides of the capsular antigens of Streptococcus serotypes individually conjugated to proteins."
       last_updated: 2026-08-17
 
@@ -18845,3 +18845,38 @@ ncit:
       d4cg_label: "Score 5"
       description: "The results of the positron emission tomography are positive; the tracer uptake is markedly increased at any disease site."
       last_updated: 2026-08-17
+
+    ncit:C88224:
+      d4cg_label: "Cystatin C"
+      description: "An immunoassay used for the measurement of cystatin-C levels in the serum to determine the glomerular filtration rate."
+      last_updated: 2026-08-28
+
+    ncit:C90505:
+      d4cg_label: "GFR"
+      description: "A kidney function test that measures the fluid volume that is filtered from the kidney glomeruli to the Bowman's capsule per unit of time."
+      last_updated: 2026-08-28
+
+    ncit:C25229:
+      d4cg_label: "Left"
+      description: "Being or located on or directed toward the side of the body to the west when facing north."
+      last_updated: 2026-08-28
+
+    ncit:C25228:
+      d4cg_label: "Right"
+      description: "Being or located on or directed toward the side of the body to the east when facing north."
+      last_updated: 2026-08-28
+
+    ncit:C103186:
+      d4cg_label: "Differences of Sex Development"
+      description: "A congenital disorder characterized by abnormalities in the development of the sexual characteristics."
+      last_updated: 2026-08-28
+
+    ncit:C214745:
+      d4cg_label: "Shisha"
+      description: "Any tobacco product or associated parts and components that, because of its appearance, type, packaging, labeling, or associated parts and components, burns tobacco filler in a bowl and generates smoke that passes through a liquid into a hose and/or mouthpiece."
+      last_updated: 2026-08-28
+    
+    ncit:C120482: 
+      d4cg_label: "E-Cigarettes"
+      description: "A battery-powered electronic device designed to atomize a nicotine-containing liquid solution for inhalation in a manner that simulates smoking a tobacco cigarette."
+      last_updated: 2026-08-28

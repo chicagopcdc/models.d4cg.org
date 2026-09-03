@@ -540,6 +540,7 @@ classes:
     in_subset:
     - base
     - aml
+    - fa
     - ls
     - nbl
     annotations:
@@ -550,6 +551,7 @@ classes:
         in_subset:
         - base
         - aml
+        - fa
         - ls
         - nbl
         required: false
@@ -559,6 +561,7 @@ classes:
         in_subset:
         - base
         - aml
+        - fa
         - ls
         - nbl
         required: true
@@ -566,6 +569,7 @@ classes:
         in_subset:
         - base
         - aml
+        - fa
         - ls
         - nbl
         required: false
@@ -584,6 +588,7 @@ classes:
         in_subset:
         - base
         - aml
+        - fa
         - ls
         - nbl
         required: false
@@ -593,6 +598,7 @@ classes:
         in_subset:
         - base
         - aml
+        - fa
         - ls
         - nbl
         required: false
@@ -602,6 +608,7 @@ classes:
         in_subset:
         - base
         - aml
+        - fa
         - ls
         - nbl
         required: false
@@ -620,6 +627,7 @@ classes:
         in_subset:
         - base
         - aml
+        - fa
         - ls
         - nbl
         required: false
@@ -2220,6 +2228,7 @@ classes:
     - age_at_status
     - gender_identity
     - exposure
+    - exposure_other
     - exposure_amount
     - exposure_amount_type
     - exposure_amount_frequency
@@ -2294,6 +2303,10 @@ classes:
         annotations:
           priority:
           - fa
+      exposure_other:
+        in_subset:
+        - base
+        - fa
       exposure_amount:
         in_subset:
         - base
@@ -3026,6 +3039,7 @@ classes:
     - reported_significance_numeric
     - reported_significance_other
     - external_ref_id_system
+    - external_ref_id_system_other
     - external_ref_id
     - copy_number
     - maf
@@ -3444,6 +3458,7 @@ classes:
         - aml
         - cns
         - ews
+        - fa
         - gct
         - rb
         required: false
@@ -3619,6 +3634,13 @@ classes:
         - fa
         - ls
         - pre
+        required: false
+        annotations:
+          priority: []
+      external_ref_id_system_other:
+        in_subset:
+        - base
+        - fa
         required: false
         annotations:
           priority: []
@@ -4063,6 +4085,7 @@ classes:
       functional_measurement_type:
         in_subset:
         - base
+        - fa
         - hl
         required: false
         annotations:
@@ -4112,6 +4135,7 @@ classes:
       hz_frequency:
         in_subset:
         - base
+        - fa
         - npc
         required: false
         annotations:
@@ -4304,6 +4328,7 @@ classes:
     - mature_glial_implants
     - somatic_malignancy_type
     - histology_grade
+    - histology_grade_other
     - revised_inpc
     - histologic_features
     - diagnosis_context
@@ -4741,6 +4766,13 @@ classes:
           priority:
           - cns
           - fa
+      histology_grade_other:
+        in_subset:
+        - base
+        - fa
+        required: false
+        annotations:
+          priority: []
       revised_inpc:
         in_subset:
         - base
@@ -7835,6 +7867,8 @@ classes:
     - age_at_rt_start
     - year_at_rt_start
     - age_at_rt_end
+    - interruption_status
+    - interruption_reason
     - rt_administration_status
     - indication
     - protocol_radiation_therapy
@@ -8030,6 +8064,20 @@ classes:
           - cns
           - hl
           - rb
+      interruption_status:
+        in_subset:
+        - base
+        - fa
+        required: false
+        annotations:
+          priority: []
+      interruption_reason:
+        in_subset:
+        - base
+        - fa
+        required: false
+        annotations:
+          priority: []
       rt_administration_status:
         in_subset:
         - base
