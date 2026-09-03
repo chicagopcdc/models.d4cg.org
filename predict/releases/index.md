@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Past Releases
+title: Releases
 parent: Monogenic Diabetes
 nav_order: 1
 ---
 
-# Monogenic Diabetes Past Releases
+# Monogenic Diabetes Releases
 
 | Release | Status | Date | Notes |
 | --- | --- | --- | --- |
