@@ -150,6 +150,7 @@ classes:
       - relation_honest_broker_subject_id
       - relation
       - condition
+      - syndromic_condition
       - source
     comments:
       - '(base) ConsortiumNote: Only enter family members who have a history of dysglycemia.'
@@ -182,6 +183,12 @@ classes:
       condition:
         in_subset:
           - base
+        required: false
+        annotations:
+          priority: []
+      syndromic_condition:
+        in_subset:
+         - base
         required: false
         annotations:
           priority: []

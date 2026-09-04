@@ -384,3 +384,8 @@ slots:
     comments: []
     annotations:
       ignore_in_export: 'true'
+  syndromic_condition:
+    slot_uri: ''
+    range: SyndromicConditionEnum
+    comments:
+      - '(base) ConsortiumNotes: Only report syndromic-related conditions. Omit any other conditions from family members.'
